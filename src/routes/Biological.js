@@ -2,7 +2,7 @@
  * Created by dixu on 2017/10/10.
  */
 import React from 'react';
-import { Table, Input, Form, Popconfirm,message  } from 'antd';
+import { Table, Input, Form, Popconfirm,message,Spin, Alert, Switch  } from 'antd';
 
 import ReactDOM from 'react-dom'
 import styles from './Biological.less';
@@ -16,9 +16,11 @@ class EditableCell extends React.Component {
     editable: this.props.editable || false,
   }
   componentWillReceiveProps(nextProps) {
+    if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
+      this.setState({ editable: nextProps.editable, value: nextProps.value });
 
-    if (nextProps.editable !== this.state.editable) {
-      this.setState({ editable: nextProps.editable });
+    /* if (nextProps.editable !== this.state.editable ) {
+       this.setState({ editable: nextProps.editable});*/
       if (nextProps.editable) {
         this.cacheValue = this.state.value;
       }
@@ -40,7 +42,7 @@ class EditableCell extends React.Component {
   handleChange(e) {
 
     const value = e.target.value;
-    this.setState({ value });
+    this.setState({ value:value });
   }
   render() {
 
@@ -186,14 +188,14 @@ class EditableTable extends React.Component {
               index ==25 || index ==30 || index ==36 || index ==37 || index ==41 || index ==45 || index ==49 || index ==53|| index ==54|| index ==60? <span></span> :
               editable ?
                 <span>
-                  <a onClick={() => this.editDone(index, 'save')}>确认</a>
+                  <a onClick={() => this.editDone(index, 'save')}>save</a>
                   <Popconfirm title="确认取消?" onConfirm={() => this.editDone(index, 'cancel')}>
-                    <a>取消</a>
+                    <a>cancel</a>
                   </Popconfirm>
                 </span>
                 :
                 <span>
-                  <a onClick={() => this.edit(index)}>编辑</a>
+                  <a onClick={() => this.edit(index)}>edit</a>
                 </span>
             }
 
@@ -203,6 +205,7 @@ class EditableTable extends React.Component {
     }];
     this.state = {
       data: [],
+      loading: true ,
 
       collapsed: false,
       select:1,
@@ -1324,7 +1327,7 @@ class EditableTable extends React.Component {
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/residentsLiving/list', {
       year:'2017',
-      para:'0'
+      para:para
 
     })
       .then((res) => {
@@ -1418,10 +1421,10 @@ class EditableTable extends React.Component {
   //1.6
   query6(data,para){
 
-    debugger;
+
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/agricultureForestryAnimalHusbandryAndFishery/list', {
       year:'2017',
-      para:'0'
+      para:para
 
     })
       .then((res) => {
@@ -1657,6 +1660,7 @@ class EditableTable extends React.Component {
 
 
           //this.setState({Data6:Alldata})
+          this.setState({ loading: false});
 
         } else {
           message.error('数据错误！');
@@ -1686,6 +1690,7 @@ class EditableTable extends React.Component {
 
   //1.1 更新
   update(index,data,j){
+    debugger
 
 
     const Directory = [
@@ -1786,7 +1791,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-        "para":0,
+        "para":this.state.breed,
         "year":"2017"
      };
 
@@ -1843,6 +1848,8 @@ class EditableTable extends React.Component {
   //参数选择
   selesctYears(index){
 
+
+    this.setState({ loading: true});
     this.setState({breed:index});
     this.query(index)
 
@@ -1850,7 +1857,10 @@ class EditableTable extends React.Component {
   }
 
 
+
+
   handleChange(key, index, value) {
+
 
     const { data } = this.state;
     data[index][key].value = value;
@@ -1909,8 +1919,6 @@ class EditableTable extends React.Component {
   }
   render() {
 
-
-
     const { data } = this.state;
     const dataSource = data.map((item) => {
       const obj = {};
@@ -1932,10 +1940,10 @@ class EditableTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" onClick={()=>{this.selesctYears(1)}}>2005</li>
-              <li id="li2" onClick={()=>{this.selesctYears(2)}}>2010</li>
-              <li id="li3" onClick={()=>{this.selesctYears(3)}}>2012</li>
-              <li id="li4" onClick={()=>{this.selesctYears(4)}}>2017</li>
+              <li id="li1" >2005</li>
+              <li id="li2" >2010</li>
+              <li id="li3" >2012</li>
+              <li id="li4" className={styles.li_focus} onClick={()=>{this.selesctYears(4)}}>2017</li>
             </ul>
           </div>
 
@@ -1971,8 +1979,9 @@ class EditableTable extends React.Component {
 
         <div className={styles.entryBody}>
           <p>活动水平数据</p>
-          <Table pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 4000, y: 620 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
-
+          <Spin spinning={this.state.loading} delay={500}>
+          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 4000, y: 620 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          </Spin>
         </div>
 
       </div>
