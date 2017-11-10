@@ -1,0 +1,452 @@
+/**
+ * 稻田Created by dixu on 2017/10/17.
+ */
+import React from 'react';
+import { Table, Input, Form, Popconfirm,message,Spin, Alert, Switch ,Radio } from 'antd';
+
+import ReactDOM from 'react-dom'
+import styles from './Rice.less';
+import createReactClass from 'create-react-class';
+import { post } from '../../../utils/carbonRequest';
+import $ from 'jquery';
+const RadioGroup = Radio.Group;
+
+class EditableCell extends React.Component {
+
+  state = {
+    value: this.props.value,
+    editable: this.props.editable || false,
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
+      this.setState({ editable: nextProps.editable, value: nextProps.value });
+      /*if (nextProps.editable !== this.state.editable ) {
+       this.setState({ editable: nextProps.editable});*/
+      if (nextProps.editable) {
+        this.cacheValue = this.state.value;
+      }
+    }
+    if (nextProps.status && nextProps.status !== this.props.status) {
+      if (nextProps.status === 'save') {
+        this.props.onChange(this.state.value);
+      } else if (nextProps.status === 'cancel') {
+        this.setState({ value: this.cacheValue });
+        this.props.onChange(this.cacheValue);
+      }
+    }
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+
+    return nextProps.editable !== this.state.editable ||
+      nextState.value !== this.state.value;
+  }
+  handleChange(e) {
+
+    const value = e.target.value;
+    this.setState({ value });
+  }
+  render() {
+
+    const { value, editable } = this.state;
+    return (
+      <div>
+        {
+          editable ?
+            <div>
+              <Input
+                value={value}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            :
+            <div className={styles.editableText}>
+              {value.toString() || ' '}
+            </div>
+        }
+      </div>
+    );
+  }
+}
+
+class ElectricTable extends React.Component {
+
+
+  constructor(props) {
+
+    super(props);
+
+
+    this.columns = [
+      {
+        title: '数据项',
+        dataIndex: 'name',
+        width: 280,
+
+        colSpan:1,
+        render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
+
+      {
+        title: '水稻播种面积(HA)', dataIndex: 'riceSownArea', width: 100,
+        render: (text, record, index) => this.renderColumns(this.state.data, index, 'riceSownArea', text),
+      }, {
+        title: '排放因子(KGCH4/HA)', dataIndex: 'emissionFactor', width: 150,
+        render: (text, record, index) => this.renderColumns(this.state.data, index, 'emissionFactor', text),
+      }, {
+        title: 'CH4排放量(吨)', dataIndex: 'CH4Emissions', width: 200,
+        render: (text, record, index) => this.renderColumns(this.state.data, index, 'CH4Emissions', text),
+      },
+      {
+        title: '编辑',
+        dataIndex: 'operation',
+
+        width: 100,
+
+        render: (text, record, index) => {
+
+          const { editable } = this.state.data[index].riceSownArea;
+          return (
+            <div className={styles.editableOperations} >
+
+              {
+
+                editable ?
+                  <span>
+                  <a onClick={() => this.editDone(index, 'save')}>确认</a>
+                  <Popconfirm title="确认取消?" onConfirm={() => this.editDone(index, 'cancel')}>
+                    <a>取消</a>
+                  </Popconfirm>
+                </span>
+                  :
+                  <span>
+                  <a onClick={() => this.edit(index)}>编辑</a>
+                </span>
+              }
+
+            </div>
+          );
+        },
+      }];
+
+
+    this.state = {
+
+      data: [],
+      loading: true ,
+
+      collapsed: false,
+      select:1,
+      trigger:true,
+      user:[],
+
+
+
+
+      AllData:[]
+    };
+
+    this.queryRice();
+
+    //$("#bodyTable1").hide();
+
+  }
+
+
+  // 部门方法 1.1
+  renderColumns(data, index, key, text) {
+
+
+    const { editable, status } = data[index][key];
+    if (typeof editable === 'undefined') {
+      return text;
+    }
+    return (
+
+      <EditableCell
+        editable={editable}
+        value={text}
+        onChange={value => this.handleChange(key, index, value)}
+        status={status}
+      />);
+  }
+
+
+  handleChange(key, index, value) {
+
+
+
+
+    const data = [...this.state.data];
+    data[index][key].value = value;
+    this.setState({ data });
+
+    if(key  == 'emissionFactor'){
+
+     this.updateRice(index,data);
+    }
+
+  }
+
+
+
+
+  edit(index) {
+
+    const { data } = this.state;
+    Object.keys(data[index]).forEach((item) => {
+      if (data[index][item] && typeof data[index][item].editable !== 'undefined') {
+        data[index][item].editable = true;
+      }
+    });
+    this.setState({ data });
+  }
+
+  editDone(index, type) {
+
+    const { data } = this.state;
+    Object.keys(data[index]).forEach((item) => {
+      if (data[index][item] && typeof data[index][item].editable !== 'undefined') {
+        data[index][item].editable = false;
+        data[index][item].status = type;
+      }
+    });
+    this.setState({ data }, () => {
+      Object.keys(data[index]).forEach((item) => {
+        if (data[index][item] && typeof data[index][item].editable !== 'undefined') {
+          delete data[index][item].status;
+        }
+      });
+    });
+  }
+
+  //水稻
+  queryRice(){
+
+
+    post('/activityLevelDataEntry/agricultureActivity/list', {
+      year:'2017',
+
+    })
+      .then((res) => {
+
+        if (res.code==0) {
+
+          var Alldata =res.data;
+
+          const _Data = []
+
+          _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.singleCroppingOfRice);//水稻
+          _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.doubleSeasonEarlyRice);//水稻
+          _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.doubleSeasonLateRice);//水稻
+
+
+
+          const fossilTitle = [
+
+
+            '　　单季稻',
+            '　　双季早稻',
+            '　　双季晚稻',
+            '　　小计',
+
+
+          ]
+
+
+
+
+          const _a = [];
+
+
+          for(var i = 0 ;i<4;i++){
+
+
+            if(i==3){
+              _a.push({
+                key: i,
+                name:fossilTitle[i],
+                riceSownArea: '0',
+                emissionFactor: '0',
+                CH4Emissions: '0',
+
+              });
+            }else{
+              _a.push({
+                key: i,
+                name:fossilTitle[i],
+                riceSownArea: _Data[i].riceSownArea,
+                emissionFactor: _Data[i].emissionFactor,
+                CH4Emissions: '0',
+
+              });
+            }
+
+          }
+
+
+
+          console.log(_a);
+
+          const _b = [];
+
+
+          for(var i = 0 ; i<_a.length;i++){
+
+
+            _b.push({
+                key:_a[i].key,
+                name:{
+
+                  value:_a[i].name ,
+                },
+              riceSownArea:{
+                  editable: false,
+                  value:_a[i].riceSownArea ,
+                },
+              emissionFactor: {
+                  editable: false,
+                  value:_a[i].emissionFactor ,
+                },
+              CH4Emissions: {
+
+                  value:'0' ,
+                },
+
+              }
+            )
+          }
+
+          console.log(_b);
+
+
+          this.setState({data:_b});
+          this.setState({ loading: false});
+
+
+        } else {
+          message.error('数据错误！');
+        }
+      });
+
+  }
+
+  //水稻update
+  updateRice(index,data,a){
+
+    var data  = data
+
+    const Directory = [
+      'singleCroppingOfRice',
+      'doubleSeasonEarlyRice',
+      'doubleSeasonLateRice',
+
+
+
+    ]
+
+    var DirectoryIndex = Directory[index];
+
+    var url = '/activityLevelDataEntry/agricultureActivity/update'
+    var bodyName = 'agricultureActivity';
+    var bodyName1 = 'calculationOfMethaneEmissionsFromPaddyFields';
+
+
+
+
+
+
+    var obj={
+      "year":"2017"
+    };
+
+    obj[bodyName]={}
+    obj[bodyName][bodyName1]={}
+    obj[bodyName][bodyName1][DirectoryIndex]= {
+      "riceSownArea": data[index].riceSownArea.value,
+      "emissionFactor": data[index].emissionFactor.value,
+
+
+    }
+
+    post(url, obj)
+      .then((res) => {
+
+        if (res.code==0) {
+          message.success(res.message);
+
+        } else {
+          message.error(res.message);
+        }
+      });
+  }
+
+
+
+  render() {
+
+    const { data } = this.state;
+    const dataSource = data.map((item) => {
+      const obj = {};
+      Object.keys(item).forEach((key) => {
+        obj[key] = key === 'key' ? item[key] : item[key].value;
+      });
+      return obj;
+    });
+
+
+
+    const columns = this.columns;
+
+
+    return (
+      <div className={styles.normal}>
+        <div className={styles.title}>
+          <span className={styles.title_span}>稻田</span>
+        </div>
+
+        <div className={styles.select}>
+          <div className={styles.targetChoose}>
+            <span className={styles.selectH1}>数据年份:</span>
+            <ul>
+              <li id="li1" >2005</li>
+              <li id="li2" >2010</li>
+              <li id="li3" >2012</li>
+              <li id="li4" className={styles.li_focus}>2017</li>
+            </ul>
+          </div>
+
+
+
+        </div>
+
+
+        <div className={styles.entryBody} id="bodyTable1"  >
+          <p>稻田甲烷排放</p>
+          <div className={styles.greenSelect}>
+            <span>是否采用本地化排放因子：</span>
+            <RadioGroup defaultValue={1}>
+              <Radio value={1}>否</Radio>
+              <Radio value={2}>是</Radio>
+            </RadioGroup>
+          </div>
+
+          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+      </div>
+    );
+
+  }
+}
+
+
+export default Form.create()(ElectricTable);
