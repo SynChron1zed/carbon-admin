@@ -14,7 +14,8 @@
         ["import", { "libraryName": "antd", "style": true }]
       ]
     }
-  }
+  },
+   "publicPath": "/carbon-test15/"
 
 
 }

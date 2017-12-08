@@ -11,6 +11,7 @@ import styles from './Egwp.less';
 import createReactClass from 'create-react-class';
 import { post } from '../../../utils/carbonRequest';
 import $ from 'jquery';
+
 const RadioGroup = Radio.Group;
 
 class EditableCell extends React.Component {
@@ -276,10 +277,12 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014',
+      cs:'a'
     };
 
-    this.queryGut();
+    this.queryGut('a','2014');
 
     //$("#bodyTable1").hide();
 
@@ -372,11 +375,11 @@ class ElectricTable extends React.Component {
   }
 
   //
-  queryGut(){
+  queryGut(i,years){
 
 
     post('/report/energyActivity/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -384,7 +387,8 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
 
-          var Alldata =res.data;
+          var Alldata =res.data.statisticalByDept;
+
 
           const _Data = []  //co2
           const  _Data1 = []  //ch4
@@ -475,93 +479,219 @@ class ElectricTable extends React.Component {
 
           var alldata = Alldata.CO2.energyActivity
 
-          _Data.push('-')
-          _Data.push('-')
-          _Data.push('-')
-          _Data.push('-')
+          //部门方法
+          _Data.push(((
+            ((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+          +((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+            +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+          +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+            +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+          +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+            +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+          +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+            +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+          +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+          +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+        +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+      +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+    +((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+    +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine)
+  +alldata.servicesAndOthers.servicesAndOthers+alldata.residentsLiving.residentsLiving+alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery)
++Alldata.CO2.nonEnergyUse).toFixed(2))
+
+          _Data.push(
+            (((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+          +((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+            +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+          +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+            +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+          +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+            +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+          +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+            +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+          +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+          +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+        +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+      +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+    +((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+    +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine)
+  +alldata.servicesAndOthers.servicesAndOthers+alldata.residentsLiving.residentsLiving+alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery).toFixed(2))
+
+
+          // 1.1能源生产与加工转换
+          _Data.push((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+            +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+            +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+
+          _Data.push((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.cEOtherEquipment).toFixed(2))
+
           _Data.push(alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers);//1.1.1.1发电锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers); //1.1.1.2工业锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.cEOtherEquipment);//1.1.1.3其他设备
-          _Data.push('-')
+
+          _Data.push((alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.oAOtherEquipment).toFixed(2))
+
           _Data.push(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers);//1.1.2.1发电锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers);//1.1.2.2工业锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.oAOtherEquipment);//1.1.2.3其他设备
-          _Data.push('-')
+
+          _Data.push((alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.sFOtherEquipment).toFixed(2))
+
           _Data.push(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers);//1.1.3.1发电锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers);//1.1.3.2工业锅炉
           _Data.push(alldata.energyProductionAndProcessingConversion.sFOtherEquipment);//1.1.3.3其他设备
-          _Data.push('-')
-          _Data.push('-')
+
+
+          //    1.2工业和建筑业
+          _Data.push((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+            +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+          +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+            +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+          +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+            +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+          +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+            +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+          +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+          +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+        +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+      +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+
+          _Data.push((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+          +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment))
+
           _Data.push(alldata.industryAndConstruction.sPowerGenerationBoilers);//1.2.1.1发电锅炉
           _Data.push(alldata.industryAndConstruction.sIndustrialBoilers);//1.2.1.2工业锅炉
           _Data.push(alldata.industryAndConstruction.sBlastFurnace);//1.2.1.3高炉
           _Data.push(alldata.industryAndConstruction.sotherEquipment);//1.2.1.4其他设备
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+          +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment))
           _Data.push(alldata.industryAndConstruction.nMPowerGenerationBoilers);//1.2.2.1发电锅炉
           _Data.push(alldata.industryAndConstruction.nMIndustrialBoilers);//1.2.2.2工业锅炉
           _Data.push(alldata.industryAndConstruction.nMAluminaRotaryKiln);//1.2.2.3氧化铝回转窑
           _Data.push(alldata.industryAndConstruction.nMOtherEquipment);//1.2.2.4其他设备
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+          +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment))
           _Data.push(alldata.industryAndConstruction.cMPowerGenerationBoilers);//1.2.3.1发电锅炉
           _Data.push(alldata.industryAndConstruction.cMIndustrialBoilers);//1.2.3.2工业锅炉
           _Data.push(alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace);//1.2.3.3合成氨造气炉
           _Data.push(alldata.industryAndConstruction.cMotherEquipment);//1.2.3.4其他设备
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+          +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment))
           _Data.push(alldata.industryAndConstruction.bMPowerGenerationBoilers);//1.2.4.1发电锅炉
           _Data.push(alldata.industryAndConstruction.bMIndustrialBoilers);//1.2.4.2工业锅炉
           _Data.push(alldata.industryAndConstruction.bMCementRotaryKiln);//1.2.4.3水泥回转窑
           _Data.push(alldata.industryAndConstruction.bMCementShaftKiln);//1.2.4.4水泥立窑
           _Data.push(alldata.industryAndConstruction.bMOtherEquipment);//1.2.4.5其他设备
-          _Data.push('-')
-          _Data.push('-')
+
+
+          _Data.push((alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+        +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+      +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)) // 1.2.5其他工业部门
+
+          _Data.push((alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3))
           _Data.push(alldata.industryAndConstruction.aEquipment1);//1.2.5.1.1设备1
           _Data.push(alldata.industryAndConstruction.aEquipment2);//1.2.5.1.1设备2
           _Data.push(alldata.industryAndConstruction.aEquipment3);//1.2.5.1.1设备3
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3))
           _Data.push(alldata.industryAndConstruction.bEquipment1);//1.2.5.2.1设备1
           _Data.push(alldata.industryAndConstruction.bEquipment2);//1.2.5.2.2设备2
           _Data.push(alldata.industryAndConstruction.bEquipment3);//1.2.5.2.3设备3
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3))
           _Data.push(alldata.industryAndConstruction.cEquipment1);//1.2.5.3.1设备1
           _Data.push(alldata.industryAndConstruction.cEquipment2);//1.2.5.3.2设备2
           _Data.push(alldata.industryAndConstruction.cEquipment3);//1.2.5.3.3设备3
-          _Data.push('-')
+
+          _Data.push((alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))//   1.2.6建筑业
           _Data.push(alldata.industryAndConstruction.cIPowerGenerationBoilers);//1.2.6.1发电锅炉
           _Data.push(alldata.industryAndConstruction.cIIndustrialBoilers);//1.2.6.2工业锅炉
           _Data.push(alldata.industryAndConstruction.cIOtherEquipment);//1.2.6.3其他设备
-          _Data.push('-')
-          _Data.push('-')
+
+          _Data.push((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+        +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine) //   1.3交通运输
+
+          _Data.push((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)) //   1.3.1航空
           _Data.push(alldata.transportation.tDomesticFlights);//1.3.1.1国内航班
           _Data.push(alldata.transportation.tHongKongAndMacaoFlights);//1.3.1.2港澳地区航班
           _Data.push(alldata.transportation.tInternationalFlights);//1.3.1.3国际航班
 
           _Data.push(alldata.transportation.highway);//1.3.2公路
           _Data.push(alldata.transportation.railway);//1.3.3铁路
-          _Data.push('-')
+
+          _Data.push(alldata.transportation.inlandRiverInternalCombustionEngine)//     1.3.4水运
           _Data.push(alldata.transportation.inlandRiverInternalCombustionEngine);//1.3.4.1内河近海内燃机
           _Data.push(alldata.transportation.internationalOceanInternalCombustionEngine);//1.3.4.2国际远洋内燃机
-          _Data.push(alldata.servicesAndOthers.servicesAndOthers);
-          _Data.push(alldata.residentsLiving.residentsLiving);
 
-          _Data.push(alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery);
+          _Data.push(alldata.servicesAndOthers.servicesAndOthers);// 1.4服务业及其他
+          _Data.push(alldata.residentsLiving.residentsLiving);//1.5居民生活
+          _Data.push(alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery);//    1.6农、林、牧、渔业
+
+          _Data.push('-');//生物质燃烧
           _Data.push('-');
           _Data.push('-');
-          _Data.push('-');
-          _Data.push(Alldata.CO2.nonEnergyUse);
-          _Data.push('-');
-          _Data.push('-');
-          _Data.push('-');
-          _Data.push(Alldata.CO2.electricityTransferCallsForIndirectCO2Discharge);
+          _Data.push(Alldata.CO2.nonEnergyUse);//5. 非能源利用
+
+
+          _Data.push(alldata.transportation.tInternationalFlights+alldata.transportation.internationalOceanInternalCombustionEngine);//国际燃料舱
+          _Data.push(alldata.transportation.tInternationalFlights);// 国际航空
+          _Data.push(alldata.transportation.internationalOceanInternalCombustionEngine);//国际航海
+
+          _Data.push(Alldata.CO2.electricityTransferCallsForIndirectCO2Discharge);//调入（出）电力间接排放
+
+
+
 
           const _a = [];
 
-          _Data1.push('-')
-          _Data1.push('-')
+          _Data1.push(((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights)+
+          +Alldata.CH4.mobileSourceCH4AndN2OEmissions.highway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.railway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)
+        +(Alldata.CH4.biomassBurning)+Alldata.CH4.coalMiningAndMineActivitiesToEscape+Alldata.CH4.oilAndGasSystemsEscape)
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights)+
+          +Alldata.CH4.mobileSourceCH4AndN2OEmissions.highway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.railway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)
+
+
           for(var i  = 0 ; i<52;i++){
-            _Data1.push('-0')
+            _Data1.push('-')
           }
-          _Data1.push('-')
-          _Data1.push('-')
+
+
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights)+
+        +Alldata.CH4.mobileSourceCH4AndN2OEmissions.highway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.railway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)//1.3交通运输
+
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights))// 1.3.1航空
+
 
           _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights);//1.3.1.1国内航班
           _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights);//1.3.1.2港澳地区航班
@@ -569,22 +699,26 @@ class ElectricTable extends React.Component {
 
           _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.highway);//1.3.2公路
           _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.railway);//1.3.3铁路
-          _Data1.push('-')
-          _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.riverInternalCombustionEngine);//1.3.4.1内河近海内燃机
+
+          _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)
+
+          _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine);//1.3.4.1内河近海内燃机
           _Data1.push(Alldata.CH4.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine);//1.3.4.2国际远洋内燃机
 
-          _Data1.push('-0')
-          _Data1.push('-0')
-          _Data1.push('-0')
+          _Data1.push('-')
+          _Data1.push('-')
+          _Data1.push('-')
 
           _Data1.push(Alldata.CH4.biomassBurning);
           _Data1.push(Alldata.CH4.coalMiningAndMineActivitiesToEscape);
           _Data1.push(Alldata.CH4.oilAndGasSystemsEscape);
-          _Data1.push('-0')
+
           _Data1.push('-')
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tInternationalFlights)+(Alldata.CH4.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine))//国际燃料舱
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tInternationalFlights))//国际航空
+          _Data1.push((Alldata.CH4.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine))//  国际航海
           _Data1.push('-')
-          _Data1.push('-')
-          _Data1.push('-0')
+
 
 
           _Data2.push('-')
@@ -597,7 +731,7 @@ class ElectricTable extends React.Component {
           }
 
           _Data2.push('-')
-          _Data2.push('-')
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.N2O.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights)
 
           _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.tDomesticFlights);//1.3.1.1国内航班
           _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights);//1.3.1.2港澳地区航班
@@ -605,8 +739,8 @@ class ElectricTable extends React.Component {
 
           _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.highway);//1.3.2公路
           _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.railway);//1.3.3铁路
-          _Data2.push('-')
-          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.riverInternalCombustionEngine);//1.3.4.1内河近海内燃机
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine);//1.3.4.1内河近海内燃机
           _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine);//1.3.4.2国际远洋内燃机
 
           _Data2.push('-0')
@@ -617,9 +751,9 @@ class ElectricTable extends React.Component {
           _Data2.push('-0')
           _Data2.push('-0')
           _Data2.push('-0')
-          _Data2.push('-')
-          _Data2.push('-')
-          _Data2.push('-')
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.tInternationalFlights+Alldata.N2O.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine)
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.tInternationalFlights)
+          _Data2.push(Alldata.N2O.mobileSourceCH4AndN2OEmissions.internationalOceanInternalCombustionEngine)
           _Data2.push('-0')
 
 
@@ -664,7 +798,7 @@ class ElectricTable extends React.Component {
           console.log(_Data3)
 
 
-          const _data = Alldata.statisticalByRef
+          const _data = res.data.statisticalByRef
 
           const _b = [
             {
@@ -886,6 +1020,31 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //年份选择
+  selesctYears(i,years){
+
+    if(i=='a'){
+      $('#bodyTable1').show();
+      $('#bodyTable2').hide();
+      $('#bodyTable3').hide();
+
+
+    }else if (i=='b'){
+      $('#bodyTable1').hide();
+      $('#bodyTable2').show();
+      $('#bodyTable3').hide();
+
+    }else{
+      $('#bodyTable1').hide();
+      $('#bodyTable2').hide();
+      $('#bodyTable3').show();
+
+    }
+    this.setState({cs:i})
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(i,years)
+  }
 
 
   render() {
@@ -920,25 +1079,43 @@ class ElectricTable extends React.Component {
           <span className={styles.title_span}>能源活动温室气体清单结果</span>
         </div>
 
-        <div className={styles.select}>
+
+        <div className={styles.newSelect}>
+
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('a','2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('a','2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('a','2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('a','2014')}}>2014</li>
             </ul>
           </div>
 
-
+          <div className={styles.targetChoose}>
+            <span className={styles.selectH1}>参数:</span>
+            <ul>
+              <li id="li5" className={'a'==this.state.cs?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('a',this.state.years)}}>清单结果</li>
+              <li id="li6" className={'b'==this.state.cs?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('b',this.state.years)}}>部门方法</li>
+              <li id="li7" className={'c'==this.state.cs?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('c',this.state.years)}}>参考方法</li>
+             </ul>
+          </div>
 
         </div>
 
         <Spin spinning={this.state.loading} delay={500}>
 
+
         <div className={styles.entryBody} id="bodyTable1"  >
-          <p>参考方法</p>
+          <p>清单结果</p>
+
+
+          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 4000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+
+        </div>
+
+        <div className={styles.entryBody} id="bodyTable2" style={{display:'none'}}  >
+          <p>部门方法</p>
 
 
           <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
@@ -946,13 +1123,16 @@ class ElectricTable extends React.Component {
         </div>
 
 
-        <div className={styles.entryBody} id="bodyTable1"  >
+        <div className={styles.entryBody} id="bodyTable3" style={{display:'none'}} >
           <p>参考方法</p>
 
 
           <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 4000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
+
+
+
         </Spin>
 
 

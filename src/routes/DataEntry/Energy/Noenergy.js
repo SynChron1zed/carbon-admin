@@ -1,5 +1,5 @@
 /**
- * 农业活动清单结果Created by dixu on 2017/10/31.
+ * 能源活动不确定性Created by dixu on 2017/10/31.
  */
 
 
@@ -7,7 +7,7 @@ import React from 'react';
 import { Table, Input, Form, Popconfirm,message,Spin, Alert, Switch ,Radio } from 'antd';
 
 import ReactDOM from 'react-dom'
-import styles from './Agwp.less';
+import styles from './Oilgas.less';
 import createReactClass from 'create-react-class';
 import { post } from '../../../utils/carbonRequest';
 import $ from 'jquery';
@@ -70,7 +70,7 @@ class EditableCell extends React.Component {
   }
 }
 
-class EditableCell2 extends React.Component {
+class EditableCell1 extends React.Component {
 
   state = {
     value: this.props.value,
@@ -135,51 +135,84 @@ class ElectricTable extends React.Component {
     super(props);
 
 
-    this.columns = [
+    this.columns = [    
       {
         title: '数据项',
         dataIndex: 'name',
         width: 100,
 
         colSpan:1,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'name', text),
+          props: {},
 
-      {
-        title: '甲烷(万吨)', dataIndex: 'CH4', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'CH4', text),
+        };
+          
+          return obj}
+
       }, {
-        title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'N2O', text),
-      },{
-        title: '二氧化碳当量(万吨)', dataIndex: 'CO2', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'CO2', text),
-      }];
+        title: '排放量（万吨CO2e）', dataIndex: 'p1', width: 100,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'p1', text),
+          props: {},
 
-    this.columns2 = [
+        };
+
+
+
+          return obj},
+      },{
+        title: '不确定性（%）', dataIndex: 'uncertainty', width: 100,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'uncertainty', text),
+          props: {},
+
+        };
+
+
+
+          return obj},
+      },
       {
-        title: '数据项',
-        dataIndex: 'name',
+        title: '编辑',
+        dataIndex: 'operation',
+
         width: 100,
 
-        colSpan:1,
-        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text),},
+        render: (text, record, index) => {
 
-      {
-        title: '甲烷(万吨)', dataIndex: 'CH4', width: 100,
-        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'CH4', text),
-      }, {
-        title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 100,
-        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'N2O', text),
-      },{
-        title: '二氧化碳当量(万吨)', dataIndex: 'CO2', width: 100,
-        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'CO2', text),
-      }];
+          const { editable } = this.state.data[index].uncertainty;
+          return (
+            <div className={styles.editableOperations} >
+
+              {
+                  index==5 ? <span></span>:
+
+                editable ?
+                  <span>
+                  <a onClick={() => this.editDone(index, 'save')}>确认</a>
+                  <Popconfirm title="确认取消?" onConfirm={() => this.editDone(index, 'cancel')}>
+                    <a>取消</a>
+                  </Popconfirm>
+                </span>
+                  :
+                  <span>
+                  <a onClick={() => this.edit(index)}>编辑</a>
+                </span>
+              }
+
+            </div>
+          );
+        },
+      }
+    ];
+
+
 
     this.state = {
 
       data: [],
       data1: [],
-      data2: [],
       loading: true ,
 
       collapsed: false,
@@ -201,25 +234,11 @@ class ElectricTable extends React.Component {
   }
 
 
-  renderColumns2(data2, index, key, text) {
 
-
-    const { editable, status } = data2[index][key];
-    if (typeof editable === 'undefined') {
-      return text;
-    }
-    return (
-
-      <EditableCell2
-        editable={editable}
-        value={text}
-        onChange={value => this.handleChange(key, index, value)}
-        status={status}
-      />);
-  }
 
   // 部门方法 1.1
   renderColumns(data, index, key, text) {
+
 
 
     const { editable, status } = data[index][key];
@@ -246,7 +265,7 @@ class ElectricTable extends React.Component {
     data[index][key].value = value;
     this.setState({ data });
 
-    if(key  == 'grazing'){
+    if(key  == 'uncertainty'){
 
       this.updateGut(index,data);
     }
@@ -289,7 +308,7 @@ class ElectricTable extends React.Component {
   queryGut(years){
 
 
-    post('/report/agricultureActivity/list', {
+    post('/uncertainty/energyActivity/list', {
       year:years,
 
     })
@@ -300,144 +319,64 @@ class ElectricTable extends React.Component {
 
 
 
-
           var Alldata =res.data;
 
-          const _Data1 = []  //CH4
-          const  _Data2 = []  //N2O
-          const  _Data3= []  //GHG
+          const _Data = [
+            Alldata.totalFossilFuels.uncertainty,
+            Alldata.biomassBurning.uncertainty,
+            Alldata.coalMiningAndMineActivitiesToEscape.uncertainty,
+            Alldata.nonEnergyUseEmissions.uncertainty,
+            Alldata.oilAndGasSystemsEscape.uncertainty,
+            0
+          ]  //co2
+         
+         
 
-
-
-          const _Data11 = []  //CH4
-          const  _Data22 = []  //N2O
-          const  _Data33= []  //GHG
 
           const fossilTitle = [
 
-            '稻田',
-            '农用地',
-            '动物肠道发酵',
-            '动物粪便管理系统',
+            '化石燃料燃烧',
+            '生物质燃料燃烧',
+            '煤矿开采和矿后活动逃逸排放',
+            '石油和天然气系统逃逸排放',
+            '非能源利用',
             '总计',
+    
 
           ]
-
-
-          _Data1.push(Alldata.CH4.paddyFields)
-          _Data1.push('-')
-          _Data1.push(Alldata.CH4.animalIntestinalFermentation)
-          _Data1.push(Alldata.CH4.animalManureManagement)
-          _Data1.push((Alldata.CH4.paddyFields+Alldata.CH4.animalIntestinalFermentation+Alldata.CH4.animalManureManagement).toFixed(2))
-
-
-
-          _Data2.push('-')
-          _Data2.push(Alldata.N2O.land)
-          _Data2.push('-')
-          _Data2.push(Alldata.N2O.animalManureManagement)
-          _Data2.push((Alldata.N2O.land+Alldata.N2O.animalManureManagement).toFixed(2))
-
-
-
-
-          _Data3.push((Alldata.CH4.paddyFields*21).toFixed(2))
-          _Data3.push((Alldata.N2O.land*310).toFixed(2))
-          _Data3.push((Alldata.CH4.animalIntestinalFermentation*21).toFixed(2))
-          _Data3.push((Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310).toFixed(2))
-          _Data3.push((Alldata.CH4.paddyFields*21+Alldata.N2O.land*310+Alldata.CH4.animalIntestinalFermentation*21+Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310).toFixed(2))
-
-
-
-
-          _Data11.push((Alldata.CH4.paddyFields*10000).toFixed(2))
-          _Data11.push('-')
-          _Data11.push((Alldata.CH4.animalIntestinalFermentation*10000).toFixed(2))
-          _Data11.push((Alldata.CH4.animalManureManagement*10000).toFixed(2))
-          _Data11.push((Alldata.CH4.paddyFields*10000+Alldata.CH4.animalIntestinalFermentation*10000+Alldata.CH4.animalManureManagement*10000).toFixed(2))
-
-
-
-          _Data22.push('-')
-          _Data22.push((Alldata.N2O.land*10000).toFixed(2))
-          _Data22.push('-')
-          _Data22.push((Alldata.N2O.animalManureManagement*10000).toFixed(2))
-          _Data22.push((Alldata.N2O.land*10000+Alldata.N2O.animalManureManagement*10000).toFixed(2))
-
-
-
-
-          _Data33.push((Alldata.CH4.paddyFields*10000*21).toFixed(2))
-          _Data33.push((Alldata.N2O.land*10000*310).toFixed(2))
-          _Data33.push((Alldata.CH4.animalIntestinalFermentation*10000*21).toFixed(2))
-          _Data33.push((Alldata.CH4.animalManureManagement*10000*21+Alldata.N2O.animalManureManagement*10000*310).toFixed(2))
-          _Data33.push((Alldata.CH4.paddyFields*10000*21+Alldata.N2O.land*10000*310+Alldata.CH4.animalIntestinalFermentation*10000*21+(Alldata.CH4.animalManureManagement*10000*21+Alldata.N2O.animalManureManagement*10000*310)).toFixed(2))
-
-
-
-
-
-
+       
 
 
           const _b1= []
 
-          for(var i  = 0 ;i <_Data1.length;i++){
-            _b1.push({
-              key:i,
-              name:{
-
-                value:fossilTitle[i] ,
-              },
-              CH4:{
-
-                value:_Data1[i] ,
-              },
-              N2O:{
-
-                value:_Data2[i] ,
-              },
-              CO2:{
-
-                value:_Data3[i],
-              },
-
-            })
-          }
-
-
-          const _b2= []
-
-          for(var i  = 0 ;i <_Data11.length;i++){
-            _b2.push({
-              key:i,
-              name:{
-
-                value:fossilTitle[i] ,
-              },
-              CH4:{
-
-                value:_Data11[i] ,
-              },
-              N2O:{
-
-                value:_Data22[i] ,
-              },
-              CO2:{
-
-                value:_Data33[i],
-              },
-
-            })
-          }
-
-
+      
+          for(var i = 0 ; i<_Data.length;i++){
+            
+            
+                        _b1.push({
+                            key:i,
+                            name:{
+            
+                              value:fossilTitle[i] ,
+                            },
+                          p1:{
+                          
+                              value:0 ,
+                            },
+                         uncertainty: {
+                              editable: false,
+                              value:_Data[i] ,
+                            },
+                          
+                          }
+                        )
+                      }
+            
 
           console.log(_b1);
 
 
           this.setState({data:_b1});
-          this.setState({data2:_b2});
 
           this.setState({ loading: false});
 
@@ -449,22 +388,18 @@ class ElectricTable extends React.Component {
 
   }
 
-  //update
+  //update不确定性
   updateGut(index,data,a){
 
     var data  = data
 
     const Directory = [
-      'cows',
-      'nonCow',
-      'buffalo',
-      'sheep',
-      'goat',
-      'pig',
-      'horse',
-      'jennet',
-      'camel',
-
+      'totalFossilFuels',
+      'biomassBurning',
+      'coalMiningAndMineActivitiesToEscape',
+      'nonEnergyUseEmissions',
+      'oilAndGasSystemsEscape',
+    
 
     ]
 
@@ -472,9 +407,9 @@ class ElectricTable extends React.Component {
 
     var DirectoryIndex = Directory[index];
 
-    var url = '/activityLevelDataEntry/agricultureActivity/update'
-    var bodyName = 'agricultureActivity';
-    var bodyName1 = 'animalIntestinalFermentationOfMethaneEmissions';
+    var url = '/uncertainty/energyActivity/update'
+    var bodyName = 'energyActivity';
+   
 
 
 
@@ -482,25 +417,23 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
-    obj[bodyName][bodyName1]={}
-    obj[bodyName][bodyName1][DirectoryIndex]= {
-      "sVscaleFeeding": data[index].sVscaleFeeding.value,
-      "sVfarmerKeeping": data[index].sVfarmerKeeping.value,
-      "sVgrazing": data[index].sVgrazing.value,
-      "scaleFeeding": data[index].scaleFeeding.value,
-      "farmerKeeping": data[index].farmerKeeping.value,
-      "grazing": data[index].grazing.value,
+  
+    obj[bodyName][DirectoryIndex]= {
+      "uncertainty": data[index].uncertainty.value,
+    
     }
 
     post(url, obj)
       .then((res) => {
 
         if (res.code==0) {
+
           message.success(res.message);
+          this.queryGut(this.state.years)
 
         } else {
           message.error(res.message);
@@ -528,27 +461,16 @@ class ElectricTable extends React.Component {
       return obj;
     });
 
-    const { data2 } = this.state;
-    const dataSource2 = data2.map((item) => {
-      const obj = {};
-      Object.keys(item).forEach((key) => {
-        obj[key] = key === 'key' ? item[key] : item[key].value;
-      });
-      return obj;
-    });
-
-
 
 
     const columns = this.columns;
-    const columns2 = this.columns2;
 
 
 
     return (
       <div className={styles.normal}>
         <div className={styles.title}>
-          <span className={styles.title_span}> 农业活动温室气体排放量计算</span>
+          <span className={styles.title_span}> 不确定性计算</span>
         </div>
 
         <div className={styles.select}>
@@ -572,19 +494,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>农业活动温室气体清单报告(单位：万吨)</p>
+            <p>废弃物活动温室气体清单报告不确定性</p>
 
 
             <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
-
-          </div>
-
-
-          <div className={styles.entryBody} id="bodyTable1"  >
-            <p>农业活动温室气体清单报告(单位： 吨)</p>
-
-
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

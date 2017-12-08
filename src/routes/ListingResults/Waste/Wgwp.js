@@ -357,10 +357,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -454,13 +455,11 @@ class ElectricTable extends React.Component {
   }
 
   //秸秆
-  queryGut(){
+  queryGut(years){
 
 
-
-
-    post('/report/agricultureActivity/list', {
-      year:'2017',
+    post('/report/wasteDisposal/list', {
+      year:years,
 
     })
       .then((res) => {
@@ -469,12 +468,9 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
+         
           const _Data = []
-          const _Data1 = Alldata.GHG
-
-
-
-
+      
 
           const fossilTitle = [
 
@@ -630,28 +626,32 @@ class ElectricTable extends React.Component {
                 value:'排放量',
               },
               p1:{
-                value:0,
+                value:(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
+                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310))
+              +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)).toFixed(2)
               },
               p2:{
-                value:0 ,
+                value:(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21)
+                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(2)
               },
               p3:{
-                value:0 ,
+                value:((((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310))
+                +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)).toFixed(2),
               },
               p4:{
-                value:0,
+                value:((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(2)),
               },
               p5:{
-                value:0,
+                value:((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(2),
               },
               p6:{
-                value:0,
+                value:((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2)),
               },
               p7:{
-                value:0,
+                value:((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(2)),
               },
               p8:{
-                value:0,
+                value:Alldata.N2O.wasteWater,
               },
             }
 
@@ -676,7 +676,14 @@ class ElectricTable extends React.Component {
   }
 
 
-
+ //年份选择
+ selesctYears(years){
+  
+      this.setState({ loading: true});
+      this.setState({years:years})
+      this.queryGut(years)
+    }
+  
 
   render() {
 
@@ -713,11 +720,11 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
-            </ul>
+            <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+            <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+            <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+            <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
+          </ul>
           </div>
 
 

@@ -621,8 +621,8 @@ class ElectricTable extends React.Component {
         title: '燃烧效率(EF)', dataIndex: 'combustionEfficiency', width: 100,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'combustionEfficiency', text),
       }, {
-        title: 'CO2排放量(万吨)', dataIndex: 'cO2Emissions', width: 100,
-        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'cO2Emissions', text),
+        title: 'CO2排放量(万吨)', dataIndex: 'CO2Emissions', width: 100,
+        render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'CO2Emissions', text),
       }, {
         title: 'CO2总排放量(万吨)', dataIndex: 'totalCO2Emissions', width: 100,
         render: (text, record, index) =>
@@ -805,8 +805,8 @@ class ElectricTable extends React.Component {
         title: 'N2O排放因子(kgN2O/kg氮)', dataIndex: 'n2OEmissionFactor', width: 200,
         render: (text, record, index) => this.renderColumns4(this.state.data4, index, 'n2OEmissionFactor', text),
       }, {
-        title: 'N2O排放量(万吨)', dataIndex: 'n2OEmissions', width: 100,
-        render: (text, record, index) => this.renderColumns4(this.state.data4, index, 'n2OEmissions', text),
+        title: 'N2O排放量(万吨)', dataIndex: 'N2OEmissions', width: 100,
+        render: (text, record, index) => this.renderColumns4(this.state.data4, index, 'N2OEmissions', text),
       },
       {
         title: '编辑',
@@ -857,10 +857,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryWaste();
+    this.queryWaste('2014');
 
     //$("#bodyTable1").hide();
 
@@ -868,7 +869,6 @@ class ElectricTable extends React.Component {
 
 
   renderColumns4(data4, index, key, text) {
-
 
     const { editable, status } = data4[index][key];
     if (typeof editable === 'undefined') {
@@ -883,7 +883,6 @@ class ElectricTable extends React.Component {
         status={status}
       />);
   }
-
 
   handleChange4(key, index, value) {
 
@@ -1160,9 +1159,6 @@ class ElectricTable extends React.Component {
 
   handleChange(key, index, value) {
 
-
-
-
     const data = [...this.state.data];
     data[index][key].value = value;
     this.setState({ data });
@@ -1204,12 +1200,13 @@ class ElectricTable extends React.Component {
     });
   }
 
-  //
-  queryWaste(){
+  //查询
+  queryWaste(years){
+
 
 
     post('/activityLevelDataEntry/wasteDisposal/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -1217,7 +1214,10 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
 
+
           var Alldata =res.data;
+
+          console.log(Alldata)
 
           const _Data = []
           const _Data1 = []
@@ -1287,7 +1287,7 @@ class ElectricTable extends React.Component {
           _Data3.push(Alldata.landfillClass.unclassifiedLandfill);
 
 
-          const _a3 = [];
+          const _a3 = [];//废水甲烷排放
 
 
           for(var i = 0 ;i<4;i++){
@@ -1302,7 +1302,7 @@ class ElectricTable extends React.Component {
               methaneCorrectionFactor_MCF: _Data1[i].methaneCorrectionFactor_MCF,
               theMaximumCapacityOfMethane: _Data1[i].theMaximumCapacityOfMethane,
               methaneRecovery: _Data1[i].methaneRecovery,
-              methaneEmissions: '',
+              methaneEmissions: _Data1[i].methaneEmissions,
 
 
             });
@@ -1311,7 +1311,10 @@ class ElectricTable extends React.Component {
           }
 
 
-          const _a2 = [];
+
+
+          const _a2 = []; //焚烧处理二氧化碳排放
+          var _totalCO2Emissions = 0; //CO2总排放量(万吨)
 
 
           for(var i = 0 ;i<3;i++){
@@ -1324,18 +1327,21 @@ class ElectricTable extends React.Component {
                 wasteCarbonContent: _Data[i].wasteCarbonContent,
                 mineralCarbonInTheProportionOfCarbon: _Data[i].mineralCarbonInTheProportionOfCarbon,
                 combustionEfficiency: _Data[i].combustionEfficiency,
-                cO2Emissions: '',
+                CO2Emissions: _Data[i].CO2Emissions,
                 totalCO2Emissions: '',
 
 
               });
+            _totalCO2Emissions += _Data[i].CO2Emissions
 
 
           }
 
 
 
-          const _a1 = [];
+
+
+          const _a1 = []; //城市固体废弃物填埋处理甲烷排放
 
 
           for(var i = 0 ;i<4;i++){
@@ -1345,14 +1351,14 @@ class ElectricTable extends React.Component {
               key: i,
               name:fossilTitle3[i],
               differentLandfillTypeTreatmentRatio: _Data3[i].differentLandfillTypeTreatmentRatio,
-              differentTypesOfLandfillDisposalCapacity: '0',
-              methaneEmissions: '0',
+              differentTypesOfLandfillDisposalCapacity: _Data3[i].differentTypesOfLandfillDisposalCapacity,
+              methaneEmissions: _Data3[i].methaneEmissions,
               methaneRecovery:_Data3[i].methaneRecovery,
               decomposableDOCRatio: _Data3[i].decomposableDOCRatio,
               methaneGasRatio: _Data3[i].methaneGasRatio,
               methaneCorrectionFactor: _Data3[i].methaneCorrectionFactor,
               oxidationFactor: _Data3[i].oxidationFactor,
-              degradableOrganicCarbon: '0',
+              degradableOrganicCarbon: _Data3[i].degradableOrganicCarbon,
               paperAndCardboardIngredients: _Data3[i].paperAndCardboardIngredients,
               paperAndCardboardDOCRatioOfWetWaste: _Data3[i].paperAndCardboardDOCRatioOfWetWaste,
               textilesIngredients: _Data3[i].textilesIngredients,
@@ -1377,6 +1383,11 @@ class ElectricTable extends React.Component {
           }
 
 
+
+
+
+
+
           const _b1 = [];
 
 
@@ -1395,11 +1406,11 @@ class ElectricTable extends React.Component {
                 },
               differentTypesOfLandfillDisposalCapacity:{
 
-                value:'0' ,
+                value:_a1[i].differentTypesOfLandfillDisposalCapacity ,
               },
               methaneEmissions:{
 
-                value:'0' ,
+                value:_a1[i].methaneEmissions ,
               },
               methaneRecovery:{
                 editable: false,
@@ -1423,7 +1434,7 @@ class ElectricTable extends React.Component {
               },
               degradableOrganicCarbon:{
 
-                value:'0' ,
+                value:_a1[i].degradableOrganicCarbon ,
               },
               paperAndCardboardIngredients:{
                 editable: false,
@@ -1501,6 +1512,8 @@ class ElectricTable extends React.Component {
           }
 
 
+
+
           const _b2 = [];
 
 
@@ -1529,19 +1542,21 @@ class ElectricTable extends React.Component {
                   editable: false,
                   value:_a2[i].combustionEfficiency ,
                 },
-              cO2Emissions: {
+              CO2Emissions: {
 
-                  value:'0' ,
+                  value:_a2[i].CO2Emissions ,
                 },
               totalCO2Emissions: {
 
-                  value:'0' ,
+                  value:_totalCO2Emissions ,
                 },
 
 
               }
             )
           }
+
+
 
 
           const _b3 = [];
@@ -1583,11 +1598,13 @@ class ElectricTable extends React.Component {
 
               methaneEmissions: {
 
-                value:'0' ,
+                value:_a3[i].methaneEmissions ,
               },
               }
             )
           }
+
+
 
 
 
@@ -1615,10 +1632,12 @@ class ElectricTable extends React.Component {
 
 
               }
-            )
+            );
 
 
-          const _b4 = [];
+
+
+          const _b4 = [];//废水处理氧化亚氮排放
 
 
           _b4.push({
@@ -1659,15 +1678,16 @@ class ElectricTable extends React.Component {
                 editable: false,
                 value:Alldata.wasteWaterTreatmentOfNitrousOxideEmissions.n2OEmissionFactor,
               },
-            n2OEmissions: {
+            N2OEmissions: {
 
-                value:'0',
+                value:Alldata.wasteWaterTreatmentOfNitrousOxideEmissions.N2OEmissions,
               },
 
 
 
             }
-          )
+          );
+
 
 
 
@@ -1686,15 +1706,17 @@ class ElectricTable extends React.Component {
 
   }
 
-  //
+
+
+  //页面顺序
   updateWaste(index,data,a){
+
+
 
     var data  = data
 
     const Directory = [
       'solidWasteGeneration',
-
-
 
     ]
 
@@ -1712,7 +1734,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1734,7 +1756,6 @@ class ElectricTable extends React.Component {
         }
       });
   }
-
 
   //
   updateWaste1(index,data1,a){
@@ -1764,7 +1785,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1836,7 +1857,7 @@ class ElectricTable extends React.Component {
 
 
   var obj={
-    "year":"2017"
+    "year":this.state.years
   };
 
   obj[bodyName]={}
@@ -1860,6 +1881,7 @@ class ElectricTable extends React.Component {
       }
     });
 }
+
 
   updateWaste3(index,data3,a){
 
@@ -1887,7 +1909,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1935,7 +1957,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1961,6 +1983,15 @@ class ElectricTable extends React.Component {
           message.error(res.message);
         }
       });
+  }
+
+
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryWaste(years)
   }
 
   render() {
@@ -2029,16 +2060,18 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
 
 
         </div>
+
+        <Spin spinning={this.state.loading} >
 
 
         <div className={styles.entryBody} id="bodyTable1"  >
@@ -2114,6 +2147,7 @@ class ElectricTable extends React.Component {
           <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
+        </Spin>
 
 
       </div>

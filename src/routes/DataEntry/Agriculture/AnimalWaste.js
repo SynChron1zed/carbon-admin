@@ -125,6 +125,63 @@ class EditableCell1 extends React.Component {
   }
 }
 
+class EditableCell2 extends React.Component {
+
+  state = {
+    value: this.props.value,
+    editable: this.props.editable || false,
+  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
+      this.setState({ editable: nextProps.editable, value: nextProps.value });
+      /*if (nextProps.editable !== this.state.editable ) {
+       this.setState({ editable: nextProps.editable});*/
+      if (nextProps.editable) {
+        this.cacheValue = this.state.value;
+      }
+    }
+    if (nextProps.status && nextProps.status !== this.props.status) {
+      if (nextProps.status === 'save') {
+        this.props.onChange(this.state.value);
+      } else if (nextProps.status === 'cancel') {
+        this.setState({ value: this.cacheValue });
+        this.props.onChange(this.cacheValue);
+      }
+    }
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+
+    return nextProps.editable !== this.state.editable ||
+      nextState.value !== this.state.value;
+  }
+  handleChange(e) {
+
+    const value = e.target.value;
+    this.setState({ value });
+  }
+  render() {
+
+    const { value, editable } = this.state;
+    return (
+      <div>
+        {
+          editable ?
+            <div>
+              <Input
+                value={value}
+                onChange={e => this.handleChange(e)}
+              />
+            </div>
+            :
+            <div className={styles.editableText}>
+              {value.toString() || ' '}
+            </div>
+        }
+      </div>
+    );
+  }
+}
+
 class ElectricTable extends React.Component {
 
 
@@ -140,17 +197,51 @@ class ElectricTable extends React.Component {
         width: 100,
 
         colSpan:1,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'name', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 3;
+          }
+
+          return obj}
+      },
 
       {
         title: '存栏量(头／只)', dataIndex: 'stockVolume', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'stockVolume', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'stockVolume', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
       }, {
         title: '甲烷排放因子(kg／头／年)', dataIndex: 'methaneEmissionFactor', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'methaneEmissionFactor', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'methaneEmissionFactor', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
       }, {
         title: '甲烷排放量(吨)', dataIndex: 'methaneEmissions', width: 100,
-        render: (text, record, index) => this.renderColumns(this.state.data, index, 'methaneEmissions', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns(this.state.data, index, 'methaneEmissions', text),
+          props: {},
+
+        };
+
+          return obj}
       },
       {
         title: '编辑',
@@ -191,29 +282,96 @@ class ElectricTable extends React.Component {
         width: 100,
 
         colSpan:1,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text),},
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'name', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 3;
+          }
+
+          return obj}},
 
       {
         title: '饲养量(头／只)', dataIndex: 'stockVolume', width: 100,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'stockVolume', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'stockVolume', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
       }, {
         title: '氧化亚氮排放因子(不包括放牧放养／kg／头／年)', dataIndex: 'nitrousOxideEmissionFactor', width: 200,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissionFactor', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissionFactor', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
       }, {
         title: '氧化亚氮排放量(不包括放牧放养／吨)', dataIndex: 'nitrousOxideEmissions', width: 200,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions', text),
+          props: {},
+
+        };
+
+
+          return obj}
       }, {
         title: '放牧/放养动物饲养量(头／只)', dataIndex: 'grazingStocking', width: 200,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'grazingStocking', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'grazingStocking', text),
+          props: {},
+
+        };
+
+          if (index === 10) {
+            obj.props.colSpan = 3;
+          }
+          return obj}
       }, {
         title: '年排泄氮量(kg-N／头)', dataIndex: 'annualExcretionOfNitrogen', width: 200,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'annualExcretionOfNitrogen', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'annualExcretionOfNitrogen', text),
+          props: {},
+
+        };if (index === 10) {
+          obj.props.colSpan = 0;
+        }
+
+          return obj}
       }, {
         title: '排放因子(%)', dataIndex: 'emissionFactor', width: 100,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'emissionFactor', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'emissionFactor', text),
+          props: {},
+
+        };
+          if (index === 10) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
       }, {
         title: '氧化亚氮排放量(放牧放养／吨)', dataIndex: 'nitrousOxideEmissions1', width: 200,
-        render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions1', text),
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions1', text),
+          props: {},
+
+        };
+
+
+          return obj}
       },
       {
         title: '编辑',
@@ -247,10 +405,54 @@ class ElectricTable extends React.Component {
         },
       }];
 
+    this.columns2 = [
+      {
+        title: '数据项',
+        dataIndex: 'name',
+        width: 100,
+
+        colSpan:1,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns2(this.state.data2, index, 'name', text),
+          props: {},
+
+        };
+          if (index === 2) {
+            obj.props.colSpan = 2;
+          }
+
+          return obj}
+      },
+
+      {
+        title: '排放量(吨)', dataIndex: 'pf', width: 100,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns2(this.state.data2, index, 'pf', text),
+          props: {},
+
+        };
+          if (index === 2) {
+            obj.props.colSpan = 0;
+          }
+
+          return obj}
+      }, {
+        title: '折合CO2当量(吨)', dataIndex: 'zco2', width: 100,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns2(this.state.data2, index, 'zco2', text),
+          props: {},
+
+        };
+
+
+          return obj}
+      }, ];
+
     this.state = {
 
       data: [],
       data1: [],
+      data2: [],
       loading: true ,
 
       collapsed: false,
@@ -261,13 +463,83 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryWaste();
+    this.queryWaste('2014');
 
     //$("#bodyTable1").hide();
 
+  }
+
+
+
+  //
+  renderColumns2(data2, index, key, text) {
+
+
+    const { editable, status } = data2[index][key];
+    if (typeof editable === 'undefined') {
+      return text;
+    }
+    return (
+
+      <EditableCell2
+        editable={editable}
+        value={text}
+        onChange={value => this.handleChange2(key, index, value)}
+        status={status}
+      />);
+  }
+
+
+  handleChange2(key, index, value) {
+
+
+
+    const data2 = [...this.state.data2];
+    data2[index][key].value = value;
+    this.setState({ data2 });
+
+    if(key  == 'emissionFactor'){
+
+      //this.updateAgricultural2(index,data2);
+    }
+
+
+
+
+
+  }
+
+  edit2(index) {
+
+    const { data2 } = this.state;
+    Object.keys(data2[index]).forEach((item) => {
+      if (data2[index][item] && typeof data2[index][item].editable !== 'undefined') {
+        data2[index][item].editable = true;
+      }
+    });
+    this.setState({ data2 });
+  }
+
+  editDone2(index, type) {
+
+    const { data2 } = this.state;
+    Object.keys(data2[index]).forEach((item) => {
+      if (data2[index][item] && typeof data2[index][item].editable !== 'undefined') {
+        data2[index][item].editable = false;
+        data2[index][item].status = type;
+      }
+    });
+    this.setState({ data2 }, () => {
+      Object.keys(data2[index]).forEach((item) => {
+        if (data2[index][item] && typeof data2[index][item].editable !== 'undefined') {
+          delete data2[index][item].status;
+        }
+      });
+    });
   }
 
   //
@@ -405,12 +677,12 @@ class ElectricTable extends React.Component {
     });
   }
 
-  //
-  queryWaste(){
+  //查询
+  queryWaste(years){
 
 
     post('/activityLevelDataEntry/agricultureActivity/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -418,6 +690,7 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
           var Alldata =res.data;
+
 
           const _Data = []
           const _Data1 = []
@@ -470,75 +743,84 @@ class ElectricTable extends React.Component {
 
 
 
-          const _a1 = [];
+          const _a1 = [];//动物粪便管理氧化亚氮排放
+          var _Total = 0;
+          var _Total1 = 0;
 
 
-          for(var i = 0 ;i<11;i++){
+          for(var i = 0 ;i<10;i++){
 
 
-            if(i==10){
-              _a1.push({
-                key: i,
-                name:fossilTitle[i],
-                stockVolume: '0',
-                nitrousOxideEmissionFactor: '0',
-                nitrousOxideEmissions: '0',
-                grazingStocking: '0',
-                annualExcretionOfNitrogen: '0',
-                emissionFactor: '0',
-                nitrousOxideEmissions1: '0',
-
-              });
-            }else{
               _a1.push({
                 key: i,
                 name:fossilTitle[i],
                 stockVolume: _Data1[i].stockVolume,
                 nitrousOxideEmissionFactor: _Data1[i].nitrousOxideEmissionFactor,
-                nitrousOxideEmissions:'0',
+                nitrousOxideEmissions:_Data1[i].stockVolume*_Data1[i].nitrousOxideEmissionFactor/1000,
                 grazingStocking: _Data1[i].grazingStocking,
                 annualExcretionOfNitrogen: _Data1[i].annualExcretionOfNitrogen,
                 emissionFactor: _Data1[i].emissionFactor,
-                nitrousOxideEmissions1: '0',
+                nitrousOxideEmissions1: _Data1[i].grazingStocking*_Data1[i].annualExcretionOfNitrogen*_Data1[i].emissionFactor/1000,
 
 
               });
-            }
+
+            _Total  +=_Data1[i].stockVolume*_Data1[i].nitrousOxideEmissionFactor/1000;
+            _Total1  +=_Data1[i].grazingStocking*_Data1[i].annualExcretionOfNitrogen*_Data1[i].emissionFactor/1000;
 
           }
 
+          _a1.push({
+            key: i,
+            name:fossilTitle[i],
+            stockVolume: _Total,
+            nitrousOxideEmissionFactor: _Total,
+            nitrousOxideEmissions: _Total,
+            grazingStocking: '',
+            annualExcretionOfNitrogen: '',
+            emissionFactor: '',
+            nitrousOxideEmissions1: _Total1,
+
+          });
 
 
-          const _a = [];
+
+          const _a = [];//动物粪便管理甲烷排放
+          var _stockVolume = 0;
+          var _methaneEmissionFactor = 0;
+          var _methaneEmissions = 0;
 
 
-          for(var i = 0 ;i<11;i++){
+          for(var i = 0 ;i<10;i++){
 
 
-            if(i==10){
-              _a.push({
-                key: i,
-                name:fossilTitle[i],
-                stockVolume: '0',
-                methaneEmissionFactor: '0',
-                methaneEmissions: '0',
 
-              });
-            }else{
               _a.push({
                 key: i,
                 name:fossilTitle[i],
                 stockVolume: _Data[i].stockVolume,
                 methaneEmissionFactor: _Data[i].methaneEmissionFactor,
-                methaneEmissions: '0',
+                methaneEmissions:  _Data[i].stockVolume*_Data[i].methaneEmissionFactor/1000,
 
 
               });
-            }
+
+            _stockVolume +=_Data[i].stockVolume;
+            _methaneEmissionFactor +=_Data[i].methaneEmissionFactor;
+            _methaneEmissions += _Data[i].stockVolume*_Data[i].methaneEmissionFactor/1000;
 
           }
 
 
+          _a.push({
+            key: 11,
+            name:fossilTitle[i],
+            stockVolume: _methaneEmissions,
+            methaneEmissionFactor: _methaneEmissions,
+            methaneEmissions:  _methaneEmissions,
+
+
+          });
 
 
           const _b1 = [];
@@ -563,7 +845,7 @@ class ElectricTable extends React.Component {
                 },
               nitrousOxideEmissions: {
 
-                  value:'0',
+                  value:_a1[i].nitrousOxideEmissions.toFixed(2),
                 },
               grazingStocking: {
                 editable: false,
@@ -579,7 +861,7 @@ class ElectricTable extends React.Component {
               },
               nitrousOxideEmissions1: {
 
-                value:'0' ,
+                value:_a1[i].nitrousOxideEmissions1.toFixed(2) ,
               },
 
               }
@@ -611,7 +893,7 @@ class ElectricTable extends React.Component {
                 },
               methaneEmissions: {
 
-                  value:'0',
+                  value:_a[i].methaneEmissions.toFixed(2),
                 }
 
 
@@ -620,10 +902,57 @@ class ElectricTable extends React.Component {
           }
 
 
+          var _ch4 = [
+            _methaneEmissions.toFixed(2),
+            _Total.toFixed(2),
+            ((_methaneEmissions*21)+(_Total*310)).toFixed(2),
+          ]
+
+          var _no2 =[
+            (_methaneEmissions*21).toFixed(2),
+            (_Total*310).toFixed(2),
+            ((_methaneEmissions*21)+(_Total*310)).toFixed(2),
+          ]
+
+          var pfName = [
+            '粪便管理甲烷排放',
+            '粪便管理氧化亚氮排放',
+            '小计'
+          ]
+
+          const  _b2 = []
+
+
+          for(var i = 0 ; i<3;i++){
+
+
+            _b2.push({
+                key:_a[i].key,
+                name:{
+
+                  value:pfName[i] ,
+                },
+                pf:{
+
+                  value:_ch4[i] ,
+                },
+                zco2: {
+
+                  value:_no2[i] ,
+                },
+
+
+
+
+              }
+            )
+          }
+
 
 
           this.setState({data:_b});
           this.setState({data1:_b1});
+          this.setState({data2:_b2});
           this.setState({ loading: false});
 
 
@@ -668,7 +997,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -684,6 +1013,7 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
+          this.queryWaste(this.state.years);
 
         } else {
           message.error(res.message);
@@ -726,7 +1056,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -745,11 +1075,19 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
-
+          this.queryWaste(this.state.years);
         } else {
           message.error(res.message);
         }
       });
+  }
+
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryWaste(years)
   }
 
   render() {
@@ -772,9 +1110,19 @@ class ElectricTable extends React.Component {
       return obj;
     });
 
+    const { data2 } = this.state;
+    const dataSource2 = data2.map((item) => {
+      const obj = {};
+      Object.keys(item).forEach((key) => {
+        obj[key] = key === 'key' ? item[key] : item[key].value;
+      });
+      return obj;
+    });
+
 
     const columns = this.columns;
     const columns1 = this.columns1;
+    const columns2 = this.columns2;
 
 
     return (
@@ -787,10 +1135,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -798,6 +1146,7 @@ class ElectricTable extends React.Component {
 
         </div>
 
+        <Spin spinning={this.state.loading} >
 
         <div className={styles.entryBody} id="bodyTable1"  >
           <p>动物粪便管理甲烷排放</p>
@@ -828,7 +1177,23 @@ class ElectricTable extends React.Component {
         </div>
 
 
+          <div className={styles.entryBody} id="bodyTable3"  >
+            <p>动物粪便管理甲烷和氧化亚氮排放小计</p>
+            <div className={styles.greenSelect}>
+              <span>是否采用本地化排放因子：</span>
+              <RadioGroup defaultValue={1}>
+                <Radio value={1}>否</Radio>
+                <Radio value={2}>是</Radio>
+              </RadioGroup>
+            </div>
 
+            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+
+          </div>
+
+
+
+        </Spin>
 
 
 

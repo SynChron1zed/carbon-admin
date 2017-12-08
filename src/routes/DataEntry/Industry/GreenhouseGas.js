@@ -1159,9 +1159,7 @@ class CoalmineTable extends React.Component {
           props: {},
 
         };
-          if (index === 7) {
-            obj.props.colSpan = 2;
-          }
+         
           return obj},
       },
       {
@@ -1170,9 +1168,7 @@ class CoalmineTable extends React.Component {
           children: this.renderColumns5(this.state.data5, index, 'emissionFactor', text),
           props: {},
         };
-          if (index === 7) {
-            obj.props.colSpan = 0;
-          }
+         
           return obj
         }
 
@@ -1621,11 +1617,12 @@ class CoalmineTable extends React.Component {
       value:'1',
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
 
-    this.queryGreenhouseGas();
+    this.queryGreenhouseGas('2014');
     //this.queryOilgas1()
 
 
@@ -2445,10 +2442,10 @@ class CoalmineTable extends React.Component {
 
 
   //工业生产过程温室气体排放量计算
-  queryGreenhouseGas(){
+  queryGreenhouseGas(years){
 
     post('/activityLevelDataEntry/industrialProductionProcess/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -2581,33 +2578,36 @@ class CoalmineTable extends React.Component {
 
           //硝酸
           const _a = [];
+          var _production = 0;
+          var _emissionsco2 = 0;
 
-          for (var i = 0; i < 8; i++) {
+          for (var i = 0; i < 7; i++) {
 
 
-            if (i == 7) {
-              _a.push({
-                key: i,
-                name: fossilTitle[i],
-                production: '0',
-                emissionFactor: '0',
-                emissionsco2: '0',
 
-              });
-            } else {
               _a.push({
                 key: i,
                 name: fossilTitle[i],
                 production: _data[i].production,
                 emissionFactor: _data[i].emissionFactor,
-                emissionsco2: '',
+                emissionsco2: (_data[i].production*_data[i].emissionFactor*10).toFixed(2),
 
               });
 
-            }
-
+            _production +=_data[i].production;
+            _emissionsco2 += (_data[i].production*_data[i].emissionFactor*10)
 
           }
+
+          _a.push({
+            key: 7,
+            name: fossilTitle[7],
+            production: _production.toFixed(2),
+            emissionFactor: '',
+            emissionsco2: _emissionsco2.toFixed(2),
+
+          });
+
 
           //铝
           const _a1 = [];
@@ -2737,7 +2737,7 @@ class CoalmineTable extends React.Component {
               },
               emissionsco2: {
 
-                value: '0',
+                value: ((Alldata.cementProductionProcess.cementClinkerProduction-Alldata.cementProductionProcess.calciumCarbideProductionOfClinkerProduction)*Alldata.cementProductionProcess.emissionFactor).toFixed(2),
               },
 
             }
@@ -2762,7 +2762,7 @@ class CoalmineTable extends React.Component {
               },
               emissionsco2: {
 
-                value: '0',
+                value: (Alldata.limeProductionProcess.limeProduction*Alldata.limeProductionProcess.emissionFactor).toFixed(2),
               },
             }
           );
@@ -2811,7 +2811,10 @@ class CoalmineTable extends React.Component {
               },
               emissionsco2: {
 
-                value: '0',
+                value: (Alldata.steelProductionProcess.dolomiteConsumption*Alldata.steelProductionProcess.dolomiteConsumptionEmissionFactor
+                +Alldata.steelProductionProcess.limestoneConsumption*Alldata.steelProductionProcess.limestoneConsumptionEmissionFactor
+                +(Alldata.steelProductionProcess.steelConsumption*Alldata.steelProductionProcess.steelAverageCarbonContent
+                -Alldata.steelProductionProcess.steelConsumption*Alldata.steelProductionProcess.pigironAverageCarbonContent)*44/12).toFixed(2),
               },
             }
           );
@@ -2835,7 +2838,7 @@ class CoalmineTable extends React.Component {
               },
               emissionsco2: {
 
-                value: '0',
+                value: (Alldata.calciumCarbideProductionProcess.calciumCarbideProduction*Alldata.calciumCarbideProductionProcess.emissionFactor).toFixed(2),
               },
             }
           );
@@ -2859,13 +2862,13 @@ class CoalmineTable extends React.Component {
               },
               emissionsco2: {
 
-                value: '0',
+                value: (Alldata.adipicAcidProductionProcess.adipicAcidProduction*Alldata.adipicAcidProductionProcess.emissionFactor).toFixed(2),
               },
             }
           );
 
 
-          const _b5 = [];//乙二酸生产过程
+          const _b5 = [];//小酸生产过程
 
           for (var i = 0; i < _a.length; i++) {
 
@@ -2885,7 +2888,7 @@ class CoalmineTable extends React.Component {
                 },
                 emissionsco2: {
 
-                  value: '0',
+                  value: _a[i].emissionsco2,
                 },
               }
             );
@@ -2920,7 +2923,7 @@ class CoalmineTable extends React.Component {
                 },
                 total: {
 
-                  value: '0',
+                  value: (_a1[i].production*_a1[i].value*10).toFixed(2),
                 },
               }
             );
@@ -2947,7 +2950,7 @@ class CoalmineTable extends React.Component {
                 },
                 emissionsSF6: {
 
-                  value: '0',
+                  value: (_a2[i].magnesiumProduction*_a2[i].emissionFactor*10).toFixed(2),
                 },
               }
             );
@@ -2971,7 +2974,7 @@ class CoalmineTable extends React.Component {
               },
               emissionsSF6: {
 
-                value: '0',
+                value: (Alldata.electricPowerEquipmentProductionProcess.production*Alldata.electricPowerEquipmentProductionProcess.emissionFactor).toFixed(2),
               },
             }
           );
@@ -3004,11 +3007,11 @@ class CoalmineTable extends React.Component {
                 },
                 emissions: {
 
-                  value: '0',
+                  value: (_a3[i].activityLevelValueEtching*_a3[i].emissionFactorEtching+_a3[i].activityLevelValueCVD*_a3[i].emissionFactorCVD).toFixed(2),
                 },
                 emissionsEquivalent: {
 
-                  value: '0',
+                  value: ((_a3[i].activityLevelValueEtching*_a3[i].emissionFactorEtching+_a3[i].activityLevelValueCVD*_a3[i].emissionFactorCVD)*6500/10000).toFixed(2),
                 },
               }
             );
@@ -3033,7 +3036,7 @@ class CoalmineTable extends React.Component {
               },
               emissionsSF6: {
 
-                value: '0',
+                value: (Alldata.chlorodifluoromethaneProductionProcess.HCFC_22Production*Alldata.chlorodifluoromethaneProductionProcess.emissionFactor).toFixed(2),
               },
             }
           );
@@ -3058,12 +3061,12 @@ class CoalmineTable extends React.Component {
                 },
                 emissionsSF6: {
 
-                  value: '0',
+                  value: (_a4[i].activityLevelValue*_a4[i].emissionFactor).toFixed(2),
                 },
               }
             );
           }
-          console.log(_b11)
+         
 
 
           this.setState({data:_b});
@@ -3103,7 +3106,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3123,6 +3126,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3145,7 +3149,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3164,6 +3168,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3186,7 +3191,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3212,6 +3217,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3234,7 +3240,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3254,6 +3260,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3276,7 +3283,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3296,6 +3303,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3334,7 +3342,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3355,6 +3363,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3390,7 +3399,7 @@ class CoalmineTable extends React.Component {
       var bodyName1 = 'aluminumProductionProcess'
 
       var obj={
-        "year":"2017"
+        "year":this.state.years
       };
 
       obj[bodyName]={}
@@ -3475,6 +3484,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3508,7 +3518,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3529,6 +3539,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3552,7 +3563,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3570,6 +3581,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3605,7 +3617,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3628,6 +3640,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3651,7 +3664,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3669,6 +3682,7 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
@@ -3708,7 +3722,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3730,11 +3744,21 @@ class CoalmineTable extends React.Component {
 
           if (res.code==0) {
             message.success(res.message);
+            this.queryGreenhouseGas(this.state.years)
 
           } else {
             message.error(res.message);
           }
         });
+  }
+
+
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGreenhouseGas(years)
   }
 
   render() {
@@ -3873,10 +3897,10 @@ class CoalmineTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -3889,7 +3913,7 @@ class CoalmineTable extends React.Component {
 
           <div className={styles.entryBody} id="bodyTable1" >
 
-            <p>水泥生长过程</p>
+            <p>水泥生产过程</p>
             <div className={styles.greenSelect}>
               <span>是否采用本地化排放因子：</span>
               <RadioGroup defaultValue={1}>

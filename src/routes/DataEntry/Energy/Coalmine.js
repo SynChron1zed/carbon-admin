@@ -302,30 +302,35 @@ class CoalmineTable extends React.Component {
       statistics:'b1',
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryCoalmine();
+    this.queryCoalmine('2014');
 
     //$("#bodyTable1").hide();
 
   }
 
-  selesctYears(i,j,k){
+  selesctYears(i,j,){
 
     this.setState({statistics:j});
+    this.setState({years:i})
+    this.setState({ loading: true});
 
     if(j=='b1'){
 
+
       $("#bodyTable2").hide();
       $("#bodyTable1").show();
-      this.queryCoalmine();
+      this.queryCoalmine(i);
 
     }else{
 
+
       $("#bodyTable1").hide();
       $("#bodyTable2").show();
-      this.queryCoalmine1();
+      this.queryCoalmine1(i);
 
     }
 
@@ -463,10 +468,11 @@ class CoalmineTable extends React.Component {
 
 
   //煤炭开采 矿后活动逃逸 实测法
-  queryCoalmine(){
+  queryCoalmine(years){
+
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/coalMiningAndMineActivitiesToEscape/measuredMethod/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -502,24 +508,25 @@ class CoalmineTable extends React.Component {
           const _a = [];
 
 
-          for(var i = 0 ;i<5;i++){
+
+          for(var i = 0 ;i<4;i++){
 
 
-            if(i==4){
+            if(i==0){
               _a.push({
-                key: i,
+                key: i,  
                 name:fossilTitle[i],
-                keyCoalMine: '0',
-                localCoalMine: '0',
-                townshipCoalMine: '0',
-                openPitMining: '0',
-                highGasMine: '0',
-                lowGasMine: '0',
-                openPitMine: '0',
-                total: '0',
+                keyCoalMine: _Data[i].keyCoalMine,
+                localCoalMine: _Data[i].localCoalMine,
+                townshipCoalMine: _Data[i].townshipCoalMine,
+                openPitMining: _Data[i].openPitMining,
+                highGasMine: _Data[i].highGasMine,
+                lowGasMine: _Data[i].lowGasMine,
+                openPitMine: _Data[i].openPitMine,
+                total: '',
 
               });
-            }else {
+            }else if(i==1){
               _a.push({
                 key: i,
                 name:fossilTitle[i],
@@ -530,17 +537,41 @@ class CoalmineTable extends React.Component {
                 highGasMine: _Data[i].highGasMine,
                 lowGasMine: _Data[i].lowGasMine,
                 openPitMine: _Data[i].openPitMine,
-                total: '0',
+                total: _Data[i].keyCoalMine+_Data[i].localCoalMine+_Data[i].townshipCoalMine+_Data[i].openPitMining,
+
+              });
+            }else{
+              _a.push({
+                key: i,
+                name:fossilTitle[i],
+                keyCoalMine: _Data[i].keyCoalMine,
+                localCoalMine: _Data[i].localCoalMine,
+                townshipCoalMine: _Data[i].townshipCoalMine,
+                openPitMining: _Data[i].openPitMining,
+                highGasMine: _Data[i].highGasMine,
+                lowGasMine: _Data[i].lowGasMine,
+                openPitMine: _Data[i].openPitMine,
+                total: _Data[i].keyCoalMine+_Data[i].localCoalMine+_Data[i].townshipCoalMine+_Data[i].openPitMining+_Data[i].highGasMine+_Data[i].lowGasMine+_Data[i].openPitMine,
 
               });
             }
 
-
-
-
-
-
           }
+
+          _a.push({
+            key: 4,
+            name:fossilTitle[i],
+            keyCoalMine: _Data[2].keyCoalMine-_Data[3].keyCoalMine,
+            localCoalMine: _Data[2].localCoalMine-_Data[3].localCoalMine,
+            townshipCoalMine: _Data[2].townshipCoalMine-_Data[3].townshipCoalMine,
+            openPitMining: _Data[2].openPitMining-_Data[3].openPitMining,
+            highGasMine: _Data[2].highGasMine-_Data[3].highGasMine,
+            lowGasMine: _Data[2].lowGasMine-_Data[3].lowGasMine,
+            openPitMine: _Data[2].openPitMine-_Data[3].openPitMine,
+            total: _Data[2].keyCoalMine-_Data[3].keyCoalMine+_Data[2].localCoalMine-_Data[3].localCoalMine+_Data[2].townshipCoalMine-_Data[3].townshipCoalMine
+            +_Data[2].openPitMining-_Data[3].openPitMining+_Data[2].highGasMine-_Data[3].highGasMine+_Data[2].lowGasMine-_Data[3].lowGasMine
+            +_Data[2].openPitMine-_Data[3].openPitMine,
+          });
 
 
 
@@ -588,7 +619,7 @@ class CoalmineTable extends React.Component {
               },
               total: {
 
-                  value:'0' ,
+                  value:_a[i].total ,
                 },
 
               }
@@ -636,7 +667,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -657,6 +688,8 @@ class CoalmineTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
+          this.queryCoalmine(this.state.years)
+        
 
         } else {
           message.error(res.message);
@@ -666,10 +699,10 @@ class CoalmineTable extends React.Component {
 
 
   //煤炭开采 矿后活动逃逸 排放因子法
-  queryCoalmine1(){
+  queryCoalmine1(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/coalMiningAndMineActivitiesToEscape/emissionFactorMethod/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -708,14 +741,17 @@ class CoalmineTable extends React.Component {
               _a.push({
                 key: i,
                 name:fossilTitle[i],
-                keyCoalMine: '0',
-                localCoalMine: '0',
-                townshipCoalMine: '0',
-                openPitMining: '0',
-                highGasMine: '0',
-                lowGasMine: '0',
-                openPitMine: '0',
-                total: '0',
+                keyCoalMine: (_Data[0].keyCoalMine*_Data[1].keyCoalMine).toFixed(2),
+                localCoalMine: (_Data[0].localCoalMine*_Data[1].localCoalMine).toFixed(2),
+                townshipCoalMine: (_Data[0].townshipCoalMine*_Data[1].townshipCoalMine).toFixed(2),
+                openPitMining: (_Data[0].openPitMining*_Data[1].openPitMining).toFixed(2),
+                highGasMine: (_Data[0].highGasMine*_Data[1].highGasMine).toFixed(2),
+                lowGasMine: (_Data[0].lowGasMine*_Data[1].lowGasMine).toFixed(2),
+                openPitMine: (_Data[0].openPitMine*_Data[1].openPitMine).toFixed(2),
+                total: ((_Data[0].keyCoalMine*_Data[1].keyCoalMine)+(_Data[0].localCoalMine*_Data[1].localCoalMine)
+                +(_Data[0].townshipCoalMine*_Data[1].townshipCoalMine)+(_Data[0].openPitMining*_Data[1].openPitMining)
+                +(_Data[0].highGasMine*_Data[1].highGasMine)+(_Data[0].lowGasMine*_Data[1].lowGasMine)
+                +(_Data[0].openPitMine*_Data[1].openPitMine)).toFixed(2),
 
               });
             }else if(i==1) {
@@ -743,7 +779,7 @@ class CoalmineTable extends React.Component {
                 highGasMine: _Data[i].highGasMine,
                 lowGasMine: _Data[i].lowGasMine,
                 openPitMine: _Data[i].openPitMine,
-                total: '0',
+                total: _Data[i].keyCoalMine+_Data[i].localCoalMine+_Data[i].townshipCoalMine+_Data[i].openPitMining,
 
               });
             }
@@ -849,7 +885,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -870,6 +906,7 @@ class CoalmineTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
+          this.queryCoalmine1(this.state.years)
 
         } else {
           message.error(res.message);
@@ -913,10 +950,10 @@ class CoalmineTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005',this.state.statistics)}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010',this.state.statistics)}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012',this.state.statistics)}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014',this.state.statistics)}}>2014</li>
             </ul>
           </div>
 
@@ -924,8 +961,8 @@ class CoalmineTable extends React.Component {
           <div className={styles.targetChoose} id="tjF">
             <span className={styles.selectH1}>统计方法:</span>
             <ul>
-              <li id="li7" className={'b1'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b1','a1')}}>实测法</li>
-              <li id="li8" style={{width:150}} className={'b2'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b2','a1')}}>排放因子法</li>
+              <li id="li7" className={'b1'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014','b1')}}>实测法</li>
+              <li id="li8" style={{width:150}} className={'b2'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014','b2')}}>排放因子法</li>
             </ul>
           </div>
 

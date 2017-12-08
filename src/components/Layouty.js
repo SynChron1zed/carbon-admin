@@ -20,20 +20,25 @@ var Layouty = createReactClass ({
   getInitialState(){
 
 
+    var a,b;
+    const location = this.props.location.pathname.split('/').slice(1)[0];
+
+    if(location){
+
+      a= [location.substring(0,1),location.substring(0,2)]
+      b = [location.substring(0,3)]
+    }
 
     return {
       collapsed: false,
       select:1,
       trigger:true,
-      user:[]
+      user:[],
+     MeunOpenKeys:a,
+     MeunSelectedKeys:b,
     }
 
   },
-
-
-
-
-
 
 
 
@@ -56,9 +61,12 @@ var Layouty = createReactClass ({
 
   },
 
+  onselct(item, key, selectedKeys ){
+
+    sessionStorage.setItem("Meunkey", item.key);
 
 
-
+  },
 
 
 
@@ -67,9 +75,6 @@ var Layouty = createReactClass ({
   },
 
   render() {
-
-
-
 
 
     const {children} = this.props;
@@ -81,74 +86,177 @@ var Layouty = createReactClass ({
           <div className={styles.logo}></div>
           <Menu
             mode="inline"
-            defaultSelectedKeys={['1']}
+
+            defaultOpenKeys={this.state.MeunOpenKeys}
+            defaultSelectedKeys={this.state.MeunSelectedKeys}
+
             style={{ height: '100%', borderRight: 0 }}
+            onSelect={this.onselct}
           >
-            <SubMenu key="sub1" title={<span><Icon type="edit" />活动水平数据录入</span>}>
+            <SubMenu key="a" title={<span><Icon type="edit" />活动水平数据录入</span>}>
 
-              <SubMenu key="subA1" title={<span><Icon  />能源活动</span>}>
-                <Menu.Item key="/carbon">
-                  <Link to="/biological"><Icon  />化石燃料燃烧</Link>
+              <SubMenu  key="ar" title={<span>能源活动</span>}>
+                <Menu.Item key="ar1" >
+                  <Link  to="/ar1biological" >化石燃料燃烧</Link>
                 </Menu.Item>
-                <Menu.Item key="subA13">
-                  <Link to="/"><Icon  />生物质燃烧</Link>
+                <Menu.Item key="ar2">
+                  <Link to="/ar2biomass">生物质燃烧</Link>
                 </Menu.Item>
-                <Menu.Item key="subA14">煤炭开采 矿后活动逃逸</Menu.Item>
-                <Menu.Item key="subA15">油气系统逃逸</Menu.Item>
-                <Menu.Item key="subA16">非能源利用</Menu.Item>
-                <Menu.Item key="subA17">电力调入调出</Menu.Item>
+                <Menu.Item key="ar3" title="煤炭开采 矿后活动逃逸">
+                  <Link to="/ar3coalmine">煤炭开采 矿后活动逃逸</Link>
+                </Menu.Item>
+                <Menu.Item key="ar4">
+                  <Link to="/ar4oilgas">油气系统逃逸</Link>
+                </Menu.Item>
+                <Menu.Item key="ar5">
+                  <Link to="/ar5electric">电力调入调出</Link>
+                </Menu.Item>
+                <Menu.Item key="ar6">
+                <Link to="/ar6noenergy">不确定性计算</Link>
+                </Menu.Item>
               </SubMenu>
-              <SubMenu key="subA2" title={<span><Icon  />工业生产过程</span>}>
-                <Menu.Item key="subA22">option5</Menu.Item>
-                <Menu.Item key="subA23">option6</Menu.Item>
-                <Menu.Item key="subA24">option7</Menu.Item>
-                <Menu.Item key="subA25">option8</Menu.Item>
+
+
+              <SubMenu key="ae" title={<span>工业生产过程</span>}>
+                <Menu.Item key="ae1">
+                  <Link to="/ae1greenhousegas">温室气体排放</Link>
+                </Menu.Item>
+                <Menu.Item key="ae2">
+                <Link to="/ae2noindustry">不确定性计算</Link>
+                </Menu.Item>
               </SubMenu>
-              <SubMenu key="subA3" title={<span><Icon  />农业</span>}>
-                <Menu.Item key="subA32">option5</Menu.Item>
-                <Menu.Item key="subA33">option6</Menu.Item>
-                <Menu.Item key="subA34">option7</Menu.Item>
-                <Menu.Item key="subA35">option8</Menu.Item>
+
+
+              <SubMenu key="aw" title={<span>农业活动</span>}>
+                <Menu.Item key="aw1">
+                  <Link to="/aw1rice">稻田</Link>
+                </Menu.Item>
+                <Menu.Item key="aw2">
+                  <Link to="/aw2agricultural">农用地</Link>
+                </Menu.Item>
+                <Menu.Item key="aw3">
+                  <Link to="/aw3animalgut">动物肠道发酵</Link>
+                </Menu.Item>
+                <Menu.Item key="aw4">
+                  <Link to="/aw4animalwaste">动物粪便管理</Link>
+                  </Menu.Item>
+                <Menu.Item key="aw5">
+                <Link to="/aw5noagriculture">不确定性计算</Link>
+                </Menu.Item>
+
               </SubMenu>
-              <SubMenu key="subA5" title={<span><Icon  />土地利用变化和林业</span>}>
-                <Menu.Item key="subA52">option5</Menu.Item>
-                <Menu.Item key="subA53">option6</Menu.Item>
-                <Menu.Item key="subA54">option7</Menu.Item>
-                <Menu.Item key="subA55">option8</Menu.Item>
+
+
+              <SubMenu key="at" title={<span>土地利用变化和林业</span>}>
+                <Menu.Item key="at1">
+                  <Link to="/at1thearbor">乔木林</Link>
+                </Menu.Item>
+                <Menu.Item key="at2">
+                  <Link to="/at2scatteredwood">散生木、四旁树、疏林</Link>
+                </Menu.Item>
+                <Menu.Item key="at3">
+                  <Link to="/at3economicforest">经济林、竹林、灌木林</Link>
+                </Menu.Item>
+                <Menu.Item key="at4">
+                  <Link to="/at4theforest">森林转化温室气体排放</Link>
+                </Menu.Item>
               </SubMenu>
-              <SubMenu key="subA4" title={<span><Icon  />废弃物处理</span>}>
-                <Menu.Item key="subA42">option5</Menu.Item>
-                <Menu.Item key="subA43">option6</Menu.Item>
-                <Menu.Item key="subA44">option7</Menu.Item>
-                <Menu.Item key="subA45">option8</Menu.Item>
+
+
+              <SubMenu key="aq" title={<span>废弃物处理</span>}>
+                <Menu.Item key="aq1">
+                  <Link to="/aq1waste">废弃物处理</Link>
+                </Menu.Item>
+                <Menu.Item key="aq2">
+                <Link to="/aq2nowaste">不确定性计算</Link>
+                </Menu.Item>
               </SubMenu>
 
 
             </SubMenu>
 
-            <SubMenu key="sub2" title={<span><Icon type="file-text" />清单结果总汇查询</span>}>
-              <SubMenu key="subA2" title={<span><Icon type="file-text" />清单</span>}>
-                <Menu.Item key="subA21">option5</Menu.Item>
-                <Menu.Item key="subA22">option6</Menu.Item>
-                <Menu.Item key="subA23">option7</Menu.Item>
-                <Menu.Item key="subA24">option8</Menu.Item>
+            <SubMenu key="b" title={<span><Icon type="file-text" />清单结果总汇查询</span>}>
+
+              <SubMenu key="br" title={<span>能源活动</span>}>
+                <Menu.Item key="br1">
+                  <Link to="/br1egwp">GWP及关键排放指标</Link>
+                </Menu.Item>
+                <Menu.Item key="br2">
+                  <Link to="/br2eresults">清单结果</Link>
+                </Menu.Item>
+
               </SubMenu>
-              <Menu.Item key="subA25">option5</Menu.Item>
-              <Menu.Item key="subA26">option6</Menu.Item>
-              <Menu.Item key="subA27">option7</Menu.Item>
-              <Menu.Item key="subA28">option8</Menu.Item>
+
+
+              <SubMenu key="be" title={<span>工业生产过程</span>}>
+                <Menu.Item key="be1">
+                  <Link to="/be1igwp">GWP及关键排放指标</Link>
+                </Menu.Item>
+                <Menu.Item key="be2">
+                  <Link to="/be2iresults">清单结果</Link>
+                </Menu.Item>
+
+              </SubMenu>
+
+
+              <SubMenu key="bw" title={<span>农业活动</span>}>
+                <Menu.Item key="bw1">
+                  <Link to="/bw1agwp">GWP及关键排放指标</Link>
+                </Menu.Item>
+                <Menu.Item key="bw2">
+                  <Link to="/bw2aresults">清单结果</Link>
+                </Menu.Item>
+
+              </SubMenu>
+
+
+              <SubMenu key="bp" title={<span>土地利用变化和林业</span>}>
+                <Menu.Item key="bp1">
+                <Link to="/bp1lgwp">GWP及关键排放指标</Link>
+                </Menu.Item>
+                <Menu.Item key="bp2">
+                <Link to="/bp2lresults">清单结果</Link>
+                </Menu.Item>
+
+              </SubMenu>
+
+
+              <SubMenu key="bq" title={<span>废弃物处理</span>}>
+                <Menu.Item key="bq1">
+                  <Link to="/bq1wgwp">GWP及关键排放指标</Link>
+                </Menu.Item>
+                <Menu.Item key="bq2">
+                  <Link to="/bq2wresults">清单结果</Link>
+                </Menu.Item>
+
+              </SubMenu>
+
             </SubMenu>
-            <SubMenu key="subA3" title={<span><Icon type="line-chart" />数据报表分析</span>}>
-              <Menu.Item key="subA31">option9</Menu.Item>
-              <Menu.Item key="subA32">option10</Menu.Item>
-              <Menu.Item key="subA33">option11</Menu.Item>
-              <Menu.Item key="subA3">option12</Menu.Item>
+
+
+
+            <SubMenu key="g" title={<span><Icon type="line-chart" />数据报表分析</span>}>
+
+
+              <Menu.Item key="gq1">
+              <Link to="/gq1gasanalysis">温室气体年度分析</Link>
+            </Menu.Item>
+
+              <Menu.Item key="gq2">
+                <Link to="/gq2gasoverview">温室气体排放总览</Link>
+              </Menu.Item>
+
+              <Menu.Item key="gq3">
+                <Link to="/gq3gasother">其他指标</Link>
+              </Menu.Item>
+
+
             </SubMenu>
-            <SubMenu key="subA4" title={<span><Icon type="setting" />系统设置</span>}>
-              <Menu.Item key="subA41">option9</Menu.Item>
-              <Menu.Item key="subA42">option10</Menu.Item>
-              <Menu.Item key="subA43">option11</Menu.Item>
-              <Menu.Item key="subA44">option12</Menu.Item>
+            <SubMenu key="subD" title={<span><Icon type="setting" />系统设置</span>}>
+              <Menu.Item key="subD41">option9</Menu.Item>
+              <Menu.Item key="subD42">option10</Menu.Item>
+              <Menu.Item key="subD43">option11</Menu.Item>
+              <Menu.Item key="subD44">option12</Menu.Item>
             </SubMenu>
           </Menu>
         </Sider>
@@ -159,11 +267,12 @@ var Layouty = createReactClass ({
 
 
         <Layout>
-          <Header style={{ background: '#fff', width:100+'%',position:'fixed' }} >
+          <Header style={{ background: '#fff', width:100+'%',position:'fixed',zIndex: '999' }} >
             <h1>湖南省省级温室气体清单数据库系统</h1>
           </Header>
           <Content >
             <div >
+
               {children}
             </div>
           </Content>

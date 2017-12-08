@@ -376,17 +376,18 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
   }
 
 
-  // 部门方法 1.1
+
   renderColumns(data, index, key, text) {
 
 
@@ -462,12 +463,12 @@ class ElectricTable extends React.Component {
     });
   }
 
-  //秸秆
-  queryGut(){
+  //动物肠道
+  queryGut(years){
 
 
     post('/activityLevelDataEntry/agricultureActivity/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -488,6 +489,7 @@ class ElectricTable extends React.Component {
           _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.jennet);
           _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.camel);
           _Data.push('');
+
 
 
 
@@ -512,28 +514,13 @@ class ElectricTable extends React.Component {
 
 
           const _a = [];
+          var _Total = 0;
 
 
-          for(var i = 0 ;i<10;i++){
+          for(var i = 0 ;i<9;i++){
 
 
-            if(i==9){
-              _a.push({
-                key: i,
-                name:fossilTitle[i],
-                sVscaleFeeding:'0',
-                sVfarmerKeeping: '0',
-                sVgrazing: '0',
-                scaleFeeding: '0',
-                farmerKeeping: '0',
-                grazing: '0',
-                scaleFeeding1: '0',
-                farmerKeeping1: '0',
-                grazing1: '0',
-                Total:'0'
 
-              });
-            }else{
               _a.push({
                 key: i,
                 name:fossilTitle[i],
@@ -543,15 +530,33 @@ class ElectricTable extends React.Component {
                 scaleFeeding: _Data[i].scaleFeeding,
                 farmerKeeping: _Data[i].farmerKeeping,
                 grazing: _Data[i].grazing,
-                scaleFeeding1: '0',
-                farmerKeeping1: '0',
-                grazing1: '0',
-                Total:'0'
+                scaleFeeding1: (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding).toFixed(2),
+                farmerKeeping1: (_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping).toFixed(2),
+                grazing1: (_Data[i].sVgrazing*_Data[i].grazing).toFixed(2),
+                Total:((_Data[i].sVscaleFeeding*_Data[i].scaleFeeding)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping)+(_Data[i].sVgrazing*_Data[i].grazing)).toFixed(2)
 
               });
-            }
+
+            _Total += (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping)+(_Data[i].sVgrazing*_Data[i].grazing)
+
 
           }
+
+          _a.push({
+            key: 9,
+            name:fossilTitle[9],
+            sVscaleFeeding:_Total,
+            sVfarmerKeeping: _Total,
+            sVgrazing: _Total,
+            scaleFeeding: _Total,
+            farmerKeeping: _Total,
+            grazing: _Total,
+            scaleFeeding1: _Total,
+            farmerKeeping1: _Total,
+            grazing1: _Total,
+            Total:_Total.toFixed(2)
+
+          });
 
 
 
@@ -628,7 +633,7 @@ class ElectricTable extends React.Component {
 
   }
 
-  //秸秆update
+  //动物肠道update
   updateGut(index,data,a){
 
 
@@ -663,7 +668,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -689,7 +694,13 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //年份选择
+  selesctYears(years){
 
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(years)
+  }
 
   render() {
 
@@ -717,10 +728,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -728,6 +739,7 @@ class ElectricTable extends React.Component {
 
         </div>
 
+        <Spin spinning={this.state.loading} >
 
         <div className={styles.entryBody} id="bodyTable1"  >
           <p>动物肠道甲烷排放</p>
@@ -746,7 +758,7 @@ class ElectricTable extends React.Component {
 
 
 
-
+        </Spin>
 
 
 

@@ -1,18 +1,16 @@
 /**
- * 农业gwpCreated by dixu on 2017/10/31.
+ * 土地gwpCreated by dixu on 2017/10/31.
  */
 
 import React from 'react';
 import { Table, Input, Form, Popconfirm,message,Spin, Alert, Switch ,Radio } from 'antd';
 
 import ReactDOM from 'react-dom'
-import styles from './Agwp.less';
+import styles from './Lgwp.less';
 import createReactClass from 'create-react-class';
 import { post } from '../../../utils/carbonRequest';
 import $ from 'jquery';
 const RadioGroup = Radio.Group;
-
-import { is } from 'immutable';
 
 class EditableCell extends React.Component {
 
@@ -257,7 +255,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: '农业活动排放总量', dataIndex: 'p1', width: 150,
+        title: '林业活动CO2吸收量', dataIndex: 'p1', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p1', text),
           props: {},
@@ -268,7 +266,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '农田排放总量', dataIndex: 'p2', width: 150,
+        title: '林业活动GHG排放量', dataIndex: 'p2', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p2', text),
           props: {},
@@ -279,7 +277,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '畜牧业排放总量', dataIndex: 'p3', width: 150,
+        title: '（乔木林+疏林+散生木+四旁树）CO2吸收量-活立木消耗CO2排放量', dataIndex: 'p3', width:300,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p3', text),
           props: {},
@@ -289,50 +287,7 @@ class ElectricTable extends React.Component {
 
 
           return obj},
-      },{
-        title: '稻田甲烷排放', dataIndex: 'p4', width: 150,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p4', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      },{
-        title: '农用地氧化亚氮排放', dataIndex: 'p5', width: 150,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p5', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      },{
-        title: '(畜牧业活动GHG-奶牛肠道发酵GHG-奶牛粪便管理GHG)', dataIndex: 'p6', width: 250,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p6', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      },
-      {
-        title: '(奶牛肠道发酵GHG+奶牛粪便管理GHG)', dataIndex: 'p7', width: 200,
-        render: (text, record, index) =>{  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p7', text),
-          props: {},
-
-        };
-
-          return obj},
-      },
+      }
     ];
 
     this.state = {
@@ -357,42 +312,7 @@ class ElectricTable extends React.Component {
 
     //$("#bodyTable1").hide();
 
-  
-  
   }
-/*
-  shouldComponentUpdate(nextProps,nextState){
-
-
-
-    return !(this.props === nextProps || is(this.props, nextProps)) ||
-    !(this.state === nextState || is(this.state, nextState));
-
-    const thisProps = this.props || {}, thisState = this.state || {};
-
-    if (Object.keys(thisProps).length !== Object.keys(nextProps).length ||
-      Object.keys(thisState).length !== Object.keys(nextState).length) {
-      return true;
-    }
-
-    for (const key in nextProps) {
-      if (thisProps[key] !== nextProps[key] || ! is(thisProps[key], nextProps[key])) {
-        return true;
-      }
-    }
-
-    for (const key in nextState) {
-      if (thisState[key] !== nextState[key] || ! is(thisState[key], nextState[key])) {
-        return true;
-      }
-    }
-    return false;
-    const a = this.props;
-    const b = this.state;
-    return true
-   
-};
- */
 
 
   // 部门方法 1.1
@@ -485,7 +405,7 @@ class ElectricTable extends React.Component {
   queryGut(years){
 
 
-    post('/report/agricultureActivity/list', {
+    post('/report/landUseChangeAndForestry/list', {
       year:years,
 
     })
@@ -495,16 +415,9 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
-        
           const _Data = []
-          const _Data1 = Alldata.GHG
-
-
-
-
 
           const fossilTitle = [
-
 
             '　　奶牛',
             '　　非奶牛',
@@ -517,14 +430,7 @@ class ElectricTable extends React.Component {
             '　　骆驼',
             '　　动物肠道甲烷排放总计',
 
-
           ]
-
-
-
-
-
-
 
           var _b = [
             {
@@ -628,26 +534,14 @@ class ElectricTable extends React.Component {
                 value:'单位' ,
               },
               p1:{
-                value:'万tCO2e' ,
+                value:'万吨二氧化碳' ,
               },
               p2:{
-                value:'万tCO2e',
+                value:'万吨二氧化碳',
               },
               p3:{
-                value:'万tCO2e' ,
-              },
-              p4:{
-                value:'万tCH4',
-              },
-              p5:{
-                value:'万tN20',
-              },
-              p6:{
-                value:'CO2e',
-              },
-              p7:{
-                value:'CO2e',
-              },
+                value:'万吨二氧化碳' ,
+              }
 
             },{
               key:2,
@@ -655,26 +549,15 @@ class ElectricTable extends React.Component {
                 value:'排放量',
               },
               p1:{
-                value:(Alldata.CH4.paddyFields*21+Alldata.N2O.land*310+Alldata.CH4.animalIntestinalFermentation*21+Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310).toFixed(2),
+                value:(Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption).toFixed(2),
               },
               p2:{
-                value:((Alldata.CH4.paddyFields*21)+(Alldata.N2O.land*310)).toFixed(2) ,
+                value:((Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption)
+                +((Alldata.CO2.combustionEmission+(Alldata.CH4.combustionEmission*21/10000)+(Alldata.N2O.combustionEmission*310/1000))+Alldata.CO2.decompositionOfEmission)).toFixed(2) ,
               },
               p3:{
-                value:((Alldata.CH4.animalIntestinalFermentation*21)+(Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310)).toFixed(2) ,
-              },
-              p4:{
-                value:Alldata.CH4.paddyFields,
-              },
-              p5:{
-                value:Alldata.N2O.land,
-              },
-              p6:{
-                value:(((Alldata.CH4.animalIntestinalFermentation*21)+(Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310))-_Data1).toFixed(2),
-              },
-              p7:{
-                value:_Data1,
-              },
+                value:(-(Alldata.CO2.arborForest+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest)-Alldata.CO2.harvestingConsumption-Alldata.CO2.lossOfConsumption).toFixed(2),
+              }
 
             }
 
@@ -698,14 +581,16 @@ class ElectricTable extends React.Component {
 
   }
 
- //年份选择
- selesctYears(years){
-  
-      this.setState({ loading: true});
-      this.setState({years:years})
-      this.queryGut(years)
-    }
 
+
+  //年份选择
+  selesctYears(years){
+    
+        this.setState({ loading: true});
+        this.setState({years:years})
+        this.queryGut(years)
+      }
+    
 
   render() {
 
@@ -771,7 +656,7 @@ class ElectricTable extends React.Component {
             <p>关键排放指标信息</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

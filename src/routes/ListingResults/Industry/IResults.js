@@ -1,5 +1,7 @@
 /**
  * 工业活动清单结果Created by dixu on 2017/10/31.
+ *
+ * 部分数据需要后台提供
  */
 
 
@@ -226,10 +228,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -306,11 +309,11 @@ class ElectricTable extends React.Component {
   }
 
   //
-  queryGut(){
+  queryGut(years){
 
 
     post('/report/industrialProductionProcess/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -320,6 +323,7 @@ class ElectricTable extends React.Component {
 
 
           var Alldata =res.data;
+
 
           const _Data1 = []  //co2
           const  _Data2 = []  //n20
@@ -370,8 +374,8 @@ class ElectricTable extends React.Component {
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
-          _Data1.push('0')
-          _Data1.push('0')
+          _Data1.push((Alldata.CO2.cementProductionProcess+Alldata.CO2.limeProductionProcess+Alldata.CO2.steelProductionProcess+Alldata.CO2.calciumCarbideProductionProcess).toFixed(2))
+          _Data1.push((Alldata.CO2.cementProductionProcess+Alldata.CO2.limeProductionProcess+Alldata.CO2.steelProductionProcess+Alldata.CO2.calciumCarbideProductionProcess).toFixed(2))
 
 
 
@@ -387,12 +391,11 @@ class ElectricTable extends React.Component {
           _Data2.push('-')
           _Data2.push('-')
           _Data2.push('-')
-          _Data2.push('0')
-          _Data2.push('0')
+          _Data2.push((Alldata.N2O.adipicAcidProductionProcess+Alldata.N2O.nitricAcidProductionProcess).toFixed(2))
+          _Data2.push(((Alldata.N2O.adipicAcidProductionProcess+Alldata.N2O.nitricAcidProductionProcess)*310/10000).toFixed(2))
 
 
-          _Data3.push('-')
-          _Data3.push('-')
+
           _Data3.push('-')
           _Data3.push('-')
           _Data3.push('-')
@@ -405,8 +408,8 @@ class ElectricTable extends React.Component {
           _Data3.push(Alldata.HFC_23.semiconductorProductionProcess)
           _Data3.push(Alldata.HFC_23.chlorodifluoromethaneProductionProcess)
           _Data3.push('-')
-          _Data3.push('0')
-          _Data3.push('0')
+          _Data3.push((Alldata.HFC_23.semiconductorProductionProcess+Alldata.HFC_23.chlorodifluoromethaneProductionProcess).toFixed(2))
+          _Data3.push(((Alldata.HFC_23.semiconductorProductionProcess+Alldata.HFC_23.chlorodifluoromethaneProductionProcess)*11700/10000).toFixed(2))
 
           _Data4.push('-')
           _Data4.push('-')
@@ -420,11 +423,11 @@ class ElectricTable extends React.Component {
           _Data4.push('-')
           _Data4.push('-')
           _Data4.push(Alldata.HFC_32)
-          _Data4.push('0')
-          _Data4.push('0')
+          _Data4.push(Alldata.HFC_32)
+          _Data4.push((Alldata.HFC_32*650/1000).toFixed(2))
 
 
-          _Data5.push('-')
+
           _Data5.push('-')
           _Data5.push('-')
           _Data5.push('-')
@@ -437,8 +440,8 @@ class ElectricTable extends React.Component {
           _Data5.push('-')
           _Data5.push('-')
           _Data5.push(Alldata.HFC_125)
-          _Data5.push('0')
-          _Data5.push('0')
+          _Data5.push(Alldata.HFC_125)
+          _Data5.push((Alldata.HFC_125*2800/10000).toFixed(2))
 
           _Data6.push('-')
           _Data6.push('-')
@@ -452,8 +455,8 @@ class ElectricTable extends React.Component {
           _Data6.push('-')
           _Data6.push('-')
           _Data6.push(Alldata.HFC_134a)
-          _Data6.push('0')
-          _Data6.push('0')
+          _Data6.push(Alldata.HFC_134a)
+          _Data6.push((Alldata.HFC_134a*1300/10000).toFixed(2))
 
           _Data7.push('-')
           _Data7.push('-')
@@ -467,8 +470,8 @@ class ElectricTable extends React.Component {
           _Data7.push('-')
           _Data7.push('-')
           _Data7.push(Alldata.HFC_143a)
-          _Data7.push('0')
-          _Data7.push('0')
+          _Data7.push(Alldata.HFC_143a)
+          _Data7.push((Alldata.HFC_143a*3800/10000).toFixed(2))
 
           _Data8.push('-')
           _Data8.push('-')
@@ -482,8 +485,8 @@ class ElectricTable extends React.Component {
           _Data8.push('-')
           _Data8.push('-')
           _Data8.push(Alldata.HFC_152a)
-          _Data8.push('0')
-          _Data8.push('0')
+          _Data8.push(Alldata.HFC_152a)
+          _Data8.push((Alldata.HFC_152a*140/10000).toFixed(2))
 
           _Data9.push('-')
           _Data9.push('-')
@@ -497,8 +500,8 @@ class ElectricTable extends React.Component {
           _Data9.push('-')
           _Data9.push('-')
           _Data9.push(Alldata.HFC_227ea)
-          _Data9.push('0')
-          _Data9.push('0')
+          _Data9.push(Alldata.HFC_227ea)
+          _Data9.push((Alldata.HFC_227ea*2900/10000).toFixed(2))
 
           _Data10.push('-')
           _Data10.push('-')
@@ -512,8 +515,8 @@ class ElectricTable extends React.Component {
           _Data10.push('-')
           _Data10.push('-')
           _Data10.push(Alldata.HFC_236fa)
-          _Data10.push('0')
-          _Data10.push('0')
+          _Data10.push(Alldata.HFC_236fa)
+          _Data10.push((Alldata.HFC_236fa*6300/10000).toFixed(2))
 
           _Data11.push('-')
           _Data11.push('-')
@@ -527,8 +530,8 @@ class ElectricTable extends React.Component {
           _Data11.push('-')
           _Data11.push('-')
           _Data11.push(Alldata.HFC_245fa)
-          _Data11.push('0')
-          _Data11.push('0')
+          _Data11.push(Alldata.HFC_245fa)
+          _Data11.push((Alldata.HFC_245fa*1030/10000).toFixed(2))
 
           _Data12.push('-')
           _Data12.push('-')
@@ -572,7 +575,7 @@ class ElectricTable extends React.Component {
           _Data14.push(Alldata.SF6.semiconductorProductionProcess)
           _Data14.push('-')
           _Data14.push('-')
-          _Data14.push('0')
+          _Data14.push(Alldata.SF6.magnesiumProductionProcess+Alldata.SF6.electricPowerEquipmentProductionProcess+Alldata.SF6.semiconductorProductionProcess)
           _Data14.push('0')
 
           _Data15.push('0')
@@ -589,7 +592,7 @@ class ElectricTable extends React.Component {
           _Data15.push('0')
           _Data15.push('0')
           _Data15.push('0')
-          _Data15.push('0')
+
 
 
 
@@ -597,7 +600,7 @@ class ElectricTable extends React.Component {
 
           const _b1= []
 
-          for(var i  = 0 ;i <_Data1.length;i++){
+          for(var i  = 0 ;i <fossilTitle.length;i++){
             _b1.push({
               key:i,
               name:{
@@ -752,7 +755,13 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //年份选择
+  selesctYears(years){
 
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(years)
+  }
 
   render() {
 
@@ -783,10 +792,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -800,10 +809,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>参考方法</p>
+            <p>工业生产过程清单结果</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1020 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1020 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

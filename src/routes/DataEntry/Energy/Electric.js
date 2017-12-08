@@ -109,7 +109,7 @@ class ElectricTable extends React.Component {
           return (
             <div className={styles.editableOperations} >
 
-              { index ==7 ? <span></span> :
+              { index ==7|| index ==1 ? <span></span> :
 
                 editable ?
                     <span>
@@ -143,10 +143,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryElectric();
+    this.queryElectric('2014');
 
     //$("#bodyTable1").hide();
 
@@ -174,7 +175,7 @@ class ElectricTable extends React.Component {
 
   handleChange(key, index, value) {
 
-    debugger;
+
 
 
     const data = [...this.state.data];
@@ -221,10 +222,11 @@ class ElectricTable extends React.Component {
   }
 
   //co2排放量-非能源利用
-  queryElectric(){
+  queryElectric(years){
+
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/electricityTransferCallsForIndirectCO2Discharge/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -263,50 +265,128 @@ class ElectricTable extends React.Component {
 
           const _a = [];
 
+          var _Total = 0;   //排放量（万吨CO2)
+          var _Total1 = 0;  //电量（亿kWh）
+          var _Total2 = 0;   //间接排放因子（kgCO2/kWh)
 
-          for(var i = 0 ;i<8;i++){
+          for(var i = 0 ;i<7;i++){
+           
 
+           
 
-            if(i==7){
-              _a.push({
-                key: i,
-                name:fossilTitle[i],
-                gridName: '',
-                electricity: '',
-                indirectEmissionFactor: '',
-                emissions: '0',
-
-              });
-            }else {
+            if(i==1){
               _a.push({
                 key: i,
                 name:fossilTitle[i],
                 gridName: _Data[i].gridName,
                 electricity: _Data[i].electricity,
                 indirectEmissionFactor: _Data[i].indirectEmissionFactor,
-                emissions: '0',
+                emissions: _Data[i].electricity*_Data[i].indirectEmissionFactor,
+
+              });
+            }else {
+              
+              _a.push({
+                key: i,
+                name:fossilTitle[i],
+                gridName: _Data[i].gridName,
+                electricity: _Data[i].electricity,
+                indirectEmissionFactor: _Data[i].indirectEmissionFactor,
+                emissions: _Data[i].electricity*_Data[i].indirectEmissionFactor,
 
               });
             }
 
-
-
+           
+          
+           if(i==1 || i==0){
+            _Total += 0 
+            _Total1 += 0 
+           }else{
+            _Total += (_Data[i].electricity*_Data[i].indirectEmissionFactor)
+            _Total1 += (_Data[i].electricity)
+           }
+            
 
 
 
           }
 
+         
+            _a.push({
+              key: i,
+              name:fossilTitle[7],
+              gridName: '',
+              electricity: '',
+              indirectEmissionFactor: '',
+              emissions: 0,
+
+            });
+         
 
 
           console.log(_a);
+         
 
           const _b = [];
 
 
           for(var i = 0 ; i<_a.length;i++){
 
+            if(i==1){
+              _b.push({
+                key:_a[i].key,
+                name:{
 
-            _b.push({
+                  value:_a[i].name ,
+                },
+              gridName:{
+                  editable: false,
+                  value:_a[i].gridName ,
+                },
+              electricity: {
+                  editable: false,
+                  value:_Total1  ,
+                },
+              indirectEmissionFactor: {
+                  editable: false,
+                  value:_a[i+1].indirectEmissionFactor ,
+                },
+              emissions: {
+
+                  value:_Total.toFixed(2) ,
+                },
+
+              }
+            )
+            }else if(i==7){
+              _b.push({
+                key:_a[i].key,
+                name:{
+
+                  value:_a[i].name ,
+                },
+              gridName:{
+                 
+                  value:_a[i].gridName ,
+                },
+              electricity: {
+               
+                  value:_a[i].electricity ,
+                },
+              indirectEmissionFactor: {
+                 
+                  value:_a[i].indirectEmissionFactor ,
+                },
+              emissions: {
+
+                  value:(_Total-_a[0].emissions).toFixed(2),
+                },
+
+              }
+            )
+            }else{
+              _b.push({
                 key:_a[i].key,
                 name:{
 
@@ -326,11 +406,14 @@ class ElectricTable extends React.Component {
                 },
               emissions: {
 
-                  value:'0' ,
+                  value:_a[i].emissions.toFixed(2) ,
                 },
 
               }
             )
+            }
+
+           
           }
 
           console.log(_b);
@@ -376,7 +459,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -393,6 +476,7 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
+          this.queryElectric(this.state.years)
 
         } else {
           message.error(res.message);
@@ -401,6 +485,13 @@ class ElectricTable extends React.Component {
   }
 
 
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryElectric(years)
+  }
 
   render() {
 
@@ -428,10 +519,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 

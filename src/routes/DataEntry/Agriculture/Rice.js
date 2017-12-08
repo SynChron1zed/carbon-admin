@@ -108,7 +108,8 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-
+                index == 4
+                  ? <span></span> :
                 editable ?
                   <span>
                   <a onClick={() => this.editDone(index, 'save')}>确认</a>
@@ -140,11 +141,11 @@ class ElectricTable extends React.Component {
 
 
 
-
+      years:'2014',
       AllData:[]
     };
 
-    this.queryRice();
+    this.queryRice('2014');
 
     //$("#bodyTable1").hide();
 
@@ -219,11 +220,11 @@ class ElectricTable extends React.Component {
   }
 
   //水稻
-  queryRice(){
+  queryRice(years){
 
 
     post('/activityLevelDataEntry/agricultureActivity/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -232,11 +233,13 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
+
           const _Data = []
 
           _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.singleCroppingOfRice);//水稻
           _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.doubleSeasonEarlyRice);//水稻
           _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.doubleSeasonLateRice);//水稻
+          _Data.push(Alldata.calculationOfMethaneEmissionsFromPaddyFields.winterPaddyField);//水稻
 
 
 
@@ -246,7 +249,8 @@ class ElectricTable extends React.Component {
             '　　单季稻',
             '　　双季早稻',
             '　　双季晚稻',
-            '　　小计',
+            '　　冬水田',
+
 
 
           ]
@@ -256,35 +260,31 @@ class ElectricTable extends React.Component {
 
           const _a = [];
 
+          var _riceSownArea = 0;
+          var _emissionFactor = 0;
+          var _CH4Emissions = 0;
 
           for(var i = 0 ;i<4;i++){
 
 
-            if(i==3){
-              _a.push({
-                key: i,
-                name:fossilTitle[i],
-                riceSownArea: '0',
-                emissionFactor: '0',
-                CH4Emissions: '0',
-
-              });
-            }else{
               _a.push({
                 key: i,
                 name:fossilTitle[i],
                 riceSownArea: _Data[i].riceSownArea,
                 emissionFactor: _Data[i].emissionFactor,
-                CH4Emissions: '0',
+                CH4Emissions: (_Data[i].riceSownArea*_Data[i].emissionFactor/1000),
 
               });
-            }
+
+            _riceSownArea += _Data[i].riceSownArea;
+            _emissionFactor += _Data[i].emissionFactor;
+            _CH4Emissions += (_Data[i].riceSownArea*_Data[i].emissionFactor/1000);
 
           }
 
 
 
-          console.log(_a);
+
 
           const _b = [];
 
@@ -298,24 +298,48 @@ class ElectricTable extends React.Component {
 
                   value:_a[i].name ,
                 },
-              riceSownArea:{
+                riceSownArea:{
                   editable: false,
                   value:_a[i].riceSownArea ,
                 },
-              emissionFactor: {
+                emissionFactor: {
                   editable: false,
                   value:_a[i].emissionFactor ,
                 },
-              CH4Emissions: {
+                CH4Emissions: {
 
-                  value:'0' ,
+                  value:_a[i].CH4Emissions ,
                 },
 
               }
             )
+
           }
 
-          console.log(_b);
+
+          _b.push({
+              key:_a.length,
+              name:{
+
+                value:'　　小计' ,
+              },
+              riceSownArea:{
+
+                value:_riceSownArea.toFixed(2) ,
+              },
+              emissionFactor: {
+
+                value:_emissionFactor.toFixed(2) ,
+              },
+              CH4Emissions: {
+
+                value:_CH4Emissions.toFixed(2) ,
+              },
+
+            }
+          )
+
+
 
 
           this.setState({data:_b});
@@ -355,7 +379,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -379,7 +403,13 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //年份选择
+  selesctYears(years){
 
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryRice(years)
+  }
 
   render() {
 
@@ -407,10 +437,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -418,7 +448,7 @@ class ElectricTable extends React.Component {
 
         </div>
 
-
+        <Spin spinning={this.state.loading} >
         <div className={styles.entryBody} id="bodyTable1"  >
           <p>稻田甲烷排放</p>
           <div className={styles.greenSelect}>
@@ -433,7 +463,7 @@ class ElectricTable extends React.Component {
 
         </div>
 
-
+        </Spin>
 
 
 

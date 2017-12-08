@@ -659,12 +659,13 @@ class CoalmineTable extends React.Component {
       statistics:'b1',
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryBiomass();
-    this.queryBiomass1();
-    this.queryBiomass2();
+    this.queryBiomass('2014');
+    this.queryBiomass1('2014');
+    this.queryBiomass2('2014');
 
 
     //$("#bodyTable1").hide();
@@ -889,10 +890,10 @@ class CoalmineTable extends React.Component {
 
 
   //生物质燃烧 活动水平数据
-  queryBiomass(){
+  queryBiomass(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/biomassBurning/activityLevelData/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -929,27 +930,13 @@ class CoalmineTable extends React.Component {
 
           const _a = [];
 
+          var _Total = 0;
 
-          for(var i = 0 ;i<6;i++){
+
+          for(var i = 0 ;i<5;i++){
 
 
-            if(i==5){
-              _a.push({
-                key: i,
-                name:fossilTitle[i],
-                provinceCoalStove:'0',
-                traditionalStove: '0',
-                brazierPotAndSoOn: '0',
-                pastoralStove: '0',
-                friedTeaStove: '0',
-                flueCuredTobaccoRoom: '0',
-                brickKiln: '0',
-                totalAmount: '0',
-                lowCalorificValue: '0',
-                biomassBurns: '0',
-
-              });
-            }else {
+           
               _a.push({
                 key: i,
                 name:fossilTitle[i],
@@ -960,21 +947,35 @@ class CoalmineTable extends React.Component {
                 friedTeaStove: _Data[i].friedTeaStove,
                 flueCuredTobaccoRoom: _Data[i].flueCuredTobaccoRoom,
                 brickKiln: _Data[i].brickKiln,
-                totalAmount: '0',
+                totalAmount: (_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln).toFixed(2),
                 lowCalorificValue: _Data[i].lowCalorificValue,
-                biomassBurns: '0',
+                biomassBurns: ((_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln
+                )*_Data[i].lowCalorificValue/100).toFixed(2),
 
               });
-            }
-
-
-
-
-
+          
+              _Total +=(_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln
+                )*_Data[i].lowCalorificValue/100
 
           }
+          _a.push({
+            key: 5,
+            name:fossilTitle[i],
+            provinceCoalStove:_Total.toFixed(2),
+            traditionalStove: '',
+            brazierPotAndSoOn: '',
+            pastoralStove: '',
+            friedTeaStove: '',
+            flueCuredTobaccoRoom: '',
+            brickKiln: '',
+            totalAmount: '',
+            lowCalorificValue: '',
+            biomassBurns: _Total.toFixed(2),
+
+          });
 
 
+          
 
           console.log(_a);
 
@@ -1020,7 +1021,7 @@ class CoalmineTable extends React.Component {
                 },
               totalAmount: {
 
-                  value:'0' ,
+                  value:_a[i].totalAmount  ,
                 },
               lowCalorificValue: {
                 editable: false,
@@ -1028,7 +1029,7 @@ class CoalmineTable extends React.Component {
               },
               biomassBurns: {
 
-                value:'0' ,
+                value:_a[i].biomassBurns,
               },
 
               }
@@ -1077,7 +1078,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1102,6 +1103,7 @@ class CoalmineTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
+          this.queryBiomass(this.state.years)
 
         } else {
           message.error(res.message);
@@ -1111,10 +1113,10 @@ class CoalmineTable extends React.Component {
 
 
   //生物质燃烧 甲烷排放因子
-  queryBiomass1(){
+  queryBiomass1(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/biomassBurning/CH4EmissionFactor/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -1264,7 +1266,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1293,10 +1295,10 @@ class CoalmineTable extends React.Component {
   }
 
   //生物质燃烧 N2O排放因子
-  queryBiomass2(){
+  queryBiomass2(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/biomassBurning/N2OEmissionFactor/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -1446,7 +1448,7 @@ class CoalmineTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1472,6 +1474,18 @@ class CoalmineTable extends React.Component {
           message.error(res.message);
         }
       });
+  }
+
+
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years});
+
+    this.queryBiomass(years);
+    this.queryBiomass1(years);
+    this.queryBiomass2(years);
   }
 
   render() {
@@ -1520,10 +1534,10 @@ class CoalmineTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 

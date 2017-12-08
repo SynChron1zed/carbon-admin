@@ -400,7 +400,24 @@ class ElectricTable extends React.Component {
           props: {},
 
         };
-
+        if (index === 9) {
+          obj.props.rowSpan = 6;
+        }
+        if (index === 10) {
+          obj.props.rowSpan = 0;
+        }
+        if (index === 11) {
+          obj.props.rowSpan = 0;
+        }
+        if (index === 12) {
+          obj.props.rowSpan =0;
+        }
+        if (index === 13) {
+          obj.props.rowSpan = 0;
+        }
+        if (index === 14) {
+          obj.props.rowSpan = 0;
+        }
 
 
           return obj},
@@ -434,10 +451,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -515,11 +533,11 @@ class ElectricTable extends React.Component {
   }
 
   //
-  queryGut(){
+  queryGut(years){
 
 
     post('/report/wasteDisposal/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -635,14 +653,14 @@ class ElectricTable extends React.Component {
           _Data1.push('-')
           _Data1.push(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)
           _Data1.push(Alldata.CO2.hazardousWaste)
-          _Data1.push('0')
+          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
-          _Data1.push('0')
+          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
 
 
 
@@ -650,19 +668,21 @@ class ElectricTable extends React.Component {
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.managedLandfill)
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m)
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m)
-          _Data2.push('0')
+          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m).toFixed(2))
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)
-          _Data2.push('0')
+          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(2))
           _Data2.push('-')
           _Data2.push('-')
           _Data2.push('-')
           _Data2.push(Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD)
           _Data2.push(Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)
-          _Data2.push('0')
+          _Data2.push((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(2))
           _Data2.push(Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD)
           _Data2.push(Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)
-          _Data2.push('0')
-          _Data2.push('0')
+          _Data2.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2))
+          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill
+          +Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD
+        +Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2))
 
 
           _Data3.push('-')
@@ -680,25 +700,31 @@ class ElectricTable extends React.Component {
           _Data3.push(Alldata.N2O.wasteWater)
           _Data3.push(Alldata.N2O.wasteWater)
           _Data3.push(Alldata.N2O.wasteWater)
-          _Data3.push('0')
+          _Data3.push(Alldata.N2O.wasteWater)
 
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
-          _Data4.push('0')
+          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.managedLandfill*21)
+          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m*21)
+          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m*21)
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m)*21)
 
+          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill*21)
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21)
+
+          _Data4.push(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)
+          _Data4.push(Alldata.CO2.hazardousWaste)
+          _Data4.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
+
+          _Data4.push((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD*21)+(Alldata.N2O.wasteWater*310))
+          _Data4.push((Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD*21)+(Alldata.N2O.wasteWater*310))
+          _Data4.push(((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310))
+
+          _Data4.push(Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD*21+Alldata.N2O.wasteWater*310)
+          _Data4.push(Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD*21+Alldata.N2O.wasteWater*310)
+          _Data4.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)
+
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
+        +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310))
+      +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)
 
 
 
@@ -775,7 +801,7 @@ class ElectricTable extends React.Component {
 
   }
 
-  //秸秆update
+  //update
   updateGut(index,data,a){
 
     var data  = data
@@ -834,6 +860,13 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(years)
+  }
 
 
   render() {
@@ -846,8 +879,6 @@ class ElectricTable extends React.Component {
       });
       return obj;
     });
-
-
 
 
 
@@ -865,10 +896,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 

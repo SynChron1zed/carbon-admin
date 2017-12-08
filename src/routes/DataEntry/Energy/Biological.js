@@ -584,13 +584,11 @@ class EditableTable extends React.Component {
 
 
   constructor(props) {
-
     super(props);
 
+     this.columns = [
 
-    this.columns = [
-      {
-      title: '数据项',
+        {title: '数据项',
       dataIndex: 'name',
       width: 280,
 
@@ -719,9 +717,9 @@ class EditableTable extends React.Component {
           </div>
         );
       },
-    }];
+}];
 
-    this.columns2 = [
+     this.columns2 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -853,7 +851,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns3 = [
+     this.columns3 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -985,7 +983,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns4 = [
+     this.columns4 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1117,7 +1115,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns5 = [
+     this.columns5 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1249,7 +1247,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns6 = [
+     this.columns6 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1294,7 +1292,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns7 = [
+     this.columns7 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1372,7 +1370,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns8 = [
+     this.columns8 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1450,7 +1448,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns9 = [
+     this.columns9 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1528,7 +1526,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.columns10 = [
+     this.columns10 = [
       {
         title: '数据项',
         dataIndex: 'name',
@@ -1606,7 +1604,7 @@ class EditableTable extends React.Component {
         },
       }];
 
-    this.state = {
+     this.state = {
 
       data: [],
       data1: [],
@@ -1642,126 +1640,18 @@ class EditableTable extends React.Component {
       cs:'活动水平数据',
       csZs:'',
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.query('0');
+    this.query('0','2014');
 
     //$("#bodyTable1").hide();
 
   }
 
-  //参数选择
-  selesctYears(i,j,k,s){
 
 
-
-    if(k=='a1'){
-      this.setState({gas:k});
-      $("#tjF").show();
-      $("#pfF").hide();
-      $("#ckff").show();
-      $("#noCoTable").hide();
-      $("#noCoTable1").hide();
-
-
-
-      if(j=='b1'|| j=='b2' || j=='b3'){
-        if(j=='b1'){
-
-          if(i==0){
-            this.setState({cs:'活动水平数据'});
-            this.setState({csZs:''});
-          }else if(i==1){
-            this.setState({cs:'平均低位热值'});
-            this.setState({csZs:''});
-          }else if(i==2){
-            this.setState({cs:'单位热值含碳量'});
-            this.setState({csZs:''});
-          }else if(i==3){
-            this.setState({cs:'碳氧化率'});
-            this.setState({csZs:'（若某燃料固碳率98%，在此表的数就填98%或0.98）'});
-          }
-
-
-          this.setState({ loading: true});
-          this.setState({statistics:j});
-          this.query(i)
-          $("#ckff").show();
-          $("#bodyTable").show();
-          $("#bodyTable1").hide();
-          $("#bodyTable2").hide();
-          this.setState({breed:i});
-
-
-        }else if(j=='b2'){
-
-
-          this.setState({statistics:j});
-          $("#ckff").hide();
-          $("#bodyTable").hide();
-          $("#bodyTable1").show();
-          $("#bodyTable2").hide();
-          this.setState({ loading: true});
-          this.queryCo2()
-
-        }else {
-          this.setState({statistics:j});
-
-          $("#ckff").hide();
-          $("#bodyTable").hide();
-          $("#bodyTable1").hide();
-          $("#bodyTable2").show();
-          this.setState({ loading: true});
-          this.queryMethod()
-        }
-
-      }
-
-
-    }else{
-
-
-
-
-      this.setState({gas:k});
-      $("#tjF").hide();
-      $("#pfF").show();
-      $("#ckff").hide();
-      $("#bodyTable").hide();
-      $("#bodyTable1").hide();
-      $("#bodyTable2").hide();
-
-      if(s=='c1'){
-        $("#noCoTable").show();
-        $("#noCoTable1").hide();
-        this.setState({discharge:s});
-        this.setState({ loading: true});
-        this.queryHdNO2();
-        this.queryRzNO2();
-        this.queryYzNO2();
-
-
-      }else{
-        $("#noCoTable").hide();
-        $("#noCoTable1").show();
-        this.setState({discharge:s});
-        this.setState({ loading: true});
-        this.queryHdCH4();
-        this.queryRzCH4();
-        this.queryYdYzCH4();
-        this.queryYdYzN();
-
-      }
-
-
-    }
-
-
-
-
-
-  }
 
 
   //非co2cH4 2.4 n2o排放因子
@@ -2470,10 +2360,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-CH4-2.4 移动源N2O排放因子
-  queryYdYzN(){
+  queryYdYzN(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/mobileSourceCH4AndN2OEmissions/mobileSourceN2OEmissionFactor/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -2487,13 +2377,13 @@ class EditableTable extends React.Component {
           const _Data = []
 
           _Data.push('');;//航空 *******
-          _Data.push(Alldata.domesticFlight);//国内航班
-          _Data.push(Alldata.hongKongAndMacaoFlights);//港澳地区航班
-          _Data.push(Alldata.internationalFlights); //国际航班
+          _Data.push(Alldata.tDomesticFlights);//国内航班
+          _Data.push(Alldata.tHongKongAndMacaoFlights);//港澳地区航班
+          _Data.push(Alldata.tInternationalFlights); //国际航班
           _Data.push(Alldata.highway);//公路
           _Data.push(Alldata.railway);//铁路
           _Data.push('');//水运 ******
-          _Data.push(Alldata.riverInternalCombustionEngine);//内河近海内燃机
+          _Data.push(Alldata.inlandRiverInternalCombustionEngine);//内河近海内燃机
           _Data.push(Alldata.internationalOceanInternalCombustionEngine);//国际远洋内燃机
 
 
@@ -2647,13 +2537,13 @@ class EditableTable extends React.Component {
 
     const Directory = [
       'aviation',
-      'domesticFlight',
-      'hongKongAndMacaoFlights',
-      'internationalFlights',
+      'tDomesticFlights',
+      'tHongKongAndMacaoFlights',
+      'tInternationalFlights',
       'highway',
       'railway',
       'waterTransport',
-      'riverInternalCombustionEngine',
+      'inlandRiverInternalCombustionEngine',
       'internationalOceanInternalCombustionEngine',
 
 
@@ -2668,7 +2558,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -2701,10 +2591,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-CH4-2.3 移动源CH4排放因子
-  queryYdYzCH4(){
+  queryYdYzCH4(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/mobileSourceCH4AndN2OEmissions/mobileSourceCH4EmissionFactor/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -2718,13 +2608,13 @@ class EditableTable extends React.Component {
           const _Data = []
 
           _Data.push('');;//航空 *******
-          _Data.push(Alldata.domesticFlight);//国内航班
-          _Data.push(Alldata.hongKongAndMacaoFlights);//港澳地区航班
-          _Data.push(Alldata.internationalFlights); //国际航班
+          _Data.push(Alldata.tDomesticFlights);//国内航班
+          _Data.push(Alldata.tHongKongAndMacaoFlights);//港澳地区航班
+          _Data.push(Alldata.tInternationalFlights); //国际航班
           _Data.push(Alldata.highway);//公路
           _Data.push(Alldata.railway);//铁路
           _Data.push('');//水运 ******
-          _Data.push(Alldata.riverInternalCombustionEngine);//内河近海内燃机
+          _Data.push(Alldata.inlandRiverInternalCombustionEngine);//内河近海内燃机
           _Data.push(Alldata.internationalOceanInternalCombustionEngine);//国际远洋内燃机
 
 
@@ -2878,13 +2768,13 @@ class EditableTable extends React.Component {
 
     const Directory = [
       'aviation',
-      'domesticFlight',
-      'hongKongAndMacaoFlights',
-      'internationalFlights',
+      'tDomesticFlights',
+      'tHongKongAndMacaoFlights',
+      'tInternationalFlights',
       'highway',
       'railway',
       'waterTransport',
-      'riverInternalCombustionEngine',
+      'inlandRiverInternalCombustionEngine',
       'internationalOceanInternalCombustionEngine',
 
 
@@ -2899,7 +2789,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -2932,10 +2822,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-CH4-2.2平均低位热值
-  queryRzCH4(){
+  queryRzCH4(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/mobileSourceCH4AndN2OEmissions/averageLowCalorificValue/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -2949,13 +2839,13 @@ class EditableTable extends React.Component {
           const _Data = []
 
           _Data.push('');;//航空 *******
-          _Data.push(Alldata.domesticFlight);//国内航班
-          _Data.push(Alldata.hongKongAndMacaoFlights);//港澳地区航班
-          _Data.push(Alldata.internationalFlights); //国际航班
+          _Data.push(Alldata.tDomesticFlights);//国内航班
+          _Data.push(Alldata.tHongKongAndMacaoFlights);//港澳地区航班
+          _Data.push(Alldata.tInternationalFlights); //国际航班
           _Data.push(Alldata.highway);//公路
           _Data.push(Alldata.railway);//铁路
           _Data.push('');//水运 ******
-          _Data.push(Alldata.riverInternalCombustionEngine);//内河近海内燃机
+          _Data.push(Alldata.inlandRiverInternalCombustionEngine);//内河近海内燃机
           _Data.push(Alldata.internationalOceanInternalCombustionEngine);//国际远洋内燃机
 
 
@@ -3109,13 +2999,13 @@ class EditableTable extends React.Component {
 
     const Directory = [
       'aviation',
-      'domesticFlight',
-      'hongKongAndMacaoFlights',
-      'internationalFlights',
+      'tDomesticFlights',
+      'tHongKongAndMacaoFlights',
+      'tInternationalFlights',
       'highway',
       'railway',
       'waterTransport',
-      'riverInternalCombustionEngine',
+      'inlandRiverInternalCombustionEngine',
       'internationalOceanInternalCombustionEngine',
 
 
@@ -3130,7 +3020,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3163,10 +3053,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-CH4-2.1活动水平数据
-  queryHdCH4(){
+  queryHdCH4(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/mobileSourceCH4AndN2OEmissions/activityLevelData/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -3180,13 +3070,13 @@ class EditableTable extends React.Component {
           const _Data = []
 
           _Data.push('');;//航空 *******
-          _Data.push(Alldata.domesticFlight);//国内航班
-          _Data.push(Alldata.hongKongAndMacaoFlights);//港澳地区航班
-          _Data.push(Alldata.internationalFlights); //国际航班
+          _Data.push(Alldata.tDomesticFlights);//国内航班
+          _Data.push(Alldata.tHongKongAndMacaoFlights);//港澳地区航班
+          _Data.push(Alldata.tInternationalFlights); //国际航班
           _Data.push(Alldata.highway);//公路
           _Data.push(Alldata.railway);//铁路
           _Data.push('');//水运 ******
-          _Data.push(Alldata.riverInternalCombustionEngine);//内河近海内燃机
+          _Data.push(Alldata.inlandRiverInternalCombustionEngine);//内河近海内燃机
           _Data.push(Alldata.internationalOceanInternalCombustionEngine);//国际远洋内燃机
 
 
@@ -3339,13 +3229,13 @@ class EditableTable extends React.Component {
 
     const Directory = [
       'aviation',
-      'domesticFlight',
-      'hongKongAndMacaoFlights',
-      'internationalFlights',
+      'tDomesticFlights',
+      'tHongKongAndMacaoFlights',
+      'tInternationalFlights',
       'highway',
       'railway',
       'waterTransport',
-      'riverInternalCombustionEngine',
+      'inlandRiverInternalCombustionEngine',
       'internationalOceanInternalCombustionEngine',
 
 
@@ -3360,7 +3250,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3386,10 +3276,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-NO2-1.3排放因子
-  queryYzNO2(){
+  queryYzNO2(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/N2OEmissioFromUtilityBoilers/emissionFactor/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -3502,7 +3392,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3525,10 +3415,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-NO2-1.2平均低位热值
-  queryRzNO2(){
+  queryRzNO2(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/N2OEmissioFromUtilityBoilers/averageLowCalorificValue/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -3792,7 +3682,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3845,10 +3735,10 @@ class EditableTable extends React.Component {
 
 
   //非co2排放量-NO2-1.1活动水平数据
-  queryHdNO2(){
+  queryHdNO2(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/nonco2/N2OEmissioFromUtilityBoilers/activityLevelData/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -4112,7 +4002,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -4166,10 +4056,10 @@ class EditableTable extends React.Component {
 
 
   //co2排放量-参考方法
-  queryMethod(){
+  queryMethod(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByRef/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -4486,7 +4376,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -4539,10 +4429,10 @@ class EditableTable extends React.Component {
 
 
   //co2排放量-非能源利用
-  queryCo2(){
+  queryCo2(years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/nonEnergyUseEmissions/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -4984,7 +4874,7 @@ class EditableTable extends React.Component {
 
 
     var obj={
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -5039,10 +4929,10 @@ class EditableTable extends React.Component {
 
 
   //1.1
-  query(para){
+  query(para,years){
 
     post('/activityLevelDataEntry/energyActivity//totalFossilFuels/co2/statisticalByDept/energyProductionAndProcessingConversion/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -5052,7 +4942,9 @@ class EditableTable extends React.Component {
 
           var Alldata =res.data;
 
+
           const _Data = []
+
 
           _Data.push(Alldata.cEPowerGenerationBoilers);//1.1.1.1发电锅炉
           _Data.push(Alldata.cEIndustrialBoilers); //1.1.1.2工业锅炉
@@ -5067,9 +4959,18 @@ class EditableTable extends React.Component {
           _Data.push(Alldata.sFOtherEquipment);//1.1.3.3其他设备
 
 
+          var _A = []
+
+          for(var i = 0 ;i<Alldata.sFPowerGenerationBoilers.length;i++){
+            _A.push(Alldata.sFPowerGenerationBoilers.anthracite+Alldata.sFIndustrialBoilers.anthracite+Alldata.sFOtherEquipment.anthracite)
+            _A.push(Alldata.sFPowerGenerationBoilers.asphalt+Alldata.sFIndustrialBoilers.asphalt+Alldata.sFOtherEquipment.asphalt)
+            _A.push(Alldata.sFPowerGenerationBoilers.bituminouscoal+Alldata.sFIndustrialBoilers.bituminouscoal+Alldata.sFOtherEquipment.bituminouscoal)
+            _A.push(Alldata.sFPowerGenerationBoilers.blastfurnacegas+Alldata.sFIndustrialBoilers.blastfurnacegas+Alldata.sFOtherEquipment.blastfurnacegas)
+          }
+
           this.setState({Data1:Alldata});
 
-          console.log(this.state.Data1);
+
 
           const fossilTitle = [
 
@@ -5146,7 +5047,7 @@ class EditableTable extends React.Component {
 
           for(var i = 0 ;i<14;i++){
 
-            if(i==0 || i==1 || i==2 || i==6 || i==10){
+            if(i==0 || i==1 || i==2 || i==6 ){
               data.push({
                 key: i,
                 name:fossilTitle[i],
@@ -5184,6 +5085,47 @@ class EditableTable extends React.Component {
                 washthecleancoal: '0',
 
               });
+            }else if(i==10){
+
+              data.push({
+                key: i,
+                name:fossilTitle[i],
+                anthracite: '0',
+                asphalt: '0',
+                bituminouscoal: '0',
+                blastfurnacegas: '0',
+
+                briquette: '0',
+                catelogId: '0',
+                coalgangue: '0',
+                coke: '0',
+                cokeovengas: '0',
+                crudeoil: '0',
+                diesel: '0',
+                fueloil: '0',
+                gasoline: '0',
+                kerosene: '0',
+                lignite: '0',
+                liquefiedpetroleumgas: '0',
+                liquifiednaturalgas: '0',
+                lubricatingoil: '0',
+                naphtha: '0',
+                naturalgas: '0',
+                oilcoke: '0',
+                onvertergas: '0',
+                other: '0',
+                othercoalwashing: '0',
+                othercokingproducts: '0',
+                othergas: '0',
+                otherpetroleumproducts: '0',
+                paraffin: '0',
+                refinerydrygas: '0',
+                solventoil: '0',
+                tffId: '0',
+                washthecleancoal: '0',
+
+              });
+
             }else if(i>6 && i<10) {
 
               var j = 4
@@ -5320,7 +5262,7 @@ class EditableTable extends React.Component {
 
 
 
-          this.query2(data,para);
+          this.query2(data,para,years);
 
         } else {
           message.error('数据错误！');
@@ -5329,10 +5271,10 @@ class EditableTable extends React.Component {
   }
 
   //1.2
-  query2(data,para){
+  query2(data,para,years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/industryAndConstruction/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -5826,7 +5768,7 @@ class EditableTable extends React.Component {
 
 
 
-          this.query3(_a,para);
+          this.query3(_a,para,years);
 
         } else {
           message.error('数据错误！');
@@ -5835,10 +5777,10 @@ class EditableTable extends React.Component {
   }
 
   //1.3
-  query3(data,para){
+  query3(data,para,years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/transportation/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -6022,7 +5964,7 @@ class EditableTable extends React.Component {
 
 
 
-          this.query4(_a,para);
+          this.query4(_a,para,years);
 
         } else {
           message.error('数据错误！');
@@ -6031,10 +5973,10 @@ class EditableTable extends React.Component {
   }
 
   //1.4
-  query4(data,para){
+  query4(data,para,years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/servicesAndOthers/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -6118,7 +6060,7 @@ class EditableTable extends React.Component {
 
           this.setState({Data4:Alldata})
 
-          this.query5(_a,para);
+          this.query5(_a,para,years);
 
         } else {
           message.error('数据错误！');
@@ -6127,10 +6069,10 @@ class EditableTable extends React.Component {
   }
 
   //1.5
-  query5(data,para){
+  query5(data,para,years){
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/residentsLiving/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -6214,7 +6156,7 @@ class EditableTable extends React.Component {
 
           this.setState({Data5:Alldata})
 
-          this.query6(_a,para);
+          this.query6(_a,para,years);
 
         } else {
           message.error('数据错误！');
@@ -6223,11 +6165,11 @@ class EditableTable extends React.Component {
   }
 
   //1.6
-  query6(data,para){
+  query6(data,para,years){
 
 
     post('/activityLevelDataEntry/energyActivity/totalFossilFuels/co2/statisticalByDept/agricultureForestryAnimalHusbandryAndFishery/list', {
-      year:'2017',
+      year:years,
       para:para
 
     })
@@ -6576,7 +6518,7 @@ class EditableTable extends React.Component {
 
     var obj={
       "para":this.state.breed,
-      "year":"2017"
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -6630,7 +6572,122 @@ class EditableTable extends React.Component {
 
 
 
+  //参数选择
+  selesctYears(years,i,j,k,s){
 
+
+
+    this.setState({ loading: true});
+    this.setState({years:years});
+
+    if(k=='a1'){
+      this.setState({gas:k});
+
+      $("#tjF").show();
+      $("#pfF").hide();
+      $("#ckff").show();
+      $("#noCoTable").hide();
+      $("#noCoTable1").hide();
+
+
+      if(j=='b1'|| j=='b2' || j=='b3'){
+        if(j=='b1'){
+
+          if(i==0){
+            this.setState({cs:'活动水平数据'});
+            this.setState({csZs:''});
+          }else if(i==1){
+            this.setState({cs:'平均低位热值'});
+            this.setState({csZs:''});
+          }else if(i==2){
+            this.setState({cs:'单位热值含碳量'});
+            this.setState({csZs:''});
+          }else if(i==3){
+            this.setState({cs:'碳氧化率'});
+            this.setState({csZs:'（若某燃料固碳率98%，在此表的数就填98%或0.98）'});
+          }
+
+
+
+          this.setState({statistics:j});
+          this.query(i,years)
+          $("#ckff").show();
+          $("#bodyTable").show();
+          $("#bodyTable1").hide();
+          $("#bodyTable2").hide();
+          this.setState({breed:i});
+
+
+        }else if(j=='b2'){
+
+
+          this.setState({statistics:j});
+          $("#ckff").hide();
+          $("#bodyTable").hide();
+          $("#bodyTable1").show();
+          $("#bodyTable2").hide();
+
+          this.queryCo2(years)
+
+        }else {
+          this.setState({statistics:j});
+
+          $("#ckff").hide();
+          $("#bodyTable").hide();
+          $("#bodyTable1").hide();
+          $("#bodyTable2").show();
+
+          this.queryMethod(years)
+        }
+
+      }
+
+
+    }else{
+
+
+
+
+      this.setState({gas:k});
+      $("#tjF").hide();
+      $("#pfF").show();
+      $("#ckff").hide();
+      $("#bodyTable").hide();
+      $("#bodyTable1").hide();
+      $("#bodyTable2").hide();
+
+
+      if(s=='c1'){
+
+        $("#noCoTable").show();
+        $("#noCoTable1").hide();
+        this.setState({discharge:s});
+
+        this.queryHdNO2(years);
+        this.queryRzNO2(years);
+        this.queryYzNO2(years);
+
+
+      }else{
+        $("#noCoTable").hide();
+        $("#noCoTable1").show();
+        this.setState({discharge:s});
+
+        this.queryHdCH4(years);
+        this.queryRzCH4(years);
+        this.queryYdYzCH4(years);
+        this.queryYdYzN(years);
+
+      }
+
+
+    }
+
+
+
+
+
+  }
 
   render() {
 
@@ -6755,45 +6812,45 @@ class EditableTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005',this.state.breed,this.state.statistics,this.state.gas,this.state.discharge)}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010',this.state.breed,this.state.statistics,this.state.gas,this.state.discharge)}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012',this.state.breed,this.state.statistics,this.state.gas,this.state.discharge)}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014',this.state.breed,this.state.statistics,this.state.gas,this.state.discharge)}}>2014</li>
             </ul>
           </div>
 
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>气体分类:</span>
             <ul>
-              <li id="li5" className={'a1'==this.state.gas?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b1','a1')}}>CO2排放量</li>
-              <li id="li6" className={'a2'==this.state.gas?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b1','a2','c1')}}>非CO2排放量</li>
+              <li id="li5" className={'a1'==this.state.gas?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,this.state.statistics,'a1',this.state.discharge)}}>CO2排放量</li>
+              <li id="li6" className={'a2'==this.state.gas?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,this.state.statistics,'a2',this.state.discharge)}}>非CO2排放量</li>
             </ul>
           </div>
 
           <div className={styles.targetChoose} id="tjF">
             <span className={styles.selectH1}>统计方法:</span>
             <ul>
-              <li id="li7" className={'b1'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b1','a1')}}>部门方法</li>
-              <li id="li8" style={{width:150}} className={'b2'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b2','a1')}}>非能源利用排放量</li>
-              <li id="li8" className={'b3'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b3','a1')}}>参考方法</li>
+              <li id="li7" className={'b1'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,'b1',this.state.gas,this.state.discharge)}}>部门方法</li>
+              <li id="li8" style={{width:150}} className={'b2'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,'b2',this.state.gas,this.state.discharge)}}>非能源利用排放量</li>
+              <li id="li8" className={'b3'==this.state.statistics?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,'b3',this.state.gas,this.state.discharge)}}>参考方法</li>
             </ul>
           </div>
 
           <div className={styles.targetChoose}  style={{display:'none'}} id="pfF" >
             <span className={styles.selectH1}>排放分类:</span>
             <ul>
-              <li id="li7" style={{width:150}} className={'c1'==this.state.discharge?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b1','a2','c1')}}>电站锅炉N2O排放</li>
-              <li id="li8" style={{width:150}} className={'c2'==this.state.discharge?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('0','b2','a2','c2')}}>移动源CH4和N2O排放</li>
+              <li id="li7" style={{width:150}} className={'c1'==this.state.discharge?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,this.state.statistics,this.state.gas,'c1')}}>电站锅炉N2O排放</li>
+              <li id="li8" style={{width:150}} className={'c2'==this.state.discharge?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,this.state.breed,this.state.statistics,this.state.gas,'c2')}}>移动源CH4和N2O排放</li>
             </ul>
           </div>
 
           <div className={styles.targetChoose} id="ckff">
             <span className={styles.selectH1}>参&#x3000;&#x3000;数:</span>
             <ul>
-              <li id="li9" className={'0'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears('0','b1','a1')}}>活动水平数据</li>
-              <li id="li10" className={'1'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears('1','b1','a1')}}>平均低位热值</li>
-              <li id="li11" className={'2'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears('2','b1','a1')}}>单位热值含碳量</li>
-              <li id="li12" className={'3'==this.state.breed?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('3','b1','a1')}}>碳氧化率</li>
+              <li id="li9" className={'0'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears(this.state.years,'0',this.state.statistics,this.state.gas,this.state.discharge)}}>活动水平数据</li>
+              <li id="li10" className={'1'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears(this.state.years,'1',this.state.statistics,this.state.gas,this.state.discharge)}}>平均低位热值</li>
+              <li id="li11" className={'2'==this.state.breed?styles.li_focus:styles.eee}  onClick={()=>{this.selesctYears(this.state.years,'2',this.state.statistics,this.state.gas,this.state.discharge)}}>单位热值含碳量</li>
+              <li id="li12" className={'3'==this.state.breed?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.years,'3',this.state.statistics,this.state.gas,this.state.discharge)}}>碳氧化率</li>
             </ul>
             <span className={styles.selectH2}>(分部门分能源品种)</span>
           </div>

@@ -419,10 +419,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -516,13 +517,11 @@ class ElectricTable extends React.Component {
   }
 
   //秸秆
-  queryGut(){
-
-
+  queryGut(years){
 
 
     post('/activityLevelDataEntry/agricultureActivity/list', {
-      year:'2017',
+      year:years,
 
     })
       .then((res) => {
@@ -787,6 +786,13 @@ class ElectricTable extends React.Component {
 
   }
 
+  //年份选择
+  selesctYears(years){
+
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(years)
+  }
 
 
 
@@ -825,10 +831,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
