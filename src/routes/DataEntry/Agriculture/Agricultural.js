@@ -253,7 +253,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -272,7 +272,7 @@ class ElectricTable extends React.Component {
           render: (text, record, index) => this.renderColumns(this.state.data, index, 'totalNitrogenInput', text),
         }],
       }, {
-        title: '直接排放因子(千克N2O-N/千克氮输入量)', dataIndex: 'directEmissionFactor', width: 250,
+        title: '直接排放因子(千克N2O-N/千克氮输入量)', dataIndex: 'directEmissionFactor', width: 200,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'directEmissionFactor', text),
       }, {
         title: '氧化亚氮直接排放量(吨氮)', dataIndex: 'directEmissionsOfNitrousOxide', width: 200,
@@ -316,7 +316,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -441,7 +440,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text),},
 
       {
@@ -492,7 +490,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'name', text),},
 
       {
@@ -826,10 +824,10 @@ class ElectricTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　单季稻',
-            '　　双季早稻',
-            '　　双季晚稻',
-            '　　小计',
+            '单季稻',
+            '双季早稻',
+            '双季晚稻',
+            '小计',
 
 
           ]
@@ -1143,7 +1141,7 @@ class ElectricTable extends React.Component {
           this.queryAgricultural(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1190,7 +1188,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
           this.queryAgricultural(this.state.years)
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1238,7 +1236,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
           this.queryAgricultural(this.state.years)
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1332,7 +1330,7 @@ class ElectricTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -1348,7 +1346,7 @@ class ElectricTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -1364,7 +1362,7 @@ class ElectricTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -1379,7 +1377,7 @@ class ElectricTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

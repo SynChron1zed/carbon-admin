@@ -39,13 +39,19 @@ import Theforest from './routes/DataEntry/Land/Theforest';
 import Gasanalysis from './routes/Charts/Gasanalysis';
 import Gasoverview from './routes/Charts/Gasoverview';
 import Gasother from './routes/Charts/Gasother';
+import DataUpdate from './routes/Charts/DataUpdate';
 
+
+import Login from './routes/Login/Login';
+
+import Help from './routes/System/Help';
 
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <Route path="indexpage" component={IndexPage} />
+      <Route path="/login" component={Login} />
       <Route path="/" component={Layouty}>
         <Route path="system" component={System} />
 
@@ -93,6 +99,10 @@ function RouterConfig({ history }) {
         <Route path="gq1gasanalysis" component={Gasanalysis} />
         <Route path="gq2gasoverview" component={Gasoverview} />
         <Route path="gq3gasother" component={Gasother} />
+        <Route path="gq4dataupdater" component={DataUpdate} />
+
+
+        <Route path="kq1help" component={Help} />
 
       </Route>
     </Router>

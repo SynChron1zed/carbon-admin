@@ -82,7 +82,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -98,7 +98,7 @@ class ElectricTable extends React.Component {
       {
         title: '存栏量',
         children: [{
-          title: '规模化饲养(头／只)', dataIndex: 'sVscaleFeeding', width: 150,
+          title: '规模化饲养(头、只)', dataIndex: 'sVscaleFeeding', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'sVscaleFeeding', text),
             props: {},
@@ -123,7 +123,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         }, {
-          title: '农户饲养(头／只)', dataIndex: 'sVfarmerKeeping', width: 150,
+          title: '农户饲养(头、只)', dataIndex: 'sVfarmerKeeping', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'sVfarmerKeeping', text),
             props: {},
@@ -148,7 +148,7 @@ class ElectricTable extends React.Component {
             return obj},
         }
           , {
-            title: '放牧饲养(头／只)', dataIndex: 'sVgrazing', width: 150,
+            title: '放牧饲养(头、只)', dataIndex: 'sVgrazing', width: 120,
             render: (text, record, index) => {  const obj = {
               children:this.renderColumns(this.state.data, index, 'sVgrazing', text),
               props: {},
@@ -175,7 +175,7 @@ class ElectricTable extends React.Component {
       }, {
         title: '动物肠道发酵CH4排放因子',
         children: [{
-          title: '规模化饲养(kg／头／年)', dataIndex: 'scaleFeeding', width: 150,
+          title: '规模化饲养(kg／头／年)', dataIndex: 'scaleFeeding', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'scaleFeeding', text),
             props: {},
@@ -198,7 +198,7 @@ class ElectricTable extends React.Component {
             }
             return obj},
         }, {
-          title: '农户饲养(kg／头／年)', dataIndex: 'farmerKeeping', width: 150,
+          title: '农户饲养(kg／头／年)', dataIndex: 'farmerKeeping', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'farmerKeeping', text),
             props: {},
@@ -222,7 +222,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         }, {
-          title: '放牧饲养(kg／头／年)', dataIndex: 'grazing', width: 150,
+          title: '放牧饲养(kg／头／年)', dataIndex: 'grazing', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'grazing', text),
             props: {},
@@ -249,7 +249,7 @@ class ElectricTable extends React.Component {
       },{
         title: '甲烷排放量',
         children: [{
-          title: '规模化饲养(吨)', dataIndex: 'scaleFeeding1', width: 150,
+          title: '规模化饲养(吨)', dataIndex: 'scaleFeeding1', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'scaleFeeding1', text),
             props: {},
@@ -272,7 +272,7 @@ class ElectricTable extends React.Component {
             }
             return obj},
         }, {
-          title: '农户饲养(吨)', dataIndex: 'farmerKeeping1', width: 150,
+          title: '农户饲养(吨)', dataIndex: 'farmerKeeping1', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'farmerKeeping1', text),
             props: {},
@@ -295,7 +295,7 @@ class ElectricTable extends React.Component {
             }
             return obj},
         }, {
-          title: '放牧饲养(吨)', dataIndex: 'grazing1', width: 150,
+          title: '放牧饲养(吨)', dataIndex: 'grazing1', width: 120,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns(this.state.data, index, 'grazing1', text),
             props: {},
@@ -320,7 +320,7 @@ class ElectricTable extends React.Component {
             return obj},
         }],
       }, {
-        title: '甲烷排放小计(吨)', dataIndex: 'Total', width: 200,
+        title: '甲烷排放小计(吨)', dataIndex: 'Total', width: 120,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'Total', text),
           props: {},
@@ -477,6 +477,7 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
+
           const _Data = []
 
           _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.cows);
@@ -496,16 +497,16 @@ class ElectricTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　奶牛',
-            '　　非奶牛',
-            '　　水牛',
-            '　　绵羊',
-            '　　山羊',
-            '　　猪',
-            '　　马',
-            '　　驴/骡',
-            '　　骆驼',
-            '　　动物肠道甲烷排放总计',
+            '奶牛',
+            '非奶牛',
+            '水牛',
+            '绵羊',
+            '山羊',
+            '猪',
+            '马',
+            '驴/骡',
+            '骆驼',
+            '动物肠道甲烷排放总计',
 
 
           ]
@@ -530,14 +531,14 @@ class ElectricTable extends React.Component {
                 scaleFeeding: _Data[i].scaleFeeding,
                 farmerKeeping: _Data[i].farmerKeeping,
                 grazing: _Data[i].grazing,
-                scaleFeeding1: (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding).toFixed(2),
-                farmerKeeping1: (_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping).toFixed(2),
-                grazing1: (_Data[i].sVgrazing*_Data[i].grazing).toFixed(2),
-                Total:((_Data[i].sVscaleFeeding*_Data[i].scaleFeeding)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping)+(_Data[i].sVgrazing*_Data[i].grazing)).toFixed(2)
+                scaleFeeding1: (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding/1000).toFixed(2),
+                farmerKeeping1: (_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping/1000).toFixed(2),
+                grazing1: (_Data[i].sVgrazing*_Data[i].grazing/10000).toFixed(2),
+                Total:((_Data[i].sVscaleFeeding*_Data[i].scaleFeeding/10000)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping/10000)+(_Data[i].sVgrazing*_Data[i].grazing/10000)).toFixed(2)
 
               });
 
-            _Total += (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping)+(_Data[i].sVgrazing*_Data[i].grazing)
+            _Total += (_Data[i].sVscaleFeeding*_Data[i].scaleFeeding/10000)+(_Data[i].sVfarmerKeeping*_Data[i].farmerKeeping/10000)+(_Data[i].sVgrazing*_Data[i].grazing/10000)
 
 
           }
@@ -689,7 +690,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -751,7 +752,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 

@@ -83,7 +83,7 @@ class EditableTable extends React.Component {
       title: 'operation',
       dataIndex: 'operation',
       render: (text, record, index) => {
-        debugger;
+
         const { editable } = this.state.data[index].name;
         return (
           <div className="editable-row-operations">
@@ -135,7 +135,7 @@ class EditableTable extends React.Component {
     };
   }
   renderColumns(data, index, key, text) {
-    debugger;
+
 
     const { editable, status } = data[index][key];
     if (typeof editable === 'undefined') {
@@ -201,7 +201,7 @@ class EditableTable extends React.Component {
     });
   }
   render() {
-    debugger;
+
     const { data } = this.state;
     const dataSource = data.map((item) => {
       const obj = {};

@@ -368,7 +368,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -382,7 +382,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -416,7 +416,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text),},
 
       {
@@ -442,7 +441,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'name', text),
           props: {},
@@ -463,7 +462,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '蓄积量年均变化量(（不确定性%）', dataIndex: 'volumeOfAnnualChangeInVolume', width: 100,
+        title: '蓄积量年均变化量(不确定性%）', dataIndex: 'volumeOfAnnualChangeInVolume', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'volumeOfAnnualChangeInVolume', text),
           props: {},
@@ -477,7 +476,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -490,8 +489,7 @@ class ElectricTable extends React.Component {
 
               {
 
-                index == 3
-                  ? <span></span> :
+
                   editable ?
                     <span>
                   <a onClick={() => this.editDone2(index, 'save')}>确认</a>
@@ -516,7 +514,7 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         children: [{
-          title: '', dataIndex: 'name', width: 100, colSpan:1,
+          title: '', dataIndex: 'name', width: 100,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns3(this.state.data3, index,'name', text),
             props: {},
@@ -592,8 +590,7 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                index == 3
-                  ? <span></span> :
+
                   editable ?
                     <span>
                   <a onClick={() => this.editDone3(index, 'save')}>确认</a>
@@ -617,7 +614,7 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         children: [{
-          title: '', dataIndex: 'name', width: 100, colSpan:1,
+          title: '', dataIndex: 'name', width: 100,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns4(this.state.data4, index,'name', text),
             props: {},
@@ -648,7 +645,7 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         children: [{
-          title: '', dataIndex: 'name', width: 100, colSpan:1,
+          title: '', dataIndex: 'name', width: 100,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns5(this.state.data5, index,'name', text),
             props: {},
@@ -661,7 +658,7 @@ class ElectricTable extends React.Component {
       {
         title: '生物量碳储量变化 ',
         children: [{
-          title: '（不确定性%）', dataIndex: 'p1', width: 200, colSpan:1,
+          title: '（不确定性%）', dataIndex: 'p1', width: 200,colSpan:1,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns5(this.state.data5, index, 'p1', text),
             props: {},
@@ -674,7 +671,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -683,8 +680,7 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                index == 3
-                  ? <span></span> :
+
                   editable ?
                     <span>
                   <a onClick={() => this.editDone5(index, 'save')}>确认</a>
@@ -725,7 +721,7 @@ class ElectricTable extends React.Component {
 
       AllData:[],
       years:'2014',
-      newYears:'2014',
+
     };
 
     this.queryScatteredwood('2014');
@@ -1158,9 +1154,9 @@ class ElectricTable extends React.Component {
           var Alldata = res.data;
 
 
-          const _Data = []
-          const _Data1 = []
-          const _Data2 = []
+          const _Data = []  //活动水平
+          const _Data1 = []  //排放因子
+          const _Data2 = []  //排放量计算
 
           _Data.push(Alldata.scatteredWoodSurroundedByTreesSparseForestActivityLevel.SWSBTSFAL_scatteredWood);//
           _Data.push(Alldata.scatteredWoodSurroundedByTreesSparseForestActivityLevel.SWSBTSFAL_fourTreesAround);//
@@ -1178,12 +1174,13 @@ class ElectricTable extends React.Component {
 
 
 
+
           const fossilTitle = [
 
 
-            '　　散生木',
-            '　　四旁树',
-            '　　疏林',
+            '散生木',
+            '四旁树',
+            '疏林',
 
 
 
@@ -1218,7 +1215,7 @@ class ElectricTable extends React.Component {
               key: _Data2.length,
               name: {
 
-                value: '　　　　合计或平局',
+                value: '合计或平局',
               },
               p1: {
                 editable: false,
@@ -1275,10 +1272,10 @@ class ElectricTable extends React.Component {
 
               });
 
-            _basicWoodDensitySVD += _Data1[i].basicWoodDensitySVD;
-            _biomassExpansionFactorBEF += _Data1[i].biomassExpansionFactorBEF;
-            _rhizomeRatioRSR += _Data1[i].rhizomeRatioRSR;
-            _biomassCarbonContentCF += _Data1[i].biomassCarbonContentCF;
+            _basicWoodDensitySVD = _Data1[2].basicWoodDensitySVD;
+            _biomassExpansionFactorBEF = _Data1[2].biomassExpansionFactorBEF;
+            _rhizomeRatioRSR = _Data1[2].rhizomeRatioRSR;
+            _biomassCarbonContentCF = _Data1[2].biomassCarbonContentCF;
 
 
           }
@@ -1318,7 +1315,7 @@ class ElectricTable extends React.Component {
               key: _a.length,
               name: {
 
-                value: '　　合计或平局',
+                value: '合计或平局',
               },
               volume: {
                 editable: false,
@@ -1376,7 +1373,7 @@ class ElectricTable extends React.Component {
               key:_a1.length,
               name:{
 
-                value:'　　合计或平局' ,
+                value:'合计或平局' ,
               },
               basicWoodDensitySVD:{
                 editable: false,
@@ -1417,11 +1414,11 @@ class ElectricTable extends React.Component {
 
 
   //不确定性
-  newQueryScatteredwood(newYears){
+  newQueryScatteredwood(years){
 
 
     post('/uncertainty/landUseChangeAndForestry/list', {
-      year:newYears,
+      year:years,
 
     })
       .then((res) => {
@@ -1431,18 +1428,21 @@ class ElectricTable extends React.Component {
           var Alldata = res.data;
 
 
-          const _Data = []
-          const _Data1 = []
-          const _Data5 = []
+          const _Data = []  //活动水平不确定性
+          const _Data1 = []  //排放因子不确定性
+          const _Data5 = []  //不确定性计算
+
+
 
 
 
           const fossilTitle = [
 
 
-            '　　散生木',
-            '　　四旁树',
-            '　　疏林',
+            '散生木',
+            '四旁树',
+            '疏林',
+            '合计或平均',
 
 
           ]
@@ -1451,15 +1451,18 @@ class ElectricTable extends React.Component {
           _Data.push(Alldata.SWSBTSFAL_scatteredWood);//
           _Data.push(Alldata.SWSBTSFAL_fourTreesAround);//
           _Data.push(Alldata.SWSBTSFAL_sparseForest);//
+          _Data.push(Alldata.SWSBTSFAL_total);//
 
 
           _Data1.push(Alldata.SWSBTSFEF_scatteredWood);//
           _Data1.push(Alldata.SWSBTSFEF_fourTreesAround);//
           _Data1.push(Alldata.SWSBTSFEF_sparseForest);//
+          _Data1.push(Alldata.SWSBTSFEF_total);//
 
           _Data5.push(Alldata.SWSBTSFE_scatteredWood);//
           _Data5.push(Alldata.SWSBTSFE_fourTreesAround);//
           _Data5.push(Alldata.SWSBTSFE_sparseForest);//
+          _Data5.push(Alldata.SWSBTSFE_total);//
 
 
 
@@ -1487,20 +1490,7 @@ class ElectricTable extends React.Component {
             )
           }
 
-          _b5.push({
-              key: _Data5.length,
-              name: {
 
-                value: '合计或平局',
-              },
-            p1: {
-                editable: false,
-                value: _Data5[0].changesInBiomassCarbonStocks+_Data5[1].changesInBiomassCarbonStocks+_Data5[2].changesInBiomassCarbonStocks,
-              },
-
-
-            }
-          )
 
 
 
@@ -1510,7 +1500,7 @@ class ElectricTable extends React.Component {
           var _volume = 0;
           var _volumeOfAnnualChangeInVolume = 0;
 
-          for (var i = 0; i < 3; i++) {
+          for (var i = 0; i < 4; i++) {
 
 
             _a.push({
@@ -1522,8 +1512,6 @@ class ElectricTable extends React.Component {
 
             });
 
-            _volume += _Data[i].volume;
-            _volumeOfAnnualChangeInVolume += _Data[i].volumeOfAnnualChangeInVolume;
 
           }
 
@@ -1535,7 +1523,7 @@ class ElectricTable extends React.Component {
           var _rhizomeRatioRSR = 0;
           var _biomassCarbonContentCF = 0;
 
-          for (var i = 0; i < 3; i++) {
+          for (var i = 0; i < 4; i++) {
 
 
 
@@ -1549,10 +1537,6 @@ class ElectricTable extends React.Component {
 
             });
 
-            _basicWoodDensitySVD += _Data1[i].basicWoodDensitySVD;
-            _biomassExpansionFactorBEF += _Data1[i].biomassExpansionFactorBEF;
-            _rhizomeRatioRSR += _Data1[i].rhizomeRatioRSR;
-            _biomassCarbonContentCF += _Data1[i].biomassCarbonContentCF;
 
 
           }
@@ -1588,24 +1572,6 @@ class ElectricTable extends React.Component {
             )
           }
 
-          _b.push({
-              key: _a.length,
-              name: {
-
-                value: '合计或平局',
-              },
-              volume: {
-                editable: false,
-                value: _volume.toFixed(2),
-              },
-              volumeOfAnnualChangeInVolume: {
-                editable: false,
-                value: _volumeOfAnnualChangeInVolume.toFixed(2),
-              },
-
-
-            }
-          )
 
 
 
@@ -1647,32 +1613,7 @@ class ElectricTable extends React.Component {
             )
           }
 
-          _b1.push({
-              key:_a1.length,
-              name:{
 
-                value:'合计或平局' ,
-              },
-              basicWoodDensitySVD:{
-                editable: false,
-                value:_basicWoodDensitySVD.toFixed(2) ,
-              },
-              biomassExpansionFactorBEF: {
-                editable: false,
-                value:_biomassExpansionFactorBEF.toFixed(2) ,
-              },
-              rhizomeRatioRSR: {
-                editable: false,
-                value:_rhizomeRatioRSR.toFixed(2) ,
-              },
-              biomassCarbonContentCF: {
-                editable: false,
-                value:_biomassCarbonContentCF.toFixed(2) ,
-              },
-
-
-            }
-          )
 
 
 
@@ -1737,7 +1678,7 @@ class ElectricTable extends React.Component {
           this.queryScatteredwood(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1752,6 +1693,7 @@ class ElectricTable extends React.Component {
       'SWSBTSFAL_scatteredWood',
       'SWSBTSFAL_fourTreesAround',
       'SWSBTSFAL_sparseForest',
+      'SWSBTSFAL_total',
 
 
     ]
@@ -1764,7 +1706,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1781,10 +1723,10 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
-          this.newQueryScatteredwood(this.state.newYears)
+          this.newQueryScatteredwood(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1799,6 +1741,7 @@ class ElectricTable extends React.Component {
       'SWSBTSFEF_scatteredWood',
       'SWSBTSFEF_fourTreesAround',
       'SWSBTSFEF_sparseForest',
+      'SWSBTSFEF_total',
 
 
     ]
@@ -1811,7 +1754,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1830,10 +1773,10 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
-          this.newQueryScatteredwood(this.state.newYears)
+          this.newQueryScatteredwood(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1849,6 +1792,7 @@ class ElectricTable extends React.Component {
       'SWSBTSFE_scatteredWood',
       'SWSBTSFE_fourTreesAround',
       'SWSBTSFE_sparseForest',
+      'SWSBTSFE_total',
 
     ]
 
@@ -1860,7 +1804,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -1877,10 +1821,10 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
           message.success(res.message);
-          this.newQueryScatteredwood(this.state.newYears)
+          this.newQueryScatteredwood(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1986,7 +1930,7 @@ class ElectricTable extends React.Component {
           <p>活动水平</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small"   pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -1994,7 +1938,7 @@ class ElectricTable extends React.Component {
             <p>排放因子</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -2002,7 +1946,7 @@ class ElectricTable extends React.Component {
             <p>活动水平不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"   pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -2010,7 +1954,7 @@ class ElectricTable extends React.Component {
             <p>排放因子不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -2018,7 +1962,7 @@ class ElectricTable extends React.Component {
             <p>排放量计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -2026,7 +1970,7 @@ class ElectricTable extends React.Component {
             <p>不确定性计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

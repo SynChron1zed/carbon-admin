@@ -141,7 +141,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -224,10 +224,11 @@ class ElectricTable extends React.Component {
 
 
       AllData:[],
-      years:'2014'
+      years:'2014',
+        Xdata:[]
     };
 
-    this.queryGut('2014');
+    this.XqueryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -304,6 +305,47 @@ class ElectricTable extends React.Component {
     });
   }
 
+    // 清单结果数据
+    XqueryGut(years){
+
+
+        post('/report/agricultureActivity/list', {
+            year:years,
+
+        })
+            .then((res) => {
+
+                if (res.code==0) {
+
+
+                    var Alldata =res.data;
+
+                    var _data = []
+
+                    _data.push((Alldata.CH4.paddyFields*21))
+                    _data.push((Alldata.N2O.land*310))
+                    _data.push((Alldata.CH4.animalIntestinalFermentation*21))
+                    _data.push((Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310))
+                    _data.push((Alldata.CH4.paddyFields*21)
+                        +(Alldata.CH4.animalManureManagement*21+Alldata.N2O.animalManureManagement*310)
+                    +(Alldata.N2O.land*310)+(Alldata.CH4.animalIntestinalFermentation*21))
+
+                    this.setState({ Xdata: _data});
+
+                    this.queryGut(years);
+
+
+                    this.setState({ loading: false});
+
+
+
+                } else {
+                    message.error('数据错误！');
+                }
+            });
+
+    }
+
   //
   queryGut(years){
 
@@ -321,18 +363,31 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
+          var xdata = this.state.Xdata;
+
+            var Total = Math.sqrt(((Math.pow(Alldata.paddyFields.uncertainty*xdata[0]/xdata[4],2))
+            +(Math.pow(Alldata.agriculturalLand.uncertainty*xdata[1]/xdata[4],2))
+            +(Math.pow(Alldata.animalIntestinal.uncertainty*xdata[2]/xdata[4],2))
+            +(Math.pow(Alldata.animalManureManagement.uncertainty*xdata[3]/xdata[4],2)))).toFixed(2)
+
+
           const _Data = [
             Alldata.paddyFields.uncertainty,
             Alldata.agriculturalLand.uncertainty,
             Alldata.animalIntestinal.uncertainty,
             Alldata.animalManureManagement.uncertainty,
-            0
+              Total
           ]  //co2
-         
-         
+
+            var xdata1 = []
+            for(var i = 0 ; i<xdata.length;i++){
+                xdata1.push(xdata[i].toFixed(2))
+            }
 
 
-          const fossilTitle = [
+
+
+            const fossilTitle = [
 
             '稻田',
             '农用地',
@@ -359,7 +414,7 @@ class ElectricTable extends React.Component {
                             },
                           p1:{
                           
-                              value:0 ,
+                              value:xdata1[i] ,
                             },
                          uncertainty: {
                               editable: false,
@@ -430,10 +485,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
           message.success(res.message);
-          this.queryGut(this.state.years)
+          this.XqueryGut(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -491,10 +546,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>废弃物活动温室气体清单报告不确定性</p>
+            <p>农业活动活动温室气体清单报告不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

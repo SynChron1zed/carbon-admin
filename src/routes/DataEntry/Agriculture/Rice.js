@@ -80,16 +80,15 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
-        title: '水稻播种面积(HA)', dataIndex: 'riceSownArea', width: 100,
+        title: '水稻播种面积(ha)', dataIndex: 'riceSownArea', width: 100,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'riceSownArea', text),
       }, {
-        title: '排放因子(KGCH4/HA)', dataIndex: 'emissionFactor', width: 150,
+        title: '排放因子(kgCH4/ha)', dataIndex: 'emissionFactor', width: 150,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'emissionFactor', text),
       }, {
         title: 'CH4排放量(吨)', dataIndex: 'CH4Emissions', width: 200,
@@ -99,7 +98,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -243,13 +242,14 @@ class ElectricTable extends React.Component {
 
 
 
+
           const fossilTitle = [
 
 
-            '　　单季稻',
-            '　　双季早稻',
-            '　　双季晚稻',
-            '　　冬水田',
+            '单季稻',
+            '双季早稻',
+            '双季晚稻',
+            '冬水田',
 
 
 
@@ -321,7 +321,7 @@ class ElectricTable extends React.Component {
               key:_a.length,
               name:{
 
-                value:'　　小计' ,
+                value:'小计' ,
               },
               riceSownArea:{
 
@@ -362,6 +362,7 @@ class ElectricTable extends React.Component {
       'singleCroppingOfRice',
       'doubleSeasonEarlyRice',
       'doubleSeasonLateRice',
+      'winterPaddyField',
 
 
 
@@ -395,10 +396,11 @@ class ElectricTable extends React.Component {
       .then((res) => {
 
         if (res.code==0) {
+          this.queryRice(this.state.years)
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -459,7 +461,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 

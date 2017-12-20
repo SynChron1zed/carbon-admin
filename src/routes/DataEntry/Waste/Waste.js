@@ -310,7 +310,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -327,7 +326,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 40,
 
         render: (text, record, index) => {
 
@@ -359,13 +358,13 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 200,
-        colSpan:1,
+        width: 130,
+
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text),},
       {
         title: '不同填埋类型处理比例',
         children: [{
-          title: '（没有填埋的垃圾按照未分类填埋处理）', dataIndex: 'differentLandfillTypeTreatmentRatio', width: 150,
+          title: '（没有填埋的垃圾按照未分类填埋处理）', dataIndex: 'differentLandfillTypeTreatmentRatio', width: 100,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'differentLandfillTypeTreatmentRatio', text),
             props: {},
@@ -375,33 +374,33 @@ class ElectricTable extends React.Component {
             return obj},
         }],
       }, {
-        title: '不同类型填埋场处理量(万吨)', dataIndex: 'differentTypesOfLandfillDisposalCapacity', width: 200,
+        title: '不同类型填埋场处理量(万吨)', dataIndex: 'differentTypesOfLandfillDisposalCapacity', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'differentTypesOfLandfillDisposalCapacity', text),
       }, {
-        title: '甲烷排放量(E)(万吨)', dataIndex: 'methaneEmissions', width: 200,
+        title: '甲烷排放量(E)(万吨)', dataIndex: 'methaneEmissions', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'methaneEmissions', text),
       }, {
-        title: '甲烷回收量(R)(万吨)', dataIndex: 'methaneRecovery', width: 200,
+        title: '甲烷回收量(R)(万吨)', dataIndex: 'methaneRecovery', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'methaneRecovery', text),
       }, {
-        title: '可分解的DOC比例(DOCF)', dataIndex: 'decomposableDOCRatio', width: 200,
+        title: '可分解的DOC比例(DOCF)', dataIndex: 'decomposableDOCRatio', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'decomposableDOCRatio', text),
       }, {
-        title: '甲烷气体比例(F)', dataIndex: 'methaneGasRatio', width: 100,
+        title: '甲烷气体比例(F)', dataIndex: 'methaneGasRatio', width:70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'methaneGasRatio', text),
       }, {
-        title: '甲烷修正因子(MCF)', dataIndex: 'methaneCorrectionFactor', width: 200,
+        title: '甲烷修正因子(MCF)', dataIndex: 'methaneCorrectionFactor', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'methaneCorrectionFactor', text),
       },{
-        title: '氧化因子(OX)', dataIndex: 'oxidationFactor', width: 200,
+        title: '氧化因子(OX)', dataIndex: 'oxidationFactor', width:70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'oxidationFactor', text),
       },{
-        title: '可降解有机碳(DOC)(Kg碳/Kg废弃物)', dataIndex: 'degradableOrganicCarbon', width: 200,
+        title: '可降解有机碳(DOC)(Kg碳/Kg废弃物)', dataIndex: 'degradableOrganicCarbon', width: 70,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'degradableOrganicCarbon', text),
       },  {
         title: '纸张和纸板',
         children: [{
-          title: '成分', dataIndex: 'paperAndCardboardIngredients', width: 150,
+          title: '成分', dataIndex: 'paperAndCardboardIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'paperAndCardboardIngredients', text),
             props: {},
@@ -410,7 +409,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'paperAndCardboardDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'paperAndCardboardDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'paperAndCardboardDOCRatioOfWetWaste', text),
             props: {},
@@ -422,7 +421,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '纺织品',
         children: [{
-          title: '成分', dataIndex: 'textilesIngredients', width: 150,
+          title: '成分', dataIndex: 'textilesIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'textilesIngredients', text),
             props: {},
@@ -431,7 +430,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'textilesDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'textilesDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'textilesDOCRatioOfWetWaste', text),
             props: {},
@@ -443,7 +442,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '食品垃圾',
         children: [{
-          title: '成分', dataIndex: 'foodWasteIngredients', width: 150,
+          title: '成分', dataIndex: 'foodWasteIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'foodWasteIngredients', text),
             props: {},
@@ -452,7 +451,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'foodWasteDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'foodWasteDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'foodWasteDOCRatioOfWetWaste', text),
             props: {},
@@ -464,7 +463,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '木材',
         children: [{
-          title: '成分', dataIndex: 'woodIngredients', width: 150,
+          title: '成分', dataIndex: 'woodIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'woodIngredients', text),
             props: {},
@@ -473,7 +472,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'woodDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'woodDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'woodDOCRatioOfWetWaste', text),
             props: {},
@@ -485,7 +484,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '庭院和公园废弃物',
         children: [{
-          title: '成分', dataIndex: 'courtyardAndParkWasteIngredients', width: 150,
+          title: '成分', dataIndex: 'courtyardAndParkWasteIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'courtyardAndParkWasteIngredients', text),
             props: {},
@@ -494,7 +493,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'courtyardAndParkWasteDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'courtyardAndParkWasteDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'courtyardAndParkWasteDOCRatioOfWetWaste', text),
             props: {},
@@ -506,7 +505,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '橡胶和皮革',
         children: [{
-          title: '成分', dataIndex: 'rubberAndLeatherIngredients', width: 150,
+          title: '成分', dataIndex: 'rubberAndLeatherIngredients', width:50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'rubberAndLeatherIngredients', text),
             props: {},
@@ -515,7 +514,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'rubberAndLeatherDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'rubberAndLeatherDOCRatioOfWetWaste', width:50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'rubberAndLeatherDOCRatioOfWetWaste', text),
             props: {},
@@ -527,7 +526,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '其他',
         children: [{
-          title: '成分', dataIndex: 'otherIngredients', width: 150,
+          title: '成分', dataIndex: 'otherIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'otherIngredients', text),
             props: {},
@@ -536,7 +535,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'otherDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'otherDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'otherDOCRatioOfWetWaste', text),
             props: {},
@@ -548,7 +547,7 @@ class ElectricTable extends React.Component {
       },  {
         title: '未列举项请此处添加',
         children: [{
-          title: '成分', dataIndex: 'unlistedItemsAreAddedHereIngredients', width: 150,
+          title: '成分', dataIndex: 'unlistedItemsAreAddedHereIngredients', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'unlistedItemsAreAddedHereIngredients', text),
             props: {},
@@ -557,7 +556,7 @@ class ElectricTable extends React.Component {
 
             return obj},
         },{
-          title: 'DOC占湿废弃物比例', dataIndex: 'unlistedItemsAreAddedHereDOCRatioOfWetWaste', width: 150,
+          title: 'DOC占湿废弃物比例', dataIndex: 'unlistedItemsAreAddedHereDOCRatioOfWetWaste', width: 50,
           render: (text, record, index) => {  const obj = {
             children:this.renderColumns1(this.state.data1, index, 'unlistedItemsAreAddedHereDOCRatioOfWetWaste', text),
             props: {},
@@ -571,7 +570,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 50,
 
         render: (text, record, index) => {
 
@@ -605,7 +604,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text),},
 
       {
@@ -647,7 +645,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 70,
 
         render: (text, record, index) => {
 
@@ -681,7 +679,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) =>   {  const obj = {
           children:this.renderColumns3(this.state.data3, index, 'name', text),
           props: {},
@@ -743,7 +741,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 70,
 
         render: (text, record, index) => {
 
@@ -777,7 +775,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns4(this.state.data4, index, 'name', text),},
 
       {
@@ -1228,9 +1225,9 @@ class ElectricTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　城市生活垃圾',
-            '　　危险废弃物',
-            '　　污水污泥',
+            '城市生活垃圾',
+            '危险废弃物',
+            '污水污泥',
 
 
           ]
@@ -1238,10 +1235,10 @@ class ElectricTable extends React.Component {
           const fossilTitle1 = [
 
 
-            '　　生活污水',
-            '　　生活污水',
-            '　　工业废水',
-            '　　工业废水',
+            '生活污水',
+            '生活污水',
+            '工业废水',
+            '工业废水',
 
 
           ]
@@ -1249,10 +1246,10 @@ class ElectricTable extends React.Component {
           const fossilTitle2 = [
 
 
-            '　　排入环境BOD',
-            '　　污水处理系统去除BOD',
-            '　　排入环境COD',
-            '　　污水处理系统去除COD',
+            '排入环境BOD',
+            '污水处理系统去除BOD',
+            '排入环境COD',
+            '污水处理系统去除COD',
 
 
           ]
@@ -1261,10 +1258,10 @@ class ElectricTable extends React.Component {
           const fossilTitle3 = [
 
 
-            '　　管理型填埋场',
-            '　　非管理型填埋场（>5m)',
-            '　　非管理型填埋场（<5m)',
-            '　　未分类填埋场',
+            '管理型填埋场',
+            '非管理型填埋场（>5m)',
+            '非管理型填埋场（<5m)',
+            '未分类填埋场',
 
 
           ]
@@ -1389,6 +1386,7 @@ class ElectricTable extends React.Component {
 
 
           const _b1 = [];
+
 
 
           for(var i = 0 ; i<_a1.length;i++){
@@ -1610,6 +1608,7 @@ class ElectricTable extends React.Component {
 
           const _b = [];
 
+            var totalMethaneEmissions = (_Data3[0].methaneEmissions+_Data3[1].methaneEmissions+_Data3[2].methaneEmissions+_Data3[3].methaneEmissions).toFixed(6)
 
             _b.push({
                 key:1,
@@ -1627,7 +1626,7 @@ class ElectricTable extends React.Component {
                 },
               totalMethaneEmissions: {
 
-                  value:'0',
+                  value:totalMethaneEmissions,
                 }
 
 
@@ -1824,7 +1823,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1877,7 +1876,7 @@ class ElectricTable extends React.Component {
         message.success(res.message);
 
       } else {
-        message.error(res.message);
+        message.error('数据录入有误，请重新录入！');
       }
     });
 }
@@ -1930,7 +1929,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1980,7 +1979,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2084,7 +2083,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -2098,7 +2097,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 4000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 3000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -2113,7 +2112,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table  size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -2130,7 +2129,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -2144,7 +2143,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1700, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
         </Spin>

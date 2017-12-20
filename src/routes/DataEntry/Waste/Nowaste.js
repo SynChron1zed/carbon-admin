@@ -135,19 +135,18 @@ class ElectricTable extends React.Component {
     super(props);
 
 
-    this.columns = [    
+    this.columns = [
       {
         title: '数据项',
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
 
         };
-          
+
           return obj}
 
       }, {
@@ -177,7 +176,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -219,6 +218,7 @@ class ElectricTable extends React.Component {
       select:1,
       trigger:true,
       user:[],
+        Xdata:[],
 
 
 
@@ -227,7 +227,7 @@ class ElectricTable extends React.Component {
       years:'2014'
     };
 
-    this.queryGut('2014');
+    this.XqueryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -304,6 +304,53 @@ class ElectricTable extends React.Component {
     });
   }
 
+
+    //清单结果的
+    XqueryGut(years){
+
+
+        post('/report/wasteDisposal/list', {
+            year:years,
+
+        })
+            .then((res) => {
+
+                if (res.code==0) {
+
+
+
+
+                    var Alldata =res.data;
+
+
+                    var _data = []
+                    _data.push(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21))
+
+                    _data.push(((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)*21))
+
+                    _data.push((((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310)))
+
+                    _data.push(((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21))
+
+                    _data.push((((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21)
+                    +((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)*21)
+                    +(((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310))
+                    +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21)))
+
+                    this.setState({ Xdata: _data});
+                    this.setState({ loading: false});
+
+                    this.queryGut(years);
+
+
+                } else {
+                    message.error('数据错误！');
+                }
+            });
+
+    }
+
+
   //
   queryGut(years){
 
@@ -318,18 +365,28 @@ class ElectricTable extends React.Component {
 
 
 
-
           var Alldata =res.data;
+
+            var xdata = this.state.Xdata
+
+            var Total = ((Math.pow(Alldata.wasteLandfillDisposal.uncertainty*xdata[0]/xdata[4],2))
+                +(Math.pow(Alldata.wasteIncineration.uncertainty*xdata[1]/xdata[4],2))
+            +(Math.pow(Alldata.domesticSewageTreatment.uncertainty*xdata[2]/xdata[4],2))
+            +(Math.pow(Alldata.industrialWasteWaterTreatment.uncertainty*xdata[3]/xdata[4],2))).toFixed(2)
 
           const _Data = [
             Alldata.wasteLandfillDisposal.uncertainty,
             Alldata.wasteIncineration.uncertainty,
             Alldata.domesticSewageTreatment.uncertainty,
             Alldata.industrialWasteWaterTreatment.uncertainty,
-            0
+              Total
           ]  //co2
-         
-         
+
+            var xdata1 = []
+            for(var i = 0 ; i<xdata.length;i++){
+              xdata1.push(xdata[i].toFixed(2))
+            }
+
 
 
           const fossilTitle = [
@@ -339,37 +396,37 @@ class ElectricTable extends React.Component {
             '生活污水处理',
             '工业废水处理',
             '总计',
-    
+
 
           ]
-       
+
 
 
           const _b1= []
 
-      
+
           for(var i = 0 ; i<_Data.length;i++){
-            
-            
+
+
                         _b1.push({
                             key:i,
                             name:{
-            
+
                               value:fossilTitle[i] ,
                             },
                           p1:{
-                          
-                              value:0 ,
+
+                              value:xdata1[i] ,
                             },
                          uncertainty: {
                               editable: false,
                               value:_Data[i] ,
                             },
-                          
+
                           }
                         )
                       }
-            
+
 
           console.log(_b1);
 
@@ -396,7 +453,7 @@ class ElectricTable extends React.Component {
       'wasteIncineration',
       'domesticSewageTreatment',
       'industrialWasteWaterTreatment',
-    
+
 
     ]
 
@@ -406,7 +463,7 @@ class ElectricTable extends React.Component {
 
     var url = '/uncertainty/wasteDisposal/update'
     var bodyName = 'wasteDisposal';
-   
+
 
 
 
@@ -418,10 +475,10 @@ class ElectricTable extends React.Component {
     };
 
     obj[bodyName]={}
-  
+
     obj[bodyName][DirectoryIndex]= {
       "uncertainty": data[index].uncertainty.value,
-    
+
     }
 
     post(url, obj)
@@ -430,10 +487,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
           message.success(res.message);
-          this.queryGut(this.state.years)
+          this.XqueryGut(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -443,7 +500,7 @@ class ElectricTable extends React.Component {
 
     this.setState({ loading: true});
     this.setState({years:years})
-    this.queryGut(years)
+    this.XqueryGut(years)
   }
 
 
@@ -494,7 +551,7 @@ class ElectricTable extends React.Component {
             <p>废弃物活动温室气体清单报告不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

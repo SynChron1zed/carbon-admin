@@ -196,7 +196,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -210,7 +210,7 @@ class ElectricTable extends React.Component {
       },
 
       {
-        title: '存栏量(头／只)', dataIndex: 'stockVolume', width: 100,
+        title: '存栏量(头、只)', dataIndex: 'stockVolume', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'stockVolume', text),
           props: {},
@@ -247,7 +247,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -281,7 +281,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -294,7 +293,7 @@ class ElectricTable extends React.Component {
           return obj}},
 
       {
-        title: '饲养量(头／只)', dataIndex: 'stockVolume', width: 100,
+        title: '饲养量(头、只)', dataIndex: 'stockVolume', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'stockVolume', text),
           props: {},
@@ -306,7 +305,7 @@ class ElectricTable extends React.Component {
 
           return obj}
       }, {
-        title: '氧化亚氮排放因子(不包括放牧放养／kg／头／年)', dataIndex: 'nitrousOxideEmissionFactor', width: 200,
+        title: '氧化亚氮排放因子(不包括放牧/放养／kg／头／年)', dataIndex: 'nitrousOxideEmissionFactor', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissionFactor', text),
           props: {},
@@ -318,7 +317,7 @@ class ElectricTable extends React.Component {
 
           return obj}
       }, {
-        title: '氧化亚氮排放量(不包括放牧放养／吨)', dataIndex: 'nitrousOxideEmissions', width: 200,
+        title: '氧化亚氮排放量(不包括放牧/放养／吨)', dataIndex: 'nitrousOxideEmissions', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions', text),
           props: {},
@@ -328,7 +327,7 @@ class ElectricTable extends React.Component {
 
           return obj}
       }, {
-        title: '放牧/放养动物饲养量(头／只)', dataIndex: 'grazingStocking', width: 200,
+        title: '放牧/放养动物饲养量(头／只)', dataIndex: 'grazingStocking', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'grazingStocking', text),
           props: {},
@@ -351,7 +350,7 @@ class ElectricTable extends React.Component {
 
           return obj}
       }, {
-        title: '排放因子(%)', dataIndex: 'emissionFactor', width: 100,
+        title: '排放因子', dataIndex: 'emissionFactor', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'emissionFactor', text),
           props: {},
@@ -363,7 +362,7 @@ class ElectricTable extends React.Component {
 
           return obj}
       }, {
-        title: '氧化亚氮排放量(放牧放养／吨)', dataIndex: 'nitrousOxideEmissions1', width: 200,
+        title: '氧化亚氮排放量(放牧/放养)(吨)', dataIndex: 'nitrousOxideEmissions1', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'nitrousOxideEmissions1', text),
           props: {},
@@ -411,7 +410,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'name', text),
           props: {},
@@ -725,17 +724,17 @@ class ElectricTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　奶牛',
-            '　　非奶牛',
-            '　　水牛',
-            '　　绵羊',
-            '　　山羊',
-            '　　猪',
-            '　　家禽',
-            '　　马',
-            '　　驴/骡',
-            '　　骆驼',
-            '　　总计',
+            '奶牛',
+            '非奶牛',
+            '水牛',
+            '绵羊',
+            '山羊',
+            '猪',
+            '家禽',
+            '马',
+            '驴/骡',
+            '骆驼',
+            '总计',
 
 
           ]
@@ -1016,7 +1015,7 @@ class ElectricTable extends React.Component {
           this.queryWaste(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1077,7 +1076,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
           this.queryWaste(this.state.years);
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1158,12 +1157,12 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
         <div className={styles.entryBody} id="bodyTable2"  >
-          <p>动物粪便管理氧化亚氮排放</p>
+          <p>动物粪便管理氧化亚氮排放 <span style={{fontSize:6}}>(不包括放牧放养的氧化亚氮排放放在动物粪便管理系统清单中，放牧放养的氧化亚氮排放放在农用地直接排放清单中)</span></p>
           <div className={styles.greenSelect}>
             <span>是否采用本地化排放因子：</span>
             <RadioGroup defaultValue={1}>
@@ -1172,7 +1171,7 @@ class ElectricTable extends React.Component {
             </RadioGroup>
           </div>
 
-          <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
@@ -1187,7 +1186,7 @@ class ElectricTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

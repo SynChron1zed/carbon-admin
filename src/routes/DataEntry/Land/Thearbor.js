@@ -681,7 +681,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'dataName',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'dataName', text),
           props: {},
@@ -716,7 +716,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 80,
 
         render: (text, record, index) => {
 
@@ -869,8 +869,7 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                '合计或平均' == record.dataName
-                  ? <span></span> :
+
                   editable ?
                     <span>
                   <a onClick={() => this.editDone3(index, 'save')}>确认</a>
@@ -1143,8 +1142,7 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                '合计或平均' == record.dataName
-                  ? <span></span> :
+
                   editable ?
                     <span>
                   <a onClick={() => this.editDone5(index, 'save')}>确认</a>
@@ -1186,6 +1184,9 @@ class ElectricTable extends React.Component {
       Data5:[],
       data5: [],
 
+      HDdata:[],//活动水平值
+      J217:[],
+
 
       loading: true ,
 
@@ -1202,12 +1203,13 @@ class ElectricTable extends React.Component {
       addCollapsed3:true,
       addCollapsed5:true,
       years:'2014',
-      newYears:'2014',
+
     };
 
-
+    this.queryTheforest('2014');
     this.queryThearbor('2014');
     this.newQueryThearbor('2014');
+   
 
     //$("#bodyTable1").hide();
 
@@ -1576,8 +1578,6 @@ class ElectricTable extends React.Component {
   handleChange(key, index, value) {
 
 
-
-
     const data = [...this.state.data];
 
     data[index][key].value = value;
@@ -1620,6 +1620,102 @@ class ElectricTable extends React.Component {
     });
   }
 
+
+
+
+   //森林转化排放量计算 引用值
+   queryTheforest(years){
+
+
+        post('/activityLevelDataEntry/landUseChangeAndForestry/list', {
+          year:years,
+
+        })
+          .then((res) => {
+
+            if (res.code==0) {
+
+              var Alldata =res.data;
+
+              const _Data = []
+              const _Data1 = []
+              const _Data4 = []
+
+
+
+              _Data.push(Alldata.forestActivityLevel.FAL_arborForest);//乔木林
+              _Data.push(Alldata.forestActivityLevel.FAL_bambooForest);//竹林
+              _Data.push(Alldata.forestActivityLevel.FAL_economicForest);//经济林
+
+
+              _Data1.push(Alldata.forestEmissionFactor.FEF_arborForest);//乔木林
+              _Data1.push(Alldata.forestEmissionFactor.FEF_bambooForest);//竹林
+              _Data1.push(Alldata.forestEmissionFactor.FEF_economicForest);//经济林
+
+              _Data4.push(Alldata.forestEmission.arborForest);//乔木林
+              _Data4.push(Alldata.forestEmission.bambooForest);//竹林
+              _Data4.push(Alldata.forestEmission.economicForest);//经济林
+
+              const fossilTitle = [
+
+
+                '乔木林',
+                '竹林',
+                '经济林',
+
+
+
+              ]
+
+
+
+              const _a4 = [];
+              var _presentCombustionCO2Emissions = 0;
+              var _presentCombustionCH4Emissions = 0;
+              var _presentCombustionN2OEmissions = 0;
+              var _OffSiteCombustionCO2Emissions = 0;
+              var _OxidativeDecompositionCO2Emissions = 0;
+              var _biomassCarbonEmissionsFromForestConsumptionAreDeducted = 0;
+
+              for(var i = 0 ;i<3;i++){
+
+
+
+                _a4.push({
+                  key: i,
+                  name:fossilTitle[i],
+                  presentCombustionCO2Emissions: _Data4[i].presentCombustionCO2Emissions,
+                  presentCombustionCH4Emissions: _Data4[i].presentCombustionCH4Emissions,
+                  presentCombustionN2OEmissions: _Data4[i].presentCombustionN2OEmissions,
+                  OffSiteCombustionCO2Emissions: _Data4[i].OffSiteCombustionCO2Emissions,
+                  OxidativeDecompositionCO2Emissions: _Data4[i].OxidativeDecompositionCO2Emissions,
+                  biomassCarbonEmissionsFromForestConsumptionAreDeducted: _Data4[i].biomassCarbonEmissionsFromForestConsumptionAreDeducted,
+
+
+                });
+
+                _presentCombustionCO2Emissions +=_Data4[i].presentCombustionCO2Emissions;
+                _presentCombustionCH4Emissions +=_Data4[i].presentCombustionCH4Emissions;
+                _presentCombustionN2OEmissions +=_Data4[i].presentCombustionN2OEmissions;
+                _OffSiteCombustionCO2Emissions +=_Data4[i].OffSiteCombustionCO2Emissions;
+                _OxidativeDecompositionCO2Emissions +=_Data4[i].OxidativeDecompositionCO2Emissions;
+                _biomassCarbonEmissionsFromForestConsumptionAreDeducted +=_Data4[i].biomassCarbonEmissionsFromForestConsumptionAreDeducted;
+
+              }
+
+
+              this.setState({ loading: false});
+              this.setState({ J217: _biomassCarbonEmissionsFromForestConsumptionAreDeducted});
+
+
+            } else {
+              message.error('数据错误！');
+            }
+          });
+
+      }
+
+
   //乔木
   queryThearbor(years){
 
@@ -1639,6 +1735,9 @@ class ElectricTable extends React.Component {
           const _Data1 = Alldata.arborForestEmissionFactor //排放因子
 
           const _Data2 = Alldata.arborForestEmissions //计算量
+
+
+          this.setState({HDdata:_Data})
 
 
 
@@ -1734,6 +1833,7 @@ class ElectricTable extends React.Component {
             _volumeTooMatureForest += _Data[i].volumeTooMatureForest;
 
           }
+
 
 
           //添加合计值
@@ -1855,13 +1955,13 @@ class ElectricTable extends React.Component {
               }
             )
 
-            _averageBasicWoodDensitySVD += _Data1[i].averageBasicWoodDensitySVD;
-            _averageBiomassExpansionFactor += _Data1[i].averageBiomassExpansionFactor;
-            _rhizomeRatioRSR += _Data1[i].rhizomeRatioRSR;
-            _biomassCarbonContentCF += _Data1[i].biomassCarbonContentCF;
-            _totalVolumeGrowthRate += _Data1[i].totalVolumeGrowthRate;
-            _volumeHarvestingRate += _Data1[i].volumeHarvestingRate;
-            _volumeLossRate += _Data1[i].volumeLossRate;
+            _averageBasicWoodDensitySVD += _Data1[i].averageBasicWoodDensitySVD * _Data[i].volumeTotal;
+            _averageBiomassExpansionFactor += _Data1[i].averageBiomassExpansionFactor *_Data[i].volumeTotal;
+            _rhizomeRatioRSR += _Data1[i].rhizomeRatioRSR *_Data[i].volumeTotal;
+            _biomassCarbonContentCF += _Data1[i].biomassCarbonContentCF *_Data[i].volumeTotal;
+            _totalVolumeGrowthRate = _Data1[_Data1.length-1].totalVolumeGrowthRate;
+            _volumeHarvestingRate = _Data1[_Data1.length-1].volumeHarvestingRate;
+            _volumeLossRate = _Data1[_Data1.length-1].volumeLossRate;
 
 
           }
@@ -1875,19 +1975,19 @@ class ElectricTable extends React.Component {
               },
               averageBasicWoodDensitySVD:{
                 editable: false,
-                value:_averageBasicWoodDensitySVD.toFixed(2) ,
+                value:(_averageBasicWoodDensitySVD/ _volumeTotal).toFixed(2) ,
               },
               averageBiomassExpansionFactor: {
                 editable: false,
-                value:_averageBiomassExpansionFactor.toFixed(2) ,
+                value:(_averageBiomassExpansionFactor/_volumeTotal).toFixed(2) ,
               },
               rhizomeRatioRSR: {
                 editable: false,
-                value:_rhizomeRatioRSR.toFixed(2) ,
+                value:(_rhizomeRatioRSR/_volumeTotal).toFixed(2) ,
               },
               biomassCarbonContentCF: {
                 editable: false,
-                value:_biomassCarbonContentCF.toFixed(2),
+                value:(_biomassCarbonContentCF/_volumeTotal).toFixed(2),
               },
               totalVolumeGrowthRate: {
                 editable: false,
@@ -1996,11 +2096,11 @@ class ElectricTable extends React.Component {
               },
             groundBiomassCarbonDensity: {
                 editable: false,
-                value:_groundBiomassCarbonDensity.toFixed(2) ,
+                value:(_groundBiomassCarbonStorage/_areaTotal ).toFixed(2) ,
               },
             wholeForestBiomassCarbonDensity: {
                 editable: false,
-                value:_wholeForestBiomassCarbonDensity.toFixed(2),
+                value:(_wholeForestBiomassCarbonStorage/_areaTotal).toFixed(2),
               },
             biomassGrowthCarbonUptake: {
                 editable: false,
@@ -2016,7 +2116,7 @@ class ElectricTable extends React.Component {
               },
             afterCorrectionHarvestingConsumptionOfCarbonEmissions: {
               editable: false,
-              value:_afterCorrectionHarvestingConsumptionOfCarbonEmissions.toFixed(2) ,
+              value:(_preCalibrationHarvestingConsumptionOfCarbonEmissions-this.state.J217).toFixed(2),
             },
 
 
@@ -2047,11 +2147,11 @@ class ElectricTable extends React.Component {
 
 
   //乔木不确定性
-  newQueryThearbor(newYears){
+  newQueryThearbor(years){
 
 
     post('/uncertainty/landUseChangeAndForestry/list', {
-      year:newYears,
+      year:years,
 
     })
       .then((res) => {
@@ -2060,11 +2160,14 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
+
+
           const _Data2 = Alldata.arborForestActivityLevel //活动水平不确定性
 
           const _Data3 = Alldata.arborForestEmissionFactor //排放因子不确定性
 
           const _Data5 = Alldata.arborForestEmissions //计算量不确定性
+
 
 
           const _b2 = [];
@@ -2094,8 +2197,8 @@ class ElectricTable extends React.Component {
               }
             )
 
-            _areaTotal += _Data2[i].area;
-            _volumeTotal += _Data2[i].volume;
+            _areaTotal = _Data2[_Data2.length-1].area;
+            _volumeTotal = _Data2[_Data2.length-1].volume;
 
 
           }
@@ -2180,57 +2283,11 @@ class ElectricTable extends React.Component {
               }
             )
 
-            _averageBasicWoodDensitySVD += _Data3[i].averageBasicWoodDensitySVD;
-            _averageBiomassExpansionFactor += _Data3[i].averageBiomassExpansionFactor;
-            _rhizomeRatioRSR += _Data3[i].rhizomeRatioRSR;
-            _biomassCarbonContentCF += _Data3[i].biomassCarbonContentCF;
-            _totalVolumeGrowthRate += _Data3[i].totalVolumeGrowthRate;
-            _volumeHarvestingRate += _Data3[i].volumeHarvestingRate;
-            _volumeLossRate += _Data3[i].volumeLossRate;
 
 
           }
 
 
-          _b3.push({
-              key:_Data3.length,
-              dataName:{
-                editable: false,
-                value:'合计或平均' ,
-              },
-              averageBasicWoodDensitySVD:{
-                editable: false,
-                value:_averageBasicWoodDensitySVD.toFixed(2) ,
-              },
-              averageBiomassExpansionFactor: {
-                editable: false,
-                value:_averageBiomassExpansionFactor.toFixed(2) ,
-              },
-              rhizomeRatioRSR: {
-                editable: false,
-                value:_rhizomeRatioRSR.toFixed(2) ,
-              },
-              biomassCarbonContentCF: {
-                editable: false,
-                value:_biomassCarbonContentCF.toFixed(2),
-              },
-              totalVolumeGrowthRate: {
-                editable: false,
-                value:_totalVolumeGrowthRate.toFixed(2) ,
-              },
-              volumeHarvestingRate: {
-                editable: false,
-                value:_volumeHarvestingRate.toFixed(2) ,
-              },
-              volumeLossRate: {
-                editable: false,
-                value:_volumeLossRate.toFixed(2) ,
-              },
-
-
-
-            }
-          )
 
 
           const _b5 = [];
@@ -2292,61 +2349,11 @@ class ElectricTable extends React.Component {
               }
             )
 
-            _groundBiomassCarbonStorage += _Data5[i].groundBiomassCarbonStorage;
-            _wholeForestBiomassCarbonStorage += _Data5[i].wholeForestBiomassCarbonStorage;
-            _groundBiomassCarbonDensity += _Data5[i].groundBiomassCarbonDensity;
-            _wholeForestBiomassCarbonDensity += _Data5[i].wholeForestBiomassCarbonDensity;
-            _biomassGrowthCarbonUptake += _Data5[i].biomassGrowthCarbonUptake;
-            _preCalibrationHarvestingConsumptionOfCarbonEmissions += _Data5[i].preCalibrationHarvestingConsumptionOfCarbonEmissions;
-            _lossOfCarbonConsumption += _Data5[i].lossOfCarbonConsumption;
-            _afterCorrectionHarvestingConsumptionOfCarbonEmissions += _Data5[i].afterCorrectionHarvestingConsumptionOfCarbonEmissions;
 
 
           }
 
 
-          _b5.push({
-              key:_Data5.length,
-              dataName:{
-                editable: false,
-                value:'合计或平均' ,
-              },
-              groundBiomassCarbonStorage:{
-                editable: false,
-                value:_groundBiomassCarbonStorage.toFixed(2) ,
-              },
-              wholeForestBiomassCarbonStorage: {
-                editable: false,
-                value:_wholeForestBiomassCarbonStorage.toFixed(2) ,
-              },
-              groundBiomassCarbonDensity: {
-                editable: false,
-                value:_groundBiomassCarbonDensity.toFixed(2) ,
-              },
-              wholeForestBiomassCarbonDensity: {
-                editable: false,
-                value:_wholeForestBiomassCarbonDensity.toFixed(2),
-              },
-              biomassGrowthCarbonUptake: {
-                editable: false,
-                value:_biomassGrowthCarbonUptake.toFixed(2) ,
-              },
-              preCalibrationHarvestingConsumptionOfCarbonEmissions: {
-                editable: false,
-                value:_preCalibrationHarvestingConsumptionOfCarbonEmissions.toFixed(2) ,
-              },
-              lossOfCarbonConsumption: {
-                editable: false,
-                value:_lossOfCarbonConsumption.toFixed(2) ,
-              },
-              afterCorrectionHarvestingConsumptionOfCarbonEmissions: {
-                editable: false,
-                value:_afterCorrectionHarvestingConsumptionOfCarbonEmissions.toFixed(2) ,
-              },
-
-
-            }
-          )
 
 
 
@@ -2456,7 +2463,7 @@ class ElectricTable extends React.Component {
           this.queryThearbor(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2531,7 +2538,7 @@ class ElectricTable extends React.Component {
 
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2570,7 +2577,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     const _a = []
@@ -2604,10 +2611,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed2:true})
           message.success(res.message);
-          this.newQueryThearbor(this.state.newYears);
+          this.newQueryThearbor(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2618,15 +2625,12 @@ class ElectricTable extends React.Component {
 
 
 
-
     var data = []
 
     for(var i = 0;i<data3.length;i++ ){
-      if(data3[i].dataName.value =='合计或平均'){
 
-      }else {
         data.push(data3[i])
-      }
+
     }
 
 
@@ -2646,7 +2650,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     const _a = []
@@ -2684,10 +2688,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed3:true})
           message.success(res.message);
-          this.newQueryThearbor(this.state.newYears);
+          this.newQueryThearbor(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2702,11 +2706,9 @@ class ElectricTable extends React.Component {
     var data = []
 
     for(var i = 0;i<data5.length;i++ ){
-      if(data5[i].dataName.value =='合计或平均'){
 
-      }else {
         data.push(data5[i])
-      }
+
     }
 
 
@@ -2726,7 +2728,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     const _a = []
@@ -2765,303 +2767,306 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed5:true})
           message.success(res.message);
-          this.newQueryThearbor(this.state.newYears);
+          this.newQueryThearbor(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
 
-
-  handleAdd = () => {
-
-
-
-    if(this.state.addCollapsed){
-
-      this.setState({addCollapsed:false})
-
-      const {  data } = this.state;
-      const newData = {
-        key:data.length+1,
-        dataName:{
-          editable: true,
-          value:'0' ,
-        },
-        areaTotal:{
-          editable: true,
-          value:0 ,
-        },
-        volumeTotal: {
-          editable: true,
-          value:0 ,
-        },
-        areaYoungForest: {
-          editable: true,
-          value:0 ,
-        },
-        areaMiddleAgeForest: {
-          editable: true,
-          value:0,
-        },
-        areaNearRipeningForest: {
-          editable: true,
-          value:0 ,
-        },
-        areaMatureForest: {
-          editable: true,
-          value:0 ,
-        },
-        areaTooMatureForest: {
-          editable: true,
-          value:0 ,
-        },
-        volumeYoungForest: {
-          editable: true,
-          value:0,
-        },
-        volumeMiddleAgeForest: {
-          editable: true,
-          value:0,
-        },
-        volumeNearRipeningForest: {
-          editable: true,
-          value:0 ,
-        },
-        volumeMatureForest: {
-          editable: true,
-          value:0 ,
-        },
-        volumeTooMatureForest: {
-          editable: true,
-          value:0 ,
-        },
-
-      };
-      this.setState({
-        data: [...data, newData],
-
-      });
-    }else{
-      message.error('数据添加未完成,请再次编辑！');
-      return false;
-
-    }
-
-
-  }
-
-  handleAdd1 = () => {
-
-
-    if(this.state.addCollapsed1) {
-
-      this.setState({addCollapsed1: false})
-      const {data1} = this.state;
-      const newData = {
-        key: data1.length + 1,
-        dataName: {
-          editable: true,
-          value: '0',
-        },
-        averageBasicWoodDensitySVD: {
-          editable: true,
-          value: 0,
-        },
-        averageBiomassExpansionFactor: {
-          editable: true,
-          value: 0,
-        },
-        rhizomeRatioRSR: {
-          editable: true,
-          value: 0,
-        },
-        biomassCarbonContentCF: {
-          editable: true,
-          value: 0,
-        },
-        totalVolumeGrowthRate: {
-          editable: true,
-          value: 0,
-        },
-        volumeHarvestingRate: {
-          editable: true,
-          value: 0,
-        },
-        volumeLossRate: {
-          editable: true,
-          value: 0,
-        },
-
-
-      };
-      this.setState({
-        data1: [...data1, newData],
-
-      });
-    }else{
-      message.error('数据添加未完成,请再次编辑！');
-      return false;
-    }
-  }
-
-  handleAdd2 = () => {
-
-
-    if(this.state.addCollapsed2) {
-
-      this.setState({addCollapsed2: false})
-      const {data2} = this.state;
-      const newData = {
-
-        key: data2.length + 1,
-        dataName: {
-          editable: true,
-          value: '0',
-        },
-        area: {
-          editable: true,
-          value: 0,
-        },
-        volume: {
-          editable: true,
-          value: 0,
-        },
-
-
-
-      };
-      this.setState({
-        data2: [...data2, newData],
-
-      });
-    }else{
-      message.error('数据添加未完成,请再次编辑！');
-      return false;
-    }
-  }
-
-  handleAdd3 = () => {
-
-
-    if(this.state.addCollapsed3) {
-
-      this.setState({addCollapsed3: false})
-      const {data3} = this.state;
-      const newData = {
-        key: data3.length + 1,
-        dataName: {
-          editable: true,
-          value: '0',
-        },
-        averageBasicWoodDensitySVD: {
-          editable: true,
-          value: 0,
-        },
-        averageBiomassExpansionFactor: {
-          editable: true,
-          value: 0,
-        },
-        rhizomeRatioRSR: {
-          editable: true,
-          value: 0,
-        },
-        biomassCarbonContentCF: {
-          editable: true,
-          value: 0,
-        },
-        totalVolumeGrowthRate: {
-          editable: true,
-          value: 0,
-        },
-        volumeHarvestingRate: {
-          editable: true,
-          value: 0,
-        },
-        volumeLossRate: {
-          editable: true,
-          value: 0,
-        },
-
-
-      };
-      this.setState({
-        data3: [...data3, newData],
-
-      });
-    }else{
-      message.error('数据添加未完成,请再次编辑！');
-      return false;
-    }
-  }
-
-  handleAdd5 = () => {
-
-
-    if(this.state.addCollapsed5) {
-
-      this.setState({addCollapsed5: false})
-      const {data5} = this.state;
-      const newData = {
-        key: data5.length + 1,
-        dataName: {
-          editable: true,
-          value: '0',
-        },
-        groundBiomassCarbonStorage: {
-          editable: true,
-          value: 0,
-        },
-        wholeForestBiomassCarbonStorage: {
-          editable: true,
-          value: 0,
-        },
-        groundBiomassCarbonDensity: {
-          editable: true,
-          value: 0,
-        },
-        wholeForestBiomassCarbonDensity: {
-          editable: true,
-          value: 0,
-        },
-        biomassGrowthCarbonUptake: {
-          editable: true,
-          value: 0,
-        },
-        preCalibrationHarvestingConsumptionOfCarbonEmissions: {
-          editable: true,
-          value: 0,
-        },
-        lossOfCarbonConsumption: {
-          editable: true,
-          value: 0,
-        },
-        afterCorrectionHarvestingConsumptionOfCarbonEmissions: {
-          editable: true,
-          value: 0,
-        },
-
-      };
-      this.setState({
-        data5: [...data5, newData],
-
-      });
-    }else{
-      message.error('数据添加未完成,请再次编辑！');
-      return false;
-    }
-  }
 
   //年份选择
   selesctYears(years){
 
     this.setState({ loading: true});
     this.setState({years:years})
+    this.queryTheforest(years)
     this.queryThearbor(years)
     this.newQueryThearbor(years);
 
   }
+
+
+
+    handleAdd = () => {
+
+
+
+        if(this.state.addCollapsed){
+
+            this.setState({addCollapsed:false})
+
+            const {  data } = this.state;
+            const newData = {
+                key:data.length+1,
+                dataName:{
+                    editable: true,
+                    value:'0' ,
+                },
+                areaTotal:{
+                    editable: true,
+                    value:0 ,
+                },
+                volumeTotal: {
+                    editable: true,
+                    value:0 ,
+                },
+                areaYoungForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                areaMiddleAgeForest: {
+                    editable: true,
+                    value:0,
+                },
+                areaNearRipeningForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                areaMatureForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                areaTooMatureForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                volumeYoungForest: {
+                    editable: true,
+                    value:0,
+                },
+                volumeMiddleAgeForest: {
+                    editable: true,
+                    value:0,
+                },
+                volumeNearRipeningForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                volumeMatureForest: {
+                    editable: true,
+                    value:0 ,
+                },
+                volumeTooMatureForest: {
+                    editable: true,
+                    value:0 ,
+                },
+
+            };
+            this.setState({
+                data: [...data, newData],
+
+            });
+        }else{
+            message.error('数据添加未完成,请再次编辑！');
+            return false;
+
+        }
+
+
+    }
+
+    handleAdd1 = () => {
+
+
+        if(this.state.addCollapsed1) {
+
+            this.setState({addCollapsed1: false})
+            const {data1} = this.state;
+            const newData = {
+                key: data1.length + 1,
+                dataName: {
+                    editable: true,
+                    value: '0',
+                },
+                averageBasicWoodDensitySVD: {
+                    editable: true,
+                    value: 0,
+                },
+                averageBiomassExpansionFactor: {
+                    editable: true,
+                    value: 0,
+                },
+                rhizomeRatioRSR: {
+                    editable: true,
+                    value: 0,
+                },
+                biomassCarbonContentCF: {
+                    editable: true,
+                    value: 0,
+                },
+                totalVolumeGrowthRate: {
+                    editable: true,
+                    value: 0,
+                },
+                volumeHarvestingRate: {
+                    editable: true,
+                    value: 0,
+                },
+                volumeLossRate: {
+                    editable: true,
+                    value: 0,
+                },
+
+
+            };
+            this.setState({
+                data1: [...data1, newData],
+
+            });
+        }else{
+            message.error('数据添加未完成,请再次编辑！');
+            return false;
+        }
+    }
+
+    handleAdd2 = () => {
+
+
+        if(this.state.addCollapsed2) {
+
+            this.setState({addCollapsed2: false})
+            const {data2} = this.state;
+            const newData = {
+
+                key: data2.length + 1,
+                dataName: {
+                    editable: true,
+                    value: '0',
+                },
+                area: {
+                    editable: true,
+                    value: 0,
+                },
+                volume: {
+                    editable: true,
+                    value: 0,
+                },
+
+
+
+            };
+            this.setState({
+                data2: [...data2, newData],
+
+            });
+        }else{
+            message.error('数据添加未完成,请再次编辑！');
+            return false;
+        }
+    }
+
+    handleAdd3 = () => {
+
+
+        if(this.state.addCollapsed3) {
+
+            this.setState({addCollapsed3: false})
+            const {data3} = this.state;
+            const newData = {
+                key: data3.length + 1,
+                dataName: {
+                    editable: true,
+                    value: '0',
+                },
+                averageBasicWoodDensitySVD: {
+                    editable: true,
+                    value: 0,
+                },
+                averageBiomassExpansionFactor: {
+                    editable: true,
+                    value: 0,
+                },
+                rhizomeRatioRSR: {
+                    editable: true,
+                    value: 0,
+                },
+                biomassCarbonContentCF: {
+                    editable: true,
+                    value: 0,
+                },
+                totalVolumeGrowthRate: {
+                    editable: true,
+                    value: 0,
+                },
+                volumeHarvestingRate: {
+                    editable: true,
+                    value: 0,
+                },
+                volumeLossRate: {
+                    editable: true,
+                    value: 0,
+                },
+
+
+            };
+            this.setState({
+                data3: [...data3, newData],
+
+            });
+        }else{
+            message.error('数据添加未完成,请再次编辑！');
+            return false;
+        }
+    }
+
+    handleAdd5 = () => {
+
+
+        if(this.state.addCollapsed5) {
+
+            this.setState({addCollapsed5: false})
+            const {data5} = this.state;
+            const newData = {
+                key: data5.length + 1,
+                dataName: {
+                    editable: true,
+                    value: '0',
+                },
+                groundBiomassCarbonStorage: {
+                    editable: true,
+                    value: 0,
+                },
+                wholeForestBiomassCarbonStorage: {
+                    editable: true,
+                    value: 0,
+                },
+                groundBiomassCarbonDensity: {
+                    editable: true,
+                    value: 0,
+                },
+                wholeForestBiomassCarbonDensity: {
+                    editable: true,
+                    value: 0,
+                },
+                biomassGrowthCarbonUptake: {
+                    editable: true,
+                    value: 0,
+                },
+                preCalibrationHarvestingConsumptionOfCarbonEmissions: {
+                    editable: true,
+                    value: 0,
+                },
+                lossOfCarbonConsumption: {
+                    editable: true,
+                    value: 0,
+                },
+                afterCorrectionHarvestingConsumptionOfCarbonEmissions: {
+                    editable: true,
+                    value: 0,
+                },
+
+            };
+            this.setState({
+                data5: [...data5, newData],
+
+            });
+        }else{
+            message.error('数据添加未完成,请再次编辑！');
+            return false;
+        }
+    }
 
   render() {
 
@@ -3155,7 +3160,7 @@ class ElectricTable extends React.Component {
           <p>活动水平</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table  size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
           <Button className={styles.button} onClick={this.handleAdd}>添加</Button>
         </div>
 
@@ -3164,7 +3169,7 @@ class ElectricTable extends React.Component {
           <p>排放因子</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table  size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
           <Button className={styles.button} onClick={this.handleAdd1}>添加</Button>
         </div>
 
@@ -3173,7 +3178,7 @@ class ElectricTable extends React.Component {
             <p>活动水平不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
             <Button className={styles.button} onClick={this.handleAdd2}>添加</Button>
           </div>
 
@@ -3181,7 +3186,7 @@ class ElectricTable extends React.Component {
             <p>排放因子不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
             <Button className={styles.button} onClick={this.handleAdd3}>添加</Button>
           </div>
 
@@ -3189,7 +3194,7 @@ class ElectricTable extends React.Component {
             <p>排放量计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1800, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3197,7 +3202,7 @@ class ElectricTable extends React.Component {
             <p>不确定性计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1800, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
             <Button className={styles.button} onClick={this.handleAdd5}>添加</Button>
           </div>
 

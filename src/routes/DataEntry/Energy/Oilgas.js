@@ -138,9 +138,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 200,
+        width: 150,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
@@ -287,9 +287,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 200,
+        width: 150,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
@@ -626,66 +626,66 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气加工处理',
-            '　　天然气输送',
-            '　　天然气输送',
-            '　　天然气输送',
-            '　　天然气消费',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　稠油开采',
-            '　　原油储运',
-            '　　原油炼制',
+            '天然气开采',
+            '天然气开采',
+            '天然气开采',
+            '天然气开采',
+            '天然气加工处理',
+            '天然气输送',
+            '天然气输送',
+            '天然气输送',
+            '天然气消费',
+            '常规油开采',
+            '常规油开采',
+            '常规油开采',
+            '常规油开采',
+            '稠油开采',
+            '原油储运',
+            '原油炼制',
 
           ];
 
           const fossilTitle1 = [
 
 
-            '　　井口装置',
-            '　　常规集气系统',
-            '　　计量/配气站',
-            '　　储气总站',
-            '　　天然气加工处理',
-            '　　增压站',
-            '　　计量站',
-            '　　管线（逆止阀）',
-            '　　天然气消费',
-            '　　井口装置',
-            '　　单井储油装置',
-            '　　接转站',
-            '　　联合站',
-            '　　稠油开采',
-            '　　原油储运',
-            '　　原油炼制',
+            '井口装置',
+            '常规集气系统',
+            '计量/配气站',
+            '储气总站',
+            '天然气加工处理',
+            '增压站',
+            '计量站',
+            '管线（逆止阀）',
+            '天然气消费',
+            '井口装置',
+            '单井储油装置',
+            '接转站',
+            '联合站',
+            '稠油开采',
+            '原油储运',
+            '原油炼制',
 
           ];
 
           const fossilTitle2 = [
 
 
-            '　　设备数量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　天然气加工处理量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　天然气加工处理量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　设备数量',
-            '　　原油运输量',
-            '　　原油运输量',
-            '　　原油运输量',
+            '设备数量',
+            '设备数量',
+            '设备数量',
+            '设备数量',
+            '天然气加工处理量',
+            '设备数量',
+            '设备数量',
+            '设备数量',
+            '天然气加工处理量',
+            '设备数量',
+            '设备数量',
+            '设备数量',
+            '设备数量',
+            '原油运输量',
+            '原油运输量',
+            '原油运输量',
 
           ];
 
@@ -705,9 +705,9 @@ class CoalmineTable extends React.Component {
             '(个.年)',
             '(个.年)',
             '(个.年)',
-            '（万吨）',
-            '（万吨）',
-            '（万吨）',
+            '(万吨)',
+            '(万吨)',
+            '(万吨)',
 
           ]
 
@@ -843,7 +843,7 @@ class CoalmineTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -890,44 +890,44 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气开采',
-            '　　天然气加工处理',
-            '　　天然气输送',
-            '　　天然气输送',
-            '　　天然气输送',
-            '　　天然气消费',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　常规油开采',
-            '　　稠油开采',
-            '　　原油储运',
-            '　　原油炼制',
+            '天然气开采',
+            '天然气开采',
+            '天然气开采',
+            '天然气开采',
+            '天然气加工处理',
+            '天然气输送',
+            '天然气输送',
+            '天然气输送',
+            '天然气消费',
+            '常规油开采',
+            '常规油开采',
+            '常规油开采',
+            '常规油开采',
+            '稠油开采',
+            '原油储运',
+            '原油炼制',
 
           ];
 
           const fossilTitle1 = [
 
 
-            '　　井口装置',
-            '　　常规集气系统',
-            '　　计量/配气站',
-            '　　储气总站',
-            '　　天然气加工处理',
-            '　　增压站',
-            '　　计量站',
-            '　　管线（逆止阀）',
-            '　　天然气消费',
-            '　　井口装置',
-            '　　单井储油装置',
-            '　　接转站',
-            '　　联合站',
-            '　　稠油开采',
-            '　　原油储运',
-            '　　原油炼制',
+            '井口装置',
+            '常规集气系统',
+            '计量/配气站',
+            '储气总站',
+            '天然气加工处理',
+            '增压站',
+            '计量站',
+            '管线（逆止阀）',
+            '天然气消费',
+            '井口装置',
+            '单井储油装置',
+            '接转站',
+            '联合站',
+            '稠油开采',
+            '原油储运',
+            '原油炼制',
 
           ];
 
@@ -948,9 +948,9 @@ class CoalmineTable extends React.Component {
             '(吨CH4/个.年)',
             '(吨CH4/个.年)',
             '(吨CH4/个.年)',
-            '（吨CH4/万吨）',
-            '（吨CH4/万吨）',
-            '（吨CH4/万吨）',
+            '(吨CH4/万吨)',
+            '(吨CH4/万吨)',
+            '(吨CH4/万吨)',
 
           ]
 
@@ -1081,7 +1081,7 @@ class CoalmineTable extends React.Component {
             message.success(res.message);
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -1155,14 +1155,14 @@ class CoalmineTable extends React.Component {
 
             <p>石油和天然气系统逃逸排放活动水平</p>
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
           <div className={styles.entryBody} id="bodyTable2"  >
             <p>石油和天然气系统逃逸排放排放因子</p>
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

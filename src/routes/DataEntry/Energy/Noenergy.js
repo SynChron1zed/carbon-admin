@@ -135,19 +135,18 @@ class ElectricTable extends React.Component {
     super(props);
 
 
-    this.columns = [    
+    this.columns = [
       {
         title: '数据项',
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
 
         };
-          
+
           return obj}
 
       }, {
@@ -177,7 +176,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 80,
 
         render: (text, record, index) => {
 
@@ -224,10 +223,12 @@ class ElectricTable extends React.Component {
 
 
       AllData:[],
+      OtherAllData:[],
       years:'2014'
     };
 
-    this.queryGut('2014');
+
+    this.OtherqueryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -305,6 +306,51 @@ class ElectricTable extends React.Component {
   }
 
   //
+
+  OtherqueryGut(years){
+
+
+    post('/report/energyActivity/list', {
+      year:years,
+
+    })
+      .then((res) => {
+
+        if (res.code==0) {
+
+
+
+
+          var Alldata =res.data;
+
+
+
+
+          const _Data = [
+            Alldata.detail.CO2EW.fossilFuel,
+            Alldata.detail.CO2EW.biomassBurning,//2. 生物质燃烧(以能源利用为目的)
+            (Alldata.detail.CH4.coalMiningEscape*21+Alldata.detail.CH4EW.coalMiningEscape*310),//3. 煤炭开采逃逸
+            Alldata.detail.CH4.oilAndGasSystemsEscape*21+Alldata.detail.CH4EW.oilAndGasSystemsEscape*310,//4. 油气系统逃逸
+            Alldata.detail.CO2EW.nonEnergyUse,//5. 非能源利用
+            Alldata.detail.CO2EW.totalEnergyActivities,//能源活动总计
+
+          ]  //co2
+
+          this.setState({ OtherAllData: _Data});
+
+          this.queryGut(years);
+
+          this.setState({ loading: false});
+
+
+
+        } else {
+          message.error('数据错误！');
+        }
+      });
+
+  }
+
   queryGut(years){
 
 
@@ -318,8 +364,17 @@ class ElectricTable extends React.Component {
 
 
 
-
           var Alldata =res.data;
+          var otherData = this.state.OtherAllData;
+
+
+
+
+          var total = (Math.pow(otherData[0]*Alldata.totalFossilFuels.uncertainty,2)
+          +Math.pow(otherData[1]*Alldata.biomassBurning.uncertainty,2)
+          +Math.pow(otherData[2]*Alldata.coalMiningAndMineActivitiesToEscape.uncertainty,2)
+          +Math.pow(otherData[3]*Alldata.nonEnergyUseEmissions.uncertainty,2)
+          +Math.pow(otherData[4]*Alldata.oilAndGasSystemsEscape.uncertainty,2))/otherData[5]
 
           const _Data = [
             Alldata.totalFossilFuels.uncertainty,
@@ -327,10 +382,10 @@ class ElectricTable extends React.Component {
             Alldata.coalMiningAndMineActivitiesToEscape.uncertainty,
             Alldata.nonEnergyUseEmissions.uncertainty,
             Alldata.oilAndGasSystemsEscape.uncertainty,
-            0
+            total.toFixed(2)
           ]  //co2
-         
-         
+
+
 
 
           const fossilTitle = [
@@ -341,37 +396,37 @@ class ElectricTable extends React.Component {
             '石油和天然气系统逃逸排放',
             '非能源利用',
             '总计',
-    
+
 
           ]
-       
+
 
 
           const _b1= []
 
-      
+
           for(var i = 0 ; i<_Data.length;i++){
-            
-            
+
+
                         _b1.push({
                             key:i,
                             name:{
-            
+
                               value:fossilTitle[i] ,
                             },
                           p1:{
-                          
-                              value:0 ,
+
+                              value:otherData[i].toFixed(2) ,
                             },
                          uncertainty: {
                               editable: false,
                               value:_Data[i] ,
                             },
-                          
+
                           }
                         )
                       }
-            
+
 
           console.log(_b1);
 
@@ -399,7 +454,7 @@ class ElectricTable extends React.Component {
       'coalMiningAndMineActivitiesToEscape',
       'nonEnergyUseEmissions',
       'oilAndGasSystemsEscape',
-    
+
 
     ]
 
@@ -409,7 +464,7 @@ class ElectricTable extends React.Component {
 
     var url = '/uncertainty/energyActivity/update'
     var bodyName = 'energyActivity';
-   
+
 
 
 
@@ -421,10 +476,10 @@ class ElectricTable extends React.Component {
     };
 
     obj[bodyName]={}
-  
+
     obj[bodyName][DirectoryIndex]= {
       "uncertainty": data[index].uncertainty.value,
-    
+
     }
 
     post(url, obj)
@@ -433,10 +488,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
           message.success(res.message);
-          this.queryGut(this.state.years)
+          this.OtherqueryGut(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -494,10 +549,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>废弃物活动温室气体清单报告不确定性</p>
+            <p>能源活动不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

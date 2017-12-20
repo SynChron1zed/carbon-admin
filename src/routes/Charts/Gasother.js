@@ -253,9 +253,8 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -265,7 +264,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -276,7 +275,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -287,7 +286,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -298,7 +297,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -309,7 +308,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -320,7 +319,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width:60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -332,7 +331,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -341,7 +340,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width:60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -408,9 +407,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 150,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'name', text),
           props: {},
@@ -428,7 +426,7 @@ class ElectricTable extends React.Component {
         };
 
           if (index === 5) {
-            obj.props.colSpan = 2;
+            obj.props.colSpan = 0;
           }
 
           return obj},
@@ -440,7 +438,7 @@ class ElectricTable extends React.Component {
 
         };
           if (index === 5) {
-            obj.props.colSpan =0;
+            obj.props.colSpan =2;
           }
 
 
@@ -452,7 +450,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 50,
 
         render: (text, record, index) => {
 
@@ -461,7 +459,6 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                index==5 ? <span></span>:
 
 
 
@@ -488,7 +485,7 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 150,
 
         colSpan:1,
         render: (text, record, index) => {  const obj = {
@@ -507,6 +504,9 @@ class ElectricTable extends React.Component {
 
         };
 
+            if (index === 2) {
+                obj.props.colSpan = 2;
+            }
 
 
           return obj},
@@ -518,6 +518,10 @@ class ElectricTable extends React.Component {
 
         };
 
+            if (index === 2) {
+                obj.props.colSpan = 0;
+            }
+
 
 
           return obj},
@@ -527,7 +531,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 50,
 
         render: (text, record, index) => {
 
@@ -576,10 +580,10 @@ class ElectricTable extends React.Component {
       years:'2014',
       Data:[]
     };
-
+    this.newQueryGut1();
     this.queryGut('2014');
     this.newQueryGut('2014');
-    this.newQueryGut1();
+
 
     //$("#bodyTable1").hide();
 
@@ -681,7 +685,7 @@ class ElectricTable extends React.Component {
     data3[index][key].value = value;
     this.setState({ data3 });
 
-    if(key  == 'p2'){
+    if(key  == 'p1'){
 
       this.updateWaste(index,data3);
     }
@@ -1033,6 +1037,7 @@ class ElectricTable extends React.Component {
           _Data.push(Alldata.uncertaintyAgricultureActivity.uncertainty)
           _Data.push(Alldata.uncertaintyWasteDisposal.uncertainty)
           _Data.push(Alldata.uncertaintyLandUseChangeAndForestry.uncertainty)
+          _Data.push(Alldata.uncertaintySynthesis.uncertainty)
 
           const fossilTitle = [
 
@@ -1047,7 +1052,8 @@ class ElectricTable extends React.Component {
 
           const  _Data1 = [];
           const  pfl = this.state.Data;
-          var  pflTotal ;
+
+
 
 
           if(years=='2014'){
@@ -1056,7 +1062,8 @@ class ElectricTable extends React.Component {
             _Data1.push(pfl.SUM2014.Summary.Total.agricultureActivity)
             _Data1.push(pfl.SUM2014.Summary.Total.wasteDisposal)
             _Data1.push(pfl.SUM2014.Summary.Total.landUseChangeAndForestry)
-            pflTotal = pfl.SUM2014.Summary.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
+
 
           }else if(years=='2012'){
             _Data1.push(pfl.SUM2012.Summary.Total.energyActivity)
@@ -1065,31 +1072,30 @@ class ElectricTable extends React.Component {
             _Data1.push(pfl.SUM2012.Summary.Total.wasteDisposal)
             _Data1.push(pfl.SUM2012.Summary.Total.landUseChangeAndForestry)
 
-            pflTotal = pfl.SUM2012.Summary.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
           }else if(years=='2010'){
             _Data1.push(pfl.SUM2010.Summary.Total.energyActivity)
             _Data1.push(pfl.SUM2010.Summary.Total.industrialProductionProcess)
             _Data1.push(pfl.SUM2010.Summary.Total.agricultureActivity)
             _Data1.push(pfl.SUM2010.Summary.Total.wasteDisposal)
             _Data1.push(pfl.SUM2010.Summary.Total.landUseChangeAndForestry)
-
-            pflTotal = pfl.SUM2010.Summary.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
           }else if(years=='2005'){
             _Data1.push(pfl.SUM2005.Summary.Total.energyActivity)
             _Data1.push(pfl.SUM2005.Summary.Total.industrialProductionProcess)
             _Data1.push(pfl.SUM2005.Summary.Total.agricultureActivity)
             _Data1.push(pfl.SUM2005.Summary.Total.wasteDisposal)
             _Data1.push(pfl.SUM2005.Summary.Total.landUseChangeAndForestry)
-
-            pflTotal = pfl.SUM2005.Summary.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
           }
 
 
-          var bqd = ((Math.pow(_Data[0]*_Data1[0],2)+Math.pow(_Data[1]*_Data1[1],2)+Math.pow(_Data[2]*_Data1[2],2)+Math.pow(_Data[3]*_Data1[3],2)
-            +Math.pow(_Data[4]*_Data1[4],2))/pflTotal).toFixed(2)
+      /*    var bqd = pflTotal==0 ? 0 : Math.sqrt(Math.pow(_Data[0]*_Data1[0],2)+Math.pow(_Data[1]*_Data1[1],2)+Math.pow(_Data[2]*_Data1[2],2)+Math.pow(_Data[3]*_Data1[3],2)
+            +Math.pow(_Data[4]*_Data1[4],2))/pflTotal
+
 
           _Data.push(bqd)
-          _Data1.push(bqd)
+          _Data1.push(bqd)*/
 
 
 
@@ -1136,7 +1142,6 @@ class ElectricTable extends React.Component {
       });
 
 
-
   }
 
   //
@@ -1153,6 +1158,7 @@ class ElectricTable extends React.Component {
       'uncertaintyAgricultureActivity',
       'uncertaintyWasteDisposal',
       'uncertaintyLandUseChangeAndForestry',
+      'uncertaintySynthesis',
 
     ]
 
@@ -1190,7 +1196,7 @@ class ElectricTable extends React.Component {
           this.newQueryGut(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1240,7 +1246,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1252,6 +1258,8 @@ class ElectricTable extends React.Component {
     this.setState({ loading: true});
     this.setState({years:years})
     this.queryGut(years)
+    this.newQueryGut(years);
+    this.newQueryGut1();
   }
 
 
@@ -1294,7 +1302,7 @@ class ElectricTable extends React.Component {
     return (
       <div className={styles.normal}>
         <div className={styles.title}>
-          <span className={styles.title_span}>温室气体增温潜值及关键排放指标</span>
+          <span className={styles.title_span}>其它指标</span>
         </div>
 
         <div className={styles.select}>
@@ -1319,7 +1327,7 @@ class ElectricTable extends React.Component {
             <p>温室气体增温潜值</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1020 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
           </div>
 
@@ -1330,7 +1338,7 @@ class ElectricTable extends React.Component {
             <p>不确定性计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -1338,7 +1346,7 @@ class ElectricTable extends React.Component {
             <p>关键指标</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

@@ -139,9 +139,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -159,19 +158,17 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
-
-        colSpan:1,
+        width: 60,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text),},
 
       {
-        title: '甲烷(万吨)', dataIndex: 'CH4', width: 100,
+        title: '甲烷(吨)', dataIndex: 'CH4', width: 100,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'CH4', text),
       }, {
-        title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 100,
+        title: '氧化亚氮(吨)', dataIndex: 'N2O', width: 100,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'N2O', text),
       },{
-        title: '二氧化碳当量(万吨)', dataIndex: 'CO2', width: 100,
+        title: '二氧化碳当量(吨)', dataIndex: 'CO2', width: 100,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'CO2', text),
       }];
 
@@ -503,7 +500,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -572,19 +569,19 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>农业活动温室气体清单报告(单位：万吨)</p>
+            <p>农业活动温室气体清单报告(单位： 万吨)</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>农业活动温室气体清单报告(单位： 吨)</p>
+            <p>农业活动温室气体清单报告(单位：吨)</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

@@ -141,9 +141,9 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 110,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -539,14 +539,15 @@ class ElectricTable extends React.Component {
           _Data12.push('-')
           _Data12.push('-')
           _Data12.push('-')
+          _Data12.push(Alldata.CF4.aluminumProductionProcess)
           _Data12.push('-')
           _Data12.push('-')
+          _Data12.push(Alldata.CF4.semiconductorProductionProcess)
           _Data12.push('-')
           _Data12.push('-')
-          _Data12.push('-')
-          _Data12.push('-')
-          _Data12.push('-')
-          _Data12.push('-')
+          _Data12.push((Alldata.CF4.aluminumProductionProcess+Alldata.CF4.semiconductorProductionProcess).toFixed(2))
+          _Data12.push(((Alldata.CF4.aluminumProductionProcess+Alldata.CF4.semiconductorProductionProcess)*6500/10000).toFixed(2))
+
 
           _Data13.push('-')
           _Data13.push('-')
@@ -554,14 +555,14 @@ class ElectricTable extends React.Component {
           _Data13.push('-')
           _Data13.push('-')
           _Data13.push('-')
+          _Data13.push(Alldata.C2F6.aluminumProductionProcess)
           _Data13.push('-')
           _Data13.push('-')
+          _Data13.push(Alldata.C2F6.semiconductorProductionProcess)
           _Data13.push('-')
           _Data13.push('-')
-          _Data13.push('-')
-          _Data13.push('-')
-          _Data13.push('-')
-          _Data13.push('-')
+          _Data13.push((Alldata.C2F6.aluminumProductionProcess+Alldata.C2F6.semiconductorProductionProcess).toFixed(2))
+          _Data13.push(((Alldata.C2F6.aluminumProductionProcess+Alldata.C2F6.semiconductorProductionProcess)*9200/10000).toFixed(2))
 
           _Data14.push('-')
           _Data14.push('-')
@@ -575,23 +576,28 @@ class ElectricTable extends React.Component {
           _Data14.push(Alldata.SF6.semiconductorProductionProcess)
           _Data14.push('-')
           _Data14.push('-')
-          _Data14.push(Alldata.SF6.magnesiumProductionProcess+Alldata.SF6.electricPowerEquipmentProductionProcess+Alldata.SF6.semiconductorProductionProcess)
-          _Data14.push('0')
+          _Data14.push((Alldata.SF6.magnesiumProductionProcess+Alldata.SF6.electricPowerEquipmentProductionProcess+Alldata.SF6.semiconductorProductionProcess).toFixed(2))
+          _Data14.push(((Alldata.SF6.magnesiumProductionProcess+Alldata.SF6.electricPowerEquipmentProductionProcess+Alldata.SF6.semiconductorProductionProcess)*23900/10000).toFixed(2))
 
+          _Data15.push((Alldata.CO2.cementProductionProcess).toFixed(2))
+          _Data15.push((Alldata.CO2.limeProductionProcess).toFixed(2))
+          _Data15.push((Alldata.CO2.steelProductionProcess).toFixed(2))
+          _Data15.push((Alldata.CO2.calciumCarbideProductionProcess).toFixed(2))
+          _Data15.push((Alldata.N2O.adipicAcidProductionProcess*310/10000).toFixed(2))
+          _Data15.push((Alldata.N2O.nitricAcidProductionProcess*310/10000).toFixed(2))
+          _Data15.push(((Alldata.CF4.aluminumProductionProcess*6500+Alldata.C2F6.aluminumProductionProcess*9200)/10000).toFixed(2))
+          _Data15.push((Alldata.SF6.magnesiumProductionProcess*23900/10000).toFixed(2))
+          _Data15.push((Alldata.SF6.electricPowerEquipmentProductionProcess*23900/10000).toFixed(2))
+          _Data15.push(((Alldata.HFC_23.semiconductorProductionProcess*11700+Alldata.CF4.semiconductorProductionProcess*6500+Alldata.C2F6.semiconductorProductionProcess*9200+Alldata.SF6.semiconductorProductionProcess*23900)/10000).toFixed(2))
+          _Data15.push((Alldata.HFC_23.chlorodifluoromethaneProductionProcess*11700/10000).toFixed(2))
+          _Data15.push(((Alldata.HFC_32*650+Alldata.HFC_125*2800+Alldata.HFC_134a*1300+Alldata.HFC_143a*3800+Alldata.HFC_152a*140+Alldata.HFC_227ea*2900+Alldata.HFC_236fa*6300+Alldata.HFC_245fa*1030)/10000).toFixed(2))
           _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
-          _Data15.push('0')
+          _Data15.push(
+            ((Alldata.CO2.cementProductionProcess)+(Alldata.CO2.limeProductionProcess)+(Alldata.CO2.steelProductionProcess)
+          +(Alldata.CO2.calciumCarbideProductionProcess)+(Alldata.N2O.adipicAcidProductionProcess*310/10000)+(Alldata.N2O.nitricAcidProductionProcess*310/10000)
+          +((Alldata.CF4.aluminumProductionProcess*6500+Alldata.C2F6.aluminumProductionProcess*9200)/10000)+(Alldata.SF6.electricPowerEquipmentProductionProcess*23900/10000)
+        +((Alldata.HFC_23.semiconductorProductionProcess*11700+Alldata.CF4.semiconductorProductionProcess*6500+Alldata.C2F6.semiconductorProductionProcess*9200+Alldata.SF6.semiconductorProductionProcess*23900)/10000)
+          +(Alldata.HFC_23.chlorodifluoromethaneProductionProcess*11700/10000)+((Alldata.HFC_32*650+Alldata.HFC_125*2800+Alldata.HFC_134a*1300+Alldata.HFC_143a*3800+Alldata.HFC_152a*140+Alldata.HFC_227ea*2900+Alldata.HFC_236fa*6300+Alldata.HFC_245fa*1030)/10000)).toFixed(2))
 
 
 
@@ -750,7 +756,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -812,7 +818,7 @@ class ElectricTable extends React.Component {
             <p>工业生产过程清单结果</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1020 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1800, y: 1020 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

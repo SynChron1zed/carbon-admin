@@ -262,9 +262,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 180,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -359,7 +358,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -375,7 +373,7 @@ class ElectricTable extends React.Component {
             title: '二氧化碳(万吨)', dataIndex: 'CO', width: 100,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'CO', text),
           },{
-            title: '构成(%)', dataIndex: 'CO1', width: 100,
+            title: '构成(%)', dataIndex: 'CO1', width: 60,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'CO1', text),
           },
 
@@ -388,7 +386,7 @@ class ElectricTable extends React.Component {
             title: '二氧化碳(万吨)', dataIndex: 'NCO', width: 100,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'NCO', text),
           },{
-            title: '构成(%)', dataIndex: 'NCO1', width: 100,
+            title: '构成(%)', dataIndex: 'NCO1', width: 60,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'NCO1', text),
           },
 
@@ -401,7 +399,7 @@ class ElectricTable extends React.Component {
             title: '甲烷(万吨)', dataIndex: 'CH', width: 100,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'CH', text),
           },{
-            title: '构成(%)', dataIndex: 'CH1', width: 100,
+            title: '构成(%)', dataIndex: 'CH1', width: 60,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'CH1', text),
           },
 
@@ -415,7 +413,7 @@ class ElectricTable extends React.Component {
             title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 100,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'N2O', text),
           },{
-            title: '构成(%)', dataIndex: 'N2O1', width: 100,
+            title: '构成(%)', dataIndex: 'N2O1', width: 60,
             render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'N2O1', text),
           },
 
@@ -428,9 +426,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 130,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'name', text),
           props: {},
@@ -440,7 +437,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: '二氧化碳(万吨)', dataIndex: 'CO', width: 100,
+        title: '二氧化碳(万吨)', dataIndex: 'CO', width: 80,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'CO', text),
           props: {},
@@ -451,7 +448,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '甲烷(万吨)', dataIndex: 'CH', width: 100,
+        title: '甲烷(万吨)', dataIndex: 'CH', width: 80,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'CH', text),
           props: {},
@@ -462,7 +459,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 100,
+        title: '氧化亚氮(万吨)', dataIndex: 'N2O', width: 80,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'N2O', text),
           props: {},
@@ -484,7 +481,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '全氟化碳(万吨当量)', dataIndex: 'HFC1', width: 100,
+        title: '全氟化碳(万吨当量)', dataIndex: 'HFC1', width: 80,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'HFC1', text),
           props: {},
@@ -495,7 +492,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '六氟化硫(万吨当量)', dataIndex: 'HFC2', width: 100,
+        title: '六氟化硫(万吨当量)', dataIndex: 'HFC2', width: 80,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'HFC2', text),
           props: {},
@@ -507,7 +504,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: '合计(万吨当量)', dataIndex: 'HFC3', width: 100,
+        title: '合计(万吨当量)', dataIndex: 'HFC3', width: 80,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'HFC3', text),
           props: {},
@@ -522,9 +519,8 @@ class ElectricTable extends React.Component {
       {
         title: '排放源类型',
         dataIndex: 'name',
-        width: 100,
+        width: 130,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns3(this.state.data3, index, 'name', text),
           props: {},
@@ -537,10 +533,10 @@ class ElectricTable extends React.Component {
         title: '包括土地利用变化和林业',
         children: [
           {
-            title: '二氧化碳当量(万吨)', dataIndex: 'CO', width: 100,
+            title: '二氧化碳当量(万吨)', dataIndex: 'CO', width: 150,
             render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'CO', text),
           },{
-            title: '比重(%)', dataIndex: 'CO1', width: 100,
+            title: '比重(%)', dataIndex: 'CO1', width: 150,
             render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'CO1', text),
           },
 
@@ -550,10 +546,10 @@ class ElectricTable extends React.Component {
         title: '不包括土地利用变化和林业',
         children: [
           {
-            title: '二氧化碳(万吨)', dataIndex: 'NCO', width: 100,
+            title: '二氧化碳(万吨)', dataIndex: 'NCO', width: 150,
             render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'NCO', text),
           },{
-            title: '比重(%)', dataIndex: 'NCO1', width: 100,
+            title: '比重(%)', dataIndex: 'NCO1', width: 150,
             render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'NCO1', text),
           },
 
@@ -595,7 +591,7 @@ class ElectricTable extends React.Component {
       pf2014:[],
       nopf2014:[],
 
-      checkedValues:[],
+      checkedValues:['0'],
       pf:[],
       nopf:[],
       i:'0',
@@ -831,7 +827,7 @@ class ElectricTable extends React.Component {
   }
 
   //
-  queryGut(i,j,years){
+  queryGut(check,j,years){
 
 
     post('/report/summary/list', {
@@ -896,6 +892,7 @@ class ElectricTable extends React.Component {
             '　7.铝生产过程',
             '　8.镁生产过程',
             '　9.电力设备生产过程',
+            '　10.其他生产过程',
             '农业总计',
             '　1.稻田',
             '　2.农用地',
@@ -958,10 +955,11 @@ class ElectricTable extends React.Component {
 
           ]
 
+       
 
           if(years=='2014'){
 
-            if(i=='0'){ //0 包括 1 不包括
+            if(check=='0'){ //0 包括 1 不包括
               _DataPf = [
                 (Alldata.SUM2014.Composition.CO2.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),Alldata.SUM2014.Composition.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                 (Alldata.SUM2014.Composition.CH4.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),Alldata.SUM2014.Composition.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
@@ -1073,7 +1071,7 @@ class ElectricTable extends React.Component {
             _DataPf10.push(Alldata.SUM2014.Collection.fossilFuel.CO2EW)
             _DataPf10.push(Alldata.SUM2014.Collection.biomassBurning.CO2EW)
             _DataPf10.push(Alldata.SUM2014.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2014.Collection.oilAndGasSystemEscape.CO2EW)
+            _DataPf10.push(Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW)
             _DataPf10.push(Alldata.SUM2014.Collection.nonEnergyUse.CO2EW)
 
 
@@ -1344,7 +1342,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.energyActivity,
 
-              (SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
@@ -1357,20 +1355,20 @@ class ElectricTable extends React.Component {
 
               SUMpf1.industrialProductionProcess,
 
-              (SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              '','',
+              '-','-',
               SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
 
             var agricultureActivityPF = [
-              '', '',
+              '-', '-',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
@@ -1384,7 +1382,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.wasteDisposal,
 
-              (SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
@@ -1395,9 +1393,9 @@ class ElectricTable extends React.Component {
             var landUseChangeAndForestryPF = [
               SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
@@ -1458,14 +1456,16 @@ class ElectricTable extends React.Component {
             this.setState({data1:_b2})
 
 
+
+
             var totalEmissions_IncludingLand_UseChangeAndForestry = [
-              (Alldata.SUM2014.Collection.totalEnergyActivities.CO2+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2
+              (Alldata.SUM2014.Collection.totalEnergyActivities.CO2+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2
               +Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2+Alldata.SUM2014.Collection.totalWasteDisposal.CO2).toFixed(2),
 
               (Alldata.SUM2014.Collection.totalEnergyActivities.CH4
               +Alldata.SUM2014.Collection.totalAgricultureActivity.CH4+Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CH4+Alldata.SUM2014.Collection.totalWasteDisposal.CH4).toFixed(2),
 
-              (Alldata.SUM2014.Collection.totalEnergyActivities.N2O+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.N2O+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.N2O
+              (Alldata.SUM2014.Collection.totalEnergyActivities.N2O+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.N2O
               +Alldata.SUM2014.Collection.totalAgricultureActivity.N2O+Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.N2O+Alldata.SUM2014.Collection.totalWasteDisposal.N2O).toFixed(2),
 
               (Alldata.SUM2014.Collection.totalIndustrialProductionProcess.HFC).toFixed(2),
@@ -1473,7 +1473,7 @@ class ElectricTable extends React.Component {
               (Alldata.SUM2014.Collection.totalIndustrialProductionProcess.PFC).toFixed(2),
               (Alldata.SUM2014.Collection.totalIndustrialProductionProcess.SF6).toFixed(2),
 
-              (Alldata.SUM2014.Collection.totalEnergyActivities.CO2EW+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW
+              (Alldata.SUM2014.Collection.totalEnergyActivities.CO2EW+Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW
               +Alldata.SUM2014.Collection.totalAgricultureActivity.CO2EW+Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2EW+Alldata.SUM2014.Collection.totalWasteDisposal.CO2EW).toFixed(2),
 
 
@@ -1601,16 +1601,16 @@ class ElectricTable extends React.Component {
 
             _Data.push(coalMiningEscape);
 
-            var oilAndGasSystemEscape = [
+            var oilAndGasSystemsEscape = [
               '-',
-              Alldata.SUM2014.Collection.oilAndGasSystemEscape.CH4,
-              '-',
-              '-',
+              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CH4,
               '-',
               '-',
-              Alldata.SUM2014.Collection.oilAndGasSystemEscape.CO2EW,
+              '-',
+              '-',
+              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW,
             ]
-            _Data.push(oilAndGasSystemEscape);
+            _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
@@ -2008,8 +2008,9 @@ class ElectricTable extends React.Component {
             var wasteWater = [
 
               '-',
+                Alldata.SUM2014.Collection.wasteWater.CH4,
               Alldata.SUM2014.Collection.wasteWater.N2O,
-              Alldata.SUM2014.Collection.wasteWater.CH4,
+
               '-',
               '-',
               '-',
@@ -2120,7 +2121,7 @@ class ElectricTable extends React.Component {
           }else if (years=='2012')
           {
 
-            if(i=='0') {
+            if(check=='0') {
               _DataPf = [
                 (Alldata.SUM2012.Composition.CO2.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), Alldata.SUM2012.Composition.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                 (Alldata.SUM2012.Composition.CH4.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), Alldata.SUM2012.Composition.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
@@ -2234,7 +2235,7 @@ class ElectricTable extends React.Component {
             _DataPf10.push(Alldata.SUM2012.Collection.fossilFuel.CO2EW)
             _DataPf10.push(Alldata.SUM2012.Collection.biomassBurning.CO2EW)
             _DataPf10.push(Alldata.SUM2012.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2012.Collection.oilAndGasSystemEscape.CO2EW)
+            _DataPf10.push(Alldata.SUM2012.Collection.oilAndGasSystemsEscape.CO2EW)
             _DataPf10.push(Alldata.SUM2012.Collection.nonEnergyUse.CO2EW)
 
 
@@ -2268,7 +2269,96 @@ class ElectricTable extends React.Component {
             _DataPf15.push(Alldata.SUM2012.Collection.internationalSailing.CO2EW)
 
 
-            var SUMpfTotal = Alldata.SUM2012.Summary;
+              var SUMpfCO = Alldata.SUM2012.Summary;
+
+              var sumCO = [
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+              _Data3.push(sumCO)
+
+              var sumCH = [
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumCH)
+
+              var sumNO = [
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumNO)
+
+              var sumF = [
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry).toFixed(2),
+                  ((SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry).toFixed(2),
+
+                  (  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumF)
+
+              var sumT = [
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  100,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  100
+              ]
+
+              _Data3.push(sumT)
+
+
+              var _b4 = []
+
+              for(var i  = 0 ;i <fossilTitle3.length;i++){
+                  _b4.push({
+                      key:i,
+                      name:{
+
+                          value:fossilTitle3[i] ,
+                      },
+                      CO:{
+
+                          value:_Data3[i][0] ,
+                      },
+                      CO1:{
+
+                          value:_Data3[i][1],
+                      },
+                      NCO:{
+
+                          value:_Data3[i][2] ,
+                      },
+                      NCO1:{
+
+                          value:_Data3[i][3],
+                      },
+
+
+                  })
+
+
+              }
+
+              this.setState({data3:_b4})
+
+
+
+              var SUMpfTotal = Alldata.SUM2012.Summary;
+
 
             var energyActivityPFT = [
               SUMpfTotal.CO2.energyActivity,
@@ -2417,7 +2507,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.energyActivity,
 
-              (SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
               SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
@@ -2430,20 +2520,20 @@ class ElectricTable extends React.Component {
 
               SUMpf1.industrialProductionProcess,
 
-              (SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
-              '','',
+              '-','-',
               SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
 
             var agricultureActivityPF = [
-              '', '',
+              '-', '-',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
@@ -2457,7 +2547,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.wasteDisposal,
 
-              (SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
               SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
@@ -2468,9 +2558,9 @@ class ElectricTable extends React.Component {
             var landUseChangeAndForestryPF = [
               SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
@@ -2533,13 +2623,13 @@ class ElectricTable extends React.Component {
             var SUM12 = Alldata.SUM2012.Collection
 
             var totalEmissions_IncludingLand_UseChangeAndForestry = [
-              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2+SUM12.totalIndustrialProductionProcess.CO2
+              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2
               +SUM12.totalLandUseChangeAndForestry.CO2+SUM12.totalWasteDisposal.CO2).toFixed(2),
 
               (SUM12.totalEnergyActivities.CH4
               +SUM12.totalAgricultureActivity.CH4+SUM12.totalLandUseChangeAndForestry.CH4+SUM12.totalWasteDisposal.CH4).toFixed(2),
 
-              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O+SUM12.totalIndustrialProductionProcess.N2O
+              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O
               +SUM12.totalAgricultureActivity.N2O+SUM12.totalLandUseChangeAndForestry.N2O+SUM12.totalWasteDisposal.N2O).toFixed(2),
 
               (SUM12.totalIndustrialProductionProcess.HFC).toFixed(2),
@@ -2547,7 +2637,7 @@ class ElectricTable extends React.Component {
               (SUM12.totalIndustrialProductionProcess.PFC).toFixed(2),
               (SUM12.totalIndustrialProductionProcess.SF6).toFixed(2),
 
-              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
+              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
               +SUM12.totalAgricultureActivity.CO2EW+SUM12.totalLandUseChangeAndForestry.CO2EW+SUM12.totalWasteDisposal.CO2EW).toFixed(2),
 
 
@@ -2675,16 +2765,16 @@ class ElectricTable extends React.Component {
 
             _Data.push(coalMiningEscape);
 
-            var oilAndGasSystemEscape = [
+            var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemEscape.CH4,
-              '-',
-              '-',
+              SUM12.oilAndGasSystemsEscape.CH4,
               '-',
               '-',
-              SUM12.oilAndGasSystemEscape.CO2EW,
+              '-',
+              '-',
+              SUM12.oilAndGasSystemsEscape.CO2EW,
             ]
-            _Data.push(oilAndGasSystemEscape);
+            _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
@@ -3197,7 +3287,7 @@ class ElectricTable extends React.Component {
           {
 
 
-            if(i=='0') {
+            if(check=='0') {
               _DataPf = [
                 (Alldata.SUM2010.Composition.CO2.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), Alldata.SUM2010.Composition.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                 (Alldata.SUM2010.Composition.CH4.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), Alldata.SUM2010.Composition.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
@@ -3312,7 +3402,7 @@ class ElectricTable extends React.Component {
             _DataPf10.push(Alldata.SUM2010.Collection.fossilFuel.CO2EW)
             _DataPf10.push(Alldata.SUM2010.Collection.biomassBurning.CO2EW)
             _DataPf10.push(Alldata.SUM2010.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2010.Collection.oilAndGasSystemEscape.CO2EW)
+            _DataPf10.push(Alldata.SUM2010.Collection.oilAndGasSystemsEscape.CO2EW)
             _DataPf10.push(Alldata.SUM2010.Collection.nonEnergyUse.CO2EW)
 
 
@@ -3346,7 +3436,94 @@ class ElectricTable extends React.Component {
             _DataPf15.push(Alldata.SUM2010.Collection.internationalSailing.CO2EW)
 
 
-            var SUMpfTotal = Alldata.SUM2010.Summary;
+              var SUMpfCO = Alldata.SUM2010.Summary;
+
+              var sumCO = [
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+              _Data3.push(sumCO)
+
+              var sumCH = [
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumCH)
+
+              var sumNO = [
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumNO)
+
+              var sumF = [
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry).toFixed(2),
+                  ((SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry).toFixed(2),
+
+                  (  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumF)
+
+              var sumT = [
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  100,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  100
+              ]
+
+              _Data3.push(sumT)
+
+
+              var _b4 = []
+
+              for(var i  = 0 ;i <fossilTitle3.length;i++){
+                  _b4.push({
+                      key:i,
+                      name:{
+
+                          value:fossilTitle3[i] ,
+                      },
+                      CO:{
+
+                          value:_Data3[i][0] ,
+                      },
+                      CO1:{
+
+                          value:_Data3[i][1],
+                      },
+                      NCO:{
+
+                          value:_Data3[i][2] ,
+                      },
+                      NCO1:{
+
+                          value:_Data3[i][3],
+                      },
+
+
+                  })
+
+
+              }
+
+              this.setState({data3:_b4})
+
+
+              var SUMpfTotal = Alldata.SUM2010.Summary;
 
             var energyActivityPFT = [
               SUMpfTotal.CO2.energyActivity,
@@ -3495,7 +3672,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.energyActivity,
 
-              (SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
@@ -3508,20 +3685,20 @@ class ElectricTable extends React.Component {
 
               SUMpf1.industrialProductionProcess,
 
-              (SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              '','',
+              '-','-',
               SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
 
             var agricultureActivityPF = [
-              '', '',
+              '-', '-',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
@@ -3535,7 +3712,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.wasteDisposal,
 
-              (SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
@@ -3546,9 +3723,9 @@ class ElectricTable extends React.Component {
             var landUseChangeAndForestryPF = [
               SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
@@ -3611,13 +3788,13 @@ class ElectricTable extends React.Component {
             var SUM12 = Alldata.SUM2010.Collection
 
             var totalEmissions_IncludingLand_UseChangeAndForestry = [
-              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2+SUM12.totalIndustrialProductionProcess.CO2
+              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2
               +SUM12.totalLandUseChangeAndForestry.CO2+SUM12.totalWasteDisposal.CO2).toFixed(2),
 
               (SUM12.totalEnergyActivities.CH4
               +SUM12.totalAgricultureActivity.CH4+SUM12.totalLandUseChangeAndForestry.CH4+SUM12.totalWasteDisposal.CH4).toFixed(2),
 
-              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O+SUM12.totalIndustrialProductionProcess.N2O
+              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O
               +SUM12.totalAgricultureActivity.N2O+SUM12.totalLandUseChangeAndForestry.N2O+SUM12.totalWasteDisposal.N2O).toFixed(2),
 
               (SUM12.totalIndustrialProductionProcess.HFC).toFixed(2),
@@ -3625,7 +3802,7 @@ class ElectricTable extends React.Component {
               (SUM12.totalIndustrialProductionProcess.PFC).toFixed(2),
               (SUM12.totalIndustrialProductionProcess.SF6).toFixed(2),
 
-              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
+              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
               +SUM12.totalAgricultureActivity.CO2EW+SUM12.totalLandUseChangeAndForestry.CO2EW+SUM12.totalWasteDisposal.CO2EW).toFixed(2),
 
 
@@ -3753,16 +3930,16 @@ class ElectricTable extends React.Component {
 
             _Data.push(coalMiningEscape);
 
-            var oilAndGasSystemEscape = [
+            var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemEscape.CH4,
-              '-',
-              '-',
+              SUM12.oilAndGasSystemsEscape.CH4,
               '-',
               '-',
-              SUM12.oilAndGasSystemEscape.CO2EW,
+              '-',
+              '-',
+              SUM12.oilAndGasSystemsEscape.CO2EW,
             ]
-            _Data.push(oilAndGasSystemEscape);
+            _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
@@ -4273,7 +4450,7 @@ class ElectricTable extends React.Component {
           }else if (years=='2005')
           {
 
-            if(i=='0') {
+            if(check=='0') {
               _DataPf = [
                 (Alldata.SUM2005.Composition.CO2.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), (Alldata.SUM2005.Composition.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry).toFixed(2),
                 (Alldata.SUM2005.Composition.CH4.proportionOfGreenhouseGases_IncludingLandUseChangeAndForestry * 100).toFixed(2), Alldata.SUM2005.Composition.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
@@ -4388,7 +4565,7 @@ class ElectricTable extends React.Component {
             _DataPf10.push(Alldata.SUM2005.Collection.fossilFuel.CO2EW)
             _DataPf10.push(Alldata.SUM2005.Collection.biomassBurning.CO2EW)
             _DataPf10.push(Alldata.SUM2005.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2005.Collection.oilAndGasSystemEscape.CO2EW)
+            _DataPf10.push(Alldata.SUM2005.Collection.oilAndGasSystemsEscape.CO2EW)
             _DataPf10.push(Alldata.SUM2005.Collection.nonEnergyUse.CO2EW)
 
 
@@ -4422,7 +4599,94 @@ class ElectricTable extends React.Component {
             _DataPf15.push(Alldata.SUM2005.Collection.internationalSailing.CO2EW)
 
 
-            var SUMpfTotal = Alldata.SUM2005.Summary;
+              var SUMpfCO = Alldata.SUM2005.Summary;
+
+              var sumCO = [
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+              _Data3.push(sumCO)
+
+              var sumCH = [
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumCH)
+
+              var sumNO = [
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumNO)
+
+              var sumF = [
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry).toFixed(2),
+                  ((SUMpfCO.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
+                  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry).toFixed(2),
+
+                  (  (SUMpfCO.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry+ SUMpfCO.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry)/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
+
+              ]
+
+              _Data3.push(sumF)
+
+              var sumT = [
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  100,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  100
+              ]
+
+              _Data3.push(sumT)
+
+
+              var _b4 = []
+
+              for(var i  = 0 ;i <fossilTitle3.length;i++){
+                  _b4.push({
+                      key:i,
+                      name:{
+
+                          value:fossilTitle3[i] ,
+                      },
+                      CO:{
+
+                          value:_Data3[i][0] ,
+                      },
+                      CO1:{
+
+                          value:_Data3[i][1],
+                      },
+                      NCO:{
+
+                          value:_Data3[i][2] ,
+                      },
+                      NCO1:{
+
+                          value:_Data3[i][3],
+                      },
+
+
+                  })
+
+
+              }
+
+              this.setState({data3:_b4})
+
+
+              var SUMpfTotal = Alldata.SUM2005.Summary;
 
             var energyActivityPFT = [
               SUMpfTotal.CO2.energyActivity,
@@ -4570,7 +4834,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.energyActivity,
 
-              (SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
@@ -4583,20 +4847,20 @@ class ElectricTable extends React.Component {
 
               SUMpf1.industrialProductionProcess,
 
-              (SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              '','',
+              '-','-',
               SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
 
             var agricultureActivityPF = [
-              '', '',
+              '-', '-',
 
-              '',
-
-              '',
+              '-',
+-
+              '-',
 
               SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
@@ -4610,7 +4874,7 @@ class ElectricTable extends React.Component {
 
               SUMpf1.wasteDisposal,
 
-              (SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal)).toFixed(2)+'%',
+                ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
@@ -4621,9 +4885,9 @@ class ElectricTable extends React.Component {
             var landUseChangeAndForestryPF = [
               SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
-              '',
+              '-',
 
-              '',
+              '-',
 
               SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
               SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
@@ -4683,16 +4947,17 @@ class ElectricTable extends React.Component {
 
             this.setState({data1:_b2})
 
+
             var SUM12 = Alldata.SUM2005.Collection
 
             var totalEmissions_IncludingLand_UseChangeAndForestry = [
-              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2+SUM12.totalIndustrialProductionProcess.CO2
+              (SUM12.totalEnergyActivities.CO2+SUM12.totalIndustrialProductionProcess.CO2
               +SUM12.totalLandUseChangeAndForestry.CO2+SUM12.totalWasteDisposal.CO2).toFixed(2),
 
               (SUM12.totalEnergyActivities.CH4
               +SUM12.totalAgricultureActivity.CH4+SUM12.totalLandUseChangeAndForestry.CH4+SUM12.totalWasteDisposal.CH4).toFixed(2),
 
-              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O+SUM12.totalIndustrialProductionProcess.N2O
+              (SUM12.totalEnergyActivities.N2O+SUM12.totalIndustrialProductionProcess.N2O
               +SUM12.totalAgricultureActivity.N2O+SUM12.totalLandUseChangeAndForestry.N2O+SUM12.totalWasteDisposal.N2O).toFixed(2),
 
               (SUM12.totalIndustrialProductionProcess.HFC).toFixed(2),
@@ -4700,7 +4965,7 @@ class ElectricTable extends React.Component {
               (SUM12.totalIndustrialProductionProcess.PFC).toFixed(2),
               (SUM12.totalIndustrialProductionProcess.SF6).toFixed(2),
 
-              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
+              (SUM12.totalEnergyActivities.CO2EW+SUM12.totalIndustrialProductionProcess.CO2EW
               +SUM12.totalAgricultureActivity.CO2EW+SUM12.totalLandUseChangeAndForestry.CO2EW+SUM12.totalWasteDisposal.CO2EW).toFixed(2),
 
 
@@ -4768,6 +5033,7 @@ class ElectricTable extends React.Component {
 
             _Data.push(industryAndConstruction);
 
+
             var transportation = [
               SUM12.transportation.CO2,
               SUM12.transportation.CH4,
@@ -4828,16 +5094,16 @@ class ElectricTable extends React.Component {
 
             _Data.push(coalMiningEscape);
 
-            var oilAndGasSystemEscape = [
+            var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemEscape.CH4,
-              '-',
-              '-',
+              SUM12.oilAndGasSystemsEscape.CH4,
               '-',
               '-',
-              SUM12.oilAndGasSystemEscape.CO2EW,
+              '-',
+              '-',
+              SUM12.oilAndGasSystemsEscape.CO2EW,
             ]
-            _Data.push(oilAndGasSystemEscape);
+            _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
@@ -5347,6 +5613,7 @@ class ElectricTable extends React.Component {
           }
 
 
+         
 
           this.setState({pf:_DataPf});
 
@@ -5592,7 +5859,13 @@ class ElectricTable extends React.Component {
                 name:'占比',
                 type:'line',
                 yAxisIndex: 1,
-                data:_DataPf3
+                data:_DataPf3,
+                  itemStyle: {
+                      normal: {
+
+                          color:'#fecc09'
+                      }
+                  },
               }
             ]
           });
@@ -5737,7 +6010,13 @@ class ElectricTable extends React.Component {
                 name:'占比',
                 type:'line',
                 yAxisIndex: 1,
-                data:_DataPf5
+                data:_DataPf5,
+                  itemStyle: {
+                      normal: {
+
+                          color:'#fecc09'
+                      }
+                  },
               }
             ]
           });
@@ -5790,7 +6069,7 @@ class ElectricTable extends React.Component {
             },
 
             legend: {
-              data:['二氧化碳','占比']
+              data:['甲烷','占比']
             },
             xAxis: [
               {
@@ -5858,7 +6137,7 @@ class ElectricTable extends React.Component {
             ],
             series: [
               {
-                name:'二氧化碳',
+                name:'甲烷',
                 type:'bar',
                 barWidth: 30,
                 itemStyle: {
@@ -5882,7 +6161,13 @@ class ElectricTable extends React.Component {
                 name:'占比',
                 type:'line',
                 yAxisIndex: 1,
-                data:_DataPf7
+                data:_DataPf7,
+                  itemStyle: {
+                      normal: {
+
+                          color:'#fecc09'
+                      }
+                  },
               }
             ]
           });
@@ -5936,7 +6221,7 @@ class ElectricTable extends React.Component {
             },
 
             legend: {
-              data:['二氧化碳','占比']
+              data:['氧化亚氮','占比']
             },
             xAxis: [
               {
@@ -6004,7 +6289,7 @@ class ElectricTable extends React.Component {
             ],
             series: [
               {
-                name:'二氧化碳',
+                name:'氧化亚氮',
                 type:'bar',
                 barWidth: 30,
                 itemStyle: {
@@ -6028,7 +6313,13 @@ class ElectricTable extends React.Component {
                 name:'占比',
                 type:'line',
                 yAxisIndex: 1,
-                data:_DataPf9
+                data:_DataPf9,
+                  itemStyle: {
+                      normal: {
+
+                          color:'#fecc09'
+                      }
+                  },
               }
             ]
           });
@@ -6053,7 +6344,7 @@ class ElectricTable extends React.Component {
             },
 
             grid: {
-              left: '2%',
+              left: '3%',
               right: '2%',
               bottom: '5%',
               containLabel: true
@@ -6107,7 +6398,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6171,7 +6462,7 @@ class ElectricTable extends React.Component {
             },
 
             grid: {
-              left: '2%',
+              left: '5%',
               right: '2%',
               bottom: '5%',
               containLabel: true
@@ -6225,7 +6516,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6344,7 +6635,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6407,7 +6698,7 @@ class ElectricTable extends React.Component {
             },
 
             grid: {
-              left: '2%',
+              left: '5%',
               right: '2%',
               bottom: '5%',
               containLabel: true
@@ -6461,7 +6752,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6526,7 +6817,7 @@ class ElectricTable extends React.Component {
             },
 
             grid: {
-              left: '2%',
+              left: '8%',
               right: '2%',
               bottom: '5%',
               containLabel: true
@@ -6580,7 +6871,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6645,7 +6936,7 @@ class ElectricTable extends React.Component {
             },
 
             grid: {
-              left: '2%',
+              left: '9%',
               right: '2%',
               bottom: '5%',
               containLabel: true
@@ -6699,7 +6990,7 @@ class ElectricTable extends React.Component {
 
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨二氧化碳当量',
 
                 position: 'left',
                 offset: 5,
@@ -6777,7 +7068,9 @@ class ElectricTable extends React.Component {
 
   }
   handleQuery(){
+  
 
+    
     if(this.state.checkedValues.length!=1){
       message.error('请选择其中一项！');
 
@@ -6878,7 +7171,7 @@ class ElectricTable extends React.Component {
     return (
       <div className={styles.normal}>
         <div className={styles.title}>
-          <span className={styles.title_span}>温室气体增温潜值及关键排放指标</span>
+          <span className={styles.title_span}>温室气体排放总览</span>
         </div>
 
         <div className={styles.newSelect}>
@@ -6894,7 +7187,7 @@ class ElectricTable extends React.Component {
           </div>
 
           <div className={styles.targetChoose}>
-            <span className={styles.selectH1}>参数:</span>
+            <span className={styles.selectH1}>参数:　　</span>
             <ul>
               <li id="li5" className={'a'==this.state.cs?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.i,'a',this.state.years)}}>温室气体排放总量</li>
               <li id="li6" className={'b'==this.state.cs?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears(this.state.i,'b',this.state.years)}}>温室气体分类分析</li>
@@ -6909,7 +7202,7 @@ class ElectricTable extends React.Component {
         <div className={styles.content3}>
           <div className={styles.selectGas}>
           <div className={styles.targetChoose}>
-            <span className={styles.selectH1}>温室气体排放总览：</span>
+            <span className={styles.selectH1}>温室气体排放总量<span className={styles.normalTitle}>是否包括土地利用变化和林业　(任选1个)：</span></span>
             <CheckboxGroup options={options} defaultValue={[0]} onChange={this.onChange.bind(this)} />
             <Button className={styles.button} onClick={this.handleQuery.bind(this)}>确认</Button>
           </div>
@@ -6952,10 +7245,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody}  >
-            <p>温室气体分类排放情况</p>
+            <p>温室气体排放总量(万吨二氧化碳当量)</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -6963,7 +7256,7 @@ class ElectricTable extends React.Component {
             <p>温室气体排放构成</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"    pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -6973,13 +7266,13 @@ class ElectricTable extends React.Component {
         <div  id="contentB" style={{display:'none'}}>
           <Row  >
             <Col span={12} >
-              <div className={styles.content3} style={{marginRight:10}} >
+              <div className={styles.content33}  >
                 <p id="content3_p">二氧化碳排放情况分析 <span style={{fontSize:8}}>（包括土地利用变化和林业）</span> </p>
                 <div className={styles.newsaleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}} id="saleTrend2"></div>
               </div>
             </Col>
             <Col span={12}>
-              <div className={styles.content3} style={{marginLeft:10}}>
+              <div className={styles.content33} style={{marginLeft:1+'%'}}>
                 <p id="content3_p">二氧化碳排放情况分析  <span style={{fontSize:8}}>（不包括土地利用变化和林业）</span></p>
                 <div className={styles.saleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}}  id="saleTrend3"></div>
               </div>
@@ -6989,14 +7282,14 @@ class ElectricTable extends React.Component {
 
           <Row  >
             <Col span={12} >
-              <div className={styles.content3} style={{marginRight:10}} >
+              <div className={styles.content333}  >
                 <p id="content3_p">甲烷排放情况分析 </p>
                 <div className={styles.newsaleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}} id="saleTrend4"></div>
               </div>
             </Col>
             <Col span={12}>
-              <div className={styles.content3} style={{marginLeft:10}}>
-                <p id="content3_p">氧化亚氮排放情况分析  <span style={{fontSize:8}}>（不包括土地利用变化和林业）</span></p>
+              <div className={styles.content333} style={{marginLeft:1+'%'}}>
+                <p id="content3_p">氧化亚氮排放情况分析  </p>
                 <div className={styles.saleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}}  id="saleTrend5"></div>
               </div>
             </Col>
@@ -7004,10 +7297,10 @@ class ElectricTable extends React.Component {
           </Row>
 
           <div className={styles.entryBody}  >
-            <p>温室气体分类排放情况）</p>
+            <p>温室气体分类排放情况</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"   pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -7018,40 +7311,40 @@ class ElectricTable extends React.Component {
 
           <Row  >
             <Col span={12} >
-              <div className={styles.content3} style={{marginRight:10}} >
-                <p id="content3_p">甲烷排放情况分析 </p>
+              <div className={styles.newContent3}  >
+                <p id="content3_p">能源活动分析 </p>
                 <div className={styles.newsaleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}} id="saleTrend6"></div>
               </div>
             </Col>
             <Col span={12}>
-              <div className={styles.content3} style={{marginLeft:10}}>
-                <p id="content3_p">氧化亚氮排放情况分析 </p>
+              <div className={styles.newContent3} style={{marginLeft:1+'%'}}>
+                <p id="content3_p">农业活动分析 </p>
                 <div className={styles.saleTrend1} style={{width:(document.body.clientWidth-300)/2+'px'}}  id="saleTrend7"></div>
               </div>
             </Col>
 
           </Row>
 
-          <div className={styles.content3} style={{marginRight:10}} >
+          <div className={styles.content3}  >
             <p id="content3_p">工业生产过程分析</p>
             <div className={styles.newsaleTrend1} style={{width:(document.body.clientWidth-300)+'px'}} id="saleTrend8"></div>
           </div>
 
           <Row  >
             <Col span={8} >
-              <div className={styles.content3} style={{marginRight:10}} >
+              <div className={styles.newContent33}  >
                 <p id="content3_p">土地利用变化与林业分析 </p>
                 <div className={styles.newsaleTrend1} style={{width:(document.body.clientWidth-300)/3+'px'}} id="saleTrend9"></div>
               </div>
             </Col>
             <Col span={8}>
-              <div className={styles.content3} style={{marginLeft:10}}>
+              <div className={styles.newContent33} style={{marginLeft:1+'%'}}>
                 <p id="content3_p">废弃物处理分析 </p>
                 <div className={styles.saleTrend1} style={{width:(document.body.clientWidth-300)/3+'px'}}  id="saleTrend10"></div>
               </div>
             </Col>
             <Col span={8}>
-              <div className={styles.content3} style={{marginLeft:20}}>
+              <div className={styles.newContent33} style={{marginLeft:1.7+'%'}}>
                 <p id="content3_p">国际燃料仓分析 </p>
                 <div className={styles.saleTrend1} style={{width:(document.body.clientWidth-300)/3+'px'}}  id="saleTrend11"></div>
               </div>
@@ -7064,7 +7357,7 @@ class ElectricTable extends React.Component {
             <p>温室气体排放总量（万吨二氧化碳当量）</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 2520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 2520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

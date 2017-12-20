@@ -141,7 +141,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -201,7 +200,7 @@ class ElectricTable extends React.Component {
         title: '类型',
         children: [
           {
-            title: '', dataIndex: 'p1', width: 100,
+            title: '', dataIndex: 'p1', width: 80,
             render: (text, record, index) => {  const obj = {
               children:this.renderColumns(this.state.data, index, 'p1', text),
               props: {},
@@ -258,7 +257,7 @@ class ElectricTable extends React.Component {
               }
               return obj},
           },{
-            title: '', dataIndex: 'p2', width: 100,
+            title: '', dataIndex: 'p2', width: 80,
             render: (text, record, index) => {  const obj = {
               children:this.renderColumns(this.state.data, index, 'p2', text),
               props: {},
@@ -315,7 +314,7 @@ class ElectricTable extends React.Component {
               }
               return obj},
           },{
-            title: '', dataIndex: 'p3', width: 100,
+            title: '', dataIndex: 'p3', width: 80,
             render: (text, record, index) => {  const obj = {
               children:this.renderColumns(this.state.data, index, 'p3', text),
               props: {},
@@ -400,24 +399,7 @@ class ElectricTable extends React.Component {
           props: {},
 
         };
-        if (index === 9) {
-          obj.props.rowSpan = 6;
-        }
-        if (index === 10) {
-          obj.props.rowSpan = 0;
-        }
-        if (index === 11) {
-          obj.props.rowSpan = 0;
-        }
-        if (index === 12) {
-          obj.props.rowSpan =0;
-        }
-        if (index === 13) {
-          obj.props.rowSpan = 0;
-        }
-        if (index === 14) {
-          obj.props.rowSpan = 0;
-        }
+
 
 
           return obj},
@@ -653,14 +635,14 @@ class ElectricTable extends React.Component {
           _Data1.push('-')
           _Data1.push(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)
           _Data1.push(Alldata.CO2.hazardousWaste)
-          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
+          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(6))
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
           _Data1.push('-')
-          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
+          _Data1.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(6))
 
 
 
@@ -668,23 +650,24 @@ class ElectricTable extends React.Component {
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.managedLandfill)
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m)
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m)
-          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m).toFixed(2))
+          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m).toFixed(6))
           _Data2.push(Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)
-          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(2))
+          _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(6))
           _Data2.push('-')
           _Data2.push('-')
           _Data2.push('-')
           _Data2.push(Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD)
           _Data2.push(Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)
-          _Data2.push((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(2))
+          _Data2.push((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(6))
           _Data2.push(Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD)
           _Data2.push(Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)
-          _Data2.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2))
+          _Data2.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(6))
           _Data2.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill
           +Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD
-        +Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2))
+        +Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(6))
 
 
+          _Data3.push('-')
           _Data3.push('-')
           _Data3.push('-')
           _Data3.push('-')
@@ -696,36 +679,36 @@ class ElectricTable extends React.Component {
           _Data3.push('-')
           _Data3.push(Alldata.N2O.wasteWater)
           _Data3.push(Alldata.N2O.wasteWater)
+          _Data3.push('-')
+          _Data3.push('-')
+          _Data3.push('-')
           _Data3.push(Alldata.N2O.wasteWater)
-          _Data3.push(Alldata.N2O.wasteWater)
-          _Data3.push(Alldata.N2O.wasteWater)
-          _Data3.push(Alldata.N2O.wasteWater)
-          _Data3.push(Alldata.N2O.wasteWater)
 
-          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.managedLandfill*21)
-          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m*21)
-          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m*21)
-          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m)*21)
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill*21).toFixed(6))
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m*21).toFixed(6))
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m*21).toFixed(6))
+          _Data4.push(((Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m)*21).toFixed(6))
 
-          _Data4.push(Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill*21)
-          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21)
+          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill*21).toFixed(6))
+          _Data4.push(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21).toFixed(6))
 
-          _Data4.push(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)
-          _Data4.push(Alldata.CO2.hazardousWaste)
-          _Data4.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste).toFixed(2))
+          _Data4.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils).toFixed(6))
+          _Data4.push((Alldata.CO2.hazardousWaste).toFixed(6))
+          _Data4.push((Alldata.CO2.classificationOfMunicipalSolidWasteFossils).toFixed(6))
 
-          _Data4.push((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD*21)+(Alldata.N2O.wasteWater*310))
-          _Data4.push((Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD*21)+(Alldata.N2O.wasteWater*310))
-          _Data4.push(((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310))
+          _Data4.push(((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD*21)).toFixed(6))
+          _Data4.push(((Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD*21)+(Alldata.N2O.wasteWater*310)).toFixed(6))
+          _Data4.push((((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310)).toFixed(6))
 
-          _Data4.push(Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD*21+Alldata.N2O.wasteWater*310)
-          _Data4.push(Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD*21+Alldata.N2O.wasteWater*310)
-          _Data4.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)
+          _Data4.push((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD*21).toFixed(6))
+          _Data4.push((Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD*21).toFixed(6))
+          _Data4.push(((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21).toFixed(6))
 
-          _Data4.push((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
-        +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310))
-      +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)
 
+          _Data4.push(
+            ((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
+        +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310)
+            +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21)).toFixed(6))
 
 
 
@@ -855,7 +838,7 @@ class ElectricTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -889,7 +872,7 @@ class ElectricTable extends React.Component {
     return (
       <div className={styles.normal}>
         <div className={styles.title}>
-          <span className={styles.title_span}> 工业生产过程温室气体排放量计算</span>
+          <span className={styles.title_span}> 废弃物处理温室气体排放量计算</span>
         </div>
 
         <div className={styles.select}>
@@ -913,10 +896,10 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>参考方法</p>
+            <p>废弃物行业温室气体清单表</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

@@ -139,9 +139,7 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
-
-        colSpan:1,
+        width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -151,7 +149,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -162,7 +160,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -173,7 +171,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -184,7 +182,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -195,7 +193,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -206,7 +204,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -218,7 +216,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -227,7 +225,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -243,9 +241,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -549,14 +546,13 @@ class ElectricTable extends React.Component {
                 value:'排放量',
               },
               p1:{
-                value:(Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption).toFixed(2),
+                value:(Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption).toFixed(6),
               },
               p2:{
-                value:((Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption)
-                +((Alldata.CO2.combustionEmission+(Alldata.CH4.combustionEmission*21/10000)+(Alldata.N2O.combustionEmission*310/1000))+Alldata.CO2.decompositionOfEmission)).toFixed(2) ,
+                value:((Alldata.CO2.arborForest+Alldata.CO2.economicForest+Alldata.CO2.bambooForest+Alldata.CO2.countrySpecialIrrigation+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest+Alldata.CO2.harvestingConsumption+Alldata.CO2.lossOfConsumption)+((Alldata.CO2.combustionEmission+(Alldata.CH4.combustionEmission*21/10000)+(Alldata.N2O.combustionEmission*310/10000))+Alldata.CO2.decompositionOfEmission)).toFixed(6) ,
               },
               p3:{
-                value:(-(Alldata.CO2.arborForest+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest)-Alldata.CO2.harvestingConsumption-Alldata.CO2.lossOfConsumption).toFixed(2),
+                value:(-(Alldata.CO2.arborForest+Alldata.CO2.scatteredWoodSurroundedByTreesSparseForest)-Alldata.CO2.harvestingConsumption-Alldata.CO2.lossOfConsumption).toFixed(6),
               }
 
             }
@@ -585,12 +581,12 @@ class ElectricTable extends React.Component {
 
   //年份选择
   selesctYears(years){
-    
+
         this.setState({ loading: true});
         this.setState({years:years})
         this.queryGut(years)
       }
-    
+
 
   render() {
 
@@ -645,7 +641,7 @@ class ElectricTable extends React.Component {
             <p>温室气体增温潜值</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
           </div>
 
@@ -656,7 +652,7 @@ class ElectricTable extends React.Component {
             <p>关键排放指标信息</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1}  rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

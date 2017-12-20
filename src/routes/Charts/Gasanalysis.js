@@ -160,7 +160,7 @@ class ElectricTable extends React.Component {
         render: (text, record, index) => this.renderColumns(this.state.Data, index, 'volume3', text),
       },
       {
-        title: '土地利用变化与林业', dataIndex: 'volume4', width: 50,
+        title: '土地林业变化', dataIndex: 'volume4', width: 50,
         render: (text, record, index) => this.renderColumns(this.state.Data, index, 'volume4', text),
       },
      ];
@@ -186,7 +186,7 @@ class ElectricTable extends React.Component {
         render: (text, record, index) => this.renderColumns1(this.state.Data1, index, 'volume2', text),
       },
       {
-        title: '含氟气体　　　　　　', dataIndex: 'volume3', width: 50,
+        title: '含氟气体', dataIndex: 'volume3', width: 50,
         render: (text, record, index) => this.renderColumns1(this.state.Data1, index, 'volume3', text),
       },
 
@@ -525,7 +525,7 @@ class ElectricTable extends React.Component {
               containLabel: true
             },
             textStyle: {
-              fontSize: '14',
+              fontSize: '12',
               fontWeight: 'normal',
               color: '#888888'
             },
@@ -544,9 +544,9 @@ class ElectricTable extends React.Component {
             yAxis: {
               show: true,
               type: 'value',
-              name: '(万吨二氧化碳当量)',
+              name: '万吨二氧化碳当量',
               nameTextStyle: {
-                fontSize: 10,
+                fontSize: 12,
               },
               axisTick: {
                 show: false
@@ -664,7 +664,7 @@ class ElectricTable extends React.Component {
             yAxis: [
               {
                 type: 'value',
-                name: '万吨',
+                name: '万吨　　　　　　',
 
                 axisTick: {
                   show: false
@@ -826,8 +826,8 @@ class ElectricTable extends React.Component {
       grid: {
         left: '5%',
         right: '6%',
-        top: '10%',
-        bottom: '6%',
+        top: '4%',
+        bottom: '13%',
         containLabel: true
       },
 
@@ -841,6 +841,8 @@ class ElectricTable extends React.Component {
       xAxis:  {
         type: 'value',
         name: '万吨二氧化碳当量',
+        nameLocation: 'center',
+        nameGap:35,
         axisTick : {show: false},
         axisLine: {
           show: false,
@@ -862,7 +864,7 @@ class ElectricTable extends React.Component {
               color:'#888888',
             }
           },
-          data: ['2004','2010','2012','2014']
+          data: ['2005','2010','2012','2014']
         },
         {
           type: 'category',
@@ -871,13 +873,13 @@ class ElectricTable extends React.Component {
           axisLabel: {show:false},
           splitArea: {show:false},
           splitLine: {show:false},
-          data: ['2004','2010','2012','2014']
+          data: ['2005','2010','2012','2014']
         },
 
       ],
       series: [
         {
-          name: '有效房源量',
+          name: '温室气体排放总量',
           type: 'bar',
           yAxisIndex:1,
           barWidth: 30,
@@ -1248,19 +1250,19 @@ class ElectricTable extends React.Component {
             },
             volume: {
 
-              value: data1[checkedValues[0]][0],
+              value: data1[checkedValues[0]][0].toFixed(2),
             },
             volume1: {
 
-              value: data1[checkedValues[0]][1],
+              value: data1[checkedValues[0]][1].toFixed(2),
             },
             volume2: {
 
-              value: data1[checkedValues[0]][2],
+              value: data1[checkedValues[0]][2].toFixed(2),
             },
             volume3: {
 
-              value: data1[checkedValues[0]][3],
+              value: data1[checkedValues[0]][3].toFixed(2),
             },
 
 
@@ -1275,19 +1277,19 @@ class ElectricTable extends React.Component {
             },
             volume: {
 
-              value: data1[checkedValues[1]][0],
+              value: data1[checkedValues[1]][0].toFixed(2),
             },
             volume1: {
 
-              value: data1[checkedValues[1]][1],
+              value: data1[checkedValues[1]][1].toFixed(2),
             },
             volume2: {
 
-              value: data1[checkedValues[1]][2],
+              value: data1[checkedValues[1]][2].toFixed(2),
             },
             volume3: {
 
-              value: data1[checkedValues[1]][3],
+              value: data1[checkedValues[1]][3].toFixed(2),
             },
 
 
@@ -1333,6 +1335,17 @@ class ElectricTable extends React.Component {
         legend: {
           data:[years1,years2]
         },
+          title: {
+              show: true,
+              text: '各部门排放总量(万吨二氧化碳当量)',
+              textStyle: {
+                  fontSize: '12',
+                  fontWeight: 'normal',
+                  color: '#888888'
+              },
+              top: '20',
+              left: '15',
+          },
         tooltip: {},
 
         radar: {
@@ -1418,7 +1431,17 @@ class ElectricTable extends React.Component {
       var myChart5 = echarts.init(document.getElementById('saleTrend5'));
       var optionday5 = ({
 
-
+          title: {
+              show: true,
+              text: '温室气体排放构成(万吨二氧化碳当量)',
+              textStyle: {
+                  fontSize: '12',
+                  fontWeight: 'normal',
+                  color: '#888888'
+              },
+              top: '20',
+              left: '15',
+          },
         tooltip: {},
         legend: {
           data:[years1,years2]
@@ -1577,7 +1600,7 @@ class ElectricTable extends React.Component {
 
           <div className={styles.selectGas}>
             <div className={styles.targetChoose}>
-              <span className={styles.selectH1}>温室气体年度对比分析:</span>
+              <span className={styles.selectH1}>温室气体年度对比分析<span className={styles.normalTitle}>年份选择(任选2个)：</span></span>
               <CheckboxGroup options={options} defaultValue={[0,1]} onChange={this.onChange.bind(this)} />
               <Button className={styles.button} onClick={this.handleQuery.bind(this)}>确认</Button>
             </div>

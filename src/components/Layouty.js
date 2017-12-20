@@ -36,6 +36,10 @@ var Layouty = createReactClass ({
       user:[],
      MeunOpenKeys:a,
      MeunSelectedKeys:b,
+     rootSubmenuKeys : ['a', 'b', 'g', 'k'],
+   
+       openKeys: a,
+  
     }
 
   },
@@ -48,9 +52,7 @@ var Layouty = createReactClass ({
 
 
 
-
   },
-
 
 
 
@@ -65,14 +67,23 @@ var Layouty = createReactClass ({
 
     sessionStorage.setItem("Meunkey", item.key);
 
-
   },
-
-
 
   contextTypes: {
     router: React.PropTypes.object
   },
+  
+  onOpenChange  (openKeys){
+    const latestOpenKey = openKeys.find(key => this.state.openKeys.indexOf(key) === -1);
+    if (this.state.rootSubmenuKeys.indexOf(latestOpenKey) === -1) {
+      this.setState({ openKeys });
+    } else {
+      this.setState({
+        openKeys: latestOpenKey ? [latestOpenKey] : [],
+      });
+    }
+  },
+ 
 
   render() {
 
@@ -82,18 +93,19 @@ var Layouty = createReactClass ({
     return (
       <Layout style={{ height: 100+'%' }}>
 
-        <Sider width={210} style={{ background: '#fff' }}>
+        <Sider width={210} style={{ background: '#404040' }}>
           <div className={styles.logo}></div>
           <Menu
             mode="inline"
-
-            defaultOpenKeys={this.state.MeunOpenKeys}
+            theme="dark"
+            openKeys={this.state.openKeys}
+            onOpenChange={this.onOpenChange}
             defaultSelectedKeys={this.state.MeunSelectedKeys}
-
+            inlineCollapsed={true}
             style={{ height: '100%', borderRight: 0 }}
             onSelect={this.onselct}
           >
-            <SubMenu key="a" title={<span><Icon type="edit" />活动水平数据录入</span>}>
+            <SubMenu key="a" title={<span><Icon type="edit" />清单基础数据录入</span>}>
 
               <SubMenu  key="ar" title={<span>能源活动</span>}>
                 <Menu.Item key="ar1" >
@@ -119,7 +131,7 @@ var Layouty = createReactClass ({
 
               <SubMenu key="ae" title={<span>工业生产过程</span>}>
                 <Menu.Item key="ae1">
-                  <Link to="/ae1greenhousegas">温室气体排放</Link>
+                  <Link to="/ae1greenhousegas">工业生产过程</Link>
                 </Menu.Item>
                 <Menu.Item key="ae2">
                 <Link to="/ae2noindustry">不确定性计算</Link>
@@ -127,7 +139,7 @@ var Layouty = createReactClass ({
               </SubMenu>
 
 
-              <SubMenu key="aw" title={<span>农业活动</span>}>
+              <SubMenu key="aw" title={<span>农业</span>}>
                 <Menu.Item key="aw1">
                   <Link to="/aw1rice">稻田</Link>
                 </Menu.Item>
@@ -199,7 +211,7 @@ var Layouty = createReactClass ({
               </SubMenu>
 
 
-              <SubMenu key="bw" title={<span>农业活动</span>}>
+              <SubMenu key="bw" title={<span>农业</span>}>
                 <Menu.Item key="bw1">
                   <Link to="/bw1agwp">GWP及关键排放指标</Link>
                 </Menu.Item>
@@ -247,17 +259,24 @@ var Layouty = createReactClass ({
               </Menu.Item>
 
               <Menu.Item key="gq3">
-                <Link to="/gq3gasother">其他指标</Link>
+              <Link to="/gq3gasother">其他指标</Link>
+            </Menu.Item>
+
+              <Menu.Item key="gq4">
+                <Link to="/gq4dataupdater">数据更新</Link>
               </Menu.Item>
 
 
             </SubMenu>
-            <SubMenu key="subD" title={<span><Icon type="setting" />系统设置</span>}>
-              <Menu.Item key="subD41">option9</Menu.Item>
-              <Menu.Item key="subD42">option10</Menu.Item>
-              <Menu.Item key="subD43">option11</Menu.Item>
-              <Menu.Item key="subD44">option12</Menu.Item>
+
+
+            <SubMenu key="k" title={<span><Icon type="setting" />系统设置</span>}>
+
+              <Menu.Item key="kq1">
+                <Link to="/kq1help">帮助中心</Link>
+              </Menu.Item>
             </SubMenu>
+
           </Menu>
         </Sider>
 
@@ -267,7 +286,7 @@ var Layouty = createReactClass ({
 
 
         <Layout>
-          <Header style={{ background: '#fff', width:100+'%',position:'fixed',zIndex: '999' }} >
+          <Header style={{ background: '#fff', width:100+'%',position:'fixed',zIndex: '999',paddingLeft:30+'px' }} >
             <h1>湖南省省级温室气体清单数据库系统</h1>
           </Header>
           <Content >
@@ -277,7 +296,7 @@ var Layouty = createReactClass ({
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
-            湖南省发改委 ©2017 Created by DasuanV
+            湖南省发改委 ©2018 Created by DasuanV
           </Footer>
         </Layout>
       </Layout>

@@ -139,9 +139,9 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -151,7 +151,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -162,7 +162,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -173,7 +173,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -184,7 +184,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -195,7 +195,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -206,7 +206,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -218,7 +218,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -227,7 +227,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -245,7 +245,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -299,9 +299,20 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '硝酸产量', dataIndex: 'p5', width: 150,
+        title: '钢铁生产过程排放', dataIndex: 'p5', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p5', text),
+          props: {},
+
+        };
+
+
+
+          return obj},
+      },{
+        title: '硝酸产量', dataIndex: 'p6', width: 150,
+        render: (text, record, index) => {  const obj = {
+          children:this.renderColumns1(this.state.data1, index, 'p6', text),
           props: {},
 
         };
@@ -326,10 +337,11 @@ class ElectricTable extends React.Component {
 
 
 
-      AllData:[]
+      AllData:[],
+      years:'2014'
     };
 
-    this.queryGut();
+    this.queryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -423,13 +435,13 @@ class ElectricTable extends React.Component {
   }
 
   //秸秆
-  queryGut(){
+  queryGut(years){
 
 
 
 
-    post('/activityLevelDataEntry/agricultureActivity/list', {
-      year:'2017',
+    post('/report/industrialProductionProcess/list', {
+      year:years,
 
     })
       .then((res) => {
@@ -439,36 +451,6 @@ class ElectricTable extends React.Component {
           var Alldata =res.data;
 
           const _Data = []
-
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.cows);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.nonCow);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.buffalo);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.sheep);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.goat);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.pig);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.horse);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.jennet);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.camel);
-          _Data.push('');
-
-
-
-          const fossilTitle = [
-
-
-            '　　奶牛',
-            '　　非奶牛',
-            '　　水牛',
-            '　　绵羊',
-            '　　山羊',
-            '　　猪',
-            '　　马',
-            '　　驴/骡',
-            '　　骆驼',
-            '　　动物肠道甲烷排放总计',
-
-
-          ]
 
 
 
@@ -587,9 +569,12 @@ class ElectricTable extends React.Component {
                 value:'万tCO2e' ,
               },
               p4:{
-                value:'kgN2O',
+                value:'万tCO2e',
               },
               p5:{
+                value:'kgN2O',
+              },
+              p6:{
                 value:'t',
               },
 
@@ -599,19 +584,26 @@ class ElectricTable extends React.Component {
                 value:'排放量',
               },
               p1:{
-                value:0,
+                value:((Alldata.CO2.cementProductionProcess)+(Alldata.CO2.limeProductionProcess)+(Alldata.CO2.steelProductionProcess)
+                +(Alldata.CO2.calciumCarbideProductionProcess)+(Alldata.N2O.adipicAcidProductionProcess*310/10000)+(Alldata.N2O.nitricAcidProductionProcess*310/10000)
+                +((Alldata.CF4.aluminumProductionProcess*6500+Alldata.C2F6.aluminumProductionProcess*9200)/10000)+(Alldata.SF6.electricPowerEquipmentProductionProcess*23900/10000)
+                +((Alldata.HFC_23.semiconductorProductionProcess*11700+Alldata.CF4.semiconductorProductionProcess*6500+Alldata.C2F6.semiconductorProductionProcess*9200+Alldata.SF6.semiconductorProductionProcess*23900)/10000)
+                +(Alldata.HFC_23.chlorodifluoromethaneProductionProcess*11700/10000)+((Alldata.HFC_32*650+Alldata.HFC_125*2800+Alldata.HFC_134a*1300+Alldata.HFC_143a*3800+Alldata.HFC_152a*140+Alldata.HFC_227ea*2900+Alldata.HFC_236fa*6300+Alldata.HFC_245fa*1030)/10000)).toFixed(2),
               },
               p2:{
-                value:0 ,
+                value:(Alldata.CO2.cementProductionProcess+Alldata.CO2.limeProductionProcess+Alldata.CO2.steelProductionProcess+Alldata.CO2.calciumCarbideProductionProcess).toFixed(2) ,
               },
               p3:{
-                value:0 ,
+                value:Alldata.CO2.cementProductionProcess ,
               },
               p4:{
-                value:0,
+                value:Alldata.CO2.steelProductionProcess,
               },
               p5:{
-                value:0,
+                value:Alldata.N2O.nitricAcidProductionProcess,
+              },
+              p6:{
+                value:Alldata.nitricAcidProduction*10000,
               },
 
             }
@@ -636,7 +628,13 @@ class ElectricTable extends React.Component {
 
   }
 
+  //年份选择
+  selesctYears(years){
 
+    this.setState({ loading: true});
+    this.setState({years:years})
+    this.queryGut(years)
+  }
 
 
   render() {
@@ -674,10 +672,10 @@ class ElectricTable extends React.Component {
           <div className={styles.targetChoose}>
             <span className={styles.selectH1}>数据年份:</span>
             <ul>
-              <li id="li1" >2005</li>
-              <li id="li2" >2010</li>
-              <li id="li3" >2012</li>
-              <li id="li4" className={styles.li_focus}>2017</li>
+              <li id="li1" className={'2005'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2005')}}>2005</li>
+              <li id="li2" className={'2010'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2010')}}>2010</li>
+              <li id="li3" className={'2012'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2012')}}>2012</li>
+              <li id="li4" className={'2014'==this.state.years?styles.li_focus:styles.eee} onClick={()=>{this.selesctYears('2014')}}>2014</li>
             </ul>
           </div>
 
@@ -692,7 +690,7 @@ class ElectricTable extends React.Component {
             <p>温室气体增温潜值</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
           </div>
 
@@ -703,7 +701,7 @@ class ElectricTable extends React.Component {
             <p>关键排放指标信息</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

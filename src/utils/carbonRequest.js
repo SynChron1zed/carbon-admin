@@ -16,12 +16,23 @@ export default function request (method, url, body)  {
     body = body && JSON.stringify(body);
   }
 
-/*  var cs ;
-  if(url.indexOf("?")==-1){
-    cs = '?token='
-  }else{
-    cs= '&token='
-  }*/
+
+
+
+  if(localStorage.getItem("admin")=='user'){
+      if(url.indexOf("update")==-1){
+
+         }else{
+
+          console.log(2)
+          message.error('此账户没有权限');
+          url = '';
+       }
+     }else {
+
+     }
+
+
 
   return fetch('http://dadads.hz.taeapp.com'+url,{//192.168.88.239   120.76.194.221
     method,

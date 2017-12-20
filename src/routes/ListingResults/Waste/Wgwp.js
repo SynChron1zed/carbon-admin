@@ -139,9 +139,8 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -151,7 +150,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -162,7 +161,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -173,7 +172,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -184,7 +183,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -195,7 +194,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -206,7 +205,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -218,7 +217,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -227,7 +226,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -245,7 +244,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -255,7 +253,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: '废弃物处理排放总量', dataIndex: 'p1', width: 150,
+        title: '废弃物处理排放总量', dataIndex: 'p1', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p1', text),
           props: {},
@@ -266,7 +264,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '固废处理排放总量', dataIndex: 'p2', width: 150,
+        title: '固废处理排放总量', dataIndex: 'p2', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p2', text),
           props: {},
@@ -277,7 +275,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '废水处理排放量', dataIndex: 'p3', width: 150,
+        title: '废水处理排放量', dataIndex: 'p3', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p3', text),
           props: {},
@@ -288,7 +286,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '固废填埋甲烷排放量', dataIndex: 'p4', width: 150,
+        title: '固废填埋甲烷排放量', dataIndex: 'p4', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p4', text),
           props: {},
@@ -299,7 +297,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '固废焚烧排放量', dataIndex: 'p5', width: 150,
+        title: '固废焚烧排放量', dataIndex: 'p5', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p5', text),
           props: {},
@@ -310,7 +308,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '工业废水处理甲烷排放', dataIndex: 'p6', width: 250,
+        title: '工业废水处理甲烷排放', dataIndex: 'p6', width: 100,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p6', text),
           props: {},
@@ -322,7 +320,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: '生活污水处理甲烷排放量', dataIndex: 'p7', width: 200,
+        title: '生活污水处理甲烷排放量', dataIndex: 'p7', width: 100,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p7', text),
           props: {},
@@ -332,7 +330,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: '生活污水处理氧化亚氮排放量', dataIndex: 'p8', width: 200,
+        title: '生活污水处理氧化亚氮排放量', dataIndex: 'p8', width: 100,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'p8', text),
           props: {},
@@ -468,9 +466,9 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
-         
+
           const _Data = []
-      
+
 
           const fossilTitle = [
 
@@ -609,7 +607,7 @@ class ElectricTable extends React.Component {
                 value:'万tCH4',
               },
               p5:{
-                value:'万tN20',
+                value:'万tCO2',
               },
               p6:{
                 value:'万tCH4',
@@ -618,7 +616,7 @@ class ElectricTable extends React.Component {
                 value:'万tCH4',
               },
               p8:{
-                value:'C万tN2O',
+                value:'万tN2O',
               },
             },{
               key:2,
@@ -626,29 +624,29 @@ class ElectricTable extends React.Component {
                 value:'排放量',
               },
               p1:{
-                value:(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
-                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310))
-              +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)).toFixed(2)
+                value:((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21
+                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils)+((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21+Alldata.N2O.wasteWater*310)
+                +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21)).toFixed(6)
               },
               p2:{
                 value:(((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill)*21)
-                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(2)
+                +(Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(6)
               },
               p3:{
                 value:((((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD)*21)+(Alldata.N2O.wasteWater*310))
-                +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21+Alldata.N2O.wasteWater*310)).toFixed(2),
+                +((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD)*21)).toFixed(6),
               },
               p4:{
-                value:((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(2)),
+                value:((Alldata.CH4.solidWasteLandfillDisposal.managedLandfill+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillMoreThan5m+Alldata.CH4.solidWasteLandfillDisposal.nonManagedLandfillLessThan5m+Alldata.CH4.solidWasteLandfillDisposal.unclassifiedLandfill).toFixed(6)),
               },
               p5:{
-                value:((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(2),
+                value:((Alldata.CO2.classificationOfMunicipalSolidWasteFossils+Alldata.CO2.hazardousWaste)).toFixed(6),
               },
               p6:{
-                value:((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(2)),
+                value:((Alldata.CH4.industrialWastewaterTreatment.dischargedIntoTheEnvironmentCOD+Alldata.CH4.industrialWastewaterTreatment.sewageTreatmentSystemToRemoveCOD).toFixed(6)),
               },
               p7:{
-                value:((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(2)),
+                value:((Alldata.CH4.domesticSewageTreatment.intoTheEnvironmentBOD+Alldata.CH4.domesticSewageTreatment.sewageTreatmentSystemToRemoveBOD).toFixed(6)),
               },
               p8:{
                 value:Alldata.N2O.wasteWater,
@@ -678,12 +676,12 @@ class ElectricTable extends React.Component {
 
  //年份选择
  selesctYears(years){
-  
+
       this.setState({ loading: true});
       this.setState({years:years})
       this.queryGut(years)
     }
-  
+
 
   render() {
 
@@ -738,7 +736,7 @@ class ElectricTable extends React.Component {
             <p>温室气体增温潜值</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
           </div>
 
@@ -749,7 +747,7 @@ class ElectricTable extends React.Component {
             <p>关键排放指标信息</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

@@ -81,7 +81,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 280,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
 
       {
@@ -252,14 +251,14 @@ class ElectricTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　调出电力',
-            '　　调入电力',
-            '　　　　来自电网1',
-            '　　　　来自电网2',
-            '　　　　来自电网3',
-            '　　　　来自电网4',
-            '　　　　来自电网5',
-            '　　合计',
+            '调出电力',
+            '调入电力',
+            '　　来自电网1',
+            '　　来自电网2',
+            '　　来自电网3',
+            '　　来自电网4',
+            '　　来自电网5',
+            '合计',
 
           ]
 
@@ -270,9 +269,9 @@ class ElectricTable extends React.Component {
           var _Total2 = 0;   //间接排放因子（kgCO2/kWh)
 
           for(var i = 0 ;i<7;i++){
-           
 
-           
+
+
 
             if(i==1){
               _a.push({
@@ -281,38 +280,38 @@ class ElectricTable extends React.Component {
                 gridName: _Data[i].gridName,
                 electricity: _Data[i].electricity,
                 indirectEmissionFactor: _Data[i].indirectEmissionFactor,
-                emissions: _Data[i].electricity*_Data[i].indirectEmissionFactor,
+                emissions: _Data[i].emissions,
 
               });
             }else {
-              
+
               _a.push({
                 key: i,
                 name:fossilTitle[i],
                 gridName: _Data[i].gridName,
                 electricity: _Data[i].electricity,
                 indirectEmissionFactor: _Data[i].indirectEmissionFactor,
-                emissions: _Data[i].electricity*_Data[i].indirectEmissionFactor,
+                emissions: _Data[i].emissions,
 
               });
             }
 
-           
-          
+
+
            if(i==1 || i==0){
-            _Total += 0 
-            _Total1 += 0 
+            _Total += 0
+            _Total1 += 0
            }else{
-            _Total += (_Data[i].electricity*_Data[i].indirectEmissionFactor)
+            _Total += (_Data[i].emissions)
             _Total1 += (_Data[i].electricity)
            }
-            
+
 
 
 
           }
 
-         
+
             _a.push({
               key: i,
               name:fossilTitle[7],
@@ -322,11 +321,11 @@ class ElectricTable extends React.Component {
               emissions: 0,
 
             });
-         
+
 
 
           console.log(_a);
-         
+
 
           const _b = [];
 
@@ -367,15 +366,15 @@ class ElectricTable extends React.Component {
                   value:_a[i].name ,
                 },
               gridName:{
-                 
+
                   value:_a[i].gridName ,
                 },
               electricity: {
-               
+
                   value:_a[i].electricity ,
                 },
               indirectEmissionFactor: {
-                 
+
                   value:_a[i].indirectEmissionFactor ,
                 },
               emissions: {
@@ -413,8 +412,9 @@ class ElectricTable extends React.Component {
             )
             }
 
-           
+
           }
+
 
           console.log(_b);
 
@@ -479,7 +479,7 @@ class ElectricTable extends React.Component {
           this.queryElectric(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -536,7 +536,7 @@ class ElectricTable extends React.Component {
         <div className={styles.entryBody} id="bodyTable1" >
           <p>电力调入调出间接排放</p>
           <Spin spinning={this.state.loading} >
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
           </Spin>
         </div>
 

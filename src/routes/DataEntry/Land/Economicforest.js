@@ -369,7 +369,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -387,7 +387,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -423,7 +423,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -441,7 +440,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -478,7 +477,6 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -496,7 +494,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -506,8 +504,8 @@ class ElectricTable extends React.Component {
 
               {
 
-                '合计或平均' == record.dataName
-                  ? <span></span> :
+                  '-' == record.dataName
+                      ? <span></span> :
                   editable ?
                     <span>
                   <a onClick={() => this.editDone2(index, 'save')}>确认</a>
@@ -532,7 +530,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns3(this.state.data3, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -550,7 +548,7 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
 
@@ -560,8 +558,8 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                '合计或平均' == record.dataName
-                  ? <span></span> :
+                  '-' == record.dataName
+                      ? <span></span> :
 
                   editable ?
                     <span>
@@ -587,7 +585,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns4(this.state.data4, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -612,7 +610,7 @@ class ElectricTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns5(this.state.data5, index, 'name', text),},
       {
         title: '子类型', dataIndex: 'dataName', width: 100,
@@ -634,9 +632,10 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 60,
 
         render: (text, record, index) => {
+
 
 
           const { editable } = this.state.data5[index].name;
@@ -644,7 +643,7 @@ class ElectricTable extends React.Component {
             <div className={styles.editableOperations} >
 
               {
-                '合计或平均' == record.dataName
+                '-' == record.dataName
                   ? <span></span> :
 
                   editable ?
@@ -714,7 +713,7 @@ class ElectricTable extends React.Component {
       addCollapsed5:true,
       AllData:[],
       years:'2014',
-      newYears:'2014',
+
     };
 
     this.queryEconomicforest('2014');
@@ -1147,7 +1146,8 @@ class ElectricTable extends React.Component {
           var Alldata =res.data;
 
 
-        
+
+          //活动水平数据
           const _Data1 = Alldata.economicForestBambooForestActivityLevel.EFBFAL_economicForest
           const _Data2 = Alldata.economicForestBambooForestActivityLevel.EFBFAL_bambooForest
           const _Data3 = Alldata.economicForestBambooForestActivityLevel.EFBFAL_countrySpecialIrrigation
@@ -1157,6 +1157,7 @@ class ElectricTable extends React.Component {
           this.setState({Data3:_Data3})
 
 
+            //排放因子数据
           const _Data11 = Alldata.economicForestBambooForestEmissionFactor.EFBFEF_economicForest
           const _Data22 = Alldata.economicForestBambooForestEmissionFactor.EFBFEF_bambooForest
           const _Data33 = Alldata.economicForestBambooForestEmissionFactor.EFBFEF_countrySpecialIrrigation
@@ -1166,7 +1167,8 @@ class ElectricTable extends React.Component {
           this.setState({Data33:_Data33})
 
 
-          
+
+            //排放量计算
           const _Data111 = Alldata.economicForestBambooForestEmission.economicForest
           const _Data222 = Alldata.economicForestBambooForestEmission.bambooForest
           const _Data333 = Alldata.economicForestBambooForestEmission.countrySpecialIrrigation
@@ -1174,6 +1176,7 @@ class ElectricTable extends React.Component {
           this.setState({Data111:_Data111})
           this.setState({Data222:_Data222})
           this.setState({Data333:_Data333})
+
 
 
 
@@ -1196,8 +1199,8 @@ class ElectricTable extends React.Component {
 
          if(_Data111){
           for(var i = 0 ;i<_Data111.length;i++){
-            
-            
+
+
                         _a4.push({
                           key: i,
                           name:'经济林',
@@ -1205,14 +1208,14 @@ class ElectricTable extends React.Component {
                           groundBiomassCarbonStorage: _Data111[i].groundBiomassCarbonStorage,
                           wholeForestBiomassCarbonStorage: _Data111[i].wholeForestBiomassCarbonStorage,
                           changesInBiomassCarbonStocks: _Data111[i].changesInBiomassCarbonStocks,
-            
+
                         });
-            
+
                         _groundBiomassCarbonStorage1 += _Data111[i].groundBiomassCarbonStorage;
                         _wholeForestBiomassCarbonStorage1 += _Data111[i].wholeForestBiomassCarbonStorage;
                         _changesInBiomassCarbonStocks1 += _Data111[i].changesInBiomassCarbonStocks;
-            
-            
+
+
                       }
 
                       _a4.push({
@@ -1222,7 +1225,7 @@ class ElectricTable extends React.Component {
                         groundBiomassCarbonStorage: _groundBiomassCarbonStorage1,
                         wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage1,
                         changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks1,
-            
+
                       });
 
          }else{
@@ -1237,15 +1240,15 @@ class ElectricTable extends React.Component {
           });
          }
 
-         
 
-        
+
+
 
 
           if(_Data222){
             for(var i = 0 ;i<_Data222.length;i++){
-              
-              
+
+
                           _a4.push({
                             key: i,
                             name:'竹林',
@@ -1253,14 +1256,14 @@ class ElectricTable extends React.Component {
                             groundBiomassCarbonStorage: _Data222[i].groundBiomassCarbonStorage,
                             wholeForestBiomassCarbonStorage: _Data222[i].wholeForestBiomassCarbonStorage,
                             changesInBiomassCarbonStocks: _Data222[i].changesInBiomassCarbonStocks,
-              
+
                           });
-              
+
                           _groundBiomassCarbonStorage2 += _Data222[i].groundBiomassCarbonStorage;
                           _wholeForestBiomassCarbonStorage2 += _Data222[i].wholeForestBiomassCarbonStorage;
                           _changesInBiomassCarbonStocks2 += _Data222[i].changesInBiomassCarbonStocks;
-              
-              
+
+
                         }
 
 
@@ -1275,7 +1278,7 @@ class ElectricTable extends React.Component {
 
           });
           }else{
-            
+
 
           _a4.push({
             key: 1,
@@ -1289,14 +1292,14 @@ class ElectricTable extends React.Component {
           });
           }
 
-        
+
 
 
           if(_Data333){
             for(var i = 0 ;i<_Data333.length;i++){
-              
-              
-              
+
+
+
                           _a4.push({
                             key: i,
                             name:'国特灌',
@@ -1304,13 +1307,13 @@ class ElectricTable extends React.Component {
                             groundBiomassCarbonStorage: _Data333[i].groundBiomassCarbonStorage,
                             wholeForestBiomassCarbonStorage: _Data333[i].wholeForestBiomassCarbonStorage,
                             changesInBiomassCarbonStocks: _Data333[i].changesInBiomassCarbonStocks,
-              
+
                           });
-              
+
                           _groundBiomassCarbonStorage3 += _Data333[i].groundBiomassCarbonStorage;
                           _wholeForestBiomassCarbonStorage3 += _Data333[i].wholeForestBiomassCarbonStorage;
                           _changesInBiomassCarbonStocks3 += _Data333[i].changesInBiomassCarbonStocks;
-              
+
                         }
                         _a4.push({
                           key: _Data333.length,
@@ -1319,8 +1322,8 @@ class ElectricTable extends React.Component {
                           groundBiomassCarbonStorage: _groundBiomassCarbonStorage3,
                           wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage3,
                           changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks3,
-              
-              
+
+
                         });
           }else{
             _a4.push({
@@ -1330,13 +1333,13 @@ class ElectricTable extends React.Component {
               groundBiomassCarbonStorage: _groundBiomassCarbonStorage3,
               wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage3,
               changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks3,
-  
-  
+
+
             });
           }
-          
 
-       
+
+
 
           const _b4 = [];
 
@@ -1498,17 +1501,20 @@ class ElectricTable extends React.Component {
 
               });
 
-            _groundBiomassCarbonDensity11 += _Data11[i].groundBiomassCarbonDensity;
-            _wholeForestBiomassCarbonDensity11 += _Data11[i].wholeForestBiomassCarbonDensity;
+
+
+            _groundBiomassCarbonDensity11 += _Data11[i].groundBiomassCarbonDensity*_Data1[i].area;
+            _wholeForestBiomassCarbonDensity11 += _Data11[i].wholeForestBiomassCarbonDensity*_Data1[i].area;
 
           }
+
 
           _a1.push({
             key:_Data11.length,
             name:'经济林',
             dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity11,
-            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity11,
+            groundBiomassCarbonDensity: _groundBiomassCarbonDensity11/_area1 ,
+            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity11/_area1,
 
           });
 
@@ -1527,8 +1533,9 @@ class ElectricTable extends React.Component {
 
               });
 
-            _groundBiomassCarbonDensity22 += _Data22[i].groundBiomassCarbonDensity;
-            _wholeForestBiomassCarbonDensity22 += _Data22[i].wholeForestBiomassCarbonDensity;
+
+            _groundBiomassCarbonDensity22 += _Data22[i].groundBiomassCarbonDensity*_Data2[i].area;
+            _wholeForestBiomassCarbonDensity22 += _Data22[i].wholeForestBiomassCarbonDensity*_Data2[i].area;
 
 
           }
@@ -1537,8 +1544,8 @@ class ElectricTable extends React.Component {
             key: _Data22.length,
             name:'竹林',
             dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity22,
-            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity22,
+            groundBiomassCarbonDensity: _groundBiomassCarbonDensity22/_area2,
+            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity22/_area2,
 
           });
 
@@ -1554,17 +1561,18 @@ class ElectricTable extends React.Component {
 
               });
 
-            _groundBiomassCarbonDensity33 += _Data33[i].groundBiomassCarbonDensity;
-            _wholeForestBiomassCarbonDensity33 += _Data33[i].wholeForestBiomassCarbonDensity;
+            _groundBiomassCarbonDensity33 += _Data33[i].groundBiomassCarbonDensity*_Data3[i].area;
+            _wholeForestBiomassCarbonDensity33 += _Data33[i].wholeForestBiomassCarbonDensity*_Data3[i].area;
 
           }
+
 
           _a1.push({
             key: _Data33.length,
             name:'国特灌',
             dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity33,
-            wholeForestBiomassCarbonDensity: _groundBiomassCarbonDensity33,
+            groundBiomassCarbonDensity: _groundBiomassCarbonDensity33/_area3,
+            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity33/_area3,
 
           });
 
@@ -1649,11 +1657,11 @@ class ElectricTable extends React.Component {
 
 
   //不确定性
-  newQueryEconomicforest(newYears){
+  newQueryEconomicforest(years){
 
 
     post('/uncertainty/landUseChangeAndForestry/list', {
-      year:newYears,
+      year:years,
     })
       .then((res) => {
 
@@ -1732,11 +1740,11 @@ class ElectricTable extends React.Component {
 
           _a5.push({
             key: _Data111.length,
-            name:'经济林',
-            dataName:'合计或平均',
-            groundBiomassCarbonStorage: _groundBiomassCarbonStorage1,
-            wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage1,
-            changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks1,
+            name:'',
+            dataName:'-',
+            groundBiomassCarbonStorage: '',
+            wholeForestBiomassCarbonStorage: '',
+            changesInBiomassCarbonStocks: '',
 
           });
 
@@ -1764,11 +1772,11 @@ class ElectricTable extends React.Component {
 
           _a5.push({
             key: _Data222.length,
-            name:'竹林',
-            dataName:'合计或平均',
-            groundBiomassCarbonStorage: _groundBiomassCarbonStorage2,
-            wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage2,
-            changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks2,
+            name:'',
+            dataName:'-',
+            groundBiomassCarbonStorage:'',
+            wholeForestBiomassCarbonStorage: '',
+            changesInBiomassCarbonStocks: '',
 
 
           });
@@ -1795,11 +1803,11 @@ class ElectricTable extends React.Component {
 
           _a5.push({
             key: _Data333.length,
-            name:'国特灌',
-            dataName:'合计或平均',
-            groundBiomassCarbonStorage: _groundBiomassCarbonStorage3,
-            wholeForestBiomassCarbonStorage: _wholeForestBiomassCarbonStorage3,
-            changesInBiomassCarbonStocks: _changesInBiomassCarbonStocks3,
+            name:'',
+            dataName:'-',
+            groundBiomassCarbonStorage: '',
+            wholeForestBiomassCarbonStorage: '',
+            changesInBiomassCarbonStocks: '',
 
 
           });
@@ -1876,10 +1884,10 @@ class ElectricTable extends React.Component {
 
           _a.push({
             key: _Data1.length,
-            name:'经济林',
-            dataName:'合计或平均',
-            area: _area1,
-            areaAnnualChange: _areaAnnualChange1,
+            name:'',
+            dataName:'-',
+            area: '',
+            areaAnnualChange: '',
 
           });
 
@@ -1905,10 +1913,10 @@ class ElectricTable extends React.Component {
 
           _a.push({
             key: _Data2.length,
-            name:'竹林',
-            dataName:'合计或平均',
-            area: _area2,
-            areaAnnualChange: _areaAnnualChange2,
+              name:'',
+              dataName:'-',
+              area: '',
+              areaAnnualChange: '',
 
           });
 
@@ -1932,10 +1940,10 @@ class ElectricTable extends React.Component {
 
           _a.push({
             key: _Data3.length,
-            name:'国特灌',
-            dataName:'合计或平均',
-            area: _area3,
-            areaAnnualChange: _areaAnnualChange3,
+              name:'',
+              dataName:'-',
+              area: '',
+              areaAnnualChange: '',
 
           });
 
@@ -1977,10 +1985,10 @@ class ElectricTable extends React.Component {
 
           _a1.push({
             key:_Data11.length,
-            name:'经济林',
-            dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity11,
-            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity11,
+            name:'',
+            dataName:'-',
+            groundBiomassCarbonDensity: '',
+            wholeForestBiomassCarbonDensity: '',
 
           });
 
@@ -2007,10 +2015,10 @@ class ElectricTable extends React.Component {
 
           _a1.push({
             key: _Data22.length,
-            name:'竹林',
-            dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity22,
-            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity22,
+              name:'',
+              dataName:'-',
+              groundBiomassCarbonDensity: '',
+              wholeForestBiomassCarbonDensity: '',
 
           });
 
@@ -2033,11 +2041,10 @@ class ElectricTable extends React.Component {
 
           _a1.push({
             key: _Data33.length,
-            name:'国特灌',
-            dataName:'合计或平均',
-            groundBiomassCarbonDensity: _groundBiomassCarbonDensity33,
-            wholeForestBiomassCarbonDensity: _wholeForestBiomassCarbonDensity33,
-
+              name:'',
+              dataName:'-',
+              groundBiomassCarbonDensity: '',
+              wholeForestBiomassCarbonDensity: '',
           });
 
 
@@ -2302,7 +2309,7 @@ class ElectricTable extends React.Component {
           this.queryEconomicforest(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
 
         }
       });
@@ -2482,7 +2489,7 @@ class ElectricTable extends React.Component {
           this.queryEconomicforest(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -2643,7 +2650,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -2656,11 +2663,11 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed2:true})
           message.success(res.message);
-          this.newQueryEconomicforest(this.state.newYears);
+          this.newQueryEconomicforest(this.state.years);
 
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
 
         }
       });
@@ -2823,7 +2830,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -2836,10 +2843,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed3:true})
           message.success(res.message);
-          this.newQueryEconomicforest(this.state.newYears);
+          this.newQueryEconomicforest(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -3007,7 +3014,7 @@ class ElectricTable extends React.Component {
 
 
     var obj={
-      "year":this.state.newYears
+      "year":this.state.years
     };
 
     obj[bodyName]={}
@@ -3020,10 +3027,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
           this.setState({addCollapsed5:true})
           message.success(res.message);
-          this.newQueryEconomicforest(this.state.newYears);
+          this.newQueryEconomicforest(this.state.years);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -3226,6 +3233,7 @@ class ElectricTable extends React.Component {
     this.setState({ loading: true});
     this.setState({years:years})
     this.queryEconomicforest(years)
+    this.newQueryEconomicforest(years)
 
   }
 
@@ -3320,7 +3328,7 @@ class ElectricTable extends React.Component {
           <p>活动水平数据</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           <Button className={styles.button} onClick={this.handleAdd}>添加</Button>
         </div>
@@ -3330,7 +3338,7 @@ class ElectricTable extends React.Component {
           <p>排放因子数据</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           <Button className={styles.button} onClick={this.handleAdd1}>添加</Button>
         </div>
@@ -3340,7 +3348,7 @@ class ElectricTable extends React.Component {
             <p>活动水平不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
             <Button className={styles.button} onClick={this.handleAdd2}>添加</Button>
           </div>
@@ -3350,7 +3358,7 @@ class ElectricTable extends React.Component {
             <p>排放因子不确定性</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"   pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
             <Button className={styles.button} onClick={this.handleAdd3}>添加</Button>
           </div>
@@ -3360,7 +3368,7 @@ class ElectricTable extends React.Component {
             <p>排放量计算（负值代表净吸收， 正值代表净排放）</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"   pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3369,7 +3377,7 @@ class ElectricTable extends React.Component {
             <p>不确定性计算</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
             <Button className={styles.button} onClick={this.handleAdd5}>添加</Button>
           </div>
 

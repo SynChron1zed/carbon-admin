@@ -141,9 +141,9 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -153,7 +153,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -164,7 +164,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -175,7 +175,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -186,7 +186,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -197,7 +197,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -208,7 +208,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -220,7 +220,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -229,7 +229,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -245,9 +245,8 @@ class ElectricTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
           props: {},
@@ -357,8 +356,8 @@ class ElectricTable extends React.Component {
 
     //$("#bodyTable1").hide();
 
-  
-  
+
+
   }
 /*
   shouldComponentUpdate(nextProps,nextState){
@@ -390,7 +389,7 @@ class ElectricTable extends React.Component {
     const a = this.props;
     const b = this.state;
     return true
-   
+
 };
  */
 
@@ -495,7 +494,7 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
-        
+
           const _Data = []
           const _Data1 = Alldata.GHG
 
@@ -643,10 +642,10 @@ class ElectricTable extends React.Component {
                 value:'万tN20',
               },
               p6:{
-                value:'CO2e',
+                value:'万tCO2e',
               },
               p7:{
-                value:'CO2e',
+                value:'万tCO2e',
               },
 
             },{
@@ -700,7 +699,7 @@ class ElectricTable extends React.Component {
 
  //年份选择
  selesctYears(years){
-  
+
       this.setState({ loading: true});
       this.setState({years:years})
       this.queryGut(years)
@@ -760,7 +759,7 @@ class ElectricTable extends React.Component {
             <p>温室气体增温潜值</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+            <Table  size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
           </div>
 
@@ -771,7 +770,7 @@ class ElectricTable extends React.Component {
             <p>关键排放指标信息</p>
 
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

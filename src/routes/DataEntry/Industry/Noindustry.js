@@ -135,23 +135,23 @@ class ElectricTable extends React.Component {
     super(props);
 
 
-    this.columns = [    
+    this.columns = [
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 70,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
 
         };
-          
+
           return obj}
 
       }, {
-        title: '排放量（万吨CO2e）', dataIndex: 'p1', width: 100,
+        title: '排放量（万吨CO2e）', dataIndex: 'p1', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'p1', text),
           props: {},
@@ -162,7 +162,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: '排放因子不确定性（%）', dataIndex: 'uncertainty', width: 100,
+        title: '排放因子不确定性（%）', dataIndex: 'uncertainty', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'uncertainty', text),
           props: {},
@@ -172,7 +172,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: '活动水平不确定性（%）', dataIndex: 'uncertainty1', width: 100,
+        title: '活动水平不确定性（%）', dataIndex: 'uncertainty1', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'uncertainty1', text),
           props: {},
@@ -182,7 +182,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: '不确定性（%）', dataIndex: 'uncertainty2', width: 100,
+        title: '不确定性（%）', dataIndex: 'uncertainty2', width: 150,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'uncertainty2', text),
           props: {},
@@ -195,14 +195,14 @@ class ElectricTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 100,
+        width: 50,
 
         render: (text, record, index) => {
 
-        
+
                 const { editable } = this.state.data[index].uncertainty;
-     
-   
+
+
           return (
             <div className={styles.editableOperations} >
 
@@ -245,10 +245,12 @@ class ElectricTable extends React.Component {
 
 
       AllData:[],
-      years:'2014'
+      years:'2014',
+        Xdata:[],
+        Xdata1:[]
     };
 
-    this.queryGut('2014');
+    this.XqueryGut('2014');
 
     //$("#bodyTable1").hide();
 
@@ -304,7 +306,7 @@ class ElectricTable extends React.Component {
 
 
   edit(index) {
-     
+
 
     const { data } = this.state;
     Object.keys(data[index]).forEach((item) => {
@@ -333,6 +335,127 @@ class ElectricTable extends React.Component {
     });
   }
 
+
+    // 清单结果数据
+    XqueryGut(years){
+
+
+        post('/report/industrialProductionProcess/list', {
+            year:years,
+
+        })
+            .then((res) => {
+
+                if (res.code==0) {
+
+
+
+
+                    var Alldata =res.data;
+
+
+                    var _data = []
+
+                    _data.push((Alldata.CO2.cementProductionProcess))
+                    _data.push((Alldata.CO2.limeProductionProcess))
+                    _data.push((Alldata.CO2.steelProductionProcess))
+                    _data.push((Alldata.CO2.calciumCarbideProductionProcess))
+                    _data.push((Alldata.N2O.adipicAcidProductionProcess*310/10000))
+                    _data.push((Alldata.N2O.nitricAcidProductionProcess*310/10000))
+                    _data.push(((Alldata.CF4.aluminumProductionProcess*6500+Alldata.C2F6.aluminumProductionProcess*9200)/10000))
+                    _data.push((Alldata.SF6.electricPowerEquipmentProductionProcess*23900/10000))
+                    _data.push((Alldata.SF6.magnesiumProductionProcess*23900/10000))
+                    _data.push(((Alldata.HFC_23.semiconductorProductionProcess*11700+Alldata.CF4.semiconductorProductionProcess*6500+Alldata.C2F6.semiconductorProductionProcess*9200+Alldata.SF6.semiconductorProductionProcess*23900)/10000))
+                    _data.push((Alldata.HFC_23.chlorodifluoromethaneProductionProcess*11700/10000))
+                    _data.push(((Alldata.HFC_32*650+Alldata.HFC_125*2800+Alldata.HFC_134a*1300+Alldata.HFC_143a*3800+Alldata.HFC_152a*140+Alldata.HFC_227ea*2900+Alldata.HFC_236fa*6300+Alldata.HFC_245fa*1030)/10000))
+                    _data.push(((Alldata.CO2.cementProductionProcess)+(Alldata.CO2.limeProductionProcess)+(Alldata.CO2.steelProductionProcess)
+                    +(Alldata.CO2.calciumCarbideProductionProcess)+(Alldata.N2O.adipicAcidProductionProcess*310/10000)+(Alldata.N2O.nitricAcidProductionProcess*310/10000)
+                    +((Alldata.CF4.aluminumProductionProcess*6500+Alldata.C2F6.aluminumProductionProcess*9200)/10000)+(Alldata.SF6.electricPowerEquipmentProductionProcess*23900/10000)
+                    +((Alldata.HFC_23.semiconductorProductionProcess*11700+Alldata.CF4.semiconductorProductionProcess*6500+Alldata.C2F6.semiconductorProductionProcess*9200+Alldata.SF6.semiconductorProductionProcess*23900)/10000)
+                    +(Alldata.HFC_23.chlorodifluoromethaneProductionProcess*11700/10000)+((Alldata.HFC_32*650+Alldata.HFC_125*2800+Alldata.HFC_134a*1300+Alldata.HFC_143a*3800+Alldata.HFC_152a*140+Alldata.HFC_227ea*2900+Alldata.HFC_236fa*6300+Alldata.HFC_245fa*1030)/10000)))
+
+                    this.setState({ Xdata: _data});
+
+                    this.XqueryGut1(years);
+
+                    this.setState({ loading: false});
+
+
+                } else {
+                    message.error('数据错误！');
+                }
+            });
+
+    }
+
+
+    // 半导体过程
+    XqueryGut1(years){
+
+
+        post('/activityLevelDataEntry/industrialProductionProcess/list', {
+            year:years,
+
+        })
+            .then((res) => {
+
+                if (res.code==0) {
+
+
+
+
+                    var Alldata =res.data;
+
+
+                    var _data3 = []
+
+                    //半导体
+                    _data3.push(Alldata.semiconductorProductionProcess.CF4Dosage);
+                    _data3.push(Alldata.semiconductorProductionProcess.CHF3Dosage);
+                    _data3.push(Alldata.semiconductorProductionProcess.C2F6Dosage);
+                    _data3.push(Alldata.semiconductorProductionProcess.SF6Dosage);
+
+
+                    //半导体
+                    const _a3 = [];
+
+                    for (var i = 0; i < 4; i++) {
+
+
+                        _a3.push({
+                            key: i,
+
+                            activityLevelValueEtching: _data3[i].activityLevelValueEtching,
+                            activityLevelValueCVD: _data3[i].activityLevelValueCVD,
+                            emissionFactorEtching: _data3[i].emissionFactorEtching,
+                            emissionFactorCVD: _data3[i].emissionFactorCVD,
+
+                        });
+
+                    }
+
+                    var _totala3 = []
+
+                    for (var i = 0; i < _a3.length; i++) {
+                        _totala3.push(((_a3[i].activityLevelValueEtching*_a3[i].emissionFactorEtching+_a3[i].activityLevelValueCVD*_a3[i].emissionFactorCVD)*6500/10000))
+
+                    }
+                    this.setState({Xdata1: _totala3});
+
+
+
+                    this.queryGut(years);
+
+                    this.setState({ loading: false});
+
+
+                } else {
+                    message.error('数据错误！');
+                }
+            });
+
+    }
+
   //
   queryGut(years){
 
@@ -350,72 +473,110 @@ class ElectricTable extends React.Component {
 
           var Alldata =res.data;
 
-          const _Data = [
-            Alldata.cementProductionProcess.emissionFactorUncertainty,//水泥生产过程
-            Alldata.limeProductionProcess.emissionFactorUncertainty, 
-            '——————', //钢铁生产过程
-            Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty,//电石生产过程
-            Alldata.adipicAcidProductionProcess.emissionFactorUncertainty,
-            Alldata.nitricAcidProductionProcess.emissionFactorUncertainty,
-            '——————', //铝生产过程
-            Alldata.magnesiumProductionProcess.emissionFactorUncertainty,
-            Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty,
-            '——————',//半导体生产过程
-            Alldata.chlorodifluoromethaneProductionProcess.emissionFactorUncertainty,
-            Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty,//氢氟烃生产过程
-            0
+
+            var xdata = this.state.Xdata;
+            var xdata1 = this.state.Xdata1;
+
+            var xdata1 = []
+            for(var i = 0 ; i<xdata.length;i++){
+                xdata1.push(xdata[i].toFixed(2))
+            }
+
+
+
+
+
+
+            var Total = (Math.sqrt(((Math.pow(Math.sqrt((Alldata.cementProductionProcess.emissionFactorUncertainty*Alldata.cementProductionProcess.emissionFactorUncertainty
+                    +Alldata.cementProductionProcess.activityLevelUncertainty*Alldata.cementProductionProcess.activityLevelUncertainty))*xdata[0],2))
+            +(Math.pow(Math.sqrt((Alldata.limeProductionProcess.emissionFactorUncertainty*Alldata.limeProductionProcess.emissionFactorUncertainty
+                    +Alldata.limeProductionProcess.activityLevelUncertainty*Alldata.limeProductionProcess.activityLevelUncertainty))*xdata[1],2))
+            +(Math.pow(Math.sqrt((Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty*Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty
+                +Alldata.calciumCarbideProductionProcess.activityLevelUncertainty*Alldata.calciumCarbideProductionProcess.activityLevelUncertainty))*xdata[3],2))
+            +(Math.pow(Math.sqrt((Alldata.adipicAcidProductionProcess.emissionFactorUncertainty*Alldata.adipicAcidProductionProcess.emissionFactorUncertainty
+                +Alldata.adipicAcidProductionProcess.activityLevelUncertainty*Alldata.adipicAcidProductionProcess.activityLevelUncertainty))*xdata[4],2))
+            +(Math.pow(Math.sqrt((Alldata.nitricAcidProductionProcess.emissionFactorUncertainty*Alldata.nitricAcidProductionProcess.emissionFactorUncertainty
+                    +Alldata.nitricAcidProductionProcess.activityLevelUncertainty*Alldata.nitricAcidProductionProcess.activityLevelUncertainty))*xdata[5],2))
+            +(Math.pow(Math.sqrt((Alldata.magnesiumProductionProcess.emissionFactorUncertainty*Alldata.magnesiumProductionProcess.emissionFactorUncertainty
+                    +Alldata.magnesiumProductionProcess.activityLevelUncertainty*Alldata.magnesiumProductionProcess.activityLevelUncertainty))*xdata[7],2))
+            +(Math.pow(Math.sqrt((Alldata.magnesiumProductionProcess.emissionFactorUncertainty*Alldata.magnesiumProductionProcess.emissionFactorUncertainty
+                    +Alldata.magnesiumProductionProcess.activityLevelUncertainty*Alldata.magnesiumProductionProcess.activityLevelUncertainty))*xdata[8],2))
+            +(Math.pow( xdata[9]==0 ? 0:(Math.sqrt((Math.pow(0.0283*xdata1[0],2)+Math.pow(0.0233*xdata1[1],2)+Math.pow(0.0256*xdata1[2],2)+Math.pow(0.0224*xdata1[3],2)))/xdata[9]),2))
+            +(Math.pow(Math.sqrt((Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty
+                    +Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty))*xdata[10],2))
+            +(Math.pow(Math.sqrt((Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty*Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty
+                    +Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty*Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty))*xdata[11],2))
+
+            ))/xdata[12]*100).toFixed(2)
+
+
+
+            const _Data = [
+            Alldata.cementProductionProcess.emissionFactorUncertainty*100,//水泥生产过程
+            Alldata.limeProductionProcess.emissionFactorUncertainty*100,
+            '—', //钢铁生产过程
+            Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty*100,//电石生产过程
+            Alldata.adipicAcidProductionProcess.emissionFactorUncertainty*100,
+            Alldata.nitricAcidProductionProcess.emissionFactorUncertainty*100,
+            '—', //铝生产过程
+            Alldata.magnesiumProductionProcess.emissionFactorUncertainty*100,
+            Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty*100,
+            '—',//半导体生产过程
+            Alldata.chlorodifluoromethaneProductionProcess.emissionFactorUncertainty*100,
+            Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty*100,//氢氟烃生产过程
+            ''
           ]  //co2
-         
+
           const _Data1 = [
-            Alldata.cementProductionProcess.activityLevelUncertainty,//水泥生产过程
-            Alldata.limeProductionProcess.activityLevelUncertainty, 
-            '——————', //钢铁生产过程
-            Alldata.calciumCarbideProductionProcess.activityLevelUncertainty,//电石生产过程
-            Alldata.adipicAcidProductionProcess.activityLevelUncertainty,
-            Alldata.nitricAcidProductionProcess.activityLevelUncertainty,
-            '——————', //铝生产过程
-            Alldata.magnesiumProductionProcess.activityLevelUncertainty,
-            Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty,
-            '——————',//半导体生产过程
-            Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty,
-            Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty,//氢氟烃生产过程
-            0
+            Alldata.cementProductionProcess.activityLevelUncertainty*100,//水泥生产过程
+            Alldata.limeProductionProcess.activityLevelUncertainty*100,
+            '—', //钢铁生产过程
+            Alldata.calciumCarbideProductionProcess.activityLevelUncertainty*100,//电石生产过程
+            Alldata.adipicAcidProductionProcess.activityLevelUncertainty*100,
+            Alldata.nitricAcidProductionProcess.activityLevelUncertainty*100,
+            '—', //铝生产过程
+            Alldata.magnesiumProductionProcess.activityLevelUncertainty*100,
+            Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty*100,
+            '—',//半导体生产过程
+            Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*100,
+            Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty*100,//氢氟烃生产过程
+            ''
           ]
 
           const _Data2 = [
-            Alldata.cementProductionProcess.emissionFactorUncertainty*Alldata.cementProductionProcess.emissionFactorUncertainty
-            +Alldata.cementProductionProcess.activityLevelUncertainty*Alldata.cementProductionProcess.activityLevelUncertainty,//水泥生产过程
+              (Math.sqrt((Alldata.cementProductionProcess.emissionFactorUncertainty*Alldata.cementProductionProcess.emissionFactorUncertainty
+            +Alldata.cementProductionProcess.activityLevelUncertainty*Alldata.cementProductionProcess.activityLevelUncertainty))*100).toFixed(2),//水泥生产过程
 
-            Alldata.limeProductionProcess.emissionFactorUncertainty*Alldata.limeProductionProcess.emissionFactorUncertainty
-            +Alldata.limeProductionProcess.activityLevelUncertainty*Alldata.limeProductionProcess.activityLevelUncertainty, 
+              (Math.sqrt((Alldata.limeProductionProcess.emissionFactorUncertainty*Alldata.limeProductionProcess.emissionFactorUncertainty
+            +Alldata.limeProductionProcess.activityLevelUncertainty*Alldata.limeProductionProcess.activityLevelUncertainty))*100).toFixed(2),
 
-            Alldata.steelProductionProcess.emissionFactorUncertainty, //钢铁生产过程
-            
-            Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty*Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty
-            +Alldata.calciumCarbideProductionProcess.activityLevelUncertainty*Alldata.calciumCarbideProductionProcess.activityLevelUncertainty,//电石生产过程
+              '', //钢铁生产过程
 
-            Alldata.adipicAcidProductionProcess.emissionFactorUncertainty*Alldata.adipicAcidProductionProcess.emissionFactorUncertainty
-            +Alldata.adipicAcidProductionProcess.activityLevelUncertainty*Alldata.adipicAcidProductionProcess.activityLevelUncertainty,
+              (Math.sqrt((Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty*Alldata.calciumCarbideProductionProcess.emissionFactorUncertainty
+            +Alldata.calciumCarbideProductionProcess.activityLevelUncertainty*Alldata.calciumCarbideProductionProcess.activityLevelUncertainty))*100).toFixed(2),//电石生产过程
 
-            Alldata.nitricAcidProductionProcess.emissionFactorUncertainty*Alldata.nitricAcidProductionProcess.emissionFactorUncertainty
-            +Alldata.nitricAcidProductionProcess.activityLevelUncertainty*Alldata.nitricAcidProductionProcess.activityLevelUncertainty,
+              (Math.sqrt((Alldata.adipicAcidProductionProcess.emissionFactorUncertainty*Alldata.adipicAcidProductionProcess.emissionFactorUncertainty
+            +Alldata.adipicAcidProductionProcess.activityLevelUncertainty*Alldata.adipicAcidProductionProcess.activityLevelUncertainty))*100).toFixed(2),
 
-            Alldata.aluminumProductionProcess.emissionFactorUncertainty, //铝生产过程
+              (Math.sqrt((Alldata.nitricAcidProductionProcess.emissionFactorUncertainty*Alldata.nitricAcidProductionProcess.emissionFactorUncertainty
+            +Alldata.nitricAcidProductionProcess.activityLevelUncertainty*Alldata.nitricAcidProductionProcess.activityLevelUncertainty))*100).toFixed(2),
 
-            Alldata.magnesiumProductionProcess.emissionFactorUncertainty*Alldata.magnesiumProductionProcess.emissionFactorUncertainty
-            +Alldata.magnesiumProductionProcess.activityLevelUncertainty*Alldata.magnesiumProductionProcess.activityLevelUncertainty,
+              '', //铝生产过程
 
-            Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty*Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty
-            +Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty*Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty,
+              (Math.sqrt((Alldata.magnesiumProductionProcess.emissionFactorUncertainty*Alldata.magnesiumProductionProcess.emissionFactorUncertainty
+            +Alldata.magnesiumProductionProcess.activityLevelUncertainty*Alldata.magnesiumProductionProcess.activityLevelUncertainty))*100).toFixed(2),
 
-            Alldata.semiconductorProductionProcess,//半导体生产过程
+              (Math.sqrt((Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty*Alldata.electricPowerEquipmentProductionProcess.emissionFactorUncertainty
+            +Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty*Alldata.electricPowerEquipmentProductionProcess.activityLevelUncertainty))*100).toFixed(2),
 
-            Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty
-            +Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty,
+              xdata[9]==0 ? 0:(Math.sqrt((Math.pow(0.0283*xdata1[0],2)+Math.pow(0.0233*xdata1[1],2)+Math.pow(0.0256*xdata1[2],2)+Math.pow(0.0224*xdata1[3],2)))/xdata[9]).toFixed(2),//半导体生产过程
 
-            Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty*Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty
-            +Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty*Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty,//氢氟烃生产过程
-            0
+              (Math.sqrt((Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty
+            +Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty*Alldata.chlorodifluoromethaneProductionProcess.activityLevelUncertainty))*100).toFixed(2),
+
+              (Math.sqrt((Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty*Alldata.hydrofluorocarbonProductionProcess.emissionFactorUncertainty
+            +Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty*Alldata.hydrofluorocarbonProductionProcess.activityLevelUncertainty))*100).toFixed(2),//氢氟烃生产过程
+              Total
           ]
 
 
@@ -434,34 +595,34 @@ class ElectricTable extends React.Component {
             '一氯二氟甲烷生产过程',
             '氢氟烃生产过程',
             '总计',
-    
+
 
           ]
-       
+
 
 
           const _b1= []
 
-      
+
           for(var i = 0 ; i<_Data.length;i++){
-            
+
             if(i==2 || i == 6 ){
                 _b1.push({
                     key:i,
                     name:{
-    
+
                       value:fossilTitle[i] ,
                     },
                   p1:{
-                  
-                      value:0 ,
+
+                      value:xdata1[i] ,
                     },
                  uncertainty: {
-                      
+
                       value:_Data[i] ,
                     },
                     uncertainty1: {
-                       
+
                         value:_Data1[i] ,
                       },
                          uncertainty2: {
@@ -474,12 +635,12 @@ class ElectricTable extends React.Component {
                 _b1.push({
                     key:i,
                     name:{
-    
+
                       value:fossilTitle[i] ,
                     },
                   p1:{
-                  
-                      value:0 ,
+
+                      value:xdata1[i] ,
                     },
                  uncertainty: {
                       editable:  false,
@@ -490,15 +651,15 @@ class ElectricTable extends React.Component {
                         value:_Data1[i] ,
                       },
                          uncertainty2: {
-                       
+
                         value:_Data2[i],
                       },
                   }
                 )
             }
-                        
+
                       }
-            
+
 
           console.log(_b1);
 
@@ -533,7 +694,7 @@ class ElectricTable extends React.Component {
       'semiconductorProductionProcess',
       'chlorodifluoromethaneProductionProcess',
       'hydrofluorocarbonProductionProcess',
-    
+
 
     ]
 
@@ -543,7 +704,7 @@ class ElectricTable extends React.Component {
 
     var url = '/uncertainty/industrialProductionProcess/update'
     var bodyName = 'industrialProductionProcess';
-   
+
 
 
 
@@ -555,7 +716,7 @@ class ElectricTable extends React.Component {
     };
 
     obj[bodyName]={}
-  
+
     if(index == 2||index == 6){
         obj[bodyName][DirectoryIndex]= {
             "emissionFactorUncertainty": data[index].uncertainty2.value,
@@ -573,10 +734,10 @@ class ElectricTable extends React.Component {
         if (res.code==0) {
 
           message.success(res.message);
-          this.queryGut(this.state.years)
+          this.XqueryGut(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -634,10 +795,9 @@ class ElectricTable extends React.Component {
 
 
           <div className={styles.entryBody} id="bodyTable1"  >
-            <p>废弃物活动温室气体清单报告不确定性</p>
+            <p>工业生产过程不确定性</p>
 
-
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
         </Spin>

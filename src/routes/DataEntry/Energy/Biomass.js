@@ -195,9 +195,8 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 130,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text)
 
 
@@ -371,9 +370,8 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 130,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text)
 
 
@@ -509,9 +507,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 130,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns2(this.state.data2, index, 'name', text)
 
 
@@ -918,12 +916,12 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　秸秆',
-            '　　薪柴',
-            '　　木炭',
-            '　　动物粪便',
-            '　　垃圾焚烧',
-            '　　合计',
+            '秸秆',
+            '薪柴',
+            '木炭',
+            '动物粪便',
+            '垃圾焚烧',
+            '合计',
 
 
           ]
@@ -936,7 +934,7 @@ class CoalmineTable extends React.Component {
           for(var i = 0 ;i<5;i++){
 
 
-           
+
               _a.push({
                 key: i,
                 name:fossilTitle[i],
@@ -953,7 +951,7 @@ class CoalmineTable extends React.Component {
                 )*_Data[i].lowCalorificValue/100).toFixed(2),
 
               });
-          
+
               _Total +=(_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln
                 )*_Data[i].lowCalorificValue/100
 
@@ -975,7 +973,7 @@ class CoalmineTable extends React.Component {
           });
 
 
-          
+
 
           console.log(_a);
 
@@ -1106,7 +1104,7 @@ class CoalmineTable extends React.Component {
           this.queryBiomass(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1141,11 +1139,11 @@ class CoalmineTable extends React.Component {
 
 
 
-            '　　秸秆',
-            '　　薪柴',
-            '　　木炭',
-            '　　动物粪便',
-            '　　垃圾焚烧',
+            '秸秆',
+            '薪柴',
+            '木炭',
+            '动物粪便',
+            '垃圾焚烧',
 
 
           ]
@@ -1289,7 +1287,7 @@ class CoalmineTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1323,11 +1321,11 @@ class CoalmineTable extends React.Component {
 
 
 
-            '　　秸秆',
-            '　　薪柴',
-            '　　木炭',
-            '　　动物粪便',
-            '　　垃圾焚烧',
+            '秸秆',
+            '薪柴',
+            '木炭',
+            '动物粪便',
+            '垃圾焚烧',
 
 
           ]
@@ -1471,7 +1469,7 @@ class CoalmineTable extends React.Component {
           message.success(res.message);
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -1552,21 +1550,21 @@ class CoalmineTable extends React.Component {
 
           <p>活动水平数据</p>
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
         <div className={styles.entryBody} id="bodyTable2"  >
           <p>甲烷排放因子</p>
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
         <div className={styles.entryBody} id="bodyTable3"  >
           <p>氧化亚氮排放因子</p>
 
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
       </Spin>

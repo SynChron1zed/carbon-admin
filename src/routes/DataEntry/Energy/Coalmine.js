@@ -136,9 +136,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 170,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns(this.state.data, index, 'name', text)},
       , {
         title: '井工开采',
@@ -213,9 +213,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 280,
+        width: 120,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns1(this.state.data1, index, 'name', text)},
       , {
         title: '井工开采',
@@ -496,11 +496,11 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　甲烷等级鉴定结果',
-            '　　原煤产量（t）',
-            '　　实测煤矿甲烷排放量和抽放量（m³）',
-            '　　甲烷实际利用量（m³）',
-            '　　排放量（m³）',
+            '甲烷等级鉴定结果',
+            '原煤产量（t）',
+            '实测煤矿甲烷排放量和抽放量（m³）',
+            '甲烷实际利用量（m³）',
+            '排放量（m³）',
 
 
           ]
@@ -514,7 +514,7 @@ class CoalmineTable extends React.Component {
 
             if(i==0){
               _a.push({
-                key: i,  
+                key: i,
                 name:fossilTitle[i],
                 keyCoalMine: _Data[i].keyCoalMine,
                 localCoalMine: _Data[i].localCoalMine,
@@ -689,10 +689,10 @@ class CoalmineTable extends React.Component {
         if (res.code==0) {
           message.success(res.message);
           this.queryCoalmine(this.state.years)
-        
+
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -724,9 +724,9 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　原煤产量（t）',
-            '　　排放因子(m3/t)',
-            '　　排放量（m3）',
+            '原煤产量（t）',
+            '排放因子(m3/t)',
+            '排放量（m3）',
 
 
           ]
@@ -909,7 +909,7 @@ class CoalmineTable extends React.Component {
           this.queryCoalmine1(this.state.years)
 
         } else {
-          message.error(res.message);
+          message.error('数据录入有误，请重新录入！');
         }
       });
   }
@@ -975,14 +975,14 @@ class CoalmineTable extends React.Component {
         <div className={styles.entryBody} id="bodyTable1" >
           <p>活动水平数据</p>
           <Spin spinning={this.state.loading} >
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
           </Spin>
         </div>
 
         <div className={styles.entryBody} id="bodyTable2" style={{display:'none'}} >
           <p>活动水平数据</p>
           <Spin spinning={this.state.loading} >
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 820 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
           </Spin>
         </div>
 

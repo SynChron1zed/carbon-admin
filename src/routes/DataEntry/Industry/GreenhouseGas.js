@@ -715,7 +715,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
@@ -743,7 +743,7 @@ class CoalmineTable extends React.Component {
           }
 
         }, {
-          title: '排放因子(万吨)', dataIndex: 'emissionFactor', width: 120,
+          title: '排放因子(吨二氧化碳/吨熟料)', dataIndex: 'emissionFactor', width: 120,
           render: (text, record, index) =>
           {  const obj = {
             children:  this.renderColumns(this.state.data, index, 'emissionFactor', text),
@@ -797,7 +797,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns1(this.state.data1, index, 'name', text),
@@ -869,9 +869,9 @@ class CoalmineTable extends React.Component {
       {
         title: '数据项',
         dataIndex: 'name',
-        width: 100,
+        width: 70,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns2(this.state.data2, index, 'name', text),
@@ -890,7 +890,7 @@ class CoalmineTable extends React.Component {
           return obj},
       },
       {
-        title: '石灰石消耗量(万吨)', dataIndex: 'limestoneConsumption', width: 200,
+        title: '石灰石消耗量(万吨)', dataIndex: 'limestoneConsumption', width: 120,
         render: (text, record, index) =>   {  const obj = {
           children: this.renderColumns2(this.state.data2, index, 'limestoneConsumption', text),
           props: {},
@@ -915,7 +915,7 @@ class CoalmineTable extends React.Component {
 
           return obj},
       }, {
-        title: '石灰石消耗排放因子(吨二氧化碳／吨石灰石)', dataIndex: 'limestoneConsumptionEmissionFactor', width: 120,
+        title: '石灰石消耗排放因子(吨二氧化碳／吨石灰石)', dataIndex: 'limestoneConsumptionEmissionFactor', width: 180,
         render: (text, record, index) => {  const obj = {
           children: this.renderColumns2(this.state.data2, index, 'limestoneConsumptionEmissionFactor', text),
           props: {},
@@ -923,7 +923,7 @@ class CoalmineTable extends React.Component {
 
           return obj},
       }, {
-        title: '白云石消耗排放因子(吨二氧化碳／吨石灰石)', dataIndex: 'dolomiteConsumptionEmissionFactor', width: 120,
+        title: '白云石消耗排放因子(吨二氧化碳／吨白云石)', dataIndex: 'dolomiteConsumptionEmissionFactor', width: 180,
         render: (text, record, index) => {  const obj = {
           children: this.renderColumns2(this.state.data2, index, 'dolomiteConsumptionEmissionFactor', text),
           props: {},
@@ -959,7 +959,7 @@ class CoalmineTable extends React.Component {
         title: '编辑',
         dataIndex: 'operation',
 
-        width: 70,
+        width: 110,
 
         render: (text, record, index) => {
 
@@ -993,7 +993,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns3(this.state.data3, index, 'name', text),
@@ -1067,7 +1067,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 100,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns4(this.state.data4, index, 'name', text),
@@ -1077,7 +1077,7 @@ class CoalmineTable extends React.Component {
           return obj},
 
       },  {
-        title: '乙二酸产量(万吨)', dataIndex: 'adipicAcidProduction', width: 120,
+        title: '乙二酸产量(吨)', dataIndex: 'adipicAcidProduction', width: 120,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns4(this.state.data4, index, 'adipicAcidProduction', text),
           props: {},
@@ -1095,7 +1095,7 @@ class CoalmineTable extends React.Component {
         }
 
       },  {
-        title: 'NO2排放量(万吨)', dataIndex: 'emissionsco2', width: 120,
+        title: 'NO2排放量(吨)', dataIndex: 'emissionsco2', width: 120,
         render: (text, record, index) => {  const obj = {
           children: this.renderColumns4(this.state.data4, index, 'emissionsco2', text),
           props: {},
@@ -1141,7 +1141,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
+
         render: (text, record, index) =>
         {  const obj = {
           children:this.renderColumns5(this.state.data5, index, 'name', text),
@@ -1159,7 +1159,7 @@ class CoalmineTable extends React.Component {
           props: {},
 
         };
-         
+
           return obj},
       },
       {
@@ -1168,7 +1168,7 @@ class CoalmineTable extends React.Component {
           children: this.renderColumns5(this.state.data5, index, 'emissionFactor', text),
           props: {},
         };
-         
+
           return obj
         }
 
@@ -1219,7 +1219,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns6(this.state.data6, index, 'name', text)}
       , {
         title: '产量(万吨)', dataIndex: 'production', width: 100,
@@ -1297,7 +1297,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns7(this.state.data7, index, 'name', text)}
       , {
         title: '镁产量(万吨)', dataIndex: 'magnesiumProduction', width: 100,
@@ -1355,7 +1355,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns8(this.state.data8, index, 'name', text)}
       , {
         title: '电力设备生产过程六氟化硫使用量(吨)', dataIndex: 'production', width: 200,
@@ -1413,7 +1413,6 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns9(this.state.data9, index, 'name', text)}
       ,{
         title: '活动水平数值',
@@ -1481,7 +1480,6 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
         render: (text, record, index) => this.renderColumns10(this.state.data10, index, 'name', text)}
       , {
         title: 'HCFC-22产量(吨)', dataIndex: 'HCFC_22Production', width: 200,
@@ -1539,7 +1537,7 @@ class CoalmineTable extends React.Component {
         dataIndex: 'name',
         width: 200,
 
-        colSpan:1,
+
         render: (text, record, index) => this.renderColumns11(this.state.data11, index, 'name', text)}
       , {
         title: '活动水平数值(吨)', dataIndex: 'activityLevelValue', width: 200,
@@ -2268,7 +2266,7 @@ class CoalmineTable extends React.Component {
     data2[index][key].value = value;
     this.setState({ data2 });
 
-    if(key  == 'pigironAverageCarbonContent'){
+    if(key  == 'steelAverageCarbonContent'){
 
       this.updateGreenhouseGas2(index,data2);
     }
@@ -2517,14 +2515,14 @@ class CoalmineTable extends React.Component {
           const fossilTitle = [
 
 
-            '　　高压法（没有安装非选择性尾气处理装置）',
-            '　　高压法（安装非选择性尾气处理装置）',
-            '　　中压法',
-            '　　常压法',
-            '　　双加压',
-            '　　综合法',
-            '　　低压法',
-            '　　合计',
+            '高压法（没有安装非选择性尾气处理装置）',
+            '高压法（安装非选择性尾气处理装置）',
+            '中压法',
+            '常压法',
+            '双加压',
+            '综合法',
+            '低压法',
+            '合计',
 
           ];
 
@@ -2533,9 +2531,9 @@ class CoalmineTable extends React.Component {
           const fossilTitle1 = [
 
 
-            '　　点式下料预焙槽技术',
+            '点式下料预焙槽技术',
 
-            '　　侧插阳极棒自焙槽技术',
+            '侧插阳极棒自焙槽技术',
 
 
           ];
@@ -2543,8 +2541,8 @@ class CoalmineTable extends React.Component {
           const fossilTitle2 = [
 
 
-            '　　采用六氟化硫作为保护剂',
-            '　　镁加工',
+            '采用六氟化硫作为保护剂',
+            '镁加工',
 
 
           ];
@@ -2800,21 +2798,22 @@ class CoalmineTable extends React.Component {
                 editable: false,
                 value: Alldata.steelProductionProcess.dolomiteConsumptionEmissionFactor,
               },
+            pigironAverageCarbonContent: {
+              editable: false,
+              value: Alldata.steelProductionProcess.pigironAverageCarbonContent,
+            },
               steelAverageCarbonContent: {
                 editable: false,
                 value: Alldata.steelProductionProcess.steelAverageCarbonContent,
               },
 
-              pigironAverageCarbonContent: {
-                editable: false,
-                value: Alldata.steelProductionProcess.pigironAverageCarbonContent,
-              },
+
               emissionsco2: {
 
                 value: (Alldata.steelProductionProcess.dolomiteConsumption*Alldata.steelProductionProcess.dolomiteConsumptionEmissionFactor
                 +Alldata.steelProductionProcess.limestoneConsumption*Alldata.steelProductionProcess.limestoneConsumptionEmissionFactor
-                +(Alldata.steelProductionProcess.steelConsumption*Alldata.steelProductionProcess.steelAverageCarbonContent
-                -Alldata.steelProductionProcess.steelConsumption*Alldata.steelProductionProcess.pigironAverageCarbonContent)*44/12).toFixed(2),
+                +(Alldata.steelProductionProcess.steelmakingPigironConsumption*Alldata.steelProductionProcess.pigironAverageCarbonContent
+                -Alldata.steelProductionProcess.steelConsumption*Alldata.steelProductionProcess.steelAverageCarbonContent)*44/12).toFixed(2),
               },
             }
           );
@@ -3066,7 +3065,7 @@ class CoalmineTable extends React.Component {
               }
             );
           }
-         
+
 
 
           this.setState({data:_b});
@@ -3129,7 +3128,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3171,14 +3170,13 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
 
   //钢铁生产update
   updateGreenhouseGas2(index,data2,a){
-
 
     var data  = data2
 
@@ -3203,8 +3201,9 @@ class CoalmineTable extends React.Component {
       "steelConsumption": data[index].steelConsumption.value,
       "limestoneConsumptionEmissionFactor": data[index].limestoneConsumptionEmissionFactor.value,
       "dolomiteConsumptionEmissionFactor": data[index].dolomiteConsumptionEmissionFactor.value,
-      "steelAverageCarbonContent": data[index].steelAverageCarbonContent.value,
       "pigironAverageCarbonContent": data[index].pigironAverageCarbonContent.value,
+      "steelAverageCarbonContent": data[index].steelAverageCarbonContent.value,
+
 
 
     },
@@ -3220,7 +3219,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3263,7 +3262,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3306,7 +3305,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3366,7 +3365,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3420,7 +3419,7 @@ class CoalmineTable extends React.Component {
       var bodyName1 = 'aluminumProductionProcess'
 
       var obj={
-        "year":"2017"
+        "year":this.state.years
       };
 
       obj[bodyName]={}
@@ -3440,7 +3439,7 @@ class CoalmineTable extends React.Component {
       var bodyName1 = 'aluminumProductionProcess'
 
       var obj={
-        "year":"2017"
+        "year":this.state.years
       };
 
       obj[bodyName]={}
@@ -3460,7 +3459,7 @@ class CoalmineTable extends React.Component {
       var bodyName1 = 'aluminumProductionProcess'
 
       var obj={
-        "year":"2017"
+        "year":this.state.years
       };
 
       obj[bodyName]={}
@@ -3487,7 +3486,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3542,7 +3541,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3584,7 +3583,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3643,7 +3642,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3685,7 +3684,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3747,7 +3746,7 @@ class CoalmineTable extends React.Component {
             this.queryGreenhouseGas(this.state.years)
 
           } else {
-            message.error(res.message);
+            message.error('数据录入有误，请重新录入！');
           }
         });
   }
@@ -3922,7 +3921,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3936,7 +3935,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3949,7 +3948,7 @@ class CoalmineTable extends React.Component {
                 <Radio value={2}>是</Radio>
               </RadioGroup>
             </div>
-            <Table  pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns2} dataSource={dataSource2} scroll={{ x: 1500, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3963,7 +3962,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns3} dataSource={dataSource3} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3977,7 +3976,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns4} dataSource={dataSource4} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -3991,7 +3990,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns5} dataSource={dataSource5} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4005,7 +4004,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns6} dataSource={dataSource6} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns6} dataSource={dataSource6} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4020,7 +4019,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns7} dataSource={dataSource7} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns7} dataSource={dataSource7} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4035,7 +4034,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns8} dataSource={dataSource8} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns8} dataSource={dataSource8} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4049,7 +4048,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns9} dataSource={dataSource9} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small"  pagination={false} bordered={true}  columns={columns9} dataSource={dataSource9} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4063,7 +4062,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns10} dataSource={dataSource10} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns10} dataSource={dataSource10} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 
@@ -4077,7 +4076,7 @@ class CoalmineTable extends React.Component {
               </RadioGroup>
             </div>
 
-            <Table  pagination={false} bordered={true}  columns={columns11} dataSource={dataSource11} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+            <Table size="small" pagination={false} bordered={true}  columns={columns11} dataSource={dataSource11} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
           </div>
 

@@ -139,9 +139,9 @@ class ElectricTable extends React.Component {
       {
         title: '温室气体种类',
         dataIndex: 'name',
-        width: 100,
+        width: 60,
 
-        colSpan:1,
+
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'name', text),
           props: {},
@@ -151,7 +151,7 @@ class ElectricTable extends React.Component {
           return obj}
 
       },{
-        title: 'CO2', dataIndex: 'CO', width: 100,
+        title: 'CO2', dataIndex: 'CO', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CO', text),
           props: {},
@@ -162,7 +162,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'CH4', dataIndex: 'CH', width: 100,
+        title: 'CH4', dataIndex: 'CH', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'CH', text),
           props: {},
@@ -173,7 +173,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'N2O', dataIndex: 'N2O', width: 100,
+        title: 'N2O', dataIndex: 'N2O', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'N2O', text),
           props: {},
@@ -184,7 +184,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width: 100,
+        title: 'HFC-23(CHF3)', dataIndex: 'HFC', width:60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC', text),
           props: {},
@@ -195,7 +195,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-32', dataIndex: 'HFC1', width: 100,
+        title: 'HFC-32', dataIndex: 'HFC1', width: 60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC1', text),
           props: {},
@@ -206,7 +206,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-125', dataIndex: 'HFC2', width: 100,
+        title: 'HFC-125', dataIndex: 'HFC2', width:60,
         render: (text, record, index) => {  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC2', text),
           props: {},
@@ -218,7 +218,7 @@ class ElectricTable extends React.Component {
           return obj},
       },
       {
-        title: 'HFC-134a', dataIndex: 'HFC3', width: 100,
+        title: 'HFC-134a', dataIndex: 'HFC3', width: 60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC3', text),
           props: {},
@@ -227,7 +227,7 @@ class ElectricTable extends React.Component {
 
           return obj},
       },{
-        title: 'HFC-143a', dataIndex: 'HFC4', width: 100,
+        title: 'HFC-143a', dataIndex: 'HFC4', width:60,
         render: (text, record, index) =>{  const obj = {
           children:this.renderColumns(this.state.data, index, 'HFC4', text),
           props: {},
@@ -420,10 +420,11 @@ class ElectricTable extends React.Component {
 
 
       AllData:[],
-      years:'2014'
+      years:'2014',
+        xxTotal:0,
     };
 
-    this.queryGut('2014');
+    this.queryBiomass('2014');
 
     //$("#bodyTable1").hide();
 
@@ -516,11 +517,115 @@ class ElectricTable extends React.Component {
     });
   }
 
+
+    //生物质燃烧 活动水平数据
+    queryBiomass(years){
+
+        post('/activityLevelDataEntry/energyActivity/totalFossilFuels/biomassBurning/activityLevelData/list', {
+            year:years,
+
+        })
+            .then((res) => {
+
+                if (res.code==0) {
+
+
+                    var Alldata =res.data;
+
+                    const _Data = []
+
+                    _Data.push(Alldata.straw);//秸秆
+                    _Data.push(Alldata.firewood);//薪柴
+                    _Data.push(Alldata.charcoal); //木炭
+                    _Data.push(Alldata.animalFaeces);//动物粪便
+                    _Data.push(Alldata.refuseBurning);//垃圾焚烧
+                    _Data.push('');//总量
+
+
+
+
+                    const fossilTitle = [
+
+
+                        '秸秆',
+                        '薪柴',
+                        '木炭',
+                        '动物粪便',
+                        '垃圾焚烧',
+                        '合计',
+
+
+                    ]
+
+                    const _a = [];
+
+                    var _Total = 0;
+
+
+                    for(var i = 0 ;i<5;i++){
+
+
+
+                        _a.push({
+                            key: i,
+                            name:fossilTitle[i],
+                            provinceCoalStove: _Data[i].provinceCoalStove,
+                            traditionalStove: _Data[i].traditionalStove,
+                            brazierPotAndSoOn: _Data[i].brazierPotAndSoOn,
+                            pastoralStove: _Data[i].pastoralStove,
+                            friedTeaStove: _Data[i].friedTeaStove,
+                            flueCuredTobaccoRoom: _Data[i].flueCuredTobaccoRoom,
+                            brickKiln: _Data[i].brickKiln,
+                            totalAmount: (_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln).toFixed(2),
+                            lowCalorificValue: _Data[i].lowCalorificValue,
+                            biomassBurns: ((_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln
+                            )*_Data[i].lowCalorificValue/100).toFixed(2),
+
+                        });
+
+                        _Total +=(_Data[i].provinceCoalStove+_Data[i].traditionalStove+_Data[i].brazierPotAndSoOn+_Data[i].pastoralStove+_Data[i].friedTeaStove+_Data[i].flueCuredTobaccoRoom+_Data[i].brickKiln
+                            )*_Data[i].lowCalorificValue/100
+
+                    }
+                    _a.push({
+                        key: 5,
+                        name:fossilTitle[i],
+                        provinceCoalStove:_Total.toFixed(2),
+                        traditionalStove: '',
+                        brazierPotAndSoOn: '',
+                        pastoralStove: '',
+                        friedTeaStove: '',
+                        flueCuredTobaccoRoom: '',
+                        brickKiln: '',
+                        totalAmount: '',
+                        lowCalorificValue: '',
+                        biomassBurns: _Total.toFixed(2),
+
+                    });
+
+
+
+
+
+
+
+                    this.setState({ loading: false});
+                    this.setState({ xxTotal: _Total.toFixed(2)});
+
+                    this.queryGut(years);
+
+                } else {
+                    message.error('数据错误！');
+                }
+            });
+
+    }
+
   //秸秆
   queryGut(years){
 
 
-    post('/activityLevelDataEntry/agricultureActivity/list', {
+    post('/report/energyActivity/list', {
       year:years,
 
     })
@@ -528,21 +633,9 @@ class ElectricTable extends React.Component {
 
         if (res.code==0) {
 
-          var Alldata =res.data;
+          var Alldata =res.data.statisticalByDept;
 
-          const _Data = []
-
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.cows);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.nonCow);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.buffalo);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.sheep);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.goat);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.pig);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.horse);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.jennet);
-          _Data.push(Alldata.animalIntestinalFermentationOfMethaneEmissions.camel);
-          _Data.push('');
-
+          var alldata =  Alldata.CO2.energyActivity
 
 
           const fossilTitle = [
@@ -661,6 +754,61 @@ class ElectricTable extends React.Component {
 
           ]
 
+          var Da1 =((
+          ((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+          +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+          +((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+          +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+          +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+          +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+          +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+          +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+          +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+          +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+          +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+          +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+          +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+          +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+          +((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+          +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine)
+          +alldata.servicesAndOthers.servicesAndOthers+alldata.residentsLiving.residentsLiving+alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery)
+          +Alldata.CO2.nonEnergyUse)
+
+
+
+          var Db1 = (((Alldata.CH4.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.CH4.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights)+
+          +Alldata.CH4.mobileSourceCH4AndN2OEmissions.highway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.railway+Alldata.CH4.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine)
+          +(Alldata.CH4.biomassBurning)+Alldata.CH4.coalMiningAndMineActivitiesToEscape+Alldata.CH4.oilAndGasSystemsEscape)
+
+
+          var Dc1 =(Alldata.N2O.cEPowerGenerationBoilers+Alldata.N2O.mobileSourceCH4AndN2OEmissions.tDomesticFlights+Alldata.N2O.mobileSourceCH4AndN2OEmissions.tHongKongAndMacaoFlights
+          +Alldata.N2O.mobileSourceCH4AndN2OEmissions.highway+Alldata.N2O.mobileSourceCH4AndN2OEmissions.railway+Alldata.N2O.mobileSourceCH4AndN2OEmissions.inlandRiverInternalCombustionEngine
+          +Alldata.N2O.biomassBurning)
+
+
+          var Da4 = (alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+          +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+          +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+
+          var Dc3 =  Alldata.N2O.cEPowerGenerationBoilers
+
+
+          var _data = res.data.statisticalByRef
+
+
+          var _TotalD = (_data.anthracite +_data.asphalt+_data.bituminouscoal+_data.blastfurnacegas+_data.briquette
+          +_data.coalgangue+_data.coke+_data.cokeovengas+_data.crudeoil+_data.diesel+_data.fueloil+_data.gasoline
+          +_data.kerosene+_data.lignite+_data.liquefiedpetroleumgas+_data.liquifiednaturalgas+_data.lubricatingoil+_data.naphtha
+          +_data.naturalgas+_data.oilcoke+_data.onvertergas+_data.other+_data.othercoalwashing+_data.othercokingproducts+_data.othergas
+          +_data.otherpetroleumproducts+_data.paraffin+_data.refinerydrygas+_data.solventoil+_data.washthecleancoal).toFixed(2)
+
 
 
           var _b1 = [
@@ -673,16 +821,16 @@ class ElectricTable extends React.Component {
                 value:'万tCO2e' ,
               },
               p2:{
-                value:'万tCO2e',
+                value:'万tCO2',
               },
               p3:{
-                value:'万tCO2e' ,
+                value:'万tCO2' ,
               },
               p4:{
-                value:'万tCO2e',
+                value:'万tCO2',
               },
               p5:{
-                value:'万tCO2e',
+                value:'万tCO2',
               },
               p6:{
                 value:'tCH4',
@@ -720,49 +868,109 @@ class ElectricTable extends React.Component {
                 value:'结果',
               },
               p1:{
-                value:0,
+                value:res.data.detail.CO2EW.totalEnergyActivities.toFixed(2),
               },
               p2:{
-                value:0 ,
+                value:res.data.statisticalByDept.CO2.energyActivity.residentsLiving.residentsLiving.toFixed(2) ,
               },
               p3:{
-                value:0 ,
+                value:((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+                +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+                +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+                +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+                +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+                +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+                +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+                +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+                +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+                +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+                +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+               ).toFixed(2) ,
               },
               p4:{
-                value:0,
+                value:((alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment)).toFixed(2),
               },
               p5:{
-                value:0,
+                value:(alldata.servicesAndOthers.servicesAndOthers).toFixed(2),
               },
               p6:{
-                value:0,
+                value:(res.data.statisticalByDept.CH4.coalMiningAndMineActivitiesToEscape*10000).toFixed(2),
               },
               p7:{
-                value:0,
+                value:(res.data.statisticalByDept.CH4.oilAndGasSystemsEscape*10000).toFixed(2),
               },
               p8:{
-                value:0,
+                value:(Da4+Dc3*310).toFixed(2),
               },
               p9:{
-                value:0,
+                value:(alldata.transportation.highway+res.data.statisticalByDept.CH4.mobileSourceCH4AndN2OEmissions.highway*21+res.data.statisticalByDept.N2O.mobileSourceCH4AndN2OEmissions.highway*310).toFixed(2)
+                ,
               },
               p10:{
-                value:0,
+                value:((res.data.statisticalByDept.CO2.biomassBurning+res.data.statisticalByDept.CH4.biomassBurning*21+res.data.statisticalByDept.N2O.biomassBurning*310)*10000).toFixed(2),
               },
               p11:{
-                value:0,
+                value:this.state.xxTotal,//需后端提供
               },
               p12:{
-                value:0,
+                value:((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+                +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)*10000).toFixed(2),
               },
               p13:{
-                value:0,
+                value:(((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+                +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+                +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+                +((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+                +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+                +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+                +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+                +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+                +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+                +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+                +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+                +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+                +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+                +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+                +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+                +((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+                +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine)
+                +alldata.servicesAndOthers.servicesAndOthers+alldata.residentsLiving.residentsLiving+alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery).toFixed(2),
               },
               p14:{
-                value:0,
+                value:(res.data.statisticalByDept.CO2.electricityTransferCallsForIndirectCO2Discharge/(Da1+Db1*21+Dc1*310)*100).toFixed(2),
               },
               p15:{
-                value:0,
+                value:((_TotalD/(((alldata.energyProductionAndProcessingConversion.cEPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.cEIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.cEOtherEquipment)
+                +(alldata.energyProductionAndProcessingConversion.oAPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.oAIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.oAOtherEquipment)
+                +(alldata.energyProductionAndProcessingConversion.sFPowerGenerationBoilers
+                +alldata.energyProductionAndProcessingConversion.sFIndustrialBoilers
+                +alldata.energyProductionAndProcessingConversion.sFOtherEquipment))
+                +((alldata.industryAndConstruction.sPowerGenerationBoilers+alldata.industryAndConstruction.sIndustrialBoilers
+                +alldata.industryAndConstruction.sBlastFurnace+alldata.industryAndConstruction.sotherEquipment)
+                +(alldata.industryAndConstruction.nMPowerGenerationBoilers+alldata.industryAndConstruction.nMIndustrialBoilers
+                +alldata.industryAndConstruction.nMAluminaRotaryKiln+alldata.industryAndConstruction.nMOtherEquipment)
+                +(alldata.industryAndConstruction.cMPowerGenerationBoilers+alldata.industryAndConstruction.cMIndustrialBoilers
+                +alldata.industryAndConstruction.cMSyntheticAmmoniaGasFurnace+alldata.industryAndConstruction.cMotherEquipment)
+                +(alldata.industryAndConstruction.bMPowerGenerationBoilers+alldata.industryAndConstruction.bMIndustrialBoilers
+                +alldata.industryAndConstruction.bMCementRotaryKiln+alldata.industryAndConstruction.bMCementShaftKiln+alldata.industryAndConstruction.bMOtherEquipment)
+                +(alldata.industryAndConstruction.aEquipment1+alldata.industryAndConstruction.aEquipment2+alldata.industryAndConstruction.aEquipment3)
+                +(alldata.industryAndConstruction.bEquipment1+alldata.industryAndConstruction.bEquipment2+alldata.industryAndConstruction.bEquipment3)
+                +(alldata.industryAndConstruction.cEquipment1+alldata.industryAndConstruction.cEquipment2+alldata.industryAndConstruction.cEquipment3)
+                +(alldata.industryAndConstruction.cIPowerGenerationBoilers+alldata.industryAndConstruction.cIIndustrialBoilers+alldata.industryAndConstruction.cIOtherEquipment))
+                +((alldata.transportation.tDomesticFlights+alldata.transportation.tHongKongAndMacaoFlights)
+                +alldata.transportation.highway+alldata.transportation.railway+alldata.transportation.inlandRiverInternalCombustionEngine)
+                +alldata.servicesAndOthers.servicesAndOthers+alldata.residentsLiving.residentsLiving+alldata.agricultureForestryAnimalHusbandryAndFishery.agricultureForestryAnimalHusbandryAndFishery)
+                -1)*100).toFixed(2),
               },
             }
 
@@ -791,7 +999,7 @@ class ElectricTable extends React.Component {
 
     this.setState({ loading: true});
     this.setState({years:years})
-    this.queryGut(years)
+    this.queryBiomass(years)
   }
 
 
@@ -849,7 +1057,7 @@ class ElectricTable extends React.Component {
           <p>温室气体增温潜值</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
+          <Table size="small"  pagination={false} bordered={true}  columns={columns} dataSource={dataSource} scroll={{ x: 1000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC1 }/>
 
         </div>
 
@@ -860,7 +1068,7 @@ class ElectricTable extends React.Component {
           <p>关键排放指标信息</p>
 
 
-          <Table  pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 2000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
+          <Table size="small" pagination={false} bordered={true}  columns={columns1} dataSource={dataSource1} scroll={{ x: 3000, y: 1520 }} rowClassName={(record, index) => index % 2  === 0 ? '' :styles.columnsC }/>
 
         </div>
 
