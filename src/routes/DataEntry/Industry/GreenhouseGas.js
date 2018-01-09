@@ -3149,6 +3149,269 @@ class CoalmineTable extends React.Component {
 
     }
 
+    //水泥生产update
+    updateGreenhouseGas(index, data, a) {
+
+
+        var data = data
+
+
+        var DirectoryIndex = 'cementProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "cementClinkerProduction": data[index].cementClinkerProduction.value,
+            "calciumCarbideProductionOfClinkerProduction": data[index].calciumCarbideProductionOfClinkerProduction.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //石灰生产update
+    updateGreenhouseGas1(index, data1, a) {
+
+
+        var data = data1
+
+
+        var DirectoryIndex = 'limeProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "limeProduction": data[index].limeProduction.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //钢铁生产update
+    updateGreenhouseGas2(index, data2, a) {
+
+        var data = data2
+
+
+        var DirectoryIndex = 'steelProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "dolomiteConsumption": data[index].dolomiteConsumption.value,
+            "limestoneConsumption": data[index].limestoneConsumption.value,
+            "steelmakingPigironConsumption": data[index].steelmakingPigironConsumption.value,
+            "steelConsumption": data[index].steelConsumption.value,
+            "limestoneConsumptionEmissionFactor": data[index].limestoneConsumptionEmissionFactor.value,
+            "dolomiteConsumptionEmissionFactor": data[index].dolomiteConsumptionEmissionFactor.value,
+            "pigironAverageCarbonContent": data[index].pigironAverageCarbonContent.value,
+            "steelAverageCarbonContent": data[index].steelAverageCarbonContent.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //电石生产update
+    updateGreenhouseGas3(index, data3, a) {
+
+
+        var data = data3
+
+
+        var DirectoryIndex = 'calciumCarbideProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "calciumCarbideProduction": data[index].calciumCarbideProduction.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //乙二酸生产update
+    updateGreenhouseGas4(index, data4, a) {
+
+
+        var data = data4
+
+
+        var DirectoryIndex = 'adipicAcidProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "adipicAcidProduction": data[index].adipicAcidProduction.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+
+    //氢氟烃生产update
+    updateGreenhouseGas11(index, data11, a) {
+
+
+        var data = data11
+
+
+        const Directory = [
+            'HFC_32',
+            'HFC_125',
+            'HFC_134a',
+            'HFC_143a',
+            'HFC_152a',
+            'HFC_227ea',
+            'HFC_236fa',
+            'HFC_245fa',
+
+
+        ]
+
+
+        var DirectoryIndex = Directory[index];
+
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess';
+        var bodyName1 = 'hydrofluorocarbonProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+        obj[bodyName][bodyName1] = {}
+
+        obj[bodyName][bodyName1][DirectoryIndex] = {
+            "activityLevelValue": data[index].activityLevelValue.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+
     //年份选择
     selesctYears(years) {
 
