@@ -3353,7 +3353,415 @@ class CoalmineTable extends React.Component {
                 });
     }
 
+    //硝酸生产update
+    updateGreenhouseGas5(index, data5, a) {
 
+
+        var data = data5
+
+
+        const Directory = [
+            'highPressureMethod_noInstalled',
+            'highPressureMethod_installationDevice',
+            'mediumPressureMethod',
+            'atmosphericPressureMethod',
+            'doublePressurized',
+            'comprehensiveMethod',
+            'lowPressureMethod',
+
+
+        ]
+
+
+        var DirectoryIndex = Directory[index];
+
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess';
+        var bodyName1 = 'nitricAcidProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+        obj[bodyName][bodyName1] = {}
+
+        obj[bodyName][bodyName1][DirectoryIndex] = {
+            "production": data[index].production.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //铝生产update
+    updateGreenhouseGas6(index, data6, a) {
+
+
+        var data = data6
+
+
+        const Directory = [
+            'precastingTechnologyOfPointCutting',
+            'precastingTechnologyOfPointCutting',
+            'sidemountedAnodeRods',
+            'sidemountedAnodeRods',
+
+
+        ]
+
+        if (index == 0) {
+
+            var DirectoryIndex = Directory[index];
+
+            var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+            var bodyName = 'industrialProductionProcess';
+            var bodyName1 = 'aluminumProductionProcess'
+
+            var obj = {
+                "year": this.state.years
+            };
+
+            obj[bodyName] = {}
+            obj[bodyName][bodyName1] = {}
+
+            obj[bodyName][bodyName1][DirectoryIndex] = {
+                "production": data[index].production.value,
+                "CF4": data[index].value.value,
+                "C2F6": data[1].value.value,
+
+            }
+
+        } else if (index == 1) {
+            var DirectoryIndex = Directory[index];
+
+            var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+            var bodyName = 'industrialProductionProcess';
+            var bodyName1 = 'aluminumProductionProcess'
+
+            var obj = {
+                "year": this.state.years
+            };
+
+            obj[bodyName] = {}
+            obj[bodyName][bodyName1] = {}
+
+            obj[bodyName][bodyName1][DirectoryIndex] = {
+                "production": data[0].production.value,
+                "C2F6": data[index].value.value,
+                "CF4": data[0].value.value,
+
+            }
+        } else if (index == 2) {
+            var DirectoryIndex = Directory[index];
+
+            var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+            var bodyName = 'industrialProductionProcess';
+            var bodyName1 = 'aluminumProductionProcess'
+
+            var obj = {
+                "year": this.state.years
+            };
+
+            obj[bodyName] = {}
+            obj[bodyName][bodyName1] = {}
+
+            obj[bodyName][bodyName1][DirectoryIndex] = {
+                "production": data[2].production.value,
+                "C2F6": data[3].value.value,
+                "CF4": data[index].value.value,
+
+            }
+        } else if (index == 3) {
+            var DirectoryIndex = Directory[index];
+
+            var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+            var bodyName = 'industrialProductionProcess';
+            var bodyName1 = 'aluminumProductionProcess'
+
+            var obj = {
+                "year": this.state.years
+            };
+
+            obj[bodyName] = {}
+            obj[bodyName][bodyName1] = {}
+
+            obj[bodyName][bodyName1][DirectoryIndex] = {
+                "production": data[2].production.value,
+                "C2F6": data[index].value.value,
+                "CF4": data[2].value.value,
+
+            }
+        }
+        console.log(obj)
+
+
+        post(url, obj)
+            .then((res) => {
+
+                if (res.code == 0) {
+                    message.success(res.message);
+                    this.queryGreenhouseGas(this.state.years)
+
+                } else {
+                    message.error('数据录入有误，请重新录入！');
+                }
+            });
+    }
+
+    //镁生产update
+    updateGreenhouseGas7(index, data7, a) {
+
+
+        var data = data7
+
+
+        const Directory = [
+            'usingSulfurHexafluorideAsAProtectiveAgent',
+            'magnesiumProcessing',
+
+
+        ]
+
+
+        var DirectoryIndex = Directory[index];
+
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess';
+        var bodyName1 = 'magnesiumProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+        obj[bodyName][bodyName1] = {}
+
+        obj[bodyName][bodyName1][DirectoryIndex] = {
+            "magnesiumProduction": data[index].magnesiumProduction.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //电力生产update
+    updateGreenhouseGas8(index, data8, a) {
+
+
+        var data = data8
+
+
+        var DirectoryIndex = 'electricPowerEquipmentProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "production": data[index].production.value,
+            "emissionFactor": data[index].emissionFactor.value,
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //半导体生产update
+    updateGreenhouseGas9(index, data9, a) {
+
+
+        var data = data9
+
+
+        const Directory = [
+            'CF4Dosage',
+            'CHF3Dosage',
+            'C2F6Dosage',
+            'SF6Dosage',
+
+
+        ]
+
+
+        var DirectoryIndex = Directory[index];
+
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess';
+        var bodyName1 = 'semiconductorProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+        obj[bodyName][bodyName1] = {}
+
+        obj[bodyName][bodyName1][DirectoryIndex] = {
+            "activityLevelValueEtching": data[index].activityLevelValueEtching.value,
+            "activityLevelValueCVD": data[index].activityLevelValueCVD.value,
+            "emissionFactorEtching": data[index].emissionFactorEtching.value,
+            "emissionFactorCVD": data[index].emissionFactorCVD.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //一氯二氟update
+    updateGreenhouseGas10(index, data10, a) {
+
+
+        var data = data10
+
+
+        var DirectoryIndex = 'chlorodifluoromethaneProductionProcess';
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+
+        obj[bodyName][DirectoryIndex] = {
+            "HCFC_22Production": data[index].HCFC_22Production.value,
+            "emissionFactor": data[index].emissionFactor.value,
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
+
+    //氢氟烃生产update
+    updateGreenhouseGas11(index, data11, a) {
+
+
+        var data = data11
+
+
+        const Directory = [
+            'HFC_32',
+            'HFC_125',
+            'HFC_134a',
+            'HFC_143a',
+            'HFC_152a',
+            'HFC_227ea',
+            'HFC_236fa',
+            'HFC_245fa',
+
+
+        ]
+
+
+        var DirectoryIndex = Directory[index];
+
+
+        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
+        var bodyName = 'industrialProductionProcess';
+        var bodyName1 = 'hydrofluorocarbonProductionProcess'
+
+
+        var obj = {
+            "year": this.state.years
+        };
+
+        obj[bodyName] = {}
+        obj[bodyName][bodyName1] = {}
+
+        obj[bodyName][bodyName1][DirectoryIndex] = {
+            "activityLevelValue": data[index].activityLevelValue.value,
+            "emissionFactor": data[index].emissionFactor.value,
+
+
+        },
+
+
+            post(url, obj)
+                .then((res) => {
+
+                    if (res.code == 0) {
+                        message.success(res.message);
+                        this.queryGreenhouseGas(this.state.years)
+
+                    } else {
+                        message.error('数据录入有误，请重新录入！');
+                    }
+                });
+    }
 
 
     //年份选择
