@@ -3354,62 +3354,6 @@ class CoalmineTable extends React.Component {
     }
 
 
-    //氢氟烃生产update
-    updateGreenhouseGas11(index, data11, a) {
-
-
-        var data = data11
-
-
-        const Directory = [
-            'HFC_32',
-            'HFC_125',
-            'HFC_134a',
-            'HFC_143a',
-            'HFC_152a',
-            'HFC_227ea',
-            'HFC_236fa',
-            'HFC_245fa',
-
-
-        ]
-
-
-        var DirectoryIndex = Directory[index];
-
-
-        var url = '/activityLevelDataEntry/industrialProductionProcess/update'
-        var bodyName = 'industrialProductionProcess';
-        var bodyName1 = 'hydrofluorocarbonProductionProcess'
-
-
-        var obj = {
-            "year": this.state.years
-        };
-
-        obj[bodyName] = {}
-        obj[bodyName][bodyName1] = {}
-
-        obj[bodyName][bodyName1][DirectoryIndex] = {
-            "activityLevelValue": data[index].activityLevelValue.value,
-            "emissionFactor": data[index].emissionFactor.value,
-
-
-        },
-
-
-            post(url, obj)
-                .then((res) => {
-
-                    if (res.code == 0) {
-                        message.success(res.message);
-                        this.queryGreenhouseGas(this.state.years)
-
-                    } else {
-                        message.error('数据录入有误，请重新录入！');
-                    }
-                });
-    }
 
 
     //年份选择
