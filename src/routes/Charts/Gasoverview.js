@@ -984,10 +984,10 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf2.push((Alldata.SUM2014.Summary.CO2.energyActivity))
-            _DataPf2.push((Alldata.SUM2014.Summary.CO2.industrialProductionProcess))
-            _DataPf2.push((Alldata.SUM2014.Summary.CO2.wasteDisposal))
-            _DataPf2.push((Alldata.SUM2014.Summary.CO2.landUseChangeAndForestry))
+            _DataPf2.push((Alldata.SUM2014.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf2.push((Alldata.SUM2014.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf2.push((Alldata.SUM2014.Summary.CO2.wasteDisposal).toFixed(2))
+            _DataPf2.push((Alldata.SUM2014.Summary.CO2.landUseChangeAndForestry).toFixed(2))
 
             _DataPf3.push(((Alldata.SUM2014.Summary.CO2.energyActivity/(Alldata.SUM2014.Summary.CO2.energyActivity+Alldata.SUM2014.Summary.CO2.industrialProductionProcess
               +Alldata.SUM2014.Summary.CO2.wasteDisposal+Alldata.SUM2014.Summary.CO2.landUseChangeAndForestry))*100).toFixed(2))
@@ -1004,9 +1004,9 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf4.push((Alldata.SUM2014.Summary.CO2.energyActivity))
-            _DataPf4.push((Alldata.SUM2014.Summary.CO2.industrialProductionProcess))
-            _DataPf4.push((Alldata.SUM2014.Summary.CO2.wasteDisposal))
+            _DataPf4.push((Alldata.SUM2014.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf4.push((Alldata.SUM2014.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf4.push((Alldata.SUM2014.Summary.CO2.wasteDisposal).toFixed(2))
 
 
             _DataPf5.push(((Alldata.SUM2014.Summary.CO2.energyActivity/(Alldata.SUM2014.Summary.CO2.energyActivity+Alldata.SUM2014.Summary.CO2.industrialProductionProcess
@@ -1019,10 +1019,10 @@ class ElectricTable extends React.Component {
             _DataPf5.push(((Alldata.SUM2014.Summary.CO2.wasteDisposal/(Alldata.SUM2014.Summary.CO2.energyActivity+Alldata.SUM2014.Summary.CO2.industrialProductionProcess
             +Alldata.SUM2014.Summary.CO2.wasteDisposal))*100).toFixed(2))
 
-            _DataPf6.push((Alldata.SUM2014.Summary.CH4.energyActivity))
-            _DataPf6.push((Alldata.SUM2014.Summary.CH4.agricultureActivity))
-            _DataPf6.push((Alldata.SUM2014.Summary.CH4.wasteDisposal))
-            _DataPf6.push((Alldata.SUM2014.Summary.CH4.landUseChangeAndForestry))
+            _DataPf6.push((Alldata.SUM2014.Summary.CH4.energyActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2014.Summary.CH4.agricultureActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2014.Summary.CH4.wasteDisposal).toFixed(2))
+            _DataPf6.push((Alldata.SUM2014.Summary.CH4.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf7.push(((Alldata.SUM2014.Summary.CH4.energyActivity/(Alldata.SUM2014.Summary.CH4.energyActivity+Alldata.SUM2014.Summary.CH4.agricultureActivity
@@ -1039,11 +1039,11 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2014.Summary.CH4.wasteDisposal+Alldata.SUM2014.Summary.CH4.landUseChangeAndForestry))*100).toFixed(2))
 
 
-            _DataPf8.push((Alldata.SUM2014.Summary.N2O.energyActivity))
-            _DataPf8.push((Alldata.SUM2014.Summary.N2O.industrialProductionProcess))
-            _DataPf8.push((Alldata.SUM2014.Summary.N2O.agricultureActivity))
-            _DataPf8.push((Alldata.SUM2014.Summary.N2O.wasteDisposal))
-            _DataPf8.push((Alldata.SUM2014.Summary.N2O.landUseChangeAndForestry))
+            _DataPf8.push((Alldata.SUM2014.Summary.N2O.energyActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2014.Summary.N2O.industrialProductionProcess).toFixed(2))
+            _DataPf8.push((Alldata.SUM2014.Summary.N2O.agricultureActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2014.Summary.N2O.wasteDisposal).toFixed(2))
+            _DataPf8.push((Alldata.SUM2014.Summary.N2O.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf9.push(((Alldata.SUM2014.Summary.N2O.energyActivity/(Alldata.SUM2014.Summary.N2O.energyActivity+Alldata.SUM2014.Summary.N2O.industrialProductionProcess
@@ -1068,54 +1068,54 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2014.Summary.N2O.agricultureActivity
             +Alldata.SUM2014.Summary.N2O.wasteDisposal+Alldata.SUM2014.Summary.N2O.landUseChangeAndForestry))*100).toFixed(2))
 
-            _DataPf10.push(Alldata.SUM2014.Collection.fossilFuel.CO2EW)
-            _DataPf10.push(Alldata.SUM2014.Collection.biomassBurning.CO2EW)
-            _DataPf10.push(Alldata.SUM2014.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2014.Collection.nonEnergyUse.CO2EW)
+            _DataPf10.push(Alldata.SUM2014.Collection.fossilFuel.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2014.Collection.biomassBurning.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2014.Collection.coalMiningEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2014.Collection.nonEnergyUse.CO2EW.toFixed(2))
 
 
-            _DataPf11.push(Alldata.SUM2014.Collection.paddyFields.CO2EW)
-            _DataPf11.push(Alldata.SUM2014.Collection.land.CO2EW)
-            _DataPf11.push(Alldata.SUM2014.Collection.animalIntestinalFermentation.CO2EW)
-            _DataPf11.push(Alldata.SUM2014.Collection.animalManureManagement.CO2EW)
+            _DataPf11.push(Alldata.SUM2014.Collection.paddyFields.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2014.Collection.land.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2014.Collection.animalIntestinalFermentation.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2014.Collection.animalManureManagement.CO2EW.toFixed(2))
 
-            _DataPf12.push(Alldata.SUM2014.Collection.cementProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.limeProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.steelProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.adipicAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.nitricAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.aluminumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.magnesiumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2014.Collection.otherProductionProcess.CO2EW)
+            _DataPf12.push(Alldata.SUM2014.Collection.cementProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.limeProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.steelProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.adipicAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.nitricAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.aluminumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.magnesiumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2014.Collection.otherProductionProcess.CO2EW.toFixed(2))
 
-            _DataPf13.push(Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW)
-            _DataPf13.push(Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW)
+            _DataPf13.push(Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2))
+            _DataPf13.push(Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2))
 
-            _DataPf14.push(Alldata.SUM2014.Collection.solidWaste.CO2EW)
-            _DataPf14.push(Alldata.SUM2014.Collection.wasteWater.CO2EW)
+            _DataPf14.push(Alldata.SUM2014.Collection.solidWaste.CO2EW.toFixed(2))
+            _DataPf14.push(Alldata.SUM2014.Collection.wasteWater.CO2EW.toFixed(2))
 
-            _DataPf15.push(Alldata.SUM2014.Collection.internationalAviation.CO2EW)
-            _DataPf15.push(Alldata.SUM2014.Collection.internationalSailing.CO2EW)
+            _DataPf15.push(Alldata.SUM2014.Collection.internationalAviation.CO2EW.toFixed(2))
+            _DataPf15.push(Alldata.SUM2014.Collection.internationalSailing.CO2EW.toFixed(2))
 
 
             var SUMpfCO = Alldata.SUM2014.Summary;
 
             var sumCO = [
-              SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-              SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
             ]
             _Data3.push(sumCO)
 
             var sumCH = [
-              SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-              SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
             ]
@@ -1123,9 +1123,9 @@ class ElectricTable extends React.Component {
             _Data3.push(sumCH)
 
             var sumNO = [
-              SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-              SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
               (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
             ]
@@ -1144,9 +1144,9 @@ class ElectricTable extends React.Component {
             _Data3.push(sumF)
 
             var sumT = [
-              SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
              100,
-              SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
             100
             ]
 
@@ -1193,26 +1193,26 @@ class ElectricTable extends React.Component {
             var SUMpfTotal = Alldata.SUM2014.Summary;
 
             var energyActivityPFT = [
-              SUMpfTotal.CO2.energyActivity,
-              SUMpfTotal.CH4.energyActivity,
-              SUMpfTotal.N2O.energyActivity,
+              SUMpfTotal.CO2.energyActivity.toFixed(2),
+              SUMpfTotal.CH4.energyActivity.toFixed(2),
+              SUMpfTotal.N2O.energyActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.energyActivity,
+              SUMpfTotal.Total.energyActivity.toFixed(2),
 
             ];
 
             _Data2.push(energyActivityPFT)
 
             var industrialProductionProcessPFT = [
-              SUMpfTotal.CO2.industrialProductionProcess,
+              SUMpfTotal.CO2.industrialProductionProcess.toFixed(2),
               '-',
-              SUMpfTotal.N2O.industrialProductionProcess,
-              SUMpfTotal.HFC.industrialProductionProcess,
-              SUMpfTotal.PFC.industrialProductionProcess,
-              SUMpfTotal.SF6.industrialProductionProcess,
-              SUMpfTotal.Total.industrialProductionProcess,
+              SUMpfTotal.N2O.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.HFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.PFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.SF6.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.Total.industrialProductionProcess.toFixed(2),
 
             ];
 
@@ -1220,63 +1220,63 @@ class ElectricTable extends React.Component {
 
             var agricultureActivityPFT = [
               '-',
-              SUMpfTotal.CH4.agricultureActivity,
-              SUMpfTotal.N2O.agricultureActivity,
+              SUMpfTotal.CH4.agricultureActivity.toFixed(2),
+              SUMpfTotal.N2O.agricultureActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.agricultureActivity,
+              SUMpfTotal.Total.agricultureActivity.toFixed(2),
 
             ];
 
             _Data2.push(agricultureActivityPFT)
 
             var wasteDisposalPFT = [
-              SUMpfTotal.CO2.wasteDisposal,
-              SUMpfTotal.CH4.wasteDisposal,
-              SUMpfTotal.N2O.wasteDisposal,
+              SUMpfTotal.CO2.wasteDisposal.toFixed(2),
+              SUMpfTotal.CH4.wasteDisposal.toFixed(2),
+              SUMpfTotal.N2O.wasteDisposal.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.wasteDisposal,
+              SUMpfTotal.Total.wasteDisposal.toFixed(2),
 
             ];
 
             _Data2.push(wasteDisposalPFT)
 
             var landUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.landUseChangeAndForestry,
-              SUMpfTotal.CH4.landUseChangeAndForestry,
-              SUMpfTotal.N2O.landUseChangeAndForestry,
+              SUMpfTotal.CO2.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.landUseChangeAndForestry.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.landUseChangeAndForestry,
+              SUMpfTotal.Total.landUseChangeAndForestry.toFixed(2),
 
             ];
 
             _Data2.push(landUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
 
             ];
             _Data2.push(emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_IncludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
 
             ];
 
@@ -1338,27 +1338,27 @@ class ElectricTable extends React.Component {
             var SUMpf = Alldata.SUM2014.SubSummary
             var SUMpf1 = Alldata.SUM2014.Summary.CO2
             var energyActivityPF = [
-              SUMpf.energyActivity.CO2, (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.CO2.toFixed(2), (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.energyActivity,
+              SUMpf1.energyActivity.toFixed(2),
 
                 ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.energyActivity.CH4.toFixed(2),(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.N2O.toFixed(2),(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(energyActivityPF);
 
             var industrialProductionProcessPF = [
-              SUMpf.industrialProductionProcess.CO2, (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.industrialProductionProcess.CO2.toFixed(2), (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.industrialProductionProcess,
+              SUMpf1.industrialProductionProcess.toFixed(2),
 
                 ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               '-','-',
-              SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.industrialProductionProcess.N2O.toFixed(2),(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
@@ -1370,35 +1370,35 @@ class ElectricTable extends React.Component {
 
               '-',
 
-              SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.agricultureActivity.CH4.toFixed(2),(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.agricultureActivity.N2O.toFixed(2),(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(agricultureActivityPF);
 
 
             var wasteDisposalPF = [
-              SUMpf.wasteDisposal.CO2, (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.CO2.toFixed(2), (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.wasteDisposal,
+              SUMpf1.wasteDisposal.toFixed(2),
 
                 ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.wasteDisposal.CH4.toFixed(2),(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.N2O.toFixed(2),(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(wasteDisposalPF);
 
             var landUseChangeAndForestryPF = [
-              SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.CO2.toFixed(2), (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
               '-',
 
               '-',
 
-              SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.landUseChangeAndForestry.CH4.toFixed(2),(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.N2O.toFixed(2),(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(landUseChangeAndForestryPF);
@@ -1482,145 +1482,145 @@ class ElectricTable extends React.Component {
             _Data.push(totalEmissions_IncludingLand_UseChangeAndForestry);
 
             var totalEnergyActivities = [
-              Alldata.SUM2014.Collection.totalEnergyActivities.CO2,
-              Alldata.SUM2014.Collection.totalEnergyActivities.CH4,
-              Alldata.SUM2014.Collection.totalEnergyActivities.N2O,
+              Alldata.SUM2014.Collection.totalEnergyActivities.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.totalEnergyActivities.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.totalEnergyActivities.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.totalEnergyActivities.CO2EW,
+              Alldata.SUM2014.Collection.totalEnergyActivities.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalEnergyActivities);
 
 
             var fossilFuel = [
-              Alldata.SUM2014.Collection.fossilFuel.CO2,
-              Alldata.SUM2014.Collection.fossilFuel.CH4,
-              Alldata.SUM2014.Collection.fossilFuel.N2O,
+              Alldata.SUM2014.Collection.fossilFuel.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.fossilFuel.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.fossilFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.fossilFuel.CO2EW,
+              Alldata.SUM2014.Collection.fossilFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(fossilFuel);
 
             var energyIndustry = [
-              Alldata.SUM2014.Collection.energyIndustry.CO2,
+              Alldata.SUM2014.Collection.energyIndustry.CO2.toFixed(2),
               '-',
-              Alldata.SUM2014.Collection.energyIndustry.N2O,
+              Alldata.SUM2014.Collection.energyIndustry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.energyIndustry.CO2EW,
+              Alldata.SUM2014.Collection.energyIndustry.CO2EW.toFixed(2),
             ]
             _Data.push(energyIndustry);
 
             var agriculture = [
-              Alldata.SUM2014.Collection.agriculture.CO2,
+              Alldata.SUM2014.Collection.agriculture.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.agriculture.CO2EW,
+              Alldata.SUM2014.Collection.agriculture.CO2EW.toFixed(2),
             ]
 
             _Data.push(agriculture);
 
             var industryAndConstruction = [
-              Alldata.SUM2014.Collection.industryAndConstruction.CO2,
+              Alldata.SUM2014.Collection.industryAndConstruction.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.industryAndConstruction.CO2EW,
+              Alldata.SUM2014.Collection.industryAndConstruction.CO2EW.toFixed(2),
             ]
 
             _Data.push(industryAndConstruction);
 
             var transportation = [
-              Alldata.SUM2014.Collection.transportation.CO2,
-              Alldata.SUM2014.Collection.transportation.CH4,
-              Alldata.SUM2014.Collection.transportation.N2O,
+              Alldata.SUM2014.Collection.transportation.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.transportation.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.transportation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.transportation.CO2EW,
+              Alldata.SUM2014.Collection.transportation.CO2EW.toFixed(2),
             ]
 
             _Data.push(transportation);
 
             var serviceIndustry = [
-              Alldata.SUM2014.Collection.serviceIndustry.CO2,
+              Alldata.SUM2014.Collection.serviceIndustry.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.serviceIndustry.CO2EW,
+              Alldata.SUM2014.Collection.serviceIndustry.CO2EW.toFixed(2),
             ]
 
             _Data.push(serviceIndustry);
 
             var residentsLiving = [
-              Alldata.SUM2014.Collection.residentsLiving.CO2,
+              Alldata.SUM2014.Collection.residentsLiving.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.residentsLiving.CO2EW,
+              Alldata.SUM2014.Collection.residentsLiving.CO2EW.toFixed(2),
             ]
 
             _Data.push(residentsLiving);
 
             var biomassBurning = [
               '-',
-              Alldata.SUM2014.Collection.biomassBurning.CH4,
-              Alldata.SUM2014.Collection.biomassBurning.N2O,
+              Alldata.SUM2014.Collection.biomassBurning.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.biomassBurning.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.biomassBurning.CO2EW,
+              Alldata.SUM2014.Collection.biomassBurning.CO2EW.toFixed(2),
             ]
 
             _Data.push(biomassBurning);
 
             var coalMiningEscape = [
               '-',
-              Alldata.SUM2014.Collection.coalMiningEscape.CH4,
+              Alldata.SUM2014.Collection.coalMiningEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.coalMiningEscape.CO2EW,
+              Alldata.SUM2014.Collection.coalMiningEscape.CO2EW.toFixed(2),
             ]
 
             _Data.push(coalMiningEscape);
 
             var oilAndGasSystemsEscape = [
               '-',
-              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CH4,
+              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW,
+              Alldata.SUM2014.Collection.oilAndGasSystemsEscape.CO2EW.toFixed(2),
             ]
             _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
-              Alldata.SUM2014.Collection.nonEnergyUse.CO2,
+              Alldata.SUM2014.Collection.nonEnergyUse.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.nonEnergyUse.CO2EW,
+              Alldata.SUM2014.Collection.nonEnergyUse.CO2EW.toFixed(2),
             ]
 
             _Data.push(nonEnergyUse);
@@ -1628,65 +1628,65 @@ class ElectricTable extends React.Component {
 
             var totalIndustrialProductionProcess = [
 
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2,
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2.toFixed(2),
               '-',
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.N2O,
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.HFC,
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.PFC,
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.SF6,
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.N2O.toFixed(2),
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.HFC.toFixed(2),
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.PFC.toFixed(2),
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.SF6.toFixed(2),
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalIndustrialProductionProcess);
 
             var cementProductionProcess = [
 
-              Alldata.SUM2014.Collection.cementProductionProcess.CO2,
+              Alldata.SUM2014.Collection.cementProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.cementProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.cementProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(cementProductionProcess);
 
             var limeProductionProcess = [
 
-              Alldata.SUM2014.Collection.limeProductionProcess.CO2,
+              Alldata.SUM2014.Collection.limeProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.limeProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.limeProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(limeProductionProcess);
 
             var steelProductionProcess = [
 
-              Alldata.SUM2014.Collection.steelProductionProcess.CO2,
+              Alldata.SUM2014.Collection.steelProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.steelProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.steelProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(steelProductionProcess);
 
             var calciumCarbideProductionProcess = [
 
-              Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2,
+              Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.calciumCarbideProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(calciumCarbideProductionProcess);
@@ -1695,11 +1695,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              Alldata.SUM2014.Collection.adipicAcidProductionProcess.N2O,
+              Alldata.SUM2014.Collection.adipicAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(adipicAcidProductionProcess);
@@ -1708,11 +1708,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              Alldata.SUM2014.Collection.nitricAcidProductionProcess.N2O,
+              Alldata.SUM2014.Collection.nitricAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.nitricAcidProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.nitricAcidProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(nitricAcidProductionProcess);
@@ -1723,9 +1723,9 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.aluminumProductionProcess.PFC,
+              Alldata.SUM2014.Collection.aluminumProductionProcess.PFC.toFixed(2),
               '-',
-              Alldata.SUM2014.Collection.aluminumProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.aluminumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(aluminumProductionProcess);
@@ -1737,8 +1737,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.magnesiumProductionProcess.SF6,
-              Alldata.SUM2014.Collection.magnesiumProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.magnesiumProductionProcess.SF6.toFixed(2),
+              Alldata.SUM2014.Collection.magnesiumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(magnesiumProductionProcess);
@@ -1750,8 +1750,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.SF6,
-              Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.SF6.toFixed(2),
+              Alldata.SUM2014.Collection.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(electricPowerEquipmentProductionProcess);
@@ -1761,10 +1761,10 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.otherProductionProcess.HFC,
-              Alldata.SUM2014.Collection.otherProductionProcess.PFC,
-              Alldata.SUM2014.Collection.otherProductionProcess.SF6,
-              Alldata.SUM2014.Collection.otherProductionProcess.CO2EW,
+              Alldata.SUM2014.Collection.otherProductionProcess.HFC.toFixed(2),
+              Alldata.SUM2014.Collection.otherProductionProcess.PFC.toFixed(2),
+              Alldata.SUM2014.Collection.otherProductionProcess.SF6.toFixed(2),
+              Alldata.SUM2014.Collection.otherProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(otherProductionProcess );
@@ -1772,12 +1772,12 @@ class ElectricTable extends React.Component {
             var totalAgricultureActivity = [
 
               '-',
-              Alldata.SUM2014.Collection.totalAgricultureActivity.CH4,
-              Alldata.SUM2014.Collection.totalAgricultureActivity.N2O,
+              Alldata.SUM2014.Collection.totalAgricultureActivity.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.totalAgricultureActivity.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.totalAgricultureActivity.CO2EW,
+              Alldata.SUM2014.Collection.totalAgricultureActivity.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalAgricultureActivity);
@@ -1785,12 +1785,12 @@ class ElectricTable extends React.Component {
             var paddyFields = [
 
               '-',
-              Alldata.SUM2014.Collection.paddyFields.CH4,
+              Alldata.SUM2014.Collection.paddyFields.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.paddyFields.CO2EW,
+              Alldata.SUM2014.Collection.paddyFields.CO2EW.toFixed(2),
             ]
 
             _Data.push(paddyFields);
@@ -1799,11 +1799,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              Alldata.SUM2014.Collection.land.N2O,
+              Alldata.SUM2014.Collection.land.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.land.CO2EW,
+              Alldata.SUM2014.Collection.land.CO2EW.toFixed(2),
             ]
 
             _Data.push(land);
@@ -1811,12 +1811,12 @@ class ElectricTable extends React.Component {
             var animalIntestinalFermentation = [
 
               '-',
-              Alldata.SUM2014.Collection.animalIntestinalFermentation.CH4,
+              Alldata.SUM2014.Collection.animalIntestinalFermentation.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.animalIntestinalFermentation.CO2EW,
+              Alldata.SUM2014.Collection.animalIntestinalFermentation.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalIntestinalFermentation);
@@ -1824,182 +1824,182 @@ class ElectricTable extends React.Component {
             var animalManureManagement = [
 
               '-',
-              Alldata.SUM2014.Collection.animalManureManagement.CH4,
-              Alldata.SUM2014.Collection.animalManureManagement.N2O,
+              Alldata.SUM2014.Collection.animalManureManagement.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.animalManureManagement.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.animalManureManagement.CO2EW,
+              Alldata.SUM2014.Collection.animalManureManagement.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalManureManagement);
 
             var totalLandUseChangeAndForestry = [
 
-              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2,
-              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CH4,
-              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.N2O,
+              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2EW,
+              Alldata.SUM2014.Collection.totalLandUseChangeAndForestry.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalLandUseChangeAndForestry);
 
             var subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks = [
 
-              Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2,
+              Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW,
+              Alldata.SUM2014.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks);
 
             var arborForest = [
 
-              Alldata.SUM2014.Collection.arborForest.CO2,
+              Alldata.SUM2014.Collection.arborForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.arborForest.CO2EW,
+              Alldata.SUM2014.Collection.arborForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(arborForest);
 
             var economicForest = [
 
-              Alldata.SUM2014.Collection.economicForest.CO2,
+              Alldata.SUM2014.Collection.economicForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.economicForest.CO2EW,
+              Alldata.SUM2014.Collection.economicForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(economicForest);
 
             var bambooForest = [
 
-              Alldata.SUM2014.Collection.bambooForest.CO2,
+              Alldata.SUM2014.Collection.bambooForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.bambooForest.CO2EW,
+              Alldata.SUM2014.Collection.bambooForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(bambooForest);
 
             var countrySpecialIrrigation = [
 
-              Alldata.SUM2014.Collection.countrySpecialIrrigation.CO2,
+              Alldata.SUM2014.Collection.countrySpecialIrrigation.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.countrySpecialIrrigation.CO2EW,
+              Alldata.SUM2014.Collection.countrySpecialIrrigation.CO2EW.toFixed(2),
             ]
 
             _Data.push(countrySpecialIrrigation);
 
             var scatteredWoodSurroundedByTreesSparseForest = [
 
-              Alldata.SUM2014.Collection.scatteredWoodSurroundedByTreesSparseForest.CO2,
+              Alldata.SUM2014.Collection.scatteredWoodSurroundedByTreesSparseForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.scatteredWoodSurroundedByTreesSparseForest.CO2EW,
+              Alldata.SUM2014.Collection.scatteredWoodSurroundedByTreesSparseForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(scatteredWoodSurroundedByTreesSparseForest);
 
             var liveWoodConsumption = [
 
-              Alldata.SUM2014.Collection.liveWoodConsumption.CO2,
+              Alldata.SUM2014.Collection.liveWoodConsumption.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.liveWoodConsumption.CO2EW,
+              Alldata.SUM2014.Collection.liveWoodConsumption.CO2EW.toFixed(2),
             ]
 
             _Data.push(liveWoodConsumption);
 
             var subtotalOfCarbonEmissionsFromForestConversion = [
 
-              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2,
-              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CH4,
-              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.N2O,
+              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW,
+              Alldata.SUM2014.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalOfCarbonEmissionsFromForestConversion);
 
             var combustionEmission = [
 
-              Alldata.SUM2014.Collection.combustionEmission.CO2,
-              Alldata.SUM2014.Collection.combustionEmission.CH4,
-              Alldata.SUM2014.Collection.combustionEmission.N2O,
+              Alldata.SUM2014.Collection.combustionEmission.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.combustionEmission.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.combustionEmission.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.combustionEmission.CO2EW,
+              Alldata.SUM2014.Collection.combustionEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(combustionEmission);
 
             var decompositionOfEmission = [
 
-              Alldata.SUM2014.Collection.decompositionOfEmission.CO2,
+              Alldata.SUM2014.Collection.decompositionOfEmission.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.decompositionOfEmission.CO2EW,
+              Alldata.SUM2014.Collection.decompositionOfEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(decompositionOfEmission);
 
             var totalWasteDisposal = [
 
-              Alldata.SUM2014.Collection.totalWasteDisposal.CO2,
-              Alldata.SUM2014.Collection.totalWasteDisposal.CH4,
-              Alldata.SUM2014.Collection.totalWasteDisposal.N2O,
+              Alldata.SUM2014.Collection.totalWasteDisposal.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.totalWasteDisposal.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.totalWasteDisposal.N2O.toFixed(2),
 
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.totalWasteDisposal.CO2EW,
+              Alldata.SUM2014.Collection.totalWasteDisposal.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalWasteDisposal);
 
             var solidWaste = [
 
-              Alldata.SUM2014.Collection.solidWaste.CO2,
-              Alldata.SUM2014.Collection.solidWaste.CH4,
+              Alldata.SUM2014.Collection.solidWaste.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.solidWaste.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.solidWaste.CO2EW,
+              Alldata.SUM2014.Collection.solidWaste.CO2EW.toFixed(2),
             ]
 
             _Data.push(solidWaste);
@@ -2008,65 +2008,65 @@ class ElectricTable extends React.Component {
             var wasteWater = [
 
               '-',
-                Alldata.SUM2014.Collection.wasteWater.CH4,
-              Alldata.SUM2014.Collection.wasteWater.N2O,
+                Alldata.SUM2014.Collection.wasteWater.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.wasteWater.N2O.toFixed(2),
 
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.wasteWater.CO2EW,
+              Alldata.SUM2014.Collection.wasteWater.CO2EW.toFixed(2),
             ]
 
             _Data.push(wasteWater);
 
             var internationalFuel = [
 
-              Alldata.SUM2014.Collection.internationalFuel.CO2,
-              Alldata.SUM2014.Collection.internationalFuel.CH4,
-              Alldata.SUM2014.Collection.internationalFuel.N2O,
+              Alldata.SUM2014.Collection.internationalFuel.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.internationalFuel.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.internationalFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.internationalFuel.CO2EW,
+              Alldata.SUM2014.Collection.internationalFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalFuel);
 
             var internationalAviation = [
 
-              Alldata.SUM2014.Collection.internationalAviation.CO2,
-              Alldata.SUM2014.Collection.internationalAviation.CH4,
-              Alldata.SUM2014.Collection.internationalAviation.N2O,
+              Alldata.SUM2014.Collection.internationalAviation.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.internationalAviation.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.internationalAviation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.internationalAviation.CO2EW,
+              Alldata.SUM2014.Collection.internationalAviation.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalAviation);
 
             var internationalSailing = [
 
-              Alldata.SUM2014.Collection.internationalSailing.CO2,
-              Alldata.SUM2014.Collection.internationalSailing.CH4,
-              Alldata.SUM2014.Collection.internationalSailing.N2O,
+              Alldata.SUM2014.Collection.internationalSailing.CO2.toFixed(2),
+              Alldata.SUM2014.Collection.internationalSailing.CH4.toFixed(2),
+              Alldata.SUM2014.Collection.internationalSailing.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.internationalSailing.CO2EW,
+              Alldata.SUM2014.Collection.internationalSailing.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalSailing);
 
             var chargeOutIndirectDischargeOfElectricity = [
 
-              Alldata.SUM2014.Collection.chargeOutIndirectDischargeOfElectricity.CO2,
+              Alldata.SUM2014.Collection.chargeOutIndirectDischargeOfElectricity.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              Alldata.SUM2014.Collection.chargeOutIndirectDischargeOfElectricity.CO2EW,
+              Alldata.SUM2014.Collection.chargeOutIndirectDischargeOfElectricity.CO2EW.toFixed(2),
             ]
 
             _Data.push(chargeOutIndirectDischargeOfElectricity);
@@ -2145,10 +2145,10 @@ class ElectricTable extends React.Component {
             _DataPf1.push((Alldata.SUM2012.Summary.CO2.landUseChangeAndForestry+Alldata.SUM2012.Summary.CH4.landUseChangeAndForestry+Alldata.SUM2012.Summary.N2O.landUseChangeAndForestry).toFixed(2));
 
 
-            _DataPf2.push((Alldata.SUM2012.Summary.CO2.energyActivity))
-            _DataPf2.push((Alldata.SUM2012.Summary.CO2.industrialProductionProcess))
-            _DataPf2.push((Alldata.SUM2012.Summary.CO2.wasteDisposal))
-            _DataPf2.push((Alldata.SUM2012.Summary.CO2.landUseChangeAndForestry))
+            _DataPf2.push((Alldata.SUM2012.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf2.push((Alldata.SUM2012.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf2.push((Alldata.SUM2012.Summary.CO2.wasteDisposal).toFixed(2))
+            _DataPf2.push((Alldata.SUM2012.Summary.CO2.landUseChangeAndForestry).toFixed(2))
 
             _DataPf3.push(((Alldata.SUM2012.Summary.CO2.energyActivity/(Alldata.SUM2012.Summary.CO2.energyActivity+Alldata.SUM2012.Summary.CO2.industrialProductionProcess
             +Alldata.SUM2012.Summary.CO2.wasteDisposal+Alldata.SUM2012.Summary.CO2.landUseChangeAndForestry))*100).toFixed(2))
@@ -2166,9 +2166,9 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf4.push((Alldata.SUM2012.Summary.CO2.energyActivity))
-            _DataPf4.push((Alldata.SUM2012.Summary.CO2.industrialProductionProcess))
-            _DataPf4.push((Alldata.SUM2012.Summary.CO2.wasteDisposal))
+            _DataPf4.push((Alldata.SUM2012.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf4.push((Alldata.SUM2012.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf4.push((Alldata.SUM2012.Summary.CO2.wasteDisposal).toFixed(2))
 
 
             _DataPf5.push(((Alldata.SUM2012.Summary.CO2.energyActivity/(Alldata.SUM2012.Summary.CO2.energyActivity+Alldata.SUM2012.Summary.CO2.industrialProductionProcess
@@ -2182,10 +2182,10 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2012.Summary.CO2.wasteDisposal))*100).toFixed(2))
 
 
-            _DataPf6.push((Alldata.SUM2012.Summary.CH4.energyActivity))
-            _DataPf6.push((Alldata.SUM2012.Summary.CH4.agricultureActivity))
-            _DataPf6.push((Alldata.SUM2012.Summary.CH4.wasteDisposal))
-            _DataPf6.push((Alldata.SUM2012.Summary.CH4.landUseChangeAndForestry))
+            _DataPf6.push((Alldata.SUM2012.Summary.CH4.energyActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2012.Summary.CH4.agricultureActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2012.Summary.CH4.wasteDisposal).toFixed(2))
+            _DataPf6.push((Alldata.SUM2012.Summary.CH4.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf7.push(((Alldata.SUM2012.Summary.CH4.energyActivity/(Alldata.SUM2012.Summary.CH4.energyActivity+Alldata.SUM2012.Summary.CH4.agricultureActivity
@@ -2203,11 +2203,11 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf8.push((Alldata.SUM2012.Summary.N2O.energyActivity))
-            _DataPf8.push((Alldata.SUM2012.Summary.N2O.industrialProductionProcess))
-            _DataPf8.push((Alldata.SUM2012.Summary.N2O.agricultureActivity))
-            _DataPf8.push((Alldata.SUM2012.Summary.N2O.wasteDisposal))
-            _DataPf8.push((Alldata.SUM2012.Summary.N2O.landUseChangeAndForestry))
+            _DataPf8.push((Alldata.SUM2012.Summary.N2O.energyActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2012.Summary.N2O.industrialProductionProcess).toFixed(2))
+            _DataPf8.push((Alldata.SUM2012.Summary.N2O.agricultureActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2012.Summary.N2O.wasteDisposal).toFixed(2))
+            _DataPf8.push((Alldata.SUM2012.Summary.N2O.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf9.push(((Alldata.SUM2012.Summary.N2O.energyActivity/(Alldata.SUM2012.Summary.N2O.energyActivity+Alldata.SUM2012.Summary.N2O.industrialProductionProcess
@@ -2232,58 +2232,58 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2012.Summary.N2O.agricultureActivity
             +Alldata.SUM2012.Summary.N2O.wasteDisposal+Alldata.SUM2012.Summary.N2O.landUseChangeAndForestry))*100).toFixed(2))
 
-            _DataPf10.push(Alldata.SUM2012.Collection.fossilFuel.CO2EW)
-            _DataPf10.push(Alldata.SUM2012.Collection.biomassBurning.CO2EW)
-            _DataPf10.push(Alldata.SUM2012.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2012.Collection.oilAndGasSystemsEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2012.Collection.nonEnergyUse.CO2EW)
+            _DataPf10.push(Alldata.SUM2012.Collection.fossilFuel.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2012.Collection.biomassBurning.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2012.Collection.coalMiningEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2012.Collection.oilAndGasSystemsEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2012.Collection.nonEnergyUse.CO2EW.toFixed(2))
 
 
 
-            _DataPf11.push(Alldata.SUM2012.Collection.paddyFields.CO2EW)
-            _DataPf11.push(Alldata.SUM2012.Collection.land.CO2EW)
-            _DataPf11.push(Alldata.SUM2012.Collection.animalIntestinalFermentation.CO2EW)
-            _DataPf11.push(Alldata.SUM2012.Collection.animalManureManagement.CO2EW)
+            _DataPf11.push(Alldata.SUM2012.Collection.paddyFields.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2012.Collection.land.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2012.Collection.animalIntestinalFermentation.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2012.Collection.animalManureManagement.CO2EW.toFixed(2))
 
-            _DataPf12.push(Alldata.SUM2012.Collection.cementProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.limeProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.steelProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.calciumCarbideProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.adipicAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.nitricAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.aluminumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.magnesiumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.electricPowerEquipmentProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2012.Collection.otherProductionProcess.CO2EW)
+            _DataPf12.push(Alldata.SUM2012.Collection.cementProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.limeProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.steelProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.calciumCarbideProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.adipicAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.nitricAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.aluminumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.magnesiumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2012.Collection.otherProductionProcess.CO2EW.toFixed(2))
 
-            _DataPf13.push(Alldata.SUM2012.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW)
-            _DataPf13.push(Alldata.SUM2012.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW)
-
-
-
-            _DataPf14.push(Alldata.SUM2012.Collection.solidWaste.CO2EW)
-            _DataPf14.push(Alldata.SUM2012.Collection.wasteWater.CO2EW)
+            _DataPf13.push(Alldata.SUM2012.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2))
+            _DataPf13.push(Alldata.SUM2012.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2))
 
 
-            _DataPf15.push(Alldata.SUM2012.Collection.internationalAviation.CO2EW)
-            _DataPf15.push(Alldata.SUM2012.Collection.internationalSailing.CO2EW)
+
+            _DataPf14.push(Alldata.SUM2012.Collection.solidWaste.CO2EW.toFixed(2))
+            _DataPf14.push(Alldata.SUM2012.Collection.wasteWater.CO2EW.toFixed(2))
+
+
+            _DataPf15.push(Alldata.SUM2012.Collection.internationalAviation.CO2EW.toFixed(2))
+            _DataPf15.push(Alldata.SUM2012.Collection.internationalSailing.CO2EW.toFixed(2))
 
 
               var SUMpfCO = Alldata.SUM2012.Summary;
 
               var sumCO = [
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
               _Data3.push(sumCO)
 
               var sumCH = [
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -2291,9 +2291,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumCH)
 
               var sumNO = [
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -2312,9 +2312,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumF)
 
               var sumT = [
-                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   100,
-                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   100
               ]
 
@@ -2361,26 +2361,26 @@ class ElectricTable extends React.Component {
 
 
             var energyActivityPFT = [
-              SUMpfTotal.CO2.energyActivity,
-              SUMpfTotal.CH4.energyActivity,
-              SUMpfTotal.N2O.energyActivity,
+              SUMpfTotal.CO2.energyActivity.toFixed(2),
+              SUMpfTotal.CH4.energyActivity.toFixed(2),
+              SUMpfTotal.N2O.energyActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.energyActivity,
+              SUMpfTotal.Total.energyActivity.toFixed(2),
 
             ];
 
             _Data2.push(energyActivityPFT)
 
             var industrialProductionProcessPFT = [
-              SUMpfTotal.CO2.industrialProductionProcess,
+              SUMpfTotal.CO2.industrialProductionProcess.toFixed(2),
               '-',
-              SUMpfTotal.N2O.industrialProductionProcess,
-              SUMpfTotal.HFC.industrialProductionProcess,
-              SUMpfTotal.PFC.industrialProductionProcess,
-              SUMpfTotal.SF6.industrialProductionProcess,
-              SUMpfTotal.Total.industrialProductionProcess,
+              SUMpfTotal.N2O.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.HFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.PFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.SF6.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.Total.industrialProductionProcess.toFixed(2),
 
             ];
 
@@ -2388,63 +2388,63 @@ class ElectricTable extends React.Component {
 
             var agricultureActivityPFT = [
               '-',
-              SUMpfTotal.CH4.agricultureActivity,
-              SUMpfTotal.N2O.agricultureActivity,
+              SUMpfTotal.CH4.agricultureActivity.toFixed(2),
+              SUMpfTotal.N2O.agricultureActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.agricultureActivity,
+              SUMpfTotal.Total.agricultureActivity.toFixed(2),
 
             ];
 
             _Data2.push(agricultureActivityPFT)
 
             var wasteDisposalPFT = [
-              SUMpfTotal.CO2.wasteDisposal,
-              SUMpfTotal.CH4.wasteDisposal,
-              SUMpfTotal.N2O.wasteDisposal,
+              SUMpfTotal.CO2.wasteDisposal.toFixed(2),
+              SUMpfTotal.CH4.wasteDisposal.toFixed(2),
+              SUMpfTotal.N2O.wasteDisposal.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.wasteDisposal,
+              SUMpfTotal.Total.wasteDisposal.toFixed(2),
 
             ];
 
             _Data2.push(wasteDisposalPFT)
 
             var landUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.landUseChangeAndForestry,
-              SUMpfTotal.CH4.landUseChangeAndForestry,
-              SUMpfTotal.N2O.landUseChangeAndForestry,
+              SUMpfTotal.CO2.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.landUseChangeAndForestry.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.landUseChangeAndForestry,
+              SUMpfTotal.Total.landUseChangeAndForestry.toFixed(2),
 
             ];
 
             _Data2.push(landUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
 
             ];
             _Data2.push(emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_IncludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
 
             ];
 
@@ -2503,27 +2503,27 @@ class ElectricTable extends React.Component {
             var SUMpf = Alldata.SUM2012.SubSummary
             var SUMpf1 = Alldata.SUM2012.Summary.CO2
             var energyActivityPF = [
-              SUMpf.energyActivity.CO2, (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.CO2.toFixed(2), (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.energyActivity,
+              SUMpf1.energyActivity.toFixed(2),
 
                 ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
-              SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.energyActivity.CH4.toFixed(2),(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.N2O.toFixed(2),(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(energyActivityPF);
 
             var industrialProductionProcessPF = [
-              SUMpf.industrialProductionProcess.CO2, (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.industrialProductionProcess.CO2.toFixed(2), (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.industrialProductionProcess,
+              SUMpf1.industrialProductionProcess.toFixed(2),
 
                 ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
               '-','-',
-              SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.industrialProductionProcess.N2O.toFixed(2),(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
@@ -2535,35 +2535,35 @@ class ElectricTable extends React.Component {
 
               '-',
 
-              SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.agricultureActivity.CH4.toFixed(2),(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.agricultureActivity.N2O.toFixed(2),(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(agricultureActivityPF);
 
 
             var wasteDisposalPF = [
-              SUMpf.wasteDisposal.CO2, (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.CO2.toFixed(2), (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.wasteDisposal,
+              SUMpf1.wasteDisposal.toFixed(2),
 
                 ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))*100).toFixed(2)+'%',
 
-              SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.wasteDisposal.CH4.toFixed(2),(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.N2O.toFixed(2),(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(wasteDisposalPF);
 
             var landUseChangeAndForestryPF = [
-              SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.CO2.toFixed(2), (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
               '-',
 
               '-',
 
-              SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.landUseChangeAndForestry.CH4.toFixed(2),(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.N2O.toFixed(2),(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(landUseChangeAndForestryPF);
@@ -2646,145 +2646,145 @@ class ElectricTable extends React.Component {
             _Data.push(totalEmissions_IncludingLand_UseChangeAndForestry);
 
             var totalEnergyActivities = [
-              SUM12.totalEnergyActivities.CO2,
-              SUM12.totalEnergyActivities.CH4,
-              SUM12.totalEnergyActivities.N2O,
+              SUM12.totalEnergyActivities.CO2.toFixed(2),
+              SUM12.totalEnergyActivities.CH4.toFixed(2),
+              SUM12.totalEnergyActivities.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalEnergyActivities.CO2EW,
+              SUM12.totalEnergyActivities.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalEnergyActivities);
 
 
             var fossilFuel = [
-              SUM12.fossilFuel.CO2,
-              SUM12.fossilFuel.CH4,
-              SUM12.fossilFuel.N2O,
+              SUM12.fossilFuel.CO2.toFixed(2),
+              SUM12.fossilFuel.CH4.toFixed(2),
+              SUM12.fossilFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.fossilFuel.CO2EW,
+              SUM12.fossilFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(fossilFuel);
 
             var energyIndustry = [
-              SUM12.energyIndustry.CO2,
+              SUM12.energyIndustry.CO2.toFixed(2),
               '-',
-              SUM12.energyIndustry.N2O,
+              SUM12.energyIndustry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.energyIndustry.CO2EW,
+              SUM12.energyIndustry.CO2EW.toFixed(2),
             ]
             _Data.push(energyIndustry);
 
             var agriculture = [
-              SUM12.agriculture.CO2,
+              SUM12.agriculture.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.agriculture.CO2EW,
+              SUM12.agriculture.CO2EW.toFixed(2),
             ]
 
             _Data.push(agriculture);
 
             var industryAndConstruction = [
-              SUM12.industryAndConstruction.CO2,
+              SUM12.industryAndConstruction.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.industryAndConstruction.CO2EW,
+              SUM12.industryAndConstruction.CO2EW.toFixed(2),
             ]
 
             _Data.push(industryAndConstruction);
 
             var transportation = [
-              SUM12.transportation.CO2,
-              SUM12.transportation.CH4,
-              SUM12.transportation.N2O,
+              SUM12.transportation.CO2.toFixed(2),
+              SUM12.transportation.CH4.toFixed(2),
+              SUM12.transportation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.transportation.CO2EW,
+              SUM12.transportation.CO2EW.toFixed(2),
             ]
 
             _Data.push(transportation);
 
             var serviceIndustry = [
-              SUM12.serviceIndustry.CO2,
+              SUM12.serviceIndustry.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.serviceIndustry.CO2EW,
+              SUM12.serviceIndustry.CO2EW.toFixed(2),
             ]
 
             _Data.push(serviceIndustry);
 
             var residentsLiving = [
-              SUM12.residentsLiving.CO2,
+              SUM12.residentsLiving.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.residentsLiving.CO2EW,
+              SUM12.residentsLiving.CO2EW.toFixed(2),
             ]
 
             _Data.push(residentsLiving);
 
             var biomassBurning = [
               '-',
-              SUM12.biomassBurning.CH4,
-              SUM12.biomassBurning.N2O,
+              SUM12.biomassBurning.CH4.toFixed(2),
+              SUM12.biomassBurning.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.biomassBurning.CO2EW,
+              SUM12.biomassBurning.CO2EW.toFixed(2),
             ]
 
             _Data.push(biomassBurning);
 
             var coalMiningEscape = [
               '-',
-              SUM12.coalMiningEscape.CH4,
+              SUM12.coalMiningEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.coalMiningEscape.CO2EW,
+              SUM12.coalMiningEscape.CO2EW.toFixed(2),
             ]
 
             _Data.push(coalMiningEscape);
 
             var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemsEscape.CH4,
+              SUM12.oilAndGasSystemsEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.oilAndGasSystemsEscape.CO2EW,
+              SUM12.oilAndGasSystemsEscape.CO2EW.toFixed(2),
             ]
             _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
-              SUM12.nonEnergyUse.CO2,
+              SUM12.nonEnergyUse.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.nonEnergyUse.CO2EW,
+              SUM12.nonEnergyUse.CO2EW.toFixed(2),
             ]
 
             _Data.push(nonEnergyUse);
@@ -2792,65 +2792,65 @@ class ElectricTable extends React.Component {
 
             var totalIndustrialProductionProcess = [
 
-              SUM12.totalIndustrialProductionProcess.CO2,
+              SUM12.totalIndustrialProductionProcess.CO2.toFixed(2),
               '-',
-              SUM12.totalIndustrialProductionProcess.N2O,
-              SUM12.totalIndustrialProductionProcess.HFC,
-              SUM12.totalIndustrialProductionProcess.PFC,
-              SUM12.totalIndustrialProductionProcess.SF6,
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.N2O.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.HFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.PFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.SF6.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalIndustrialProductionProcess);
 
             var cementProductionProcess = [
 
-              SUM12.cementProductionProcess.CO2,
+              SUM12.cementProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.cementProductionProcess.CO2EW,
+              SUM12.cementProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(cementProductionProcess);
 
             var limeProductionProcess = [
 
-              SUM12.limeProductionProcess.CO2,
+              SUM12.limeProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.limeProductionProcess.CO2EW,
+              SUM12.limeProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(limeProductionProcess);
 
             var steelProductionProcess = [
 
-              SUM12.steelProductionProcess.CO2,
+              SUM12.steelProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.steelProductionProcess.CO2EW,
+              SUM12.steelProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(steelProductionProcess);
 
             var calciumCarbideProductionProcess = [
 
-              SUM12.calciumCarbideProductionProcess.CO2,
+              SUM12.calciumCarbideProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.calciumCarbideProductionProcess.CO2EW,
+              SUM12.calciumCarbideProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(calciumCarbideProductionProcess);
@@ -2859,11 +2859,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.adipicAcidProductionProcess.N2O,
+              SUM12.adipicAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(adipicAcidProductionProcess);
@@ -2872,11 +2872,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.N2O,
+              SUM12.nitricAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.CO2EW,
+              SUM12.nitricAcidProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(nitricAcidProductionProcess);
@@ -2887,9 +2887,9 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.aluminumProductionProcess.PFC,
+              SUM12.aluminumProductionProcess.PFC.toFixed(2),
               '-',
-              SUM12.aluminumProductionProcess.CO2EW,
+              SUM12.aluminumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(aluminumProductionProcess);
@@ -2901,8 +2901,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.magnesiumProductionProcess.SF6,
-              SUM12.magnesiumProductionProcess.CO2EW,
+              SUM12.magnesiumProductionProcess.SF6.toFixed(2),
+              SUM12.magnesiumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(magnesiumProductionProcess);
@@ -2914,8 +2914,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.electricPowerEquipmentProductionProcess.SF6,
-              SUM12.electricPowerEquipmentProductionProcess.CO2EW,
+              SUM12.electricPowerEquipmentProductionProcess.SF6.toFixed(2),
+              SUM12.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(electricPowerEquipmentProductionProcess);
@@ -2925,10 +2925,10 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.otherProductionProcess.HFC,
-              SUM12.otherProductionProcess.PFC,
-              SUM12.otherProductionProcess.SF6,
-              SUM12.otherProductionProcess.CO2EW,
+              SUM12.otherProductionProcess.HFC.toFixed(2),
+              SUM12.otherProductionProcess.PFC.toFixed(2),
+              SUM12.otherProductionProcess.SF6.toFixed(2),
+              SUM12.otherProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(otherProductionProcess );
@@ -2936,12 +2936,12 @@ class ElectricTable extends React.Component {
             var totalAgricultureActivity = [
 
               '-',
-              SUM12.totalAgricultureActivity.CH4,
-              SUM12.totalAgricultureActivity.N2O,
+              SUM12.totalAgricultureActivity.CH4.toFixed(2),
+              SUM12.totalAgricultureActivity.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalAgricultureActivity.CO2EW,
+              SUM12.totalAgricultureActivity.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalAgricultureActivity);
@@ -2949,12 +2949,12 @@ class ElectricTable extends React.Component {
             var paddyFields = [
 
               '-',
-              SUM12.paddyFields.CH4,
+              SUM12.paddyFields.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.paddyFields.CO2EW,
+              SUM12.paddyFields.CO2EW.toFixed(2),
             ]
 
             _Data.push(paddyFields);
@@ -2963,11 +2963,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.land.N2O,
+              SUM12.land.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.land.CO2EW,
+              SUM12.land.CO2EW.toFixed(2),
             ]
 
             _Data.push(land);
@@ -2975,12 +2975,12 @@ class ElectricTable extends React.Component {
             var animalIntestinalFermentation = [
 
               '-',
-              SUM12.animalIntestinalFermentation.CH4,
+              SUM12.animalIntestinalFermentation.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.animalIntestinalFermentation.CO2EW,
+              SUM12.animalIntestinalFermentation.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalIntestinalFermentation);
@@ -2988,182 +2988,182 @@ class ElectricTable extends React.Component {
             var animalManureManagement = [
 
               '-',
-              SUM12.animalManureManagement.CH4,
-              SUM12.animalManureManagement.N2O,
+              SUM12.animalManureManagement.CH4.toFixed(2),
+              SUM12.animalManureManagement.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.animalManureManagement.CO2EW,
+              SUM12.animalManureManagement.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalManureManagement);
 
             var totalLandUseChangeAndForestry = [
 
-              SUM12.totalLandUseChangeAndForestry.CO2,
-              SUM12.totalLandUseChangeAndForestry.CH4,
-              SUM12.totalLandUseChangeAndForestry.N2O,
+              SUM12.totalLandUseChangeAndForestry.CO2.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.CH4.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalLandUseChangeAndForestry.CO2EW,
+              SUM12.totalLandUseChangeAndForestry.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalLandUseChangeAndForestry);
 
             var subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks = [
 
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks);
 
             var arborForest = [
 
-              SUM12.arborForest.CO2,
+              SUM12.arborForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.arborForest.CO2EW,
+              SUM12.arborForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(arborForest);
 
             var economicForest = [
 
-              SUM12.economicForest.CO2,
+              SUM12.economicForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.economicForest.CO2EW,
+              SUM12.economicForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(economicForest);
 
             var bambooForest = [
 
-              SUM12.bambooForest.CO2,
+              SUM12.bambooForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.bambooForest.CO2EW,
+              SUM12.bambooForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(bambooForest);
 
             var countrySpecialIrrigation = [
 
-              SUM12.countrySpecialIrrigation.CO2,
+              SUM12.countrySpecialIrrigation.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.countrySpecialIrrigation.CO2EW,
+              SUM12.countrySpecialIrrigation.CO2EW.toFixed(2),
             ]
 
             _Data.push(countrySpecialIrrigation);
 
             var scatteredWoodSurroundedByTreesSparseForest = [
 
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(scatteredWoodSurroundedByTreesSparseForest);
 
             var liveWoodConsumption = [
 
-              SUM12.liveWoodConsumption.CO2,
+              SUM12.liveWoodConsumption.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.liveWoodConsumption.CO2EW,
+              SUM12.liveWoodConsumption.CO2EW.toFixed(2),
             ]
 
             _Data.push(liveWoodConsumption);
 
             var subtotalOfCarbonEmissionsFromForestConversion = [
 
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalOfCarbonEmissionsFromForestConversion);
 
             var combustionEmission = [
 
-              SUM12.combustionEmission.CO2,
-              SUM12.combustionEmission.CH4,
-              SUM12.combustionEmission.N2O,
+              SUM12.combustionEmission.CO2.toFixed(2),
+              SUM12.combustionEmission.CH4.toFixed(2),
+              SUM12.combustionEmission.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.combustionEmission.CO2EW,
+              SUM12.combustionEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(combustionEmission);
 
             var decompositionOfEmission = [
 
-              SUM12.decompositionOfEmission.CO2,
+              SUM12.decompositionOfEmission.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.decompositionOfEmission.CO2EW,
+              SUM12.decompositionOfEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(decompositionOfEmission);
 
             var totalWasteDisposal = [
 
-              SUM12.totalWasteDisposal.CO2,
-              SUM12.totalWasteDisposal.CH4,
-              SUM12.totalWasteDisposal.N2O,
+              SUM12.totalWasteDisposal.CO2.toFixed(2),
+              SUM12.totalWasteDisposal.CH4.toFixed(2),
+              SUM12.totalWasteDisposal.N2O.toFixed(2),
 
               '-',
               '-',
               '-',
-              SUM12.totalWasteDisposal.CO2EW,
+              SUM12.totalWasteDisposal.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalWasteDisposal);
 
             var solidWaste = [
 
-              SUM12.solidWaste.CO2,
-              SUM12.solidWaste.CH4,
+              SUM12.solidWaste.CO2.toFixed(2),
+              SUM12.solidWaste.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.solidWaste.CO2EW,
+              SUM12.solidWaste.CO2EW.toFixed(2),
             ]
 
             _Data.push(solidWaste);
@@ -3172,64 +3172,64 @@ class ElectricTable extends React.Component {
             var wasteWater = [
 
               '-',
-              SUM12.wasteWater.N2O,
-              SUM12.wasteWater.CH4,
+              SUM12.wasteWater.N2O.toFixed(2),
+              SUM12.wasteWater.CH4.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.wasteWater.CO2EW,
+              SUM12.wasteWater.CO2EW.toFixed(2),
             ]
 
             _Data.push(wasteWater);
 
             var internationalFuel = [
 
-              SUM12.internationalFuel.CO2,
-              SUM12.internationalFuel.CH4,
-              SUM12.internationalFuel.N2O,
+              SUM12.internationalFuel.CO2.toFixed(2),
+              SUM12.internationalFuel.CH4.toFixed(2),
+              SUM12.internationalFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalFuel.CO2EW,
+              SUM12.internationalFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalFuel);
 
             var internationalAviation = [
 
-              SUM12.internationalAviation.CO2,
-              SUM12.internationalAviation.CH4,
-              SUM12.internationalAviation.N2O,
+              SUM12.internationalAviation.CO2.toFixed(2),
+              SUM12.internationalAviation.CH4.toFixed(2),
+              SUM12.internationalAviation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalAviation.CO2EW,
+              SUM12.internationalAviation.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalAviation);
 
             var internationalSailing = [
 
-              SUM12.internationalSailing.CO2,
-              SUM12.internationalSailing.CH4,
-              SUM12.internationalSailing.N2O,
+              SUM12.internationalSailing.CO2.toFixed(2),
+              SUM12.internationalSailing.CH4.toFixed(2),
+              SUM12.internationalSailing.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalSailing.CO2EW,
+              SUM12.internationalSailing.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalSailing);
 
             var chargeOutIndirectDischargeOfElectricity = [
 
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW.toFixed(2),
             ]
 
             _Data.push(chargeOutIndirectDischargeOfElectricity);
@@ -3311,10 +3311,10 @@ class ElectricTable extends React.Component {
             _DataPf1.push((Alldata.SUM2010.Summary.CO2.landUseChangeAndForestry+Alldata.SUM2010.Summary.CH4.landUseChangeAndForestry+Alldata.SUM2010.Summary.N2O.landUseChangeAndForestry).toFixed(2));
 
 
-            _DataPf2.push((Alldata.SUM2010.Summary.CO2.energyActivity))
-            _DataPf2.push((Alldata.SUM2010.Summary.CO2.industrialProductionProcess))
-            _DataPf2.push((Alldata.SUM2010.Summary.CO2.wasteDisposal))
-            _DataPf2.push((Alldata.SUM2010.Summary.CO2.landUseChangeAndForestry))
+            _DataPf2.push((Alldata.SUM2010.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf2.push((Alldata.SUM2010.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf2.push((Alldata.SUM2010.Summary.CO2.wasteDisposal).toFixed(2))
+            _DataPf2.push((Alldata.SUM2010.Summary.CO2.landUseChangeAndForestry).toFixed(2))
 
             _DataPf3.push(((Alldata.SUM2010.Summary.CO2.energyActivity/(Alldata.SUM2010.Summary.CO2.energyActivity+Alldata.SUM2010.Summary.CO2.industrialProductionProcess
             +Alldata.SUM2010.Summary.CO2.wasteDisposal+Alldata.SUM2010.Summary.CO2.landUseChangeAndForestry))*100).toFixed(2))
@@ -3331,9 +3331,9 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf4.push((Alldata.SUM2010.Summary.CO2.energyActivity))
-            _DataPf4.push((Alldata.SUM2010.Summary.CO2.industrialProductionProcess))
-            _DataPf4.push((Alldata.SUM2010.Summary.CO2.wasteDisposal))
+            _DataPf4.push((Alldata.SUM2010.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf4.push((Alldata.SUM2010.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf4.push((Alldata.SUM2010.Summary.CO2.wasteDisposal).toFixed(2))
 
 
             _DataPf5.push(((Alldata.SUM2010.Summary.CO2.energyActivity/(Alldata.SUM2010.Summary.CO2.energyActivity+Alldata.SUM2010.Summary.CO2.industrialProductionProcess
@@ -3347,10 +3347,10 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2010.Summary.CO2.wasteDisposal))*100).toFixed(2))
 
 
-            _DataPf6.push((Alldata.SUM2010.Summary.CH4.energyActivity))
-            _DataPf6.push((Alldata.SUM2010.Summary.CH4.agricultureActivity))
-            _DataPf6.push((Alldata.SUM2010.Summary.CH4.wasteDisposal))
-            _DataPf6.push((Alldata.SUM2010.Summary.CH4.landUseChangeAndForestry))
+            _DataPf6.push((Alldata.SUM2010.Summary.CH4.energyActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2010.Summary.CH4.agricultureActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2010.Summary.CH4.wasteDisposal).toFixed(2))
+            _DataPf6.push((Alldata.SUM2010.Summary.CH4.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf7.push(((Alldata.SUM2010.Summary.CH4.energyActivity/(Alldata.SUM2010.Summary.CH4.energyActivity+Alldata.SUM2010.Summary.CH4.agricultureActivity
@@ -3368,11 +3368,11 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf8.push((Alldata.SUM2010.Summary.N2O.energyActivity))
-            _DataPf8.push((Alldata.SUM2010.Summary.N2O.industrialProductionProcess))
-            _DataPf8.push((Alldata.SUM2010.Summary.N2O.agricultureActivity))
-            _DataPf8.push((Alldata.SUM2010.Summary.N2O.wasteDisposal))
-            _DataPf8.push((Alldata.SUM2010.Summary.N2O.landUseChangeAndForestry))
+            _DataPf8.push((Alldata.SUM2010.Summary.N2O.energyActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2010.Summary.N2O.industrialProductionProcess).toFixed(2))
+            _DataPf8.push((Alldata.SUM2010.Summary.N2O.agricultureActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2010.Summary.N2O.wasteDisposal).toFixed(2))
+            _DataPf8.push((Alldata.SUM2010.Summary.N2O.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf9.push(((Alldata.SUM2010.Summary.N2O.energyActivity/(Alldata.SUM2010.Summary.N2O.energyActivity+Alldata.SUM2010.Summary.N2O.industrialProductionProcess
@@ -3399,58 +3399,58 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf10.push(Alldata.SUM2010.Collection.fossilFuel.CO2EW)
-            _DataPf10.push(Alldata.SUM2010.Collection.biomassBurning.CO2EW)
-            _DataPf10.push(Alldata.SUM2010.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2010.Collection.oilAndGasSystemsEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2010.Collection.nonEnergyUse.CO2EW)
+            _DataPf10.push(Alldata.SUM2010.Collection.fossilFuel.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2010.Collection.biomassBurning.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2010.Collection.coalMiningEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2010.Collection.oilAndGasSystemsEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2010.Collection.nonEnergyUse.CO2EW.toFixed(2))
 
 
 
-            _DataPf11.push(Alldata.SUM2010.Collection.paddyFields.CO2EW)
-            _DataPf11.push(Alldata.SUM2010.Collection.land.CO2EW)
-            _DataPf11.push(Alldata.SUM2010.Collection.animalIntestinalFermentation.CO2EW)
-            _DataPf11.push(Alldata.SUM2010.Collection.animalManureManagement.CO2EW)
+            _DataPf11.push(Alldata.SUM2010.Collection.paddyFields.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2010.Collection.land.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2010.Collection.animalIntestinalFermentation.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2010.Collection.animalManureManagement.CO2EW.toFixed(2))
 
-            _DataPf12.push(Alldata.SUM2010.Collection.cementProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.limeProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.steelProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.calciumCarbideProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.adipicAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.nitricAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.aluminumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.magnesiumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.electricPowerEquipmentProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2010.Collection.otherProductionProcess.CO2EW)
-
-
-            _DataPf13.push(Alldata.SUM2010.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW)
-            _DataPf13.push(Alldata.SUM2010.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW)
+            _DataPf12.push(Alldata.SUM2010.Collection.cementProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.limeProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.steelProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.calciumCarbideProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.adipicAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.nitricAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.aluminumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.magnesiumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2010.Collection.otherProductionProcess.CO2EW.toFixed(2))
 
 
-            _DataPf14.push(Alldata.SUM2010.Collection.solidWaste.CO2EW)
-            _DataPf14.push(Alldata.SUM2010.Collection.wasteWater.CO2EW)
+            _DataPf13.push(Alldata.SUM2010.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2))
+            _DataPf13.push(Alldata.SUM2010.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2))
 
 
-            _DataPf15.push(Alldata.SUM2010.Collection.internationalAviation.CO2EW)
-            _DataPf15.push(Alldata.SUM2010.Collection.internationalSailing.CO2EW)
+            _DataPf14.push(Alldata.SUM2010.Collection.solidWaste.CO2EW.toFixed(2))
+            _DataPf14.push(Alldata.SUM2010.Collection.wasteWater.CO2EW.toFixed(2))
+
+
+            _DataPf15.push(Alldata.SUM2010.Collection.internationalAviation.CO2EW.toFixed(2))
+            _DataPf15.push(Alldata.SUM2010.Collection.internationalSailing.CO2EW.toFixed(2))
 
 
               var SUMpfCO = Alldata.SUM2010.Summary;
 
               var sumCO = [
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
               _Data3.push(sumCO)
 
               var sumCH = [
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -3458,9 +3458,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumCH)
 
               var sumNO = [
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -3479,9 +3479,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumF)
 
               var sumT = [
-                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   100,
-                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   100
               ]
 
@@ -3526,26 +3526,26 @@ class ElectricTable extends React.Component {
               var SUMpfTotal = Alldata.SUM2010.Summary;
 
             var energyActivityPFT = [
-              SUMpfTotal.CO2.energyActivity,
-              SUMpfTotal.CH4.energyActivity,
-              SUMpfTotal.N2O.energyActivity,
+              SUMpfTotal.CO2.energyActivity.toFixed(2),
+              SUMpfTotal.CH4.energyActivity.toFixed(2),
+              SUMpfTotal.N2O.energyActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.energyActivity,
+              SUMpfTotal.Total.energyActivity.toFixed(2),
 
             ];
 
             _Data2.push(energyActivityPFT)
 
             var industrialProductionProcessPFT = [
-              SUMpfTotal.CO2.industrialProductionProcess,
+              SUMpfTotal.CO2.industrialProductionProcess.toFixed(2),
               '-',
-              SUMpfTotal.N2O.industrialProductionProcess,
-              SUMpfTotal.HFC.industrialProductionProcess,
-              SUMpfTotal.PFC.industrialProductionProcess,
-              SUMpfTotal.SF6.industrialProductionProcess,
-              SUMpfTotal.Total.industrialProductionProcess,
+              SUMpfTotal.N2O.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.HFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.PFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.SF6.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.Total.industrialProductionProcess.toFixed(2),
 
             ];
 
@@ -3553,63 +3553,63 @@ class ElectricTable extends React.Component {
 
             var agricultureActivityPFT = [
               '-',
-              SUMpfTotal.CH4.agricultureActivity,
-              SUMpfTotal.N2O.agricultureActivity,
+              SUMpfTotal.CH4.agricultureActivity.toFixed(2),
+              SUMpfTotal.N2O.agricultureActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.agricultureActivity,
+              SUMpfTotal.Total.agricultureActivity.toFixed(2),
 
             ];
 
             _Data2.push(agricultureActivityPFT)
 
             var wasteDisposalPFT = [
-              SUMpfTotal.CO2.wasteDisposal,
-              SUMpfTotal.CH4.wasteDisposal,
-              SUMpfTotal.N2O.wasteDisposal,
+              SUMpfTotal.CO2.wasteDisposal.toFixed(2),
+              SUMpfTotal.CH4.wasteDisposal.toFixed(2),
+              SUMpfTotal.N2O.wasteDisposal.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.wasteDisposal,
+              SUMpfTotal.Total.wasteDisposal.toFixed(2),
 
             ];
 
             _Data2.push(wasteDisposalPFT)
 
             var landUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.landUseChangeAndForestry,
-              SUMpfTotal.CH4.landUseChangeAndForestry,
-              SUMpfTotal.N2O.landUseChangeAndForestry,
+              SUMpfTotal.CO2.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.landUseChangeAndForestry.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.landUseChangeAndForestry,
+              SUMpfTotal.Total.landUseChangeAndForestry.toFixed(2),
 
             ];
 
             _Data2.push(landUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
 
             ];
             _Data2.push(emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_IncludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
 
             ];
 
@@ -3668,27 +3668,27 @@ class ElectricTable extends React.Component {
             var SUMpf = Alldata.SUM2010.SubSummary
             var SUMpf1 = Alldata.SUM2010.Summary.CO2
             var energyActivityPF = [
-              SUMpf.energyActivity.CO2, (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.CO2.toFixed(2), (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.energyActivity,
+              SUMpf1.energyActivity.toFixed(2),
 
                 ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.energyActivity.CH4.toFixed(2),(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.N2O.toFixed(2),(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(energyActivityPF);
 
             var industrialProductionProcessPF = [
-              SUMpf.industrialProductionProcess.CO2, (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.industrialProductionProcess.CO2.toFixed(2), (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.industrialProductionProcess,
+              SUMpf1.industrialProductionProcess.toFixed(2),
 
                 ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               '-','-',
-              SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.industrialProductionProcess.N2O.toFixed(2),(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
@@ -3700,35 +3700,35 @@ class ElectricTable extends React.Component {
 
               '-',
 
-              SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.agricultureActivity.CH4.toFixed(2),(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.agricultureActivity.N2O.toFixed(2),(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(agricultureActivityPF);
 
 
             var wasteDisposalPF = [
-              SUMpf.wasteDisposal.CO2, (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.CO2.toFixed(2), (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.wasteDisposal,
+              SUMpf1.wasteDisposal.toFixed(2),
 
                 ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.wasteDisposal.CH4.toFixed(2),(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.N2O.toFixed(2),(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(wasteDisposalPF);
 
             var landUseChangeAndForestryPF = [
-              SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.CO2.toFixed(2), (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
               '-',
 
               '-',
 
-              SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.landUseChangeAndForestry.CH4.toFixed(2),(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.N2O.toFixed(2),(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(landUseChangeAndForestryPF);
@@ -3811,145 +3811,145 @@ class ElectricTable extends React.Component {
             _Data.push(totalEmissions_IncludingLand_UseChangeAndForestry);
 
             var totalEnergyActivities = [
-              SUM12.totalEnergyActivities.CO2,
-              SUM12.totalEnergyActivities.CH4,
-              SUM12.totalEnergyActivities.N2O,
+              SUM12.totalEnergyActivities.CO2.toFixed(2),
+              SUM12.totalEnergyActivities.CH4.toFixed(2),
+              SUM12.totalEnergyActivities.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalEnergyActivities.CO2EW,
+              SUM12.totalEnergyActivities.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalEnergyActivities);
 
 
             var fossilFuel = [
-              SUM12.fossilFuel.CO2,
-              SUM12.fossilFuel.CH4,
-              SUM12.fossilFuel.N2O,
+              SUM12.fossilFuel.CO2.toFixed(2),
+              SUM12.fossilFuel.CH4.toFixed(2),
+              SUM12.fossilFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.fossilFuel.CO2EW,
+              SUM12.fossilFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(fossilFuel);
 
             var energyIndustry = [
-              SUM12.energyIndustry.CO2,
+              SUM12.energyIndustry.CO2.toFixed(2),
               '-',
-              SUM12.energyIndustry.N2O,
+              SUM12.energyIndustry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.energyIndustry.CO2EW,
+              SUM12.energyIndustry.CO2EW.toFixed(2),
             ]
             _Data.push(energyIndustry);
 
             var agriculture = [
-              SUM12.agriculture.CO2,
+              SUM12.agriculture.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.agriculture.CO2EW,
+              SUM12.agriculture.CO2EW.toFixed(2),
             ]
 
             _Data.push(agriculture);
 
             var industryAndConstruction = [
-              SUM12.industryAndConstruction.CO2,
+              SUM12.industryAndConstruction.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.industryAndConstruction.CO2EW,
+              SUM12.industryAndConstruction.CO2EW.toFixed(2),
             ]
 
             _Data.push(industryAndConstruction);
 
             var transportation = [
-              SUM12.transportation.CO2,
-              SUM12.transportation.CH4,
-              SUM12.transportation.N2O,
+              SUM12.transportation.CO2.toFixed(2),
+              SUM12.transportation.CH4.toFixed(2),
+              SUM12.transportation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.transportation.CO2EW,
+              SUM12.transportation.CO2EW.toFixed(2),
             ]
 
             _Data.push(transportation);
 
             var serviceIndustry = [
-              SUM12.serviceIndustry.CO2,
+              SUM12.serviceIndustry.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.serviceIndustry.CO2EW,
+              SUM12.serviceIndustry.CO2EW.toFixed(2),
             ]
 
             _Data.push(serviceIndustry);
 
             var residentsLiving = [
-              SUM12.residentsLiving.CO2,
+              SUM12.residentsLiving.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.residentsLiving.CO2EW,
+              SUM12.residentsLiving.CO2EW.toFixed(2),
             ]
 
             _Data.push(residentsLiving);
 
             var biomassBurning = [
               '-',
-              SUM12.biomassBurning.CH4,
-              SUM12.biomassBurning.N2O,
+              SUM12.biomassBurning.CH4.toFixed(2),
+              SUM12.biomassBurning.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.biomassBurning.CO2EW,
+              SUM12.biomassBurning.CO2EW.toFixed(2),
             ]
 
             _Data.push(biomassBurning);
 
             var coalMiningEscape = [
               '-',
-              SUM12.coalMiningEscape.CH4,
+              SUM12.coalMiningEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.coalMiningEscape.CO2EW,
+              SUM12.coalMiningEscape.CO2EW.toFixed(2),
             ]
 
             _Data.push(coalMiningEscape);
 
             var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemsEscape.CH4,
+              SUM12.oilAndGasSystemsEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.oilAndGasSystemsEscape.CO2EW,
+              SUM12.oilAndGasSystemsEscape.CO2EW.toFixed(2),
             ]
             _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
-              SUM12.nonEnergyUse.CO2,
+              SUM12.nonEnergyUse.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.nonEnergyUse.CO2EW,
+              SUM12.nonEnergyUse.CO2EW.toFixed(2),
             ]
 
             _Data.push(nonEnergyUse);
@@ -3957,65 +3957,65 @@ class ElectricTable extends React.Component {
 
             var totalIndustrialProductionProcess = [
 
-              SUM12.totalIndustrialProductionProcess.CO2,
+              SUM12.totalIndustrialProductionProcess.CO2.toFixed(2),
               '-',
-              SUM12.totalIndustrialProductionProcess.N2O,
-              SUM12.totalIndustrialProductionProcess.HFC,
-              SUM12.totalIndustrialProductionProcess.PFC,
-              SUM12.totalIndustrialProductionProcess.SF6,
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.N2O.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.HFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.PFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.SF6.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalIndustrialProductionProcess);
 
             var cementProductionProcess = [
 
-              SUM12.cementProductionProcess.CO2,
+              SUM12.cementProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.cementProductionProcess.CO2EW,
+              SUM12.cementProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(cementProductionProcess);
 
             var limeProductionProcess = [
 
-              SUM12.limeProductionProcess.CO2,
+              SUM12.limeProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.limeProductionProcess.CO2EW,
+              SUM12.limeProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(limeProductionProcess);
 
             var steelProductionProcess = [
 
-              SUM12.steelProductionProcess.CO2,
+              SUM12.steelProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.steelProductionProcess.CO2EW,
+              SUM12.steelProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(steelProductionProcess);
 
             var calciumCarbideProductionProcess = [
 
-              SUM12.calciumCarbideProductionProcess.CO2,
+              SUM12.calciumCarbideProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.calciumCarbideProductionProcess.CO2EW,
+              SUM12.calciumCarbideProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(calciumCarbideProductionProcess);
@@ -4024,11 +4024,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.adipicAcidProductionProcess.N2O,
+              SUM12.adipicAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(adipicAcidProductionProcess);
@@ -4037,11 +4037,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.N2O,
+              SUM12.nitricAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.CO2EW,
+              SUM12.nitricAcidProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(nitricAcidProductionProcess);
@@ -4052,9 +4052,9 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.aluminumProductionProcess.PFC,
+              SUM12.aluminumProductionProcess.PFC.toFixed(2),
               '-',
-              SUM12.aluminumProductionProcess.CO2EW,
+              SUM12.aluminumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(aluminumProductionProcess);
@@ -4066,8 +4066,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.magnesiumProductionProcess.SF6,
-              SUM12.magnesiumProductionProcess.CO2EW,
+              SUM12.magnesiumProductionProcess.SF6.toFixed(2),
+              SUM12.magnesiumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(magnesiumProductionProcess);
@@ -4079,8 +4079,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.electricPowerEquipmentProductionProcess.SF6,
-              SUM12.electricPowerEquipmentProductionProcess.CO2EW,
+              SUM12.electricPowerEquipmentProductionProcess.SF6.toFixed(2),
+              SUM12.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(electricPowerEquipmentProductionProcess);
@@ -4090,10 +4090,10 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.otherProductionProcess.HFC,
-              SUM12.otherProductionProcess.PFC,
-              SUM12.otherProductionProcess.SF6,
-              SUM12.otherProductionProcess.CO2EW,
+              SUM12.otherProductionProcess.HFC.toFixed(2),
+              SUM12.otherProductionProcess.PFC.toFixed(2),
+              SUM12.otherProductionProcess.SF6.toFixed(2),
+              SUM12.otherProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(otherProductionProcess );
@@ -4101,12 +4101,12 @@ class ElectricTable extends React.Component {
             var totalAgricultureActivity = [
 
               '-',
-              SUM12.totalAgricultureActivity.CH4,
-              SUM12.totalAgricultureActivity.N2O,
+              SUM12.totalAgricultureActivity.CH4.toFixed(2),
+              SUM12.totalAgricultureActivity.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalAgricultureActivity.CO2EW,
+              SUM12.totalAgricultureActivity.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalAgricultureActivity);
@@ -4114,12 +4114,12 @@ class ElectricTable extends React.Component {
             var paddyFields = [
 
               '-',
-              SUM12.paddyFields.CH4,
+              SUM12.paddyFields.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.paddyFields.CO2EW,
+              SUM12.paddyFields.CO2EW.toFixed(2),
             ]
 
             _Data.push(paddyFields);
@@ -4128,11 +4128,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.land.N2O,
+              SUM12.land.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.land.CO2EW,
+              SUM12.land.CO2EW.toFixed(2),
             ]
 
             _Data.push(land);
@@ -4140,12 +4140,12 @@ class ElectricTable extends React.Component {
             var animalIntestinalFermentation = [
 
               '-',
-              SUM12.animalIntestinalFermentation.CH4,
+              SUM12.animalIntestinalFermentation.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.animalIntestinalFermentation.CO2EW,
+              SUM12.animalIntestinalFermentation.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalIntestinalFermentation);
@@ -4153,182 +4153,182 @@ class ElectricTable extends React.Component {
             var animalManureManagement = [
 
               '-',
-              SUM12.animalManureManagement.CH4,
-              SUM12.animalManureManagement.N2O,
+              SUM12.animalManureManagement.CH4.toFixed(2),
+              SUM12.animalManureManagement.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.animalManureManagement.CO2EW,
+              SUM12.animalManureManagement.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalManureManagement);
 
             var totalLandUseChangeAndForestry = [
 
-              SUM12.totalLandUseChangeAndForestry.CO2,
-              SUM12.totalLandUseChangeAndForestry.CH4,
-              SUM12.totalLandUseChangeAndForestry.N2O,
+              SUM12.totalLandUseChangeAndForestry.CO2.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.CH4.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalLandUseChangeAndForestry.CO2EW,
+              SUM12.totalLandUseChangeAndForestry.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalLandUseChangeAndForestry);
 
             var subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks = [
 
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks);
 
             var arborForest = [
 
-              SUM12.arborForest.CO2,
+              SUM12.arborForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.arborForest.CO2EW,
+              SUM12.arborForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(arborForest);
 
             var economicForest = [
 
-              SUM12.economicForest.CO2,
+              SUM12.economicForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.economicForest.CO2EW,
+              SUM12.economicForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(economicForest);
 
             var bambooForest = [
 
-              SUM12.bambooForest.CO2,
+              SUM12.bambooForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.bambooForest.CO2EW,
+              SUM12.bambooForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(bambooForest);
 
             var countrySpecialIrrigation = [
 
-              SUM12.countrySpecialIrrigation.CO2,
+              SUM12.countrySpecialIrrigation.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.countrySpecialIrrigation.CO2EW,
+              SUM12.countrySpecialIrrigation.CO2EW.toFixed(2),
             ]
 
             _Data.push(countrySpecialIrrigation);
 
             var scatteredWoodSurroundedByTreesSparseForest = [
 
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(scatteredWoodSurroundedByTreesSparseForest);
 
             var liveWoodConsumption = [
 
-              SUM12.liveWoodConsumption.CO2,
+              SUM12.liveWoodConsumption.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.liveWoodConsumption.CO2EW,
+              SUM12.liveWoodConsumption.CO2EW.toFixed(2),
             ]
 
             _Data.push(liveWoodConsumption);
 
             var subtotalOfCarbonEmissionsFromForestConversion = [
 
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalOfCarbonEmissionsFromForestConversion);
 
             var combustionEmission = [
 
-              SUM12.combustionEmission.CO2,
-              SUM12.combustionEmission.CH4,
-              SUM12.combustionEmission.N2O,
+              SUM12.combustionEmission.CO2.toFixed(2),
+              SUM12.combustionEmission.CH4.toFixed(2),
+              SUM12.combustionEmission.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.combustionEmission.CO2EW,
+              SUM12.combustionEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(combustionEmission);
 
             var decompositionOfEmission = [
 
-              SUM12.decompositionOfEmission.CO2,
+              SUM12.decompositionOfEmission.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.decompositionOfEmission.CO2EW,
+              SUM12.decompositionOfEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(decompositionOfEmission);
 
             var totalWasteDisposal = [
 
-              SUM12.totalWasteDisposal.CO2,
-              SUM12.totalWasteDisposal.CH4,
-              SUM12.totalWasteDisposal.N2O,
+              SUM12.totalWasteDisposal.CO2.toFixed(2),
+              SUM12.totalWasteDisposal.CH4.toFixed(2),
+              SUM12.totalWasteDisposal.N2O.toFixed(2),
 
               '-',
               '-',
               '-',
-              SUM12.totalWasteDisposal.CO2EW,
+              SUM12.totalWasteDisposal.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalWasteDisposal);
 
             var solidWaste = [
 
-              SUM12.solidWaste.CO2,
-              SUM12.solidWaste.CH4,
+              SUM12.solidWaste.CO2.toFixed(2),
+              SUM12.solidWaste.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.solidWaste.CO2EW,
+              SUM12.solidWaste.CO2EW.toFixed(2),
             ]
 
             _Data.push(solidWaste);
@@ -4337,64 +4337,64 @@ class ElectricTable extends React.Component {
             var wasteWater = [
 
               '-',
-              SUM12.wasteWater.N2O,
-              SUM12.wasteWater.CH4,
+              SUM12.wasteWater.N2O.toFixed(2),
+              SUM12.wasteWater.CH4.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.wasteWater.CO2EW,
+              SUM12.wasteWater.CO2EW.toFixed(2),
             ]
 
             _Data.push(wasteWater);
 
             var internationalFuel = [
 
-              SUM12.internationalFuel.CO2,
-              SUM12.internationalFuel.CH4,
-              SUM12.internationalFuel.N2O,
+              SUM12.internationalFuel.CO2.toFixed(2),
+              SUM12.internationalFuel.CH4.toFixed(2),
+              SUM12.internationalFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalFuel.CO2EW,
+              SUM12.internationalFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalFuel);
 
             var internationalAviation = [
 
-              SUM12.internationalAviation.CO2,
-              SUM12.internationalAviation.CH4,
-              SUM12.internationalAviation.N2O,
+              SUM12.internationalAviation.CO2.toFixed(2),
+              SUM12.internationalAviation.CH4.toFixed(2),
+              SUM12.internationalAviation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalAviation.CO2EW,
+              SUM12.internationalAviation.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalAviation);
 
             var internationalSailing = [
 
-              SUM12.internationalSailing.CO2,
-              SUM12.internationalSailing.CH4,
-              SUM12.internationalSailing.N2O,
+              SUM12.internationalSailing.CO2.toFixed(2),
+              SUM12.internationalSailing.CH4.toFixed(2),
+              SUM12.internationalSailing.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalSailing.CO2EW,
+              SUM12.internationalSailing.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalSailing);
 
             var chargeOutIndirectDischargeOfElectricity = [
 
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW.toFixed(2),
             ]
 
             _Data.push(chargeOutIndirectDischargeOfElectricity);
@@ -4475,10 +4475,10 @@ class ElectricTable extends React.Component {
             _DataPf1.push((Alldata.SUM2005.Summary.CO2.landUseChangeAndForestry+Alldata.SUM2005.Summary.CH4.landUseChangeAndForestry+Alldata.SUM2005.Summary.N2O.landUseChangeAndForestry).toFixed(2))
 
 
-            _DataPf2.push((Alldata.SUM2005.Summary.CO2.energyActivity))
-            _DataPf2.push((Alldata.SUM2005.Summary.CO2.industrialProductionProcess))
-            _DataPf2.push((Alldata.SUM2005.Summary.CO2.wasteDisposal))
-            _DataPf2.push((Alldata.SUM2005.Summary.CO2.landUseChangeAndForestry))
+            _DataPf2.push((Alldata.SUM2005.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf2.push((Alldata.SUM2005.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf2.push((Alldata.SUM2005.Summary.CO2.wasteDisposal).toFixed(2))
+            _DataPf2.push((Alldata.SUM2005.Summary.CO2.landUseChangeAndForestry).toFixed(2))
 
             _DataPf3.push(((Alldata.SUM2005.Summary.CO2.energyActivity/(Alldata.SUM2005.Summary.CO2.energyActivity+Alldata.SUM2005.Summary.CO2.industrialProductionProcess
             +Alldata.SUM2010.Summary.CO2.wasteDisposal+Alldata.SUM2010.Summary.CO2.landUseChangeAndForestry))*100).toFixed(2))
@@ -4494,9 +4494,9 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2005.Summary.CO2.wasteDisposal+Alldata.SUM2005.Summary.CO2.landUseChangeAndForestry))*100).toFixed(2))
 
 
-            _DataPf4.push((Alldata.SUM2005.Summary.CO2.energyActivity))
-            _DataPf4.push((Alldata.SUM2005.Summary.CO2.industrialProductionProcess))
-            _DataPf4.push((Alldata.SUM2005.Summary.CO2.wasteDisposal))
+            _DataPf4.push((Alldata.SUM2005.Summary.CO2.energyActivity).toFixed(2))
+            _DataPf4.push((Alldata.SUM2005.Summary.CO2.industrialProductionProcess).toFixed(2))
+            _DataPf4.push((Alldata.SUM2005.Summary.CO2.wasteDisposal).toFixed(2))
 
 
             _DataPf5.push(((Alldata.SUM2005.Summary.CO2.energyActivity/(Alldata.SUM2005.Summary.CO2.energyActivity+Alldata.SUM2005.Summary.CO2.industrialProductionProcess
@@ -4511,10 +4511,10 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf6.push((Alldata.SUM2005.Summary.CH4.energyActivity))
-            _DataPf6.push((Alldata.SUM2005.Summary.CH4.agricultureActivity))
-            _DataPf6.push((Alldata.SUM2005.Summary.CH4.wasteDisposal))
-            _DataPf6.push((Alldata.SUM2005.Summary.CH4.landUseChangeAndForestry))
+            _DataPf6.push((Alldata.SUM2005.Summary.CH4.energyActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2005.Summary.CH4.agricultureActivity).toFixed(2))
+            _DataPf6.push((Alldata.SUM2005.Summary.CH4.wasteDisposal).toFixed(2))
+            _DataPf6.push((Alldata.SUM2005.Summary.CH4.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf7.push(((Alldata.SUM2005.Summary.CH4.energyActivity/(Alldata.SUM2005.Summary.CH4.energyActivity+Alldata.SUM2005.Summary.CH4.agricultureActivity
@@ -4533,11 +4533,11 @@ class ElectricTable extends React.Component {
 
 
 
-            _DataPf8.push((Alldata.SUM2005.Summary.N2O.energyActivity))
-            _DataPf8.push((Alldata.SUM2005.Summary.N2O.industrialProductionProcess))
-            _DataPf8.push((Alldata.SUM2005.Summary.N2O.agricultureActivity))
-            _DataPf8.push((Alldata.SUM2005.Summary.N2O.wasteDisposal))
-            _DataPf8.push((Alldata.SUM2005.Summary.N2O.landUseChangeAndForestry))
+            _DataPf8.push((Alldata.SUM2005.Summary.N2O.energyActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2005.Summary.N2O.industrialProductionProcess).toFixed(2))
+            _DataPf8.push((Alldata.SUM2005.Summary.N2O.agricultureActivity).toFixed(2))
+            _DataPf8.push((Alldata.SUM2005.Summary.N2O.wasteDisposal).toFixed(2))
+            _DataPf8.push((Alldata.SUM2005.Summary.N2O.landUseChangeAndForestry).toFixed(2))
 
 
             _DataPf9.push(((Alldata.SUM2005.Summary.N2O.energyActivity/(Alldata.SUM2005.Summary.N2O.energyActivity+Alldata.SUM2005.Summary.N2O.industrialProductionProcess
@@ -4562,58 +4562,58 @@ class ElectricTable extends React.Component {
             +Alldata.SUM2005.Summary.N2O.agricultureActivity
             +Alldata.SUM2005.Summary.N2O.wasteDisposal+Alldata.SUM2005.Summary.N2O.landUseChangeAndForestry))*100).toFixed(2))
 
-            _DataPf10.push(Alldata.SUM2005.Collection.fossilFuel.CO2EW)
-            _DataPf10.push(Alldata.SUM2005.Collection.biomassBurning.CO2EW)
-            _DataPf10.push(Alldata.SUM2005.Collection.coalMiningEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2005.Collection.oilAndGasSystemsEscape.CO2EW)
-            _DataPf10.push(Alldata.SUM2005.Collection.nonEnergyUse.CO2EW)
+            _DataPf10.push(Alldata.SUM2005.Collection.fossilFuel.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2005.Collection.biomassBurning.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2005.Collection.coalMiningEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2005.Collection.oilAndGasSystemsEscape.CO2EW.toFixed(2))
+            _DataPf10.push(Alldata.SUM2005.Collection.nonEnergyUse.CO2EW.toFixed(2))
 
 
 
-            _DataPf11.push(Alldata.SUM2005.Collection.paddyFields.CO2EW)
-            _DataPf11.push(Alldata.SUM2005.Collection.land.CO2EW)
-            _DataPf11.push(Alldata.SUM2005.Collection.animalIntestinalFermentation.CO2EW)
-            _DataPf11.push(Alldata.SUM2005.Collection.animalManureManagement.CO2EW)
+            _DataPf11.push(Alldata.SUM2005.Collection.paddyFields.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2005.Collection.land.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2005.Collection.animalIntestinalFermentation.CO2EW.toFixed(2))
+            _DataPf11.push(Alldata.SUM2005.Collection.animalManureManagement.CO2EW.toFixed(2))
 
-            _DataPf12.push(Alldata.SUM2005.Collection.cementProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.limeProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.steelProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.calciumCarbideProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.adipicAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.nitricAcidProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.aluminumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.magnesiumProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.electricPowerEquipmentProductionProcess.CO2EW)
-            _DataPf12.push(Alldata.SUM2005.Collection.otherProductionProcess.CO2EW)
-
-
-            _DataPf13.push(Alldata.SUM2005.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW)
-            _DataPf13.push(Alldata.SUM2005.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW)
+            _DataPf12.push(Alldata.SUM2005.Collection.cementProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.limeProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.steelProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.calciumCarbideProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.adipicAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.nitricAcidProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.aluminumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.magnesiumProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2))
+            _DataPf12.push(Alldata.SUM2005.Collection.otherProductionProcess.CO2EW.toFixed(2))
 
 
-            _DataPf14.push(Alldata.SUM2005.Collection.solidWaste.CO2EW)
-            _DataPf14.push(Alldata.SUM2005.Collection.wasteWater.CO2EW)
+            _DataPf13.push(Alldata.SUM2005.Collection.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2))
+            _DataPf13.push(Alldata.SUM2005.Collection.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2))
 
 
-          _DataPf15.push(Alldata.SUM2005.Collection.internationalAviation.CO2EW)
-            _DataPf15.push(Alldata.SUM2005.Collection.internationalSailing.CO2EW)
+            _DataPf14.push(Alldata.SUM2005.Collection.solidWaste.CO2EW.toFixed(2))
+            _DataPf14.push(Alldata.SUM2005.Collection.wasteWater.CO2EW.toFixed(2))
+
+
+          _DataPf15.push(Alldata.SUM2005.Collection.internationalAviation.CO2EW.toFixed(2))
+            _DataPf15.push(Alldata.SUM2005.Collection.internationalSailing.CO2EW.toFixed(2))
 
 
               var SUMpfCO = Alldata.SUM2005.Summary;
 
               var sumCO = [
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
               _Data3.push(sumCO)
 
               var sumCH = [
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -4621,9 +4621,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumCH)
 
               var sumNO = [
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry*100).toFixed(2),
-                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   (SUMpfCO.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry/SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry*100).toFixed(2),
 
               ]
@@ -4642,9 +4642,9 @@ class ElectricTable extends React.Component {
               _Data3.push(sumF)
 
               var sumT = [
-                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
                   100,
-                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+                  SUMpfCO.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
                   100
               ]
 
@@ -4689,26 +4689,26 @@ class ElectricTable extends React.Component {
               var SUMpfTotal = Alldata.SUM2005.Summary;
 
             var energyActivityPFT = [
-              SUMpfTotal.CO2.energyActivity,
-              SUMpfTotal.CH4.energyActivity,
-              SUMpfTotal.N2O.energyActivity,
+              SUMpfTotal.CO2.energyActivity.toFixed(2),
+              SUMpfTotal.CH4.energyActivity.toFixed(2),
+              SUMpfTotal.N2O.energyActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.energyActivity,
+              SUMpfTotal.Total.energyActivity.toFixed(2),
 
             ];
 
             _Data2.push(energyActivityPFT)
 
             var industrialProductionProcessPFT = [
-              SUMpfTotal.CO2.industrialProductionProcess,
+              SUMpfTotal.CO2.industrialProductionProcess.toFixed(2),
               '-',
-              SUMpfTotal.N2O.industrialProductionProcess,
-              SUMpfTotal.HFC.industrialProductionProcess,
-              SUMpfTotal.PFC.industrialProductionProcess,
-              SUMpfTotal.SF6.industrialProductionProcess,
-              SUMpfTotal.Total.industrialProductionProcess,
+              SUMpfTotal.N2O.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.HFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.PFC.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.SF6.industrialProductionProcess.toFixed(2),
+              SUMpfTotal.Total.industrialProductionProcess.toFixed(2),
 
             ];
 
@@ -4716,63 +4716,63 @@ class ElectricTable extends React.Component {
 
             var agricultureActivityPFT = [
               '-',
-              SUMpfTotal.CH4.agricultureActivity,
-              SUMpfTotal.N2O.agricultureActivity,
+              SUMpfTotal.CH4.agricultureActivity.toFixed(2),
+              SUMpfTotal.N2O.agricultureActivity.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.agricultureActivity,
+              SUMpfTotal.Total.agricultureActivity.toFixed(2),
 
             ];
 
             _Data2.push(agricultureActivityPFT)
 
             var wasteDisposalPFT = [
-              SUMpfTotal.CO2.wasteDisposal,
-              SUMpfTotal.CH4.wasteDisposal,
-              SUMpfTotal.N2O.wasteDisposal,
+              SUMpfTotal.CO2.wasteDisposal.toFixed(2),
+              SUMpfTotal.CH4.wasteDisposal.toFixed(2),
+              SUMpfTotal.N2O.wasteDisposal.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.wasteDisposal,
+              SUMpfTotal.Total.wasteDisposal.toFixed(2),
 
             ];
 
             _Data2.push(wasteDisposalPFT)
 
             var landUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.landUseChangeAndForestry,
-              SUMpfTotal.CH4.landUseChangeAndForestry,
-              SUMpfTotal.N2O.landUseChangeAndForestry,
+              SUMpfTotal.CO2.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.landUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.landUseChangeAndForestry.toFixed(2),
               '-',
               '-',
               '-',
-              SUMpfTotal.Total.landUseChangeAndForestry,
+              SUMpfTotal.Total.landUseChangeAndForestry.toFixed(2),
 
             ];
 
             _Data2.push(landUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestry.toFixed(2),
 
             ];
             _Data2.push(emissionOfGreenhouseGases_ExcludingLandUseChangeAndForestryPFT)
 
             var emissionOfGreenhouseGases_IncludingLandUseChangeAndForestryPFT = [
-              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
-              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry,
+              SUMpfTotal.CO2.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.CH4.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.N2O.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.HFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.PFC.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.SF6.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
+              SUMpfTotal.Total.emissionOfGreenhouseGases_IncludingLandUseChangeAndForestry.toFixed(2),
 
             ];
 
@@ -4830,27 +4830,27 @@ class ElectricTable extends React.Component {
             var SUMpf = Alldata.SUM2005.SubSummary
             var SUMpf1 = Alldata.SUM2005.Summary.CO2
             var energyActivityPF = [
-              SUMpf.energyActivity.CO2, (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.CO2.toFixed(2), (SUMpf.energyActivity.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.energyActivity,
+              SUMpf1.energyActivity.toFixed(2),
 
                 ((SUMpf1.energyActivity/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.energyActivity.CH4,(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.energyActivity.N2O,(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.energyActivity.CH4.toFixed(2),(SUMpf.energyActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.energyActivity.N2O.toFixed(2),(SUMpf.energyActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(energyActivityPF);
 
             var industrialProductionProcessPF = [
-              SUMpf.industrialProductionProcess.CO2, (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.industrialProductionProcess.CO2.toFixed(2), (SUMpf.industrialProductionProcess.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.industrialProductionProcess,
+              SUMpf1.industrialProductionProcess.toFixed(2),
 
                 ((SUMpf1.industrialProductionProcess/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
               '-','-',
-              SUMpf.industrialProductionProcess.N2O,(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.industrialProductionProcess.N2O.toFixed(2),(SUMpf.industrialProductionProcess.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(industrialProductionProcessPF);
@@ -4862,35 +4862,35 @@ class ElectricTable extends React.Component {
 -
               '-',
 
-              SUMpf.agricultureActivity.CH4,(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.agricultureActivity.N2O,(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.agricultureActivity.CH4.toFixed(2),(SUMpf.agricultureActivity.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.agricultureActivity.N2O.toFixed(2),(SUMpf.agricultureActivity.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(agricultureActivityPF);
 
 
             var wasteDisposalPF = [
-              SUMpf.wasteDisposal.CO2, (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.CO2.toFixed(2), (SUMpf.wasteDisposal.CO2Proportion*100).toFixed(2)+'%',
 
-              SUMpf1.wasteDisposal,
+              SUMpf1.wasteDisposal.toFixed(2),
 
                 ((SUMpf1.wasteDisposal/(SUMpf1.energyActivity+SUMpf1.industrialProductionProcess+SUMpf1.wasteDisposal))* 100).toFixed(2)+'%',
 
-              SUMpf.wasteDisposal.CH4,(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.wasteDisposal.N2O,(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.wasteDisposal.CH4.toFixed(2),(SUMpf.wasteDisposal.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.wasteDisposal.N2O.toFixed(2),(SUMpf.wasteDisposal.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(wasteDisposalPF);
 
             var landUseChangeAndForestryPF = [
-              SUMpf.landUseChangeAndForestry.CO2, (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.CO2.toFixed(2), (SUMpf.landUseChangeAndForestry.CO2Proportion*100).toFixed(2)+'%',
 
               '-',
 
               '-',
 
-              SUMpf.landUseChangeAndForestry.CH4,(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
-              SUMpf.landUseChangeAndForestry.N2O,(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
+              SUMpf.landUseChangeAndForestry.CH4.toFixed(2),(SUMpf.landUseChangeAndForestry.CH4Proportion*100).toFixed(2)+'%',
+              SUMpf.landUseChangeAndForestry.N2O.toFixed(2),(SUMpf.landUseChangeAndForestry.N2OProportion*100).toFixed(2)+'%'
             ]
 
             _Data1.push(landUseChangeAndForestryPF);
@@ -4974,146 +4974,146 @@ class ElectricTable extends React.Component {
             _Data.push(totalEmissions_IncludingLand_UseChangeAndForestry);
 
             var totalEnergyActivities = [
-              SUM12.totalEnergyActivities.CO2,
-              SUM12.totalEnergyActivities.CH4,
-              SUM12.totalEnergyActivities.N2O,
+              SUM12.totalEnergyActivities.CO2.toFixed(2),
+              SUM12.totalEnergyActivities.CH4.toFixed(2),
+              SUM12.totalEnergyActivities.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalEnergyActivities.CO2EW,
+              SUM12.totalEnergyActivities.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalEnergyActivities);
 
 
             var fossilFuel = [
-              SUM12.fossilFuel.CO2,
-              SUM12.fossilFuel.CH4,
-              SUM12.fossilFuel.N2O,
+              SUM12.fossilFuel.CO2.toFixed(2),
+              SUM12.fossilFuel.CH4.toFixed(2),
+              SUM12.fossilFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.fossilFuel.CO2EW,
+              SUM12.fossilFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(fossilFuel);
 
             var energyIndustry = [
-              SUM12.energyIndustry.CO2,
+              SUM12.energyIndustry.CO2.toFixed(2),
               '-',
-              SUM12.energyIndustry.N2O,
+              SUM12.energyIndustry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.energyIndustry.CO2EW,
+              SUM12.energyIndustry.CO2EW.toFixed(2),
             ]
             _Data.push(energyIndustry);
 
             var agriculture = [
-              SUM12.agriculture.CO2,
+              SUM12.agriculture.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.agriculture.CO2EW,
+              SUM12.agriculture.CO2EW.toFixed(2),
             ]
 
             _Data.push(agriculture);
 
             var industryAndConstruction = [
-              SUM12.industryAndConstruction.CO2,
+              SUM12.industryAndConstruction.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.industryAndConstruction.CO2EW,
+              SUM12.industryAndConstruction.CO2EW.toFixed(2),
             ]
 
             _Data.push(industryAndConstruction);
 
 
             var transportation = [
-              SUM12.transportation.CO2,
-              SUM12.transportation.CH4,
-              SUM12.transportation.N2O,
+              SUM12.transportation.CO2.toFixed(2),
+              SUM12.transportation.CH4.toFixed(2),
+              SUM12.transportation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.transportation.CO2EW,
+              SUM12.transportation.CO2EW.toFixed(2),
             ]
 
             _Data.push(transportation);
 
             var serviceIndustry = [
-              SUM12.serviceIndustry.CO2,
+              SUM12.serviceIndustry.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.serviceIndustry.CO2EW,
+              SUM12.serviceIndustry.CO2EW.toFixed(2),
             ]
 
             _Data.push(serviceIndustry);
 
             var residentsLiving = [
-              SUM12.residentsLiving.CO2,
+              SUM12.residentsLiving.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.residentsLiving.CO2EW,
+              SUM12.residentsLiving.CO2EW.toFixed(2),
             ]
 
             _Data.push(residentsLiving);
 
             var biomassBurning = [
               '-',
-              SUM12.biomassBurning.CH4,
-              SUM12.biomassBurning.N2O,
+              SUM12.biomassBurning.CH4.toFixed(2),
+              SUM12.biomassBurning.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.biomassBurning.CO2EW,
+              SUM12.biomassBurning.CO2EW.toFixed(2),
             ]
 
             _Data.push(biomassBurning);
 
             var coalMiningEscape = [
               '-',
-              SUM12.coalMiningEscape.CH4,
+              SUM12.coalMiningEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.coalMiningEscape.CO2EW,
+              SUM12.coalMiningEscape.CO2EW.toFixed(2),
             ]
 
             _Data.push(coalMiningEscape);
 
             var oilAndGasSystemsEscape = [
               '-',
-              SUM12.oilAndGasSystemsEscape.CH4,
+              SUM12.oilAndGasSystemsEscape.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.oilAndGasSystemsEscape.CO2EW,
+              SUM12.oilAndGasSystemsEscape.CO2EW.toFixed(2),
             ]
             _Data.push(oilAndGasSystemsEscape);
 
             var nonEnergyUse = [
 
-              SUM12.nonEnergyUse.CO2,
+              SUM12.nonEnergyUse.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.nonEnergyUse.CO2EW,
+              SUM12.nonEnergyUse.CO2EW.toFixed(2),
             ]
 
             _Data.push(nonEnergyUse);
@@ -5121,65 +5121,65 @@ class ElectricTable extends React.Component {
 
             var totalIndustrialProductionProcess = [
 
-              SUM12.totalIndustrialProductionProcess.CO2,
+              SUM12.totalIndustrialProductionProcess.CO2.toFixed(2),
               '-',
-              SUM12.totalIndustrialProductionProcess.N2O,
-              SUM12.totalIndustrialProductionProcess.HFC,
-              SUM12.totalIndustrialProductionProcess.PFC,
-              SUM12.totalIndustrialProductionProcess.SF6,
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.N2O.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.HFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.PFC.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.SF6.toFixed(2),
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalIndustrialProductionProcess);
 
             var cementProductionProcess = [
 
-              SUM12.cementProductionProcess.CO2,
+              SUM12.cementProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.cementProductionProcess.CO2EW,
+              SUM12.cementProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(cementProductionProcess);
 
             var limeProductionProcess = [
 
-              SUM12.limeProductionProcess.CO2,
+              SUM12.limeProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.limeProductionProcess.CO2EW,
+              SUM12.limeProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(limeProductionProcess);
 
             var steelProductionProcess = [
 
-              SUM12.steelProductionProcess.CO2,
+              SUM12.steelProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.steelProductionProcess.CO2EW,
+              SUM12.steelProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(steelProductionProcess);
 
             var calciumCarbideProductionProcess = [
 
-              SUM12.calciumCarbideProductionProcess.CO2,
+              SUM12.calciumCarbideProductionProcess.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.calciumCarbideProductionProcess.CO2EW,
+              SUM12.calciumCarbideProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(calciumCarbideProductionProcess);
@@ -5188,11 +5188,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.adipicAcidProductionProcess.N2O,
+              SUM12.adipicAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalIndustrialProductionProcess.CO2EW,
+              SUM12.totalIndustrialProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(adipicAcidProductionProcess);
@@ -5201,11 +5201,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.N2O,
+              SUM12.nitricAcidProductionProcess.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.nitricAcidProductionProcess.CO2EW,
+              SUM12.nitricAcidProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(nitricAcidProductionProcess);
@@ -5216,9 +5216,9 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.aluminumProductionProcess.PFC,
+              SUM12.aluminumProductionProcess.PFC.toFixed(2),
               '-',
-              SUM12.aluminumProductionProcess.CO2EW,
+              SUM12.aluminumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(aluminumProductionProcess);
@@ -5230,8 +5230,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.magnesiumProductionProcess.SF6,
-              SUM12.magnesiumProductionProcess.CO2EW,
+              SUM12.magnesiumProductionProcess.SF6.toFixed(2),
+              SUM12.magnesiumProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(magnesiumProductionProcess);
@@ -5243,8 +5243,8 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.electricPowerEquipmentProductionProcess.SF6,
-              SUM12.electricPowerEquipmentProductionProcess.CO2EW,
+              SUM12.electricPowerEquipmentProductionProcess.SF6.toFixed(2),
+              SUM12.electricPowerEquipmentProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(electricPowerEquipmentProductionProcess);
@@ -5254,10 +5254,10 @@ class ElectricTable extends React.Component {
               '-',
               '-',
               '-',
-              SUM12.otherProductionProcess.HFC,
-              SUM12.otherProductionProcess.PFC,
-              SUM12.otherProductionProcess.SF6,
-              SUM12.otherProductionProcess.CO2EW,
+              SUM12.otherProductionProcess.HFC.toFixed(2),
+              SUM12.otherProductionProcess.PFC.toFixed(2),
+              SUM12.otherProductionProcess.SF6.toFixed(2),
+              SUM12.otherProductionProcess.CO2EW.toFixed(2),
             ]
 
             _Data.push(otherProductionProcess );
@@ -5265,12 +5265,12 @@ class ElectricTable extends React.Component {
             var totalAgricultureActivity = [
 
               '-',
-              SUM12.totalAgricultureActivity.CH4,
-              SUM12.totalAgricultureActivity.N2O,
+              SUM12.totalAgricultureActivity.CH4.toFixed(2),
+              SUM12.totalAgricultureActivity.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalAgricultureActivity.CO2EW,
+              SUM12.totalAgricultureActivity.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalAgricultureActivity);
@@ -5278,12 +5278,12 @@ class ElectricTable extends React.Component {
             var paddyFields = [
 
               '-',
-              SUM12.paddyFields.CH4,
+              SUM12.paddyFields.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.paddyFields.CO2EW,
+              SUM12.paddyFields.CO2EW.toFixed(2),
             ]
 
             _Data.push(paddyFields);
@@ -5292,11 +5292,11 @@ class ElectricTable extends React.Component {
 
               '-',
               '-',
-              SUM12.land.N2O,
+              SUM12.land.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.land.CO2EW,
+              SUM12.land.CO2EW.toFixed(2),
             ]
 
             _Data.push(land);
@@ -5304,12 +5304,12 @@ class ElectricTable extends React.Component {
             var animalIntestinalFermentation = [
 
               '-',
-              SUM12.animalIntestinalFermentation.CH4,
+              SUM12.animalIntestinalFermentation.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.animalIntestinalFermentation.CO2EW,
+              SUM12.animalIntestinalFermentation.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalIntestinalFermentation);
@@ -5317,182 +5317,182 @@ class ElectricTable extends React.Component {
             var animalManureManagement = [
 
               '-',
-              SUM12.animalManureManagement.CH4,
-              SUM12.animalManureManagement.N2O,
+              SUM12.animalManureManagement.CH4.toFixed(2),
+              SUM12.animalManureManagement.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.animalManureManagement.CO2EW,
+              SUM12.animalManureManagement.CO2EW.toFixed(2),
             ]
 
             _Data.push(animalManureManagement);
 
             var totalLandUseChangeAndForestry = [
 
-              SUM12.totalLandUseChangeAndForestry.CO2,
-              SUM12.totalLandUseChangeAndForestry.CH4,
-              SUM12.totalLandUseChangeAndForestry.N2O,
+              SUM12.totalLandUseChangeAndForestry.CO2.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.CH4.toFixed(2),
+              SUM12.totalLandUseChangeAndForestry.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.totalLandUseChangeAndForestry.CO2EW,
+              SUM12.totalLandUseChangeAndForestry.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalLandUseChangeAndForestry);
 
             var subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks = [
 
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW,
+              SUM12.subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalChangesInForestAndOtherWoodyBiomassCarbonStocks);
 
             var arborForest = [
 
-              SUM12.arborForest.CO2,
+              SUM12.arborForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.arborForest.CO2EW,
+              SUM12.arborForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(arborForest);
 
             var economicForest = [
 
-              SUM12.economicForest.CO2,
+              SUM12.economicForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.economicForest.CO2EW,
+              SUM12.economicForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(economicForest);
 
             var bambooForest = [
 
-              SUM12.bambooForest.CO2,
+              SUM12.bambooForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.bambooForest.CO2EW,
+              SUM12.bambooForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(bambooForest);
 
             var countrySpecialIrrigation = [
 
-              SUM12.countrySpecialIrrigation.CO2,
+              SUM12.countrySpecialIrrigation.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.countrySpecialIrrigation.CO2EW,
+              SUM12.countrySpecialIrrigation.CO2EW.toFixed(2),
             ]
 
             _Data.push(countrySpecialIrrigation);
 
             var scatteredWoodSurroundedByTreesSparseForest = [
 
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW,
+              SUM12.scatteredWoodSurroundedByTreesSparseForest.CO2EW.toFixed(2),
             ]
 
             _Data.push(scatteredWoodSurroundedByTreesSparseForest);
 
             var liveWoodConsumption = [
 
-              SUM12.liveWoodConsumption.CO2,
+              SUM12.liveWoodConsumption.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.liveWoodConsumption.CO2EW,
+              SUM12.liveWoodConsumption.CO2EW.toFixed(2),
             ]
 
             _Data.push(liveWoodConsumption);
 
             var subtotalOfCarbonEmissionsFromForestConversion = [
 
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4,
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CH4.toFixed(2),
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW,
+              SUM12.subtotalOfCarbonEmissionsFromForestConversion.CO2EW.toFixed(2),
             ]
 
             _Data.push(subtotalOfCarbonEmissionsFromForestConversion);
 
             var combustionEmission = [
 
-              SUM12.combustionEmission.CO2,
-              SUM12.combustionEmission.CH4,
-              SUM12.combustionEmission.N2O,
+              SUM12.combustionEmission.CO2.toFixed(2),
+              SUM12.combustionEmission.CH4.toFixed(2),
+              SUM12.combustionEmission.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.combustionEmission.CO2EW,
+              SUM12.combustionEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(combustionEmission);
 
             var decompositionOfEmission = [
 
-              SUM12.decompositionOfEmission.CO2,
+              SUM12.decompositionOfEmission.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.decompositionOfEmission.CO2EW,
+              SUM12.decompositionOfEmission.CO2EW.toFixed(2),
             ]
 
             _Data.push(decompositionOfEmission);
 
             var totalWasteDisposal = [
 
-              SUM12.totalWasteDisposal.CO2,
-              SUM12.totalWasteDisposal.CH4,
-              SUM12.totalWasteDisposal.N2O,
+              SUM12.totalWasteDisposal.CO2.toFixed(2),
+              SUM12.totalWasteDisposal.CH4.toFixed(2),
+              SUM12.totalWasteDisposal.N2O.toFixed(2),
 
               '-',
               '-',
               '-',
-              SUM12.totalWasteDisposal.CO2EW,
+              SUM12.totalWasteDisposal.CO2EW.toFixed(2),
             ]
 
             _Data.push(totalWasteDisposal);
 
             var solidWaste = [
 
-              SUM12.solidWaste.CO2,
-              SUM12.solidWaste.CH4,
+              SUM12.solidWaste.CO2.toFixed(2),
+              SUM12.solidWaste.CH4.toFixed(2),
               '-',
               '-',
               '-',
               '-',
-              SUM12.solidWaste.CO2EW,
+              SUM12.solidWaste.CO2EW.toFixed(2),
             ]
 
             _Data.push(solidWaste);
@@ -5501,64 +5501,64 @@ class ElectricTable extends React.Component {
             var wasteWater = [
 
               '-',
-              SUM12.wasteWater.N2O,
-              SUM12.wasteWater.CH4,
+              SUM12.wasteWater.N2O.toFixed(2),
+              SUM12.wasteWater.CH4.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.wasteWater.CO2EW,
+              SUM12.wasteWater.CO2EW.toFixed(2),
             ]
 
             _Data.push(wasteWater);
 
             var internationalFuel = [
 
-              SUM12.internationalFuel.CO2,
-              SUM12.internationalFuel.CH4,
-              SUM12.internationalFuel.N2O,
+              SUM12.internationalFuel.CO2.toFixed(2),
+              SUM12.internationalFuel.CH4.toFixed(2),
+              SUM12.internationalFuel.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalFuel.CO2EW,
+              SUM12.internationalFuel.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalFuel);
 
             var internationalAviation = [
 
-              SUM12.internationalAviation.CO2,
-              SUM12.internationalAviation.CH4,
-              SUM12.internationalAviation.N2O,
+              SUM12.internationalAviation.CO2.toFixed(2),
+              SUM12.internationalAviation.CH4.toFixed(2),
+              SUM12.internationalAviation.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalAviation.CO2EW,
+              SUM12.internationalAviation.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalAviation);
 
             var internationalSailing = [
 
-              SUM12.internationalSailing.CO2,
-              SUM12.internationalSailing.CH4,
-              SUM12.internationalSailing.N2O,
+              SUM12.internationalSailing.CO2.toFixed(2),
+              SUM12.internationalSailing.CH4.toFixed(2),
+              SUM12.internationalSailing.N2O.toFixed(2),
               '-',
               '-',
               '-',
-              SUM12.internationalSailing.CO2EW,
+              SUM12.internationalSailing.CO2EW.toFixed(2),
             ]
 
             _Data.push(internationalSailing);
 
             var chargeOutIndirectDischargeOfElectricity = [
 
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2.toFixed(2),
               '-',
               '-',
               '-',
               '-',
               '-',
-              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW,
+              SUM12.chargeOutIndirectDischargeOfElectricity.CO2EW.toFixed(2),
             ]
 
             _Data.push(chargeOutIndirectDischargeOfElectricity);

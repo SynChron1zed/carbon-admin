@@ -1,5 +1,15 @@
 
 html, body, :global(#root) {
+
   height: 100%;
+
+
 }
 
+.ant-select-selection--single :global(#root) {
+  height: 28px;
+  position: relative;
+  cursor: pointer;
+  border: none;
+  background: none;
+}

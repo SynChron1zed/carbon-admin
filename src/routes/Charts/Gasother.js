@@ -69,63 +69,6 @@ class EditableCell extends React.Component {
   }
 }
 
-class EditableCell1 extends React.Component {
-
-  state = {
-    value: this.props.value,
-    editable: this.props.editable || false,
-  }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
-      this.setState({ editable: nextProps.editable, value: nextProps.value });
-      /*if (nextProps.editable !== this.state.editable ) {
-       this.setState({ editable: nextProps.editable});*/
-      if (nextProps.editable) {
-        this.cacheValue = this.state.value;
-      }
-    }
-    if (nextProps.status && nextProps.status !== this.props.status) {
-      if (nextProps.status === 'save') {
-        this.props.onChange(this.state.value);
-      } else if (nextProps.status === 'cancel') {
-        this.setState({ value: this.cacheValue });
-        this.props.onChange(this.cacheValue);
-      }
-    }
-  }
-  shouldComponentUpdate(nextProps, nextState) {
-
-    return nextProps.editable !== this.state.editable ||
-      nextState.value !== this.state.value;
-  }
-  handleChange(e) {
-
-    const value = e.target.value;
-    this.setState({ value });
-  }
-  render() {
-
-    const { value, editable } = this.state;
-    return (
-      <div>
-        {
-          editable ?
-            <div>
-              <Input
-                value={value}
-                onChange={e => this.handleChange(e)}
-              />
-            </div>
-            :
-            <div className={styles.editableText}>
-              {value.toString() || ' '}
-            </div>
-        }
-      </div>
-    );
-  }
-}
-
 class EditableCell2 extends React.Component {
 
   state = {
@@ -247,8 +190,7 @@ class ElectricTable extends React.Component {
 
     super(props);
 
-
-
+    //温室气体增温潜值
     this.columns = [
       {
         title: '温室气体种类',
@@ -351,58 +293,7 @@ class ElectricTable extends React.Component {
       },
     ];
 
-
-    this.columns1 = [
-      {
-        title: '数据项',
-        dataIndex: 'name',
-        width: 100,
-
-        colSpan:1,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'name', text),
-          props: {},
-
-        };
-
-          return obj}
-
-      },{
-        title: '林业活动CO2吸收量', dataIndex: 'p1', width: 150,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p1', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      },{
-        title: '林业活动GHG排放量', dataIndex: 'p2', width: 150,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p2', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      },{
-        title: '（乔木林+疏林+散生木+四旁树）CO2吸收量-活立木消耗CO2排放量', dataIndex: 'p3', width:300,
-        render: (text, record, index) => {  const obj = {
-          children:this.renderColumns1(this.state.data1, index, 'p3', text),
-          props: {},
-
-        };
-
-
-
-          return obj},
-      }
-    ];
-
+    //不确定性计算
     this.columns2 = [
       {
         title: '数据项',
@@ -481,6 +372,7 @@ class ElectricTable extends React.Component {
       }
     ];
 
+    //关键指标
     this.columns3 = [
       {
         title: '数据项',
@@ -574,12 +466,11 @@ class ElectricTable extends React.Component {
       user:[],
 
 
-
-
       AllData:[],
       years:'2014',
       Data:[]
     };
+
     this.newQueryGut1();
     this.queryGut('2014');
     this.newQueryGut('2014');
@@ -697,7 +588,6 @@ class ElectricTable extends React.Component {
   }
 
 
-
   edit3(index) {
 
     const { data3 } = this.state;
@@ -729,7 +619,6 @@ class ElectricTable extends React.Component {
 
 
 
-  // 部门方法 1.1
   renderColumns(data, index, key, text) {
 
 
@@ -747,26 +636,6 @@ class ElectricTable extends React.Component {
       />);
   }
 
-  // 部门方法 1.1
-  renderColumns1(data1, index, key, text) {
-
-
-
-    const { editable, status } = data1[index][key];
-    if (typeof editable === 'undefined') {
-      return text;
-    }
-    return (
-
-      <EditableCell1
-        editable={editable}
-        value={text}
-        onChange={value => this.handleChange(key, index, value)}
-        status={status}
-      />);
-  }
-
-
   handleChange(key, index, value) {
 
 
@@ -782,9 +651,6 @@ class ElectricTable extends React.Component {
     }
 
   }
-
-
-
 
   edit(index) {
 
@@ -815,7 +681,8 @@ class ElectricTable extends React.Component {
     });
   }
 
-  //
+
+  //关键指标
   queryGut(years){
 
 
@@ -978,6 +845,7 @@ class ElectricTable extends React.Component {
           this.setState({data:_b});
 
           this.setState({data3:_b2});
+
           this.setState({ loading: false});
 
 
@@ -990,7 +858,7 @@ class ElectricTable extends React.Component {
 
   }
 
-
+  //引用数据
   newQueryGut1(){
 
     post('/report/summary/list', {
@@ -1014,7 +882,7 @@ class ElectricTable extends React.Component {
 
   }
 
-  //
+  //不确定性计算
   newQueryGut(years){
 
 
@@ -1032,12 +900,12 @@ class ElectricTable extends React.Component {
 
           const _Data = []
 
-          _Data.push(Alldata.uncertaintyEnergyActivity.uncertainty)
-          _Data.push(Alldata.uncertaintyIndustrialProductionProcess.uncertainty)
-          _Data.push(Alldata.uncertaintyAgricultureActivity.uncertainty)
-          _Data.push(Alldata.uncertaintyWasteDisposal.uncertainty)
-          _Data.push(Alldata.uncertaintyLandUseChangeAndForestry.uncertainty)
-          _Data.push(Alldata.uncertaintySynthesis.uncertainty)
+          _Data.push(Alldata.uncertaintyEnergyActivity.uncertainty.toFixed(2))
+          _Data.push(Alldata.uncertaintyIndustrialProductionProcess.uncertainty.toFixed(2))
+          _Data.push(Alldata.uncertaintyAgricultureActivity.uncertainty.toFixed(2))
+          _Data.push(Alldata.uncertaintyWasteDisposal.uncertainty.toFixed(2))
+          _Data.push(Alldata.uncertaintyLandUseChangeAndForestry.uncertainty.toFixed(2))
+          _Data.push(Alldata.uncertaintySynthesis.uncertainty.toFixed(2))
 
           const fossilTitle = [
 
@@ -1057,36 +925,36 @@ class ElectricTable extends React.Component {
 
 
           if(years=='2014'){
-            _Data1.push(pfl.SUM2014.Summary.Total.energyActivity)
-            _Data1.push(pfl.SUM2014.Summary.Total.industrialProductionProcess)
-            _Data1.push(pfl.SUM2014.Summary.Total.agricultureActivity)
-            _Data1.push(pfl.SUM2014.Summary.Total.wasteDisposal)
-            _Data1.push(pfl.SUM2014.Summary.Total.landUseChangeAndForestry)
-              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
+            _Data1.push(pfl.SUM2014.Summary.Total.energyActivity.toFixed(2))
+            _Data1.push(pfl.SUM2014.Summary.Total.industrialProductionProcess.toFixed(2))
+            _Data1.push(pfl.SUM2014.Summary.Total.agricultureActivity.toFixed(2))
+            _Data1.push(pfl.SUM2014.Summary.Total.wasteDisposal.toFixed(2))
+            _Data1.push(pfl.SUM2014.Summary.Total.landUseChangeAndForestry.toFixed(2))
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty.toFixed(2))
 
 
           }else if(years=='2012'){
-            _Data1.push(pfl.SUM2012.Summary.Total.energyActivity)
-            _Data1.push(pfl.SUM2012.Summary.Total.industrialProductionProcess)
-            _Data1.push(pfl.SUM2012.Summary.Total.agricultureActivity)
-            _Data1.push(pfl.SUM2012.Summary.Total.wasteDisposal)
-            _Data1.push(pfl.SUM2012.Summary.Total.landUseChangeAndForestry)
+            _Data1.push(pfl.SUM2012.Summary.Total.energyActivity.toFixed(2))
+            _Data1.push(pfl.SUM2012.Summary.Total.industrialProductionProcess.toFixed(2))
+            _Data1.push(pfl.SUM2012.Summary.Total.agricultureActivity.toFixed(2))
+            _Data1.push(pfl.SUM2012.Summary.Total.wasteDisposal.toFixed(2))
+            _Data1.push(pfl.SUM2012.Summary.Total.landUseChangeAndForestry.toFixed(2))
 
-              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty.toFixed(2))
           }else if(years=='2010'){
-            _Data1.push(pfl.SUM2010.Summary.Total.energyActivity)
-            _Data1.push(pfl.SUM2010.Summary.Total.industrialProductionProcess)
-            _Data1.push(pfl.SUM2010.Summary.Total.agricultureActivity)
-            _Data1.push(pfl.SUM2010.Summary.Total.wasteDisposal)
-            _Data1.push(pfl.SUM2010.Summary.Total.landUseChangeAndForestry)
-              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
+            _Data1.push(pfl.SUM2010.Summary.Total.energyActivity.toFixed(2))
+            _Data1.push(pfl.SUM2010.Summary.Total.industrialProductionProcess.toFixed(2))
+            _Data1.push(pfl.SUM2010.Summary.Total.agricultureActivity.toFixed(2))
+            _Data1.push(pfl.SUM2010.Summary.Total.wasteDisposal.toFixed(2))
+            _Data1.push(pfl.SUM2010.Summary.Total.landUseChangeAndForestry.toFixed(2))
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty.toFixed(2))
           }else if(years=='2005'){
-            _Data1.push(pfl.SUM2005.Summary.Total.energyActivity)
-            _Data1.push(pfl.SUM2005.Summary.Total.industrialProductionProcess)
-            _Data1.push(pfl.SUM2005.Summary.Total.agricultureActivity)
-            _Data1.push(pfl.SUM2005.Summary.Total.wasteDisposal)
-            _Data1.push(pfl.SUM2005.Summary.Total.landUseChangeAndForestry)
-              _Data1.push(Alldata.uncertaintySynthesis.uncertainty)
+            _Data1.push(pfl.SUM2005.Summary.Total.energyActivity.toFixed(2))
+            _Data1.push(pfl.SUM2005.Summary.Total.industrialProductionProcess.toFixed(2))
+            _Data1.push(pfl.SUM2005.Summary.Total.agricultureActivity.toFixed(2))
+            _Data1.push(pfl.SUM2005.Summary.Total.wasteDisposal.toFixed(2))
+            _Data1.push(pfl.SUM2005.Summary.Total.landUseChangeAndForestry.toFixed(2))
+              _Data1.push(Alldata.uncertaintySynthesis.uncertainty.toFixed(2))
           }
 
 
@@ -1144,34 +1012,26 @@ class ElectricTable extends React.Component {
 
   }
 
-  //
-
+  //不确定性计算update
   updateWaste1(index,data2,a){
-
-
 
     var data  = data2
 
     const Directory = [
-      'uncertaintyEnergyActivity',
-      'uncertaintyIndustrialProductionProcess',
-      'uncertaintyAgricultureActivity',
-      'uncertaintyWasteDisposal',
-      'uncertaintyLandUseChangeAndForestry',
-      'uncertaintySynthesis',
+      'uncertaintyEnergyActivity',//能源活动
+      'uncertaintyIndustrialProductionProcess',//工业生产过程
+      'uncertaintyAgricultureActivity',//农业活动
+      'uncertaintyWasteDisposal',//废弃物处理
+      'uncertaintyLandUseChangeAndForestry',//土地利用变化与林业
+      'uncertaintySynthesis',//综合不确定性
 
     ]
-
 
 
     var DirectoryIndex = Directory[index];
 
     var url = '/uncertainty/report/update'
     var bodyName = 'report';
-
-
-
-
 
 
 
@@ -1201,30 +1061,24 @@ class ElectricTable extends React.Component {
       });
   }
 
+  //关键指标update
   updateWaste(index,data3,a){
-
 
 
     var data  = data3
 
     const Directory = [
-      'unitGDPCO2Emissions',
-      'perCapitaGreenhouseGasEmissions',
-      'unitPrimaryEnergyConsumptionOfCarbonDioxideEmissions',
+      'unitGDPCO2Emissions',//单位GDP二氧化碳排放量（tCO2/万元）
+      'perCapitaGreenhouseGasEmissions',//人均温室气体排放量（tCO2e/人）
+      'unitPrimaryEnergyConsumptionOfCarbonDioxideEmissions',//单位一次能源消费二氧化碳排放量（tCO2/吨标煤）
 
     ]
-
 
 
     var DirectoryIndex = Directory[index];
 
     var url = '/uncertainty/kpi/update'
     var bodyName = 'KPI';
-
-
-
-
-
 
 
     var obj={
@@ -1250,7 +1104,6 @@ class ElectricTable extends React.Component {
         }
       });
   }
-
 
   //年份选择
   selesctYears(years){

@@ -4,243 +4,15 @@
 
 import React from 'react';
 import { Table, Input, Form, Popconfirm,message,Spin, Alert, Switch ,Radio, Modal, Button } from 'antd';
-
 import ReactDOM from 'react-dom'
 import styles from './Gas.less';
 import createReactClass from 'create-react-class';
 import { post } from '../../utils/carbonRequest';
 import $ from 'jquery';
-const RadioGroup = Radio.Group;
 
+const RadioGroup = Radio.Group;
 const confirm = Modal.confirm;
 
-class EditableCell extends React.Component {
-
-    state = {
-        value: this.props.value,
-        editable: this.props.editable || false,
-    }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
-            this.setState({ editable: nextProps.editable, value: nextProps.value });
-            /*if (nextProps.editable !== this.state.editable ) {
-             this.setState({ editable: nextProps.editable});*/
-            if (nextProps.editable) {
-                this.cacheValue = this.state.value;
-            }
-        }
-        if (nextProps.status && nextProps.status !== this.props.status) {
-            if (nextProps.status === 'save') {
-                this.props.onChange(this.state.value);
-            } else if (nextProps.status === 'cancel') {
-                this.setState({ value: this.cacheValue });
-                this.props.onChange(this.cacheValue);
-            }
-        }
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-
-        return nextProps.editable !== this.state.editable ||
-            nextState.value !== this.state.value;
-    }
-    handleChange(e) {
-
-        const value = e.target.value;
-        this.setState({ value });
-    }
-    render() {
-
-        const { value, editable } = this.state;
-        return (
-            <div>
-                {
-                    editable ?
-                        <div>
-                            <Input
-                                value={value}
-                                onChange={e => this.handleChange(e)}
-                            />
-                        </div>
-                        :
-                        <div className={styles.editableText}>
-                            {value.toString() || ' '}
-                        </div>
-                }
-            </div>
-        );
-    }
-}
-
-class EditableCell1 extends React.Component {
-
-    state = {
-        value: this.props.value,
-        editable: this.props.editable || false,
-    }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
-            this.setState({ editable: nextProps.editable, value: nextProps.value });
-            /*if (nextProps.editable !== this.state.editable ) {
-             this.setState({ editable: nextProps.editable});*/
-            if (nextProps.editable) {
-                this.cacheValue = this.state.value;
-            }
-        }
-        if (nextProps.status && nextProps.status !== this.props.status) {
-            if (nextProps.status === 'save') {
-                this.props.onChange(this.state.value);
-            } else if (nextProps.status === 'cancel') {
-                this.setState({ value: this.cacheValue });
-                this.props.onChange(this.cacheValue);
-            }
-        }
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-
-        return nextProps.editable !== this.state.editable ||
-            nextState.value !== this.state.value;
-    }
-    handleChange(e) {
-
-        const value = e.target.value;
-        this.setState({ value });
-    }
-    render() {
-
-        const { value, editable } = this.state;
-        return (
-            <div>
-                {
-                    editable ?
-                        <div>
-                            <Input
-                                value={value}
-                                onChange={e => this.handleChange(e)}
-                            />
-                        </div>
-                        :
-                        <div className={styles.editableText}>
-                            {value.toString() || ' '}
-                        </div>
-                }
-            </div>
-        );
-    }
-}
-
-class EditableCell2 extends React.Component {
-
-    state = {
-        value: this.props.value,
-        editable: this.props.editable || false,
-    }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
-            this.setState({ editable: nextProps.editable, value: nextProps.value });
-            /*if (nextProps.editable !== this.state.editable ) {
-             this.setState({ editable: nextProps.editable});*/
-            if (nextProps.editable) {
-                this.cacheValue = this.state.value;
-            }
-        }
-        if (nextProps.status && nextProps.status !== this.props.status) {
-            if (nextProps.status === 'save') {
-                this.props.onChange(this.state.value);
-            } else if (nextProps.status === 'cancel') {
-                this.setState({ value: this.cacheValue });
-                this.props.onChange(this.cacheValue);
-            }
-        }
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-
-        return nextProps.editable !== this.state.editable ||
-            nextState.value !== this.state.value;
-    }
-    handleChange(e) {
-
-        const value = e.target.value;
-        this.setState({ value });
-    }
-    render() {
-
-        const { value, editable } = this.state;
-        return (
-            <div>
-                {
-                    editable ?
-                        <div>
-                            <Input
-                                value={value}
-                                onChange={e => this.handleChange(e)}
-                            />
-                        </div>
-                        :
-                        <div className={styles.editableText}>
-                            {value.toString() || ' '}
-                        </div>
-                }
-            </div>
-        );
-    }
-}
-
-class EditableCell3 extends React.Component {
-
-    state = {
-        value: this.props.value,
-        editable: this.props.editable || false,
-    }
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.editable !== this.state.editable || nextProps.value !== this.state.value) {
-            this.setState({ editable: nextProps.editable, value: nextProps.value });
-            /*if (nextProps.editable !== this.state.editable ) {
-             this.setState({ editable: nextProps.editable});*/
-            if (nextProps.editable) {
-                this.cacheValue = this.state.value;
-            }
-        }
-        if (nextProps.status && nextProps.status !== this.props.status) {
-            if (nextProps.status === 'save') {
-                this.props.onChange(this.state.value);
-            } else if (nextProps.status === 'cancel') {
-                this.setState({ value: this.cacheValue });
-                this.props.onChange(this.cacheValue);
-            }
-        }
-    }
-    shouldComponentUpdate(nextProps, nextState) {
-
-        return nextProps.editable !== this.state.editable ||
-            nextState.value !== this.state.value;
-    }
-    handleChange(e) {
-
-        const value = e.target.value;
-        this.setState({ value });
-    }
-    render() {
-
-        const { value, editable } = this.state;
-        return (
-            <div>
-                {
-                    editable ?
-                        <div>
-                            <Input
-                                value={value}
-                                onChange={e => this.handleChange(e)}
-                            />
-                        </div>
-                        :
-                        <div className={styles.editableText}>
-                            {value.toString() || ' '}
-                        </div>
-                }
-            </div>
-        );
-    }
-}
 
 class ElectricTable extends React.Component {
 
@@ -586,10 +358,6 @@ class ElectricTable extends React.Component {
 
     }
 
-
-
-
-
     //数据更新
     newQueryGut(){
 
@@ -604,7 +372,6 @@ class ElectricTable extends React.Component {
                     this.newQueryGut1();
 
 
-
                 } else {
                     message.error('数据错误！');
                 }
@@ -613,7 +380,6 @@ class ElectricTable extends React.Component {
 
 
     }
-
 
     newQueryGut1(){
 
@@ -627,9 +393,6 @@ class ElectricTable extends React.Component {
 
                     this.newQueryGut2();
 
-
-
-
                 } else {
                     message.error('数据错误！');
                 }
@@ -638,7 +401,6 @@ class ElectricTable extends React.Component {
 
 
     }
-
 
     newQueryGut2(){
 
@@ -650,9 +412,7 @@ class ElectricTable extends React.Component {
 
                 if (res.code==0) {
 
-
                     this.newQueryGut3();
-
 
                 } else {
                     message.error('数据错误！');
@@ -673,9 +433,7 @@ class ElectricTable extends React.Component {
 
                 if (res.code==0) {
 
-
                     this.setState({loading:false})
-
 
                 } else {
                     message.error('数据错误！');
@@ -686,35 +444,14 @@ class ElectricTable extends React.Component {
 
     }
 
-    showConfirm() {
-
-    confirm({
-        title: '确认进行温室气体数据更新吗?',
-        content: '更新时间较长，请耐心等待！',
-        onOk() {
-
-
-            console.log('确认');
-
-
-            this.setState({loading:true})
-
-        },
-        onCancel() {
-            console.log('取消');
-        },
-    });
-}
-
-
-
     showModal = () => {
         this.setState({
             visible: true,
         });
     }
+
     handleOk = (e) => {
-        console.log(e);
+
         this.newQueryGut();
 
         this.setState({
@@ -722,6 +459,7 @@ class ElectricTable extends React.Component {
             loading:true
         });
     }
+
     handleCancel = (e) => {
         console.log(e);
         this.setState({
@@ -730,24 +468,13 @@ class ElectricTable extends React.Component {
         });
     }
 
-
     render() {
-
-
-
-
         return (
             <Spin spinning={this.state.loading} delay={500}>
             <div className={styles.normal}>
                 <div className={styles.title}>
                     <span className={styles.title_span}>温室气体数据更新</span>
                 </div>
-
-
-
-
-
-
                     <div className={styles.dataUpdate} id="bodyTable1"  >
                         <p>温室气体数据更新</p>
 
@@ -764,14 +491,6 @@ class ElectricTable extends React.Component {
                             </Modal>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
             </div>
             </Spin>
         );
